@@ -1,0 +1,175 @@
+Public Shared Sub evAppCUI_Idling(sender As Object, e As IdlingEventArgs) Handles evAppUIC.Idling
+        'System.Windows.MessageBox.Show("UIControlledApplication.Idling-->Iniciado")
+        ' Llenar objetos 
+        If evApp Is Nothing Then
+            Try
+                evApp = TryCast(sender, Autodesk.Revit.UI.UIApplication).Application
+                evRevit.SubscribeAll()
+            Catch ex As Exception
+                '
+            End Try
+        End If
+        '
+        ' ***** COMPROBAR BOTONES Y ACTUALIZACIONES
+        '
+        If (ultimacomprobacion = 0 OrElse DateTime.Now.Ticks >= New Date(ultimacomprobacion).AddSeconds(checkupdatesinseconds).Ticks) Then
+            '
+            'If ULMALGFree.clsLogsCSV._ActualizarAddIns = False OrElse
+            'ULMALGFree.clsLogsCSV._ActualizarFamilies = False OrElse
+            'ULMALGFree.clsLogsCSV._ActualizarXMLs = False Then
+            '
+            'If oP Is Nothing OrElse (oP IsNot Nothing AndAlso oP.HasExited = True) Then
+            '    ' Comprobar actualizaciones
+            '    Dim pI As New ProcessStartInfo(_ULMAUpdaterAddIn)
+            '    pI.WindowStyle = ProcessWindowStyle.Hidden
+            '    pI.Arguments = "CHECK"
+            '    oP = Process.Start(pI)
+            'End If
+
+            Dim cmd As String = Chr(34) & _ULMAUpdaterAddIn & Chr(34) & " CHECK REVIT"
+            Dim fichero As String = IO.Path.Combine(IO.Path.GetDirectoryName(_ULMAUpdaterAddIn), "ejecuta.bat")
+            IO.File.WriteAllText(fichero, cmd)
+            Dim pI As New ProcessStartInfo(fichero)
+            'pI.Arguments = "UPDATE REVIT"
+            pI.WindowStyle = ProcessWindowStyle.Hidden
+            Call Process.Start(pI)
+
+            ' Solo mostrar el mensaje al inicio
+            'If ultimacomprobacion = 0 AndAlso ULMALGFree.clsLogsCSV._ActualizarAddIns = True Then
+            '    Dim pI1 As New ProcessStartInfo(_ULMAUpdaterAddIn)
+            '    pI1.WindowStyle = ProcessWindowStyle.Hidden
+            '    Dim td As New TaskDialog("UPDATES")
+            '    td.MainIcon = TaskDialogIcon.TaskDialogIconInformation
+            '    td.MainInstruction = "Exist AddIn Updates. ¿Close Revit and update AddIns...?"
+            '    td.CommonButtons = TaskDialogCommonButtons.Yes Or TaskDialogCommonButtons.No
+            '    If td.Show() = TaskDialogResult.Yes Then
+            '        ' Cerrar Revit inmediatamente y actualizar
+            '        pI1.Arguments = "KILLUPDATE REVIT"
+            '    Else
+            '        pI1.Arguments = "CHECK REVIT"
+            '    End If
+            '    'ULMALGFree.clsLogsCSV._ActualizarAddIns = Not ULMALGFree.clsLogsCSV._ActualizarAddIns
+            '    'ULMALGFree.clsLogsCSV._ActualizarFamilies = Not ULMALGFree.clsLogsCSV._ActualizarFamilies
+            '    'ULMALGFree.clsLogsCSV._ActualizarXMLs = Not ULMALGFree.clsLogsCSV._ActualizarXMLs
+            '    'UCRevitFreeApplication.Botones_ActualizaEstadoActualizaciones()
+            '    Call Process.Start(pI1)
+            'End If
+            'End If
+            '
+            ultimacomprobacion = DateTime.Now.Ticks
+            UCRevitFreeApplication.Botones_ActualizaEstadoActualizaciones()
+        End If
+            ' *******************************
+            ' Mirar si se han borrado ya el RibbonPanel de GrafSystem (ULMA - Grafsystem - abImportarGeometria) y UCBrowser
+            ' Solo se evalua una vez y ya no vuelve a entrar.
+            'If asBorradoOtrosRibbonItem = False Then
+            '    asBorradoOtrosRibbonItem = modRibbons.RibbonItem_BuscaBorra(idRibbonBusco:="ULMA", idRibbonPanelCorrecto:=panelTools.Name, textoBoton:={"Grafsystem", "Import"}, borrarpanelcompleto:=True)
+            '    asBorradoOtrosRibbonItem = modRibbons.RibbonItem_BuscaBorra(idRibbonBusco:="ULMA", idRibbonPanelCorrecto:=panelPicking.Name, textoBoton:={"Browser", "family", "browser", "picker"}, borrarpanelcompleto:=True)
+            '    asBorradoOtrosRibbonItem = True
+            'End If
+            '************* Salir en determinadas condiciones. *********
+            ' No quedan ficheros abiertos. Borrar tmplog y salir
+            If evRevit.evAppUI.ActiveUIDocument Is Nothing Then
+            Exit Sub
+        End If
+        ' Salir si es documento de familia, es de sólo lectura o si falla al poner configuración
+        If evRevit.evAppUI.ActiveUIDocument.Document.IsFamilyDocument Then Exit Sub
+        If evRevit.evAppUI.ActiveUIDocument.Document.IsReadOnly Then Exit Sub
+        '**********************************************************
+        '
+        Dim errores As String = ""
+        ' Poner ITEM_MARKET en las FamilyInstaces insertadas.
+        If oIdsFamI.Count > 0 OrElse oIdsAnoI.Count > 0 Then
+            'If oDoc.PathName = "" Then Exit Sub
+            Try
+                If (arrM(0) <> "" AndAlso IsNumeric(arrM(0))) Then
+                    Using transaction As New Transaction(evRevit.evAppUI.ActiveUIDocument.Document, "Write ITEM_MARKET in FamilyInstance")
+                        transaction.Start()
+                        For Each queId As ElementId In oIdsFamI
+                            Try
+                                Dim oEle As Element = evRevit.evAppUI.ActiveUIDocument.Document.GetElement(queId)
+                                'PonLog("Poner ITEM_MARKET a " & CType(oEle, FamilyInstance).Symbol.Name)
+                                errores &=
+                                utilesRevit.ParametroElementEscribe(evRevit.evAppUI.ActiveUIDocument.Document, oEle, "ITEM_MARKET", CInt(arrM(0)))   ' Math.Round(CDbl(arrM123(0)), 0))
+                            Catch ex As Exception
+                                Continue For
+                            End Try
+                        Next
+                        '
+                        ' Añadimos bucle para cambiar ITEM_MARKET también en las anotaciones.
+                        For Each queId As ElementId In oIdsAnoI
+                            Try
+                                Dim oEle As Element = evRevit.evAppUI.ActiveUIDocument.Document.GetElement(queId)
+                                'PonLog("Poner ITEM_MARKET a " & CType(oEle, FamilyInstance).Symbol.Name)
+                                errores &=
+                                utilesRevit.ParametroElementEscribe(evRevit.evAppUI.ActiveUIDocument.Document, oEle, "ITEM_MARKET", CInt(arrM(0)))   ' Math.Round(CDbl(arrM123(0)), 0))
+                            Catch ex As Exception
+                                Continue For
+                            End Try
+                        Next
+                        If errores = "" Then
+                            transaction.Commit()
+                        Else
+                            transaction.RollBack()
+                        End If
+                    End Using
+                End If
+            Catch ex As Exception
+                'TaskDialog.Show("ATTENTION", ex.Message)
+            End Try
+            '' Vaciar la colección de ids para que no entre en este procedimiento.
+            oIdsFamI.Clear()
+            oIdsFamI = Nothing
+            oIdsAnoI.Clear()
+            oIdsAnoI = Nothing
+        End If
+        '
+        ' ***** Esto lo quitamos, que no cambie el idioma (Tipo) de las anotaciones
+        ' Cambiar el Tipo (idioma) de los GenericAnnotation (es, en, etc...)
+        'If oIdsAnoI.Count > 0 Then
+        '    Dim transaction As Transaction = Nothing
+        '    Try
+        '        If arrL123(0) <> "" Then
+        '            Dim cambiados As Integer = 0
+        '            transaction = New Transaction(evRevit.evAppUI.ActiveUIDocument.Document, "Change Type Language in GenericAnnotation")
+        '            transaction.Start()
+        '            For Each queId As ElementId In oIdsAnoI
+        '                Try
+        '                    Dim oNote As FamilyInstance = CType(evRevit.evAppUI.ActiveUIDocument.Document.GetElement(queId), FamilyInstance)
+        '                    If (oNote.Symbol IsNot Nothing) AndAlso oNote.Symbol.Name.ToUpper = arrL123(0).ToUpper Then
+        '                        Continue For
+        '                    ElseIf oNote.Symbol IsNot Nothing Then
+        '                        '' Recorrer todos los FamilySymbol que contiene para cambiarlo
+        '                        '' por el que se llama igual que el idiFin (es, en, etc...)
+        '                        For Each oId As ElementId In oNote.Symbol.Family.GetFamilySymbolIds
+        '                            Dim fs As FamilySymbol = CType(evRevit.evAppUI.ActiveUIDocument.Document.GetElement(oId), FamilySymbol)
+        '                            If fs.Name.ToUpper = arrL123(0).ToUpper Then
+        '                                CType(evRevit.evAppUI.ActiveUIDocument.Document.GetElement(oNote.Id), FamilyInstance).Symbol = fs
+        '                                cambiados += 1
+        '                                Exit For
+        '                            End If
+        '                            ''
+        '                            System.Windows.Forms.Application.DoEvents()
+        '                        Next
+        '                        ''
+        '                    End If
+        '                Catch ex As Exception
+        '                    Continue For
+        '                End Try
+        '            Next
+        '            ''
+        '            If cambiados > 0 Then
+        '                transaction.Commit()
+        '            Else
+        '                transaction.RollBack()
+        '            End If
+        '        End If
+        '    Catch ex As Exception
+        '        If transaction IsNot Nothing Then transaction.RollBack()
+        '    End Try
+        '    oIdsAnoI.Clear()
+        '    oIdsAnoI = Nothing
+        '    transaction = Nothing
+        'End If
+        evApp.PurgeReleasedAPIObjects()
+    End Sub

@@ -1,0 +1,9 @@
+﻿<Window x:Class="zz__pruebas_y_experimentos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Command="{Binding LanzarPrueba}" Content="Lanzar prueba" HorizontalAlignment="Left" Margin="66,38,0,0" VerticalAlignment="Top" Width="103"/>
+        <TextBox Text="{Binding resultados}" Margin="10,90,10,10" TextWrapping="Wrap"/>
+    </Grid>
+</Window>

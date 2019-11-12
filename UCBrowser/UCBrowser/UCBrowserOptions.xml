@@ -1,0 +1,14 @@
+<UCBrowserOptions>
+  <Market>120</Market>
+  <BDIdataRetrievalMode>offline</BDIdataRetrievalMode>
+  <OfflineBDIdataFolderPath>..\offlineBDIdata</OfflineBDIdataFolderPath>
+  <LanguajeForNames>en</LanguajeForNames>
+  <FamilyFilesBaseFolderPath>..\families</FamilyFilesBaseFolderPath>
+  <ThumbnailFilesBaseFolderPath>..\families_images</ThumbnailFilesBaseFolderPath>
+  <FamilyFilesCustomFolderPath></FamilyFilesCustomFolderPath>
+  <ThumbnailFilesCustomFolderPath></ThumbnailFilesCustomFolderPath>
+  <GroupListItemOrientation>H</GroupListItemOrientation>
+  <GroupListItemCropLimit>125</GroupListItemCropLimit>
+  <UseShortNamesForGroups>True</UseShortNamesForGroups>
+  <UseFilenamesForFamilies>True</UseFilenamesForFamilies>
+</UCBrowserOptions>

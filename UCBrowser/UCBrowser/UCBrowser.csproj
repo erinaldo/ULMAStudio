@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E3EBBAC6-5AAE-4186-85D5-45D0B63FAA11}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UCBrowser</RootNamespace>
+    <AssemblyName>UCBrowser</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Ulma.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ULMALGFree, Version=2018.0.0.8, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLLS_2ACAD\ULMALGFree.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFFolderBrowser, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFFolderBrowser.1.0.2\lib\WPFFolderBrowser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="3-INTERFACEDeUsuario\MostrarImagen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="3-INTERFACEDeUsuario\ResultadosBusqueda_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="3-INTERFACEDeUsuario\Opciones_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="3-INTERFACEDeUsuario\Main_window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="1-DATOS\Favoritos.cs" />
+    <Compile Include="1-DATOS\ModelosDeDatos\ElementoDeLaBiblioteca.cs" />
+    <Compile Include="1-DATOS\ModelosDeDatos\Familia.cs" />
+    <Compile Include="1-DATOS\ModelosDeDatos\Filial.cs" />
+    <Compile Include="1-DATOS\ModelosDeDatos\GrupoDeFamilias.cs" />
+    <Compile Include="1-DATOS\ModelosDeDatos\LineaDeProducto.cs" />
+    <Compile Include="1-DATOS\ModelosDeDatos\relacionFamiliaGrupo.cs" />
+    <Compile Include="1-DATOS\Opciones.cs" />
+    <Compile Include="3-INTERFACEDeUsuario\MostrarImagen.xaml.cs">
+      <DependentUpon>MostrarImagen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="2-LOGICA\ResultadosBusqueda_viewmodel.cs" />
+    <Compile Include="3-INTERFACEDeUsuario\ResultadosBusqueda_window.xaml.cs">
+      <DependentUpon>ResultadosBusqueda_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="2-LOGICA\ClasesAuxiliares.cs" />
+    <Compile Include="1-DATOS\BibliotecaDeFamilias.cs" />
+    <Compile Include="2-LOGICA\Main.cs" />
+    <Compile Include="2-LOGICA\Opciones_viewmodel.cs" />
+    <Compile Include="3-INTERFACEDeUsuario\Opciones_window.xaml.cs">
+      <DependentUpon>Opciones_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="2-LOGICA\Main_viewmodel.cs" />
+    <Compile Include="3-INTERFACEDeUsuario\Main_window.xaml.cs">
+      <DependentUpon>Main_window.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\SegMDL2.ttf" />
+    <None Include="UCBrowser - manual de usuario.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\e713.png" />
+    <Resource Include="Resources\LogoU32.png" />
+    <None Include="Resources\Ulma.ico" />
+    <None Include="Resources\AND.png" />
+    <None Include="Resources\EHL.png" />
+    <None Include="Resources\EV.png" />
+    <None Include="Resources\SEG.png" />
+    <None Include="Resources\VT.png" />
+    <None Include="Resources\EHP.png" />
+    <None Include="Resources\STR.png" />
+    <None Include="Resources\PIC.png" />
+    <Content Include="UCzBrowser.addin" />
+    <Content Include="ULMA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="ULMA.ico" />
+    <Resource Include="Resources\ANNOTATIONS.PNG" />
+    <Resource Include="Resources\COM.PNG" />
+    <Resource Include="Resources\NewCustomGroup.PNG" />
+    <Resource Include="Resources\VievTabs.PNG" />
+    <Resource Include="Resources\ViewDetails.PNG" />
+    <Resource Include="Resources\ViewIcons.PNG" />
+    <Resource Include="Resources\ViewTree.PNG" />
+    <Resource Include="Resources\default.png" />
+    <None Include="UCBrowserOptions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="UCBrowser.ico" />
+    <Content Include="UCBrowser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsultarBDI\ConsultarBDI.vbproj">
+      <Project>{ed7ca954-0c90-4363-a3ef-53090e371f0d}</Project>
+      <Name>ConsultarBDI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>rem ***** 2019
+rem xcopy /E /I /Y "$(TargetDir)*.*" "$(AppData)\Autodesk\REVIT\Addins\2019\UCRevitF"
+rem move "$(AppData)\Autodesk\REVIT\Addins\2019\UCRevitF\UCBrowser.addin" "$(AppData)\Autodesk\REVIT\Addins\2019\"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

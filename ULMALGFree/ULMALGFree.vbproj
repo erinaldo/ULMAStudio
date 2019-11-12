@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6D460A4-032D-4B69-97BC-BF8BAB954CF7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ULMALGFree</RootNamespace>
+    <AssemblyName>ULMALGFree</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>ULMALGFree.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>ULMALGFree.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>ULMALGFree.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>ULMALGFree.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="crip2aCAD, Version=2018.1.2.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLS_2ACAD\crip2aCAD.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPI">
+      <HintPath>G:\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>G:\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComparadorSuperGrupos.vb" />
+    <Compile Include="clsArticulos.vb" />
+    <Compile Include="clsBaseID.vb" />
+    <Compile Include="clsCompanies.vb" />
+    <Compile Include="clsFTP.vb" />
+    <Compile Include="clsGroup.vb" />
+    <Compile Include="clsINI.vb" />
+    <Compile Include="clsBase.vb" />
+    <Compile Include="clsBaseUp.vb" />
+    <Compile Include="clsSubGroup.vb" />
+    <Compile Include="Datos.vb" />
+    <Compile Include="frmCompruebaID.Designer.vb">
+      <DependentUpon>frmCompruebaID.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompruebaID.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdater.Designer.vb">
+      <DependentUpon>frmUpdater.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdater.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Group.vb" />
+    <Compile Include="modUtiles.vb" />
+    <Compile Include="modVar.vb" />
+    <Compile Include="modXml.vb" />
+    <Compile Include="modZIP.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SuperGroup.vb" />
+    <Compile Include="utilesIP.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmCompruebaID.resx">
+      <DependentUpon>frmCompruebaID.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdater.resx">
+      <DependentUpon>frmUpdater.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ULMALGFree.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\1.png" />
+    <EmbeddedResource Include="Resources\10.png" />
+    <EmbeddedResource Include="Resources\2.png" />
+    <EmbeddedResource Include="Resources\3.png" />
+    <EmbeddedResource Include="Resources\4.png" />
+    <EmbeddedResource Include="Resources\5.png" />
+    <EmbeddedResource Include="Resources\6.png" />
+    <EmbeddedResource Include="Resources\7.png" />
+    <EmbeddedResource Include="Resources\8.png" />
+    <EmbeddedResource Include="Resources\9.png" />
+    <EmbeddedResource Include="Resources\icon_AND.png" />
+    <EmbeddedResource Include="Resources\icon_AND_selected.png" />
+    <EmbeddedResource Include="Resources\icon_EHL.png" />
+    <EmbeddedResource Include="Resources\icon_EHL_selected.png" />
+    <EmbeddedResource Include="Resources\icon_EV.png" />
+    <EmbeddedResource Include="Resources\icon_EV_selected.png" />
+    <EmbeddedResource Include="Resources\logoULMA.ico" />
+    <EmbeddedResource Include="Resources\logoULMA.png" />
+    <EmbeddedResource Include="Resources\logoULMA32.png" />
+    <EmbeddedResource Include="Resources\mnuAbout.ico" />
+    <EmbeddedResource Include="Resources\mnuAbout.png" />
+    <EmbeddedResource Include="Resources\mnuAbout32.png" />
+    <EmbeddedResource Include="Resources\mnuAboutU.ico" />
+    <EmbeddedResource Include="Resources\mnuAboutU.png" />
+    <EmbeddedResource Include="Resources\mnuAboutU32.png" />
+    <EmbeddedResource Include="Resources\mnuAboutUU.ico" />
+    <EmbeddedResource Include="Resources\mnuAboutUU.png" />
+    <EmbeddedResource Include="Resources\mnuAboutUU32.png" />
+    <EmbeddedResource Include="Resources\mnuBrowser.ico" />
+    <EmbeddedResource Include="Resources\mnuBrowser.png" />
+    <EmbeddedResource Include="Resources\mnuBrowser32.png" />
+    <EmbeddedResource Include="Resources\mnuDownload.ico" />
+    <EmbeddedResource Include="Resources\mnuDownload.png" />
+    <EmbeddedResource Include="Resources\mnuReport.ico" />
+    <EmbeddedResource Include="Resources\mnuReport.png" />
+    <EmbeddedResource Include="Resources\mnuReport32.png" />
+    <EmbeddedResource Include="Resources\uf32.png" />
+    <EmbeddedResource Include="Resources\uf32_1.png" />
+    <EmbeddedResource Include="Resources\uf32_10.png" />
+    <EmbeddedResource Include="Resources\uf32_2.png" />
+    <EmbeddedResource Include="Resources\uf32_3.png" />
+    <EmbeddedResource Include="Resources\uf32_4.png" />
+    <EmbeddedResource Include="Resources\uf32_5.png" />
+    <EmbeddedResource Include="Resources\uf32_6.png" />
+    <EmbeddedResource Include="Resources\uf32_7.png" />
+    <EmbeddedResource Include="Resources\uf32_8.png" />
+    <EmbeddedResource Include="Resources\uf32_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Download.png" />
+    <EmbeddedResource Include="Resources\DownloadUpdate.png" />
+    <EmbeddedResource Include="Resources\Updated.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\9+.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ActivationCode.png" />
+    <None Include="Resources\Cross28x28_2.png" />
+    <None Include="Resources\Cross.png" />
+    <Content Include="Resources\Download2.png" />
+    <Content Include="Resources\DownloadUpdate2.png" />
+    <None Include="Resources\FondoPanel.png" />
+    <Content Include="Resources\Updated2.png" />
+    <None Include="Resources\Cross28x28.png" />
+    <None Include="Resources\ActivationCode1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UCClientWebService\UCClientWebService\UCClientWebService.csproj">
+      <Project>{4a5890f5-7110-4d12-a35c-786aad125647}</Project>
+      <Name>UCClientWebService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)DLLS_2ACAD\" /S /Y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

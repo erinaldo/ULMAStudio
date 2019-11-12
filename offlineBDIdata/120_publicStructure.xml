@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publicStructure>
+  <superGroup>
+    <superGroupCode>EV</superGroupCode>
+    <superGroupDescription language="en">Vertical formwork</superGroupDescription>
+    <superGroupShortName language="en">Wall-Column Formwork</superGroupShortName>
+    <superGroupImage>EV.jpg</superGroupImage>
+    <groups>
+      <group>
+        <groupCode>E1856</groupCode>
+        <groupDescription language="en">LGR COLUMNS</groupDescription>
+        <groupShortName language="en">LGR</groupShortName>
+        <groupImage>render_LGR.jpg</groupImage>
+      </group>
+      <group>
+        <groupCode>E1900</groupCode>
+        <groupDescription language="en">ORMA FORMWORK</groupDescription>
+        <groupShortName language="en">ORMA</groupShortName>
+        <groupImage>render_ORMA.jpg</groupImage>
+      </group>
+      <group>
+        <groupCode>E1904</groupCode>
+        <groupDescription language="en">MEGAFORM FORMWORK</groupDescription>
+        <groupShortName language="en">MEGAFORM</groupShortName>
+        <groupImage>render_MEGAFORM.jpg</groupImage>
+      </group>
+      <group>
+        <groupCode>X0007</groupCode>
+        <groupDescription language="en">MEGALITE FORMWORK</groupDescription>
+        <groupShortName language="en">MEGALITE</groupShortName>
+        <groupImage>render_MEGALITE.jpg</groupImage>
+      </group>
+      <group>
+        <groupCode>106000</groupCode>
+        <groupDescription language="en">LGW FORMWORK</groupDescription>
+        <groupShortName language="en">LGW</groupShortName>
+        <groupImage>render_LGW.jpg</groupImage>
+      </group>
+    </groups>
+  </superGroup>
+  <superGroup>
+    <superGroupCode>EHL</superGroupCode>
+    <superGroupDescription language="en">Light horizontal/slab formwork</superGroupDescription>
+    <superGroupShortName language="en">Slab</superGroupShortName>
+    <superGroupImage>EHL.jpg</superGroupImage>
+    <groups>
+      <group>
+        <groupCode>E1870</groupCode>
+        <groupDescription language="en">CC-4 FORMWORK</groupDescription>
+        <groupShortName language="en">CC-4</groupShortName>
+        <groupImage>render_CC-4.jpg</groupImage>
+      </group>
+      <group>
+        <groupCode>X0004</groupCode>
+        <groupDescription language="en">ENKOFLEX</groupDescription>
+        <groupShortName language="en">ENKOFLEX</groupShortName>
+        <groupImage>render_ENKOFLEX.jpg</groupImage>
+      </group>
+    </groups>
+  </superGroup>
+</publicStructure>

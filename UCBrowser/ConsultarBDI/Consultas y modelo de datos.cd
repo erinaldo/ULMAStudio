@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConsultarBDI.CONSULTAS">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <Members>
+      <Field Name="generar_Trozo02_Selects_Comunes" Hidden="true" />
+      <Method Name="generar_Trozo03_Joins_para" Hidden="true" />
+      <Method Name="getCadenaConexionSQLServerPorDefecto" Hidden="true" />
+      <Method Name="getCargasDeUso_offline" Hidden="true" />
+      <Method Name="getCargasDeUso_online" Hidden="true" />
+      <Method Name="getCarpetaArchivosXMLPorDefecto" Hidden="true" />
+      <Method Name="getCompanias_offline" Hidden="true" />
+      <Method Name="getCompanias_online" Hidden="true" />
+      <Method Name="getDatosAdicionalesDeElementos" Hidden="true" />
+      <Method Name="getDatosAdicionalesDeElementos_online" Hidden="true" />
+      <Method Name="getElementos_online" Hidden="true" />
+      <Method Name="getElementosConDatosAdicionales_offline" Hidden="true" />
+      <Method Name="getEstructuraConfiguracionesArticulos_offline" Hidden="true" />
+      <Method Name="getEstructuraConfiguracionesArticulos_online" Hidden="true" />
+      <Method Name="getEstructuraGruposSubgruposElementos_offline" Hidden="true" />
+      <Method Name="getEstructuraGruposSubgruposElementos_online" Hidden="true" />
+      <Method Name="getNormas_offline" Hidden="true" />
+      <Method Name="getNormas_online" Hidden="true" />
+      <Method Name="getPrecios_offline" Hidden="true" />
+      <Method Name="getPrecios_online" Hidden="true" />
+      <Method Name="getTarifas_offline" Hidden="true" />
+      <Method Name="getTarifas_online" Hidden="true" />
+      <Field Name="m_CadenaConexionSQLServer" Hidden="true" />
+      <Field Name="m_CarpetaArchivosXML" Hidden="true" />
+      <Field Name="zzzCriteriosDeConsultaSQLParaCogerSoloArticulosVendibles" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="ConsultarBDI.CONSULTAS.resultadosGrupoSsubgrupoElemento" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CONSULTAS.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="ConsultarBDI.CONSULTAS.resultadosElementosConDatosAdicionales" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CONSULTAS.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="ConsultarBDI.CONSULTAS.resultadosConfiguracionArticulo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CONSULTAS.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>YAIQGyBSgQgGAuQkAoGCA0ITGJAIQJwFEgQEAAgAgz0=</HashCode>
+      <FileName>CONSULTAS.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.CargaDeUso">
+    <Position X="19" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>JAABgAIRIBEAICQEgAAAAAAgAIAAAAAIIBAAAAMGABo=</HashCode>
+      <FileName>modelos de datos\CargaDeUso.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConsultarBDI.Compania">
+    <Position X="4.25" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAIAAAgACEAAEAAAAgAIAAAAAAAAIAgAAAAAA=</HashCode>
+      <FileName>modelos de datos\Compania.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.Elemento">
+    <Position X="11.5" Y="0.5" Width="3.25" />
+    <NestedTypes>
+      <Enum Name="ConsultarBDI.Elemento.TiposDeElemento" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ModelosDeDatos\Elemento.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>WVgyBwCQAICABARElAAYgwAgEEBAICAIgIAwBIhlCAA=</HashCode>
+      <FileName>modelos de datos\Elemento.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConsultarBDI.Norma">
+    <Position X="19" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEAhAAAAIQAAAAAEAAAAAAAgAIAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>modelos de datos\Norma.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.Tarifa">
+    <Position X="4.25" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAhAAAAIAAAgAAEEAAIAAAgAIAAAiAAAAAABAAQAAA=</HashCode>
+      <FileName>modelos de datos\Tarifa.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.ElementoDatosadicionales">
+    <Position X="15.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>mFIAgYEAYEVIJgUOyQAgMAAkiAGAAEAYBWQEAYAUBUA=</HashCode>
+      <FileName>modelos de datos\ElementoDatosAdicionales.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConsultarBDI.EstructuraConfiguracionArticulo">
+    <Position X="7.5" Y="9.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QAAABAEAAAQAAAQEAAAAAQAgAIAAAAAAAAEAFAIBgAA=</HashCode>
+      <FileName>modelos de datos\EstructuraConfiguracionArticulo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.EstructuraGrupoSubgrupoElemento">
+    <Position X="4.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAIAQAAAQEgAIQAAAsEIAAAAAIAAAAAAIEgAA=</HashCode>
+      <FileName>modelos de datos\EstructuraGrupoSubgrupoElemento.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ConsultarBDI.Configuracion" Collapsed="true">
+    <Position X="8.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>modelos de datos\Configuracion.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.Articulo" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>modelos de datos\Articulo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.ArticuloGenerico" Collapsed="true">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>modelos de datos\ArticuloGenerico.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.BloqueAuxiliarAutocad" Collapsed="true">
+    <Position X="8.5" Y="14" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>modelos de datos\BloqueAuxiliarAutocad.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.Grupo">
+    <Position X="7.75" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAgAAAAAAAAgAAAAAAAAAAAFAAAAAAQ=</HashCode>
+      <FileName>modelos de datos\Grupo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.Subgrupo">
+    <Position X="7.75" Y="3.5" Width="2.5" />
+    <InheritanceLine Type="ConsultarBDI.Elemento" FixedToPoint="true">
+      <Path>
+        <Point X="11.5" Y="4.812" />
+        <Point X="10.25" Y="4.812" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgQAAAAAoAAAAgAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>modelos de datos\Subgrupo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsultarBDI.FamiliaDinamicaRevit" Collapsed="true">
+    <Position X="19.5" Y="13.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQAAAIAIAFATFggAAAAwoAIQAAAAIAACAEAgEIgA=</HashCode>
+      <FileName>modelos de datos\FamiliaDinamicaRevit.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

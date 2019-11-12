@@ -1,0 +1,59 @@
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName).addin" del /Q "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName).addin"
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)" rmdir /S /Q "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)"
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2019\$(ProjectName).addin" del /Q "$(appdata)\Autodesk\REVIT\Addins\2019\$(ProjectName).addin"
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2019\$(ProjectName)" rmdir /S /Q "$(appdata)\Autodesk\REVIT\Addins\2019\$(ProjectName)"
+IF EXIST "$(SolutionDir)INSTALL" rmdir /S /Q "$(SolutionDir)INSTALL"
+
+mkdir "$(SolutionDir)INSTALL"
+mkdir "$(SolutionDir)INSTALL\$(TargetName)"
+mkdir "$(SolutionDir)INSTALL\$(TargetName)\families"
+mkdir "$(SolutionDir)INSTALL\$(TargetName)\families_images"
+mkdir "$(SolutionDir)INSTALL\$(TargetName)\offlineBDIdata"
+
+
+
+
+
+
+
+
+xcopy "$(ProjectDir)$(TargetName).addin" "$(ProjectDir)INSTALL\" /Y
+xcopy "$(ProjectDir)$(TargetName).ini" "$(ProjectDir)INSTALL\$(TargetName)\" /Y
+xcopy "$(TargetDir)*.dll" "$(ProjectDir)INSTALL\$(TargetName)\" /Y
+xcopy "$(SolutionDir)IMAGENES\*.png" "$(ProjectDir)INSTALL\$(TargetName)\images\" /Y
+rem xcopy "$(ProjectDir)120_publicStructure.xml" "$(ProjectDir)INSTALL\$(TargetName)\offlineBDIdata\" /Y
+
+xcopy "$(ProjectDir)$Fonts\*.otf" "$(ProjectDir)INSTALL\$(TargetName)\Fonts\" /Y
+xcopy "$(SolutionDir)families\*.*" "$(ProjectDir)INSTALL\$(TargetName)\families\" /S /Y
+
+
+xcopy "$(SolutionDir)families_images\*.*" "$(ProjectDir)INSTALL\$(TargetName)\families_images\" /S /Y
+xcopy "$(SolutionDir)offlineBDIdata\*.*" "$(ProjectDir)INSTALL\$(TargetName)\offlineBDIdata\" /S /Y
+
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.dll" "$(ProjectDir)INSTALL\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.xml" "$(ProjectDir)INSTALL\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.png "$(ProjectDir)INSTALL\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\Resources\*.*" "$(ProjectDir)INSTALL\$(TargetName)\UCBrowser\Resources\" /S /Y
+
+
+rem "Report / UCRevitFreeReport"
+xcopy "$(SolutionDir)Report\bin\*.*" "$(ProjectDir)INSTALL\$(TargetName)\" /Y
+
+rem ULMALGFree
+rem xcopy "$(SolutionDir)ULMALGFree\bin\ULMALGFree*.*" "$(ProjectDir)INSTALL\$(TargetName)\" /E /Y
+xcopy "$(SolutionDir)ULMALGFree\Resources\*.png" "$(ProjectDir)INSTALL\$(TargetName)\images\" /Y
+
+rem "ULMAUpdater"
+rem xcopy "$(SolutionDir)ULMAUpdater\bin\*.*" "$(ProjectDir)INSTALL\$(TargetName)\" /E /Y
+
+rem "ULMAUpdaterAddIn"
+xcopy "$(SolutionDir)ULMAUpdaterAddIn\bin\*.*" "$(ProjectDir)INSTALL\$(TargetName)\" /Y
+
+rem "UpdaterFamilies"
+rem xcopy "$(SolutionDir)UpdaterFamilies\bin\*.*" "$(ProjectDir)INSTALL\$(TargetName)\" /S /Y
+
+
+SET Year=2018
+rem xcopy "$(ProjectDir)INSTALL\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\" /E /Y
+SET Year=2019
+rem xcopy "$(ProjectDir)INSTALL\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\" /E /Y

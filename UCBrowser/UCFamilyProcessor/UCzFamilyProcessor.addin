@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>UCFamilyProcessor</Name>
+    <AddInId>0B45DF09-DA50-4F4B-AD41-1C7184AEEFD0</AddInId>
+    <Assembly>.\UCFamilyProcessor\UCFamilyProcessor.dll</Assembly>
+    <FullClassName>UCFamilyProcessor.Main</FullClassName>
+    <VendorId>UlmaConstruction</VendorId>
+    <VendorDescription>Ulma construction, www.ulmaconstruction.com</VendorDescription>
+    <Visibility>NotVisibleWhenNoActiveDocument</Visibility>
+    <Visibility>NotVisibleInFamily</Visibility>
+  </AddIn>
+</RevitAddIns>

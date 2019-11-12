@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<conversionFactors>
+
+    <!-- force -->
+    <conversion original="kN" target="N">1000</conversion>
+    <conversion original="kg" target="N">9.8</conversion>
+    <conversion original="kg" target="kN">0.0098</conversion>
+   -->
+
+    <!-- rigidity -->
+    <conversion original="kN/m" target="N/m">1000</conversion>
+    <conversion original="kN/mm" target="N/mm">1000</conversion>
+    <conversion original="kN/m" target="N/mm">1</conversion>
+    <conversion original="kN/m" target="kg/mm">9.8</conversion>
+   -->
+
+   <!-- pressure -->
+    <conversion original="Pa" target="N/m2">1</conversion>
+    <conversion original="Pa" target="N/mm2">0.000001</conversion>
+    <conversion original="MPa" target="N/mm2">1</conversion>
+    <conversion original="kN/m2" target="N/mm2">0.001</conversion>
+    <conversion original="kg/m2" target="N/mm2">0.0000098</conversion>
+    <conversion original="kg/m2" target="kN/m2">0.0098</conversion>
+   -->
+
+    <!-- density -->
+    <conversion original="kg/m3" target="kg/mm3">0.000000001</conversion>
+    <conversion original="kg/m3" target="g/mm3">0.000001</conversion>
+    <conversion original="kg/m3" target="g/cm3">0.001</conversion>
+    <conversion original="kg/m3" target="g/m3">1000</conversion>
+    <!-- is not proper..., but this simplifies calculations...-->
+    <conversion original="Kg/m3" target="N/m3">9.8</conversion>
+    <conversion original="Kg/cm3" target="N/cm3">9.8</conversion>
+    <conversion original="Kg/mm3" target="N/mm3">9.8</conversion>
+    <conversion original="N/m3" target="N/mm3">0.000000001</conversion>
+    <conversion original="kN/m3" target="N/mm3">0.000001</conversion>
+    -->
+
+    <!-- angle -->
+    <conversion original="º" target="rad">0.017453</conversion>
+
+    <!-- lenght -->
+   <conversion original="in" target="m">0.0254</conversion>
+   <conversion original="ft" target="m">0.3048</conversion>
+   <conversion original="yd" target="m">0.9144</conversion>
+   <conversion original="rd" target="m">5.0292</conversion>
+   <conversion original="ch" target="m">20.1168</conversion>
+   <conversion original="fur" target="m">201.168</conversion>
+   <conversion original="mi" target="m">1609.344</conversion>
+   <conversion original="league" target="m">4828.032</conversion>
+   <conversion original="fathom" target="m">1.8288</conversion>
+   <conversion original="mm" target="m">0.001</conversion>
+   <conversion original="cm" target="m">0.01</conversion>
+   <conversion original="dm" target="m">0.1</conversion>
+   <conversion original="cm" target="mm">10</conversion>
+
+  <!-- area -->
+   <conversion original="yd2" target="m2">0.83612736</conversion>
+   <conversion original="rd2" target="m2">25.29285264</conversion>
+   <conversion original="rood" target="m2">1011.7141056</conversion>
+   <conversion original="ac" target="m2">4046.8564224</conversion>
+   <conversion original="mi2" target="m2">2589.988110336</conversion>
+   <conversion original="mm2" target="m2">0.000001</conversion>
+   <conversion original="cm2" target="m2">0.0001</conversion>
+   <conversion original="dm2" target="m2">0.01</conversion>
+   <conversion original="cm2" target="mm2">100</conversion>
+
+   <!-- volume -->
+   <conversion original="in3" target="m3">0.16387064</conversion>
+   <conversion original="ft3" target="m3">2.8316846592</conversion>
+   <conversion original="yd3" target="m3">76.4554857984</conversion>
+   <conversion original="mi3" target="m3">4168.1818254406</conversion>
+   <conversion original="mm3" target="m3">0.000000001</conversion>
+   <conversion original="cm3" target="m3">0.000001</conversion>
+   <conversion original="dm3" target="m3">0.001</conversion>
+
+   <!-- inertia -->
+   <conversion original="cm4" target="mm4">10000</conversion>
+
+
+   <!-- moment -->
+   <conversion original="Nxmm" target="Nxm">0.001</conversion>
+
+
+   <!-- time -->
+    <conversion original="min" target="s">60</conversion>
+    <conversion original="hour" target="s">3600</conversion>
+
+
+    <!-- velocity -->
+   <conversion original="km/h" target="m/s">0.27777777</conversion>
+
+ 
+</conversionFactors>

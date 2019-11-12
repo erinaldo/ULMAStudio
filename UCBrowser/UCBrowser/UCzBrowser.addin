@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+   <AddIn Type="Application">
+    <Name>UCBrowser</Name>
+    <AddInId>338b5a7f-c72c-4820-8e98-a74e83e8e069</AddInId>
+    <Assembly>.\UCBrowser\UCBrowser.dll</Assembly>
+    <FullClassName>UCBrowser.Main</FullClassName>
+    <VendorId>UlmaConstruction</VendorId>
+    <VendorDescription>Ulma construction, www.ulmaconstruction.com</VendorDescription>
+    <Visibility>NotVisibleWhenNoActiveDocument</Visibility>
+    <Visibility>NotVisibleInFamily</Visibility>
+  </AddIn>
+</RevitAddIns>

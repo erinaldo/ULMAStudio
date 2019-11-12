@@ -1,0 +1,161 @@
+﻿<Window x:Class="Main_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:self="clr-namespace:UCBrowser"
+        Width="800" Title="Browser"
+        WindowStartupLocation="Manual" 
+        Left="0" Top="200"        
+        x:Uid="VentanaPrincipal" x:Name="VentanaPrincipal">
+
+    <Window.Resources>
+        <self:ConversorDeBitmaps x:Key="ConversorDeBitmaps"/>
+    </Window.Resources>
+    <Window.ContextMenu>
+        <ContextMenu/>
+    </Window.ContextMenu>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Separator}">
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="90"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Margin" Value="10,0,10,0" />
+            </Style>
+        </Grid.Resources>
+
+        <WrapPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Command="{Binding ActivarEditorDeOpciones}" Width="20" Height="20" HorizontalAlignment="Right">
+                    <Button.Content>
+                        <!--<Image Source="/UCBrowser;component/Resources/e713.png"></Image>-->
+                        <TextBlock FontFamily="/UCBrowser;component/Resources/SegMDL2.ttf#Segoe MDL2 Assets" Text="&#xE713;" FontSize="12" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <Separator/>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <TextBox Text="{Binding patronABuscar}" KeyUp="IniciarBusquedaSiSePulsaEnter" Height="20" MinWidth="150" VerticalContentAlignment="Center"/>
+                <Button Name="btnBuscarFamilias" Command="{Binding BuscarFamilias}" Width="20" Height="20" Margin="3,0,10,0">
+                    <Button.Content>
+                        <TextBlock FontFamily="/UCBrowser;component/Resources/SegMDL2.ttf#Segoe MDL2 Assets" Text="&#xE721;" FontSize="12" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <Separator/>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Command="{Binding MostrarFamiliasFavoritas}" Width="23" Height="23">
+                    <Button.Content>
+                        <TextBlock FontFamily="/UCBrowser;component/Resources/SegMDL2.ttf#Segoe MDL2 Assets" Text="&#xE734;" FontSize="14" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <Separator/>
+            <!--            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                <RadioButton Content="{x:Static traducir:Main_window.botonFiltroAll}" IsChecked="{Binding filtroAll}" GroupName="FiltroFamilias" Margin="15,0,0,0"/>
+                <RadioButton Content="SET" IsChecked="{Binding filtroSET}" GroupName="FiltroFamilias" Margin="15,0,0,0"/>
+                <RadioButton Content="Dyn" IsChecked="{Binding filtroDyn}" GroupName="FiltroFamilias" Margin="15,0,0,0"/>
+                <RadioButton Content="Unit" IsChecked="{Binding filtroUnit}" GroupName="FiltroFamilias" Margin="15,0,0,0"/>
+                <RadioButton Content="AnnSymb" IsChecked="{Binding filtroAnnSymb}" GroupName="FiltroFamilias" Margin="15,0,0,0"/>
+                <RadioButton Content="ANN_" IsChecked="{Binding filtroANN_}" GroupName="FiltroFamilias" Margin="15,0,0,0"/>
+                <RadioButton Content="DET_" IsChecked="{Binding filtroDET_}" GroupName="FiltroFamilias" Margin="15,0,0,0"/>
+            </StackPanel>   -->
+        </WrapPanel>
+
+        <!--LINEAS DE PRODUCTO-->
+        <ScrollViewer Grid.Row="1" Grid.Column="0"
+                      Background="Transparent" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollConLaRuedaDelRaton">
+            <StackPanel Orientation="Vertical" Margin="5">
+                <ListView ItemsSource="{Binding lineasDeProducto}" 
+                          SelectedValue="{Binding lineaDeProductoSeleccionada}" SelectedValuePath="id">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="{Binding Path=thumbnail, Converter={StaticResource ConversorDeBitmaps}}" Height="24" Width="24"/>
+                                <!--<TextBlock Text="{Binding Path=nombre}" ToolTip="{Binding Path=id}" FontSize="10" Margin="5,0,0,0"/>-->
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- GRUPOS -->
+        <ScrollViewer Grid.Row="1" Grid.Column="1"
+                      Background="Transparent" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollConLaRuedaDelRaton">
+            <StackPanel Orientation="Vertical" Margin="5">
+                <ListView ItemsSource="{Binding grupos}"
+                          SelectedValue="{Binding grupoSeleccionado}" SelectedValuePath="id">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="LightGray" Background="WhiteSmoke" BorderThickness="1" CornerRadius="5" >
+                                <TextBlock Text="{Binding Path=descripcion}" FontSize="10" Padding="5" TextTrimming="CharacterEllipsis"
+                                           ToolTip="{Binding Path=nombre}"
+                                           Width="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, 
+                                                           Path=DataContext.limiteDeTamainoElementoGrupo}" >
+                                    <TextBlock.LayoutTransform>
+                                        <RotateTransform Angle="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl}, 
+                                                                         Path=DataContext.anguloDeRotacionTextBlockGrupos}"/>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--FAMILIAS-->
+        <ScrollViewer Grid.Column="2"
+                      Background="Transparent" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollConLaRuedaDelRaton"
+                      AllowDrop="true" DragLeave="InsertarFamiliaConArrastrarYSoltar" Margin="5.2,43,-5.4,-0.4" Grid.RowSpan="2">
+            <StackPanel Orientation="Vertical" Margin="5">
+                <ListView x:Name="lfamilies" ItemsSource="{Binding familias}" SelectedItem="{Binding familiaSeleccionada}"
+                          MouseDoubleClick="InsertarLaFamiliaSeleccionadaConDobleClic" 
+                          MouseMove="AlIniciarMovimientoDeRatonEnListaDeFamilias">
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <!--                            <MenuItem Header="{x:Static traducir:Main_window.MostrarImagenBIG}"
+                                      Command="{Binding MostrarImagenBigDeLaFamiliaSeleccionada}"/>
+                            <Separator/>
+                            <Separator/>
+                            <Separator/> -->
+                            <MenuItem Header="Add to Favorites"
+                                      Command="{Binding AgregarAFavoritosLaFamiliaSeleccionada}"/>
+                            <Separator/>
+                            <MenuItem Header="Remove of Favorites"
+                                      Command="{Binding QuitarDeFavoritosLaFamiliaSeleccionada}"/>
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel MaxWidth="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                       ItemWidth="110"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="{Binding Path=thumbnail, Converter={StaticResource ConversorDeBitmaps}}" Height="100" Width="100"/>
+                                <TextBlock Text="{Binding Path=descripcion}" TextWrapping="Wrap" FontSize="10" VerticalAlignment="Center"/>
+                                <!-- <TextBlock Text="{Binding Path=descripcion}" ToolTip="{Binding Path=tooltip}" TextWrapping="Wrap" FontSize="10" VerticalAlignment="Center"/> -->
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Window>

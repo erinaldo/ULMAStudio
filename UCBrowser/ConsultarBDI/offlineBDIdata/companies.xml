@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<companies>
+  <company>
+    <companyCode>100</companyCode>
+    <description>ULMA PORTUGAL - Cof. e And., Lda.</description>
+    <languageCode>pt</languageCode>
+    <countryCode>PT</countryCode>
+  </company>
+  <company>
+    <companyCode>102</companyCode>
+    <description>ULMA, S.A.R.L.</description>
+    <languageCode>fr</languageCode>
+    <countryCode>FR</countryCode>
+  </company>
+  <company>
+    <companyCode>107</companyCode>
+    <description>ULMA FORM WORKS, INC</description>
+    <languageCode>en</languageCode>
+    <countryCode>US</countryCode>
+  </company>
+  <company>
+    <companyCode>110</companyCode>
+    <description>ULMA Betonschalungen und Gerüste</description>
+    <languageCode>de</languageCode>
+    <countryCode>DE</countryCode>
+  </company>
+  <company>
+    <companyCode>112</companyCode>
+    <description>ULMA Cimbras y Andamios de México</description>
+    <languageCode>es</languageCode>
+    <countryCode>MX</countryCode>
+  </company>
+  <company>
+    <companyCode>114</companyCode>
+    <description>ULMA Formwork Singapore PTE. LTD</description>
+    <languageCode>en</languageCode>
+    <countryCode>SG</countryCode>
+  </company>
+  <company>
+    <companyCode>116</companyCode>
+    <description>Ulma Construction Systems Inc</description>
+    <languageCode>en</languageCode>
+    <countryCode>CA</countryCode>
+  </company>
+  <company>
+    <companyCode>120</companyCode>
+    <description>ULMA C Y E S.COOP.</description>
+    <languageCode>es</languageCode>
+    <countryCode>ES</countryCode>
+  </company>
+  <company>
+    <companyCode>121</companyCode>
+    <description>Aplicaciones Técnicas España</description>
+    <languageCode>es</languageCode>
+    <countryCode>ES</countryCode>
+  </company>
+  <company>
+    <companyCode>300</companyCode>
+    <description>ULMA Construcción CZ, s.r.o.</description>
+    <languageCode>cz</languageCode>
+    <countryCode>CZ</countryCode>
+  </company>
+  <company>
+    <companyCode>302</companyCode>
+    <description>ULMA Construccion SK, s.r.o.</description>
+    <languageCode>sk</languageCode>
+    <countryCode>SK</countryCode>
+  </company>
+  <company>
+    <companyCode>304</companyCode>
+    <description>S.C. ULMA COFRAJE S.R.L.</description>
+    <languageCode>ro</languageCode>
+    <countryCode>RO</countryCode>
+  </company>
+  <company>
+    <companyCode>310</companyCode>
+    <description>ULMA Construccion Polska S.A.</description>
+    <languageCode>pl</languageCode>
+    <countryCode>PL</countryCode>
+  </company>
+  <company>
+    <companyCode>312</companyCode>
+    <description>ULMA Construction S.p.A</description>
+    <languageCode>it</languageCode>
+    <countryCode>IT</countryCode>
+  </company>
+  <company>
+    <companyCode>314</companyCode>
+    <description>ULMA Formwork Systems India PV. LTD.</description>
+    <languageCode>en</languageCode>
+    <countryCode>IN</countryCode>
+  </company>
+  <company>
+    <companyCode>316</companyCode>
+    <description>ULMA Encofrados Perú, S.A</description>
+    <languageCode>es</languageCode>
+    <countryCode>PE</countryCode>
+  </company>
+  <company>
+    <companyCode>318</companyCode>
+    <description>ULMA Chile - Andamios y Moldajes, S.A.</description>
+    <languageCode>es</languageCode>
+    <countryCode>CL</countryCode>
+  </company>
+  <company>
+    <companyCode>320</companyCode>
+    <description>SOCON, LLC</description>
+    <languageCode>en</languageCode>
+    <countryCode>US</countryCode>
+  </company>
+  <company>
+    <companyCode>322</companyCode>
+    <description>ULMA ANDAMIOS Y ENCOFRADOS ARGENTINA S.A.</description>
+    <languageCode>es</languageCode>
+    <countryCode>AR</countryCode>
+  </company>
+</companies>

@@ -1,0 +1,86 @@
+De:	Miren Murua <mmurua@ulmaconstruction.es>
+Enviado el:	viernes, 12 de julio de 2019 12:12
+Para:	José Alberto Torres
+Asunto:	FTP para addin en abierto
+
+Marca de seguimiento:	Seguimiento
+Estado de marca:	Marcado
+
+
+
+Nork:                                          Antxon Ziarsolo
+Bidalita:                                    miércoles, 29 de mayo de 2019 12:36
+Nori:                                           Miren Murua; Ernesto Maestre; Xabier Calvo
+Gaia:                                           Nuevo FTP TTUP
+
+Epa, 
+ya está  creado el nuevo FTP:
+
+servidor: ttup.ulmaconstruction.com
+
+ftp_revitpub_admin
+PReA685P
+Usuario admin (Permiso lectura y escritura global)
+ftp_revitpub_user
+Preh682ht
+Usuario cliente FTP (permiso de lectrua global y 
+escritura en subcarpeta log)
+
+
+Subcarpetas: 
+      data >> archivos a subcarpetas para descargar por los clientes ftp. 
+                log   >> almacenamiento de logs de descargar/conexiones de clientes.
+
+La configuración (modo passivo, TLS…) es igual que en ttu.ulmaconstruction.com
+
+Ondo segi.
+
+
+MIREN MURUA 
+Informatikako teknikaria / Técnico Informático / IT Technician
+mmurua@ulmaconstruction.es
+  
+ULMA C y E, S. Coop. • Ps. Otadui, 3 - Apdo. 13 • 20560 OÑATI (Spain) 
+Tel.: +34 943 034900 • Móvil: +34 677 984384 • Fax: +34943034925
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+
+Mezu hau eta bere fitxategiak dagozkion hartzaileari soilik daude zuzenduta eta ezkutuko informazioa eduki dezakete, legez babestuta 
+sekretu profesionalagatik. ULMA C y E, S. Coop.en baimenik gabe ezin da ez erreproduzitu, ez zabaldu, ez erabili, ezta birbidali ere. ULMA C 
+y E, S. Coop.ek hartzaileen harremanetarako datuak tratatzen ditu soilik jakinarazpen hau jasoko duenaren lan lekua den pertsona 
+juridikoarekin harremanetan egoteko eta soilik harreman komertziala edo negoziokoa aktibo dagoen bitartean eta tratamenduari lotuta egon 
+daitezkeen erantzukizunetatik sortu daitezkeen legezko obligazioen preskripzio epean. Zu ez bazara azken hartzailea, ezabatu mezua, 
+mesedez. Era berean, jakin ezazu eskubidea duzula zure datuak eskuratu, zuzendu eta ezabatzeko, zure datuen tratamenduari ezetz esateko 
+eta tratamendua mugatzeko, bai eta aurretik emandako onespena ezeztatzeko eta datuak eramateko eskatzeko ere. Horretarako, email bidali 
+beharko duzu helbide honetara: lopd@ulmaconstruction.es. Mezu honetan adierazitako iritziak egilearen erantzukizun esklusiboa dira eta ez 
+dira nahitaez ULMA C y E, S. Coop.en iritziak izan behar.
+Este mensaje y sus archivos adjuntos van dirigidos exclusivamente a su destinatario y pueden contener información confidencial, protegida 
+legalmente por secreto profesional. No está permitida su reproducción, distribución uso y reenvío sin la autorización expresa de ULMA C y E, 
+S. Coop. ULMA C y E, S. Coop. trata los datos de contacto de los receptores únicamente para mantener la relación con la persona jurídica en 
+la que el destinatario de esta comunicación presta sus servicios y mientras la relación comercial/negocial siga activa, así como durante el 
+plazo de prescripción de obligaciones legales, que pudieran nacer de posibles responsabilidades vinculadas al tratamiento de las mismas. Si 
+usted no es el destinatario final, por favor elimínelo, asimismo puede acceder, rectificar, suprimir sus datos, oponerse y limitar su tratamiento, 
+revocar su consentimiento y solicitar la portabilidad de los mismos enviando un e-mail a lopd@ulmaconstruction.es. Las opiniones expresadas 
+en este mensaje son responsabilidad exclusiva del autor y no reflejan necesariamente las de ULMA C y E, S. Coop.
+This message and any attached files are intended exclusively for the recipient and may contain confidential information which is legally 
+protected by professional secrecy. Reproducing, distributing, using and resending this message is not permitted without express authorisation 
+from ULMA C y E, S. Coop. ULMA C y E, S. Coop. processes recipients' contact details solely for the purposes of maintaining a relationship 
+with the legal entity which employs the recipient of this message. It does so for as long as the business relationship is active and during the 
+limitation period of legal obligations, which may arise from possible responsibilities linked to their processing. If you are not the final recipient of 
+this message, please delete it. Furthermore, you may access, rectify and erase your data, object to and restrict its processing, withdraw your 
+consent and request its portability by sending an email to lopd@ulmaconstruction.es. The opinions expressed in this message are the 
+exclusive responsibility of the author and do not necessary reflect the opinions of ULMA C y E, S. Coop.
+ 

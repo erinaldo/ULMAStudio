@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<publicStructure>
+   <!-- BRIO y DORPA se publicaran en Diciembre 2018 
+   <superGroup>
+      <superGroupCode>AND</superGroupCode>
+      <superGroupDescription language="en">Scaffolding</superGroupDescription>
+      <superGroupShortName language="en">SCAFF.</superGroupShortName>
+      <superGroupIcon>scaffolding_icon.jpg</superGroupIcon>
+      <superGroupIconSelected>scaffolding_icon_selected.jpg</superGroupIconSelected>
+      <groups>
+         <group>
+            <groupCode> A2128</groupCode>
+            <groupDescription language="en">BRIO SCAFFOLDING</groupDescription>
+            <groupShortName language="en">BRIO</groupShortName>
+            <groupImage>BRIO_render.jpg</groupImage>
+         </group>
+         <group>
+            <groupCode> A2120</groupCode>
+            <groupDescription language="en">DORPA SCAFFOLDING</groupDescription>
+            <groupShortName language="en">DORPA</groupShortName>
+            <groupImage>DORPA_render.jpg</groupImage>
+         </group>
+      </groups>
+   </superGroup>
+   -->
+   <superGroup>
+      <superGroupCode>EV</superGroupCode>
+      <superGroupDescription language="en">Vertical formwork</superGroupDescription>
+      <superGroupShortName language="en">VERT.</superGroupShortName>
+      <superGroupIcon>wall_column_formwork_icon.jpg</superGroupIcon>
+      <superGroupIconSelected>wall_column_formwork_icon_selected.jpg</superGroupIconSelected>
+      <groups>
+         <group>
+            <groupCode>E1900</groupCode>
+            <groupDescription language="en">ORMA FORMWORK</groupDescription>
+            <groupShortName language="en">ORMA</groupShortName>
+            <groupImage>ORMA_render.jpg</groupImage>
+         </group>
+         <group>
+            <groupCode>106000</groupCode>
+            <groupDescription language="en">LGW FORMWORK</groupDescription>
+            <groupShortName language="en">LGW</groupShortName>
+            <groupImage>LGW_render.jpg</groupImage>
+         </group>
+	<!-- COMAIN se publicara en diciembre 2019
+         <group>
+            <groupCode>E1851</groupCode>
+            <groupDescription language="en">COMAIN FORMWORK</groupDescription>
+            <groupShortName language="en">COMAIN</groupShortName>
+            <groupImage>COMAIN_render.jpg</groupImage>
+         </group>
+	-->
+         <group>
+            <groupCode>X0007</groupCode>
+            <groupDescription language="en">MEGALITE FORMWORK</groupDescription>
+            <groupShortName language="en">MEGALITE</groupShortName>
+            <groupImage>MEGALITE_render.jpg</groupImage>
+         </group>
+         <group>
+            <groupCode>E1904</groupCode>
+            <groupDescription language="en">MEGAFORM FORMWORK</groupDescription>
+            <groupShortName language="en">MEGAFORM</groupShortName>
+            <groupImage>MEGAFORM_render.jpg</groupImage>
+         </group>
+         <group>
+            <groupCode>E1856</groupCode>
+            <groupDescription language="en">LGR COLUMNS</groupDescription>
+            <groupShortName language="en">LGR</groupShortName>
+            <groupImage>LGR_render.jpg</groupImage>
+         </group>
+      </groups>
+   </superGroup>
+   <superGroup>
+      <superGroupCode>EHL</superGroupCode>
+      <superGroupDescription language="en">Light horizontal/slab formwork</superGroupDescription>
+      <superGroupShortName language="en">HORI.</superGroupShortName>
+      <superGroupIcon>slab_formwork_icon.jpg</superGroupIcon>
+      <superGroupIconSelected>slab_formwork_icon_selected.jpg</superGroupIconSelected>
+      <groups>
+         <group>
+            <groupCode>E1870</groupCode>
+            <groupDescription language="en">CC-4 FORMWORK</groupDescription>
+            <groupShortName language="en">CC-4</groupShortName>
+            <groupImage>CC-4_render.jpg</groupImage>
+         </group>
+      </groups>
+   </superGroup> 
+</publicStructure>

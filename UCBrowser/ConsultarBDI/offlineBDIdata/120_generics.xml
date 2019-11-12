@@ -1,0 +1,795 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<generics>
+  <generic>
+    <genericCode>PLY0001</genericCode>
+    <description language="local">TABLERO BETO 18</description>
+    <description language="es">TABLERO BETO 18</description>
+    <description language="en">BETO 18 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BETO 18</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0002</genericCode>
+    <description language="local">TABLERO BETO 21</description>
+    <description language="es">TABLERO BETO 21</description>
+    <description language="en">BETO 21 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BETO 21</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0003</genericCode>
+    <description language="local">TABLERO BIRCH 9</description>
+    <description language="es">TABLERO BIRCH 9</description>
+    <description language="en">BIRCH 9 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH 9</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0004</genericCode>
+    <description language="local">TABLERO BIRCH 12</description>
+    <description language="es">TABLERO BIRCH 12</description>
+    <description language="en">BIRCH 12 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH 12</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0005</genericCode>
+    <description language="local">TABLERO BIRCH 15</description>
+    <description language="es">TABLERO BIRCH 15</description>
+    <description language="en">BIRCH 15 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH 15</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0010</genericCode>
+    <description language="local">TABLERO BIRCH SP12</description>
+    <description language="es">TABLERO BIRCH SP12</description>
+    <description language="en">BIRCH SP12 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH SP12</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0011</genericCode>
+    <description language="local">TABLERO BIRCH SP15</description>
+    <description language="es">TABLERO BIRCH SP15</description>
+    <description language="en">BIRCH SP15 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH SP15</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0012</genericCode>
+    <description language="local">TABLERO BIRCH SP18</description>
+    <description language="es">TABLERO BIRCH SP18</description>
+    <description language="en">BIRCH SP18 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH SP18</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0013</genericCode>
+    <description language="local">TABLERO BIRCH SP21</description>
+    <description language="es">TABLERO BIRCH SP21</description>
+    <description language="en">BIRCH SP21 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH SP21</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0014</genericCode>
+    <description language="local">TABLERO ELEPHANT SP15</description>
+    <description language="es">TABLERO ELEPHANT SP15</description>
+    <description language="en">ELEPHANT SP15 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO ELEPHANT SP15</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0015</genericCode>
+    <description language="local">TABLERO ELEPHANT SP18</description>
+    <description language="es">TABLERO ELEPHANT SP18</description>
+    <description language="en">ELEPHANT SP18 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO ELEPHANT SP18</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0016</genericCode>
+    <description language="local">TABLERO ELEPHANT SP21</description>
+    <description language="es">TABLERO ELEPHANT SP21</description>
+    <description language="en">ELEPHANT SP21 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO ELEPHANT SP21</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0017</genericCode>
+    <description language="local">TABLERO ELEPHANT SP24</description>
+    <description language="es">TABLERO ELEPHANT SP24</description>
+    <description language="en">ELEPHANT SP24 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO ELEPHANT SP24</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0018</genericCode>
+    <description language="local">TABLERO RECUB TRICAPA</description>
+    <description language="es">TABLERO RECUB TRICAPA</description>
+    <description language="en">RECUB 3-PLY BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO RECUB TRICAPA</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0019</genericCode>
+    <description language="local">TABLERO RECUB CONTRACHAPADO</description>
+    <description language="es">TABLERO RECUB CONTRACHAPADO</description>
+    <description language="en">RECUB PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO RECUB CONTRACHAPADO</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0020</genericCode>
+    <description language="local">TABLERO TRI-TRIMAX 21</description>
+    <description language="es">TABLERO TRI-TRIMAX 21</description>
+    <description language="en">TRI-TRIMAX 21 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO TRI-TRIMAX 21</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0021</genericCode>
+    <description language="local">TABLERO TRI-TRIMAX 27</description>
+    <description language="es">TABLERO TRI-TRIMAX 27</description>
+    <description language="en">TRI-TRIMAX 27 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO TRI-TRIMAX 27</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0006</genericCode>
+    <description language="local">TABLERO BIRCH 18</description>
+    <description language="es">TABLERO BIRCH 18</description>
+    <description language="en">BIRCH 18 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH 18</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0007</genericCode>
+    <description language="local">TABLERO BIRCH 21</description>
+    <description language="es">TABLERO BIRCH 21</description>
+    <description language="en">BIRCH 21 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO BIRCH 21</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0008</genericCode>
+    <description language="local">TABLERO SPRUCE 18</description>
+    <description language="es">TABLERO SPRUCE 18</description>
+    <description language="en">SPRUCE 18 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO SPRUCE 18</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0009</genericCode>
+    <description language="local">TABLERO SPRUCE 21</description>
+    <description language="es">TABLERO SPRUCE 21</description>
+    <description language="en">SPRUCE 21 PLYWOOD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO SPRUCE 21</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0022</genericCode>
+    <description language="local">TABLERO STRATO-STOCK 15</description>
+    <description language="es">TABLERO STRATO-STOCK 15</description>
+    <description language="en">STRATO-STOCK 15 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO STRATO-STOCK 15</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0023</genericCode>
+    <description language="local">TABLERO STRATO-STOCK 18</description>
+    <description language="es">TABLERO STRATO-STOCK 18</description>
+    <description language="en">SRATO-STOCK 18 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO STRATO-STOCK 18</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+  <generic>
+    <genericCode>PLY0024</genericCode>
+    <description language="local">TABLERO STRATO-STOCK 21</description>
+    <description language="es">TABLERO STRATO-STOCK 21</description>
+    <description language="en">STRATO-STOCK 21 BOARD</description>
+    <description language="fr">
+    </description>
+    <description language="es-ES">TABLERO STRATO-STOCK 21</description>
+    <description language="es-PE">
+    </description>
+    <description language="es-CL">
+    </description>
+    <description language="es-MX">
+    </description>
+    <description language="en-US">
+    </description>
+    <description language="de-DE">
+    </description>
+    <description language="fr-FR">
+    </description>
+    <description language="it-IT">
+    </description>
+    <description language="pl-PL">
+    </description>
+    <description language="pt-PT">
+    </description>
+    <description language="cz-CZ">
+    </description>
+    <description language="sk-SK">
+    </description>
+    <description language="ro-RO">
+    </description>
+  </generic>
+</generics>

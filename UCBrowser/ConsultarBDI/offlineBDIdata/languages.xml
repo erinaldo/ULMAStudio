@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<languages>
+  <language>
+    <languageCode>es</languageCode>
+    <description>Español</description>
+  </language>
+  <language>
+    <languageCode>en</languageCode>
+    <description>English</description>
+  </language>
+  <language>
+    <languageCode>cz-CZ</languageCode>
+    <description>Czech (CZECH REPUBLIC)</description>
+  </language>
+  <language>
+    <languageCode>de-DE</languageCode>
+    <description>Deutsch (DEUTSCHLAND)</description>
+  </language>
+  <language>
+    <languageCode>en-CA</languageCode>
+    <description>English (CANADA)</description>
+  </language>
+  <language>
+    <languageCode>en-IN</languageCode>
+    <description>English (INDIA)</description>
+  </language>
+  <language>
+    <languageCode>en-SG</languageCode>
+    <description>English (SINGAPORE)</description>
+  </language>
+  <language>
+    <languageCode>en-US</languageCode>
+    <description>English (UNITED STATES)</description>
+  </language>
+  <language>
+    <languageCode>es-AR</languageCode>
+    <description>Español (ARGENTINA)</description>
+  </language>
+  <language>
+    <languageCode>es-CL</languageCode>
+    <description>Español (CHILE)</description>
+  </language>
+  <language>
+    <languageCode>es-ES</languageCode>
+    <description>Español (ESPAÑA)</description>
+  </language>
+  <language>
+    <languageCode>es-MX</languageCode>
+    <description>Español (MEXICO)</description>
+  </language>
+  <language>
+    <languageCode>es-PE</languageCode>
+    <description>Español (PERU)</description>
+  </language>
+  <language>
+    <languageCode>fr-FR</languageCode>
+    <description>Français (FRANCE)</description>
+  </language>
+  <language>
+    <languageCode>it-IT</languageCode>
+    <description>Italiano (ITALY)</description>
+  </language>
+  <language>
+    <languageCode>pl-PL</languageCode>
+    <description>Polish (POLAND)</description>
+  </language>
+  <language>
+    <languageCode>pt-PT</languageCode>
+    <description>Português (PORTUGAL)</description>
+  </language>
+  <language>
+    <languageCode>ro-RO</languageCode>
+    <description>Romanian (ROMANIA)</description>
+  </language>
+  <language>
+    <languageCode>sk-SK</languageCode>
+    <description>Slovak (SLOVAK REPUBLIK)</description>
+  </language>
+</languages>

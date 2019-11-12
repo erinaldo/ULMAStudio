@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<standards>
+  <standard>
+    <standardCode>BC_GERMANY</standardCode>
+    <description language="local">Base de cálculo Alemania</description>
+    <description language="en">Germany calculation base</description>
+  </standard>
+  <standard>
+    <standardCode>BC_ULMA</standardCode>
+    <description language="local">Base de cálculo ULMA</description>
+    <description language="en">ULMA calculation base</description>
+  </standard>
+  <standard>
+    <standardCode>BC_USA-CAN</standardCode>
+    <description language="local">Base de cálculo EEUU-CANADÁ</description>
+    <description language="en">US-Canada calculation base</description>
+  </standard>
+  <standard>
+    <standardCode>DIN_18218</standardCode>
+    <description language="local">PRESIÓN DEL HORMIGÓN FRESCO SOBRE ENCOFRADOS VERTICALES</description>
+    <description language="en">
+    </description>
+  </standard>
+  <standard>
+    <standardCode>DIN_4421</standardCode>
+    <description language="local">CIMBRAS (cálculo, proyecto y ejecución)</description>
+    <description language="en">SHORING TOWER (calculation,
+project and execution)</description>
+  </standard>
+  <standard>
+    <standardCode>EH-91</standardCode>
+    <description language="local">
+    </description>
+    <description language="en">
+    </description>
+  </standard>
+  <standard>
+    <standardCode>EN1995-1-1:2004/A1:2008(EC-5)</standardCode>
+    <description language="local">EUROCÓDIGO 5. PROYECTO DE ESTRUCTURAS DE MADERA. PARTE 1-1: REGLAS GENERALES Y REGLAS PARA EDIFIC.</description>
+    <description language="en">EUROCODE 5: WOOD STRUCTURE
+PROJECT. PART 1-1: GENERAL
+RULES AND BUILDING RULES.</description>
+  </standard>
+  <standard>
+    <standardCode>EN_1065</standardCode>
+    <description language="local">APEOS TELESCÓPICOS DE ACERO</description>
+    <description language="en">TELESCOPIC STEEL PROPS</description>
+  </standard>
+  <standard>
+    <standardCode>EN_12811-1</standardCode>
+    <description language="local">EQUIPAMIENTO PARA TRABAJOS TEMP.EN OBRA. PARTE1: ANDAMIOS.REQUISITOS DE COMPORTAMIENTO Y DISEÑO GEN.</description>
+    <description language="en">TEMPORARY WORK
+EQUIPEMENT-PART1:
+SCAFFOLDS-PERFORMANCE
+REQUIREMENTS AND GENERAL
+DESIGN</description>
+  </standard>
+  <standard>
+    <standardCode>EN_12812</standardCode>
+    <description language="local">CIMBRAS: REQUISITOS DE COMPORTAMIENTO Y DISEÑO GENERAL</description>
+    <description language="en">FALSEWORK - PERFORMANCE
+REQUIREMENTS AND GENERAL
+DESIGN</description>
+  </standard>
+  <standard>
+    <standardCode>EN_1991-1-4</standardCode>
+    <description language="local">EUROCÓDIGO 1: ACCIONES EN ESTRUCTURAS.PARTE 1-4: ACCIONES GENERALES.ACCIONES DE VIENTO.</description>
+    <description language="en">EUROCODE 1: ACTIONS ON
+STRUCTURES-PART 1-4: GENERAL
+ACTIONS-WIND ACTIONS.</description>
+  </standard>
+  <standard>
+    <standardCode>EN_1993-1-8_2005</standardCode>
+    <description language="local">EUROCÓDIGO 3: DISEÑO DE ESTRUCTURAS DE ACERO - APARTADO 1-8: DISEÑO DE UNIONES</description>
+    <description language="en">EUROCODE 3: DESIGN OF STEEL
+STRUCTURES - PART 1.8: DESIGN
+OF JOINTS</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_CONE_ATR</standardCode>
+    <description language="local">Tabla de Uso Anclajes ATR</description>
+    <description language="en">Calculation Guide ATR Anchors</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_CONE_AWF</standardCode>
+    <description language="local">Tabla de Uso Cono AWF</description>
+    <description language="en">Calculation Guide Cone AWF</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_CONE_DW15</standardCode>
+    <description language="local">Tabla de Uso Cono DW15</description>
+    <description language="en">Calculation Guide Cone DW15</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_CONE_DW20</standardCode>
+    <description language="local">Tabla de Uso Cono DW20</description>
+    <description language="en">Calculation Guide Cone DW20</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_CONE_DW26</standardCode>
+    <description language="local">Tabla de Uso Cono DW26</description>
+    <description language="en">Calculation Guide Cone DW26</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_CONE_HWS</standardCode>
+    <description language="local">Tabla de Uso Anclajes HWS</description>
+    <description language="en">Calculation Guide HWS Anchors</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_CONE_LT_HWS</standardCode>
+    <description language="local">Tabla de Uso Anclajes LT HWS</description>
+    <description language="en">Calculation Guide LT HWS
+Anchors</description>
+  </standard>
+  <standard>
+    <standardCode>GUIDE_FOLDING_BR_M24</standardCode>
+    <description language="local">Tabla de Uso Encaje interior abatible</description>
+    <description language="en">Calculation Guide Folding
+bracket M24</description>
+  </standard>
+  <standard>
+    <standardCode>IET</standardCode>
+    <description language="local">Instituto Eduardo Torroja</description>
+    <description language="en">Eduardo Torroja Institute</description>
+  </standard>
+  <standard>
+    <standardCode>LGA_CC-4</standardCode>
+    <description language="local">Cargas puntales para su uso con CC-4 certificadas por LGA</description>
+    <description language="en">
+    </description>
+  </standard>
+  <standard>
+    <standardCode>LGA_ENKOFLEX</standardCode>
+    <description language="local">Cargas puntales para su uso con ENKOFLEX certificadas por LGA</description>
+    <description language="en">
+    </description>
+  </standard>
+  <standard>
+    <standardCode>LGA_MESAS_VR</standardCode>
+    <description language="local">Cargas puntales para su uso con MESAS VR certificadas por LGA</description>
+    <description language="en">
+    </description>
+  </standard>
+  <standard>
+    <standardCode>LGA_RAPID-RECUB</standardCode>
+    <description language="local">Cargas puntales para su uso con RAPID y RECUB certificadas por LGA</description>
+    <description language="en">
+    </description>
+  </standard>
+</standards>

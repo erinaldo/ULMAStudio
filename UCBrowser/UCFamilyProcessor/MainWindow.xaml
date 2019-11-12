@@ -1,0 +1,41 @@
+﻿<Window x:Class="UCFamilyProcessor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:traducir="clr-namespace:UCFamilyProcessor.Traducciones"
+        Title="{Binding tituloDeLaVentana}" Height="187" Width="1092">
+    <StackPanel Orientation="Vertical" Margin="0,0,0,1">
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="{x:Static traducir:MainWindow.CarpetaOrigen}"/>
+            <Button Command="{Binding SeleccionarCarpetaAProcesar}" Width="20" Height="20" HorizontalAlignment="Right" Margin="10,0,10,0">
+                <Button.Content>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEC50;" FontSize="12" />
+                </Button.Content>
+            </Button>
+            <TextBox Text="{Binding pathCarpetaAProcesar, Mode=OneWay}" IsReadOnly="True" MinWidth="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="{x:Static traducir:MainWindow.CarpetaDestino}"/>
+            <Button Command="{Binding SeleccionarCarpetaDestino}" Width="20" Height="20" HorizontalAlignment="Right" Margin="10,0,10,0">
+                <Button.Content>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEC50;" FontSize="12" />
+                </Button.Content>
+            </Button>
+            <TextBox Text="{Binding pathCarpetaDestino, Mode=OneWay}" IsReadOnly="True" MinWidth="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <StackPanel Orientation="Vertical">
+                <RadioButton IsChecked="{Binding procesarSoloFamiliasSinImagen}" Content="{x:Static traducir:MainWindow.SoloFamiliasSinImagen}" FlowDirection="RightToLeft"/>
+                <RadioButton IsChecked="{Binding procesarTodasLasFamilias}"  Content="{x:Static traducir:MainWindow.TodasLasFamilias}" FlowDirection="RightToLeft"/>
+            </StackPanel>
+            <Button Content="{x:Static traducir:MainWindow.Procesar}" Command="{Binding ProcesarFamilias}" HorizontalAlignment="Left" Width="70" Height="30" Margin="10,0,10,0"/>
+        </StackPanel>
+
+        <StatusBar Margin="0,10,0,0">
+            <TextBlock Text="{Binding mensajeEnBarraDeEstado}"/>
+        </StatusBar>
+
+    </StackPanel>
+</Window>

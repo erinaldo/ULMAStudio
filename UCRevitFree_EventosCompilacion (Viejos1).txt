@@ -1,0 +1,98 @@
+SET Year=2018
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName).addin" del /S /Q "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName).addin"
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)" rmdir /S /Q "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families_images" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families_images"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\offlineBDIdata" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\offlineBDIdata"
+
+SET Year=2019
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName).addin" del /S /Q "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName).addin"
+IF EXIST "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)" rmdir /S /Q "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families_images" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\families_images"
+if not exist "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\offlineBDIdata" mkdir "$(appdata)\Autodesk\REVIT\Addins\%Year%\$(ProjectName)\offlineBDIdata"
+)
+
+
+
+
+
+
+
+
+
+SET Year=2018
+REM ***** %Year%*****
+xcopy "$(ProjectDir)$(TargetName).addin" "$(AppData)\Autodesk\REVIT\Addins\%Year%\" /Y
+xcopy "$(ProjectDir)$(TargetName).ini" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+xcopy "$(TargetDir)*.dll" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+xcopy "$(SolutionDir)IMAGENES\*.png" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\images\" /Y
+rem xcopy "$(ProjectDir)120_publicStructure.xml" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\offlineBDIdata\" /Y
+
+xcopy "$(ProjectDir)$Fonts\*.otf" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\Fonts\" /Y
+
+xcopy "$(SolutionDir)families\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\families\" /S /Y
+xcopy "$(SolutionDir)families_images\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\families_images\" /S /Y
+xcopy "$(SolutionDir)offlineBDIdata\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\offlineBDIdata\" /S /Y
+
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.dll" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.xml" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.png "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\Resources\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\Resources\" /S /Y
+
+
+rem "Report / UCRevitFreeReport"
+xcopy "$(SolutionDir)Report\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+
+rem ULMALGFree
+rem xcopy "$(SolutionDir)ULMALGFree\bin\ULMALGFree*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /E /Y
+xcopy "$(SolutionDir)ULMALGFree\Resources\*.png" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\images\" /Y
+
+rem "ULMAUpdater"
+rem xcopy "$(SolutionDir)ULMAUpdater\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /E /Y
+
+rem "ULMAUpdaterAddIn"
+xcopy "$(SolutionDir)ULMAUpdaterAddIn\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+
+rem "UpdaterFamilies"
+rem xcopy "$(SolutionDir)UpdaterFamilies\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /S /Y
+
+
+
+SET Year=2019
+REM ***** %Year%*****
+xcopy "$(ProjectDir)$(TargetName).addin" "$(AppData)\Autodesk\REVIT\Addins\%Year%\" /Y
+xcopy "$(ProjectDir)$(TargetName).ini" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+xcopy "$(TargetDir)*.dll" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+xcopy "$(SolutionDir)IMAGENES\*.png" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\images\" /Y
+rem xcopy "$(ProjectDir)120_publicStructure.xml" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\offlineBDIdata\" /Y
+
+xcopy "$(ProjectDir)$Fonts\*.otf" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\Fonts\" /Y
+
+xcopy "$(SolutionDir)families\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\families\" /S /Y
+xcopy "$(SolutionDir)families_images\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\families_images\" /S /Y
+xcopy "$(SolutionDir)offlineBDIdata\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\offlineBDIdata\" /S /Y
+
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.dll" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.xml" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.png "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\" /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\Resources\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\UCBrowser\Resources\" /S /Y
+
+
+rem "Report / UCRevitFreeReport"
+xcopy "$(SolutionDir)Report\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+
+rem ULMALGFree
+rem xcopy "$(SolutionDir)ULMALGFree\bin\ULMALGFree*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /E /Y
+xcopy "$(SolutionDir)ULMALGFree\Resources\*.png" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\images\" /Y
+
+rem "ULMAUpdater"
+rem xcopy "$(SolutionDir)ULMAUpdater\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /E /Y
+
+rem "ULMAUpdaterAddIn"
+xcopy "$(SolutionDir)ULMAUpdaterAddIn\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /Y
+
+rem "UpdaterFamilies"
+rem xcopy "$(SolutionDir)UpdaterFamilies\bin\*.*" "$(AppData)\Autodesk\REVIT\Addins\%Year%\$(TargetName)\" /S /Y
