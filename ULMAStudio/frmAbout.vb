@@ -82,7 +82,7 @@ Public Class frmAbout
     '    System.Diagnostics.Process.Start(target)
     'End Sub
     Private Sub LblEmail_Click(sender As Object, e As EventArgs) Handles LblEmail.Click
-        Dim target As String = "mailto:" & contact & "?subject=I request information about --> UCRevit Open" '& My.Application.Info.Version.ToString
+        Dim target As String = "mailto:" & contact & "?subject=I request information about --> ULMA Studio" '& My.Application.Info.Version.ToString
         ' Navigate to a URL.
         System.Diagnostics.Process.Start(target)
     End Sub

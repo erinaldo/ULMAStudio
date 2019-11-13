@@ -63,7 +63,9 @@ namespace UCBrowser
             {
                 System.Windows.MessageBox.Show("Some problem saving favoritsThe favorits maybe not saved properly." + Environment.NewLine + Environment.NewLine
                                                + archivoFavoritos + Environment.NewLine + Environment.NewLine
-                                               + ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace);
+                                               + ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace,"ATTENTION",
+                                               System.Windows.MessageBoxButton.OK, 
+                                               System.Windows.MessageBoxImage.Warning);
             }
         }
 
@@ -96,7 +98,9 @@ namespace UCBrowser
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show("Some problem reading favorits." + Environment.NewLine + Environment.NewLine
-                                               + archivoFavoritos + Environment.NewLine + ex.Message);
+                                               + archivoFavoritos + Environment.NewLine + ex.Message, "ATTENTION",
+                                               System.Windows.MessageBoxButton.OK,
+                                               System.Windows.MessageBoxImage.Warning);
             }
         }
 

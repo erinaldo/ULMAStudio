@@ -239,14 +239,18 @@ namespace UCBrowser
                               + ARCHIVO_OPCIONES + Environment.NewLine + Environment.NewLine
                               + "=======================================" + Environment.NewLine + Environment.NewLine
                               + errores;
-                    System.Windows.MessageBox.Show(errores, "UCBrowser", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                    System.Windows.MessageBox.Show(errores, "UCBrowser", 
+                        System.Windows.MessageBoxButton.OK, 
+                        System.Windows.MessageBoxImage.Warning);
                 }
             }
             if (!string.IsNullOrWhiteSpace(error1))
             {
                 if (mostrarAvisoEnCasoDeError)
                 {
-                    System.Windows.MessageBox.Show(error1, "UCBrowser", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                    System.Windows.MessageBox.Show(error1, "UCBrowser", 
+                        System.Windows.MessageBoxButton.OK, 
+                        System.Windows.MessageBoxImage.Information);
                 }
             }
             
@@ -336,7 +340,9 @@ namespace UCBrowser
                 System.Windows.MessageBox.Show("Some problem saving options.The options maybe not saved properly." + Environment.NewLine + Environment.NewLine
                                                + ARCHIVO_OPCIONES + Environment.NewLine + Environment.NewLine
                                                + ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace,
-                                               caption:"UCBrowser", button: System.Windows.MessageBoxButton.OK, icon: System.Windows.MessageBoxImage.Error);
+                                               caption:"UCBrowser", 
+                                               button: System.Windows.MessageBoxButton.OK, 
+                                               icon: System.Windows.MessageBoxImage.Warning);
             }
         }
 

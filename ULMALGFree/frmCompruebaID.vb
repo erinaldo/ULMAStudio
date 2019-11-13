@@ -44,6 +44,12 @@ Public Class frmCompruebaID
     End Sub
 
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
+        uf.resultado = New UCClientWebService.Models.ResponseID
+        uf.resultado.id = ""
+        uf.resultado.message = "AddIn ULMA Studio not activated."
+        uf.resultado.valid = False
+        ULMALGFree.clsBase.idform = ""
+        MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Close()
     End Sub

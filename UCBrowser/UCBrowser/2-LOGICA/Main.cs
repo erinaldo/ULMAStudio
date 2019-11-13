@@ -167,6 +167,12 @@ namespace UCBrowser
             }
             if (System.IO.File.Exists(pathArchivoFamiliaDesencriptado))
             {
+                if (app.ActiveUIDocument.Document.IsFamilyDocument == true){
+                    System.Windows.MessageBox.Show("No open Projects to Load Family into", "ATTENTION",
+                        System.Windows.MessageBoxButton.OK, 
+                        System.Windows.MessageBoxImage.Warning);
+                    return;
+                }
                 Document documentoActivo = app.ActiveUIDocument.Document;
                 Family familia;
                 Element encontrado = new FilteredElementCollector(documentoActivo).OfClass(typeof(Family)).FirstOrDefault<Element>(x => x.Name.Equals(nombreFamilia));
@@ -262,11 +268,15 @@ namespace UCBrowser
                 System.Windows.MessageBox.Show(messageBoxText: "File not found:"
                                                                + Environment.NewLine + Environment.NewLine
                                                                + _pathArchivoImagenBIG,
-                                               caption: "UCBrowser - BIG image viewer");
+                                               caption: "UCBrowser - BIG image viewer", 
+                                               System.Windows.MessageBoxButton.OK,
+                                               System.Windows.MessageBoxImage.Error);
                 //TaskDialog.Show(title: "UCBrowser - BIG image viewer",
                 //                mainInstruction: "File not found:"
                 //                                 + Environment.NewLine + Environment.NewLine
                 //                                 + _pathArchivoImagenBIG);
+
+               //MsgBox("Utility only for .rvt files", MsgBoxStyle.Critical, "UCBrowser - BIG image viewer");
             }
         }
 

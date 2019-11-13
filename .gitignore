@@ -9,6 +9,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+/ULMAStudio_INSTALADOR_INNO/SALIDA/*
+/*INNO/SALIDA/*
+ULMA Studio*.exe
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

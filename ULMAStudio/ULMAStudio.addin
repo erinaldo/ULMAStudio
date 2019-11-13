@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
-  <!--<AddIn Type="Application">
-    <Name>UpdaterAddin</Name>
-    <Assembly>.\UCRevitFree\UpdaterAddin.dll</Assembly>
-    <ClientId>9162C779-F1A2-4799-BE4A-D239E3F157A9</ClientId>
-    <FullClassName>UpdaterAddin.UpdaterAddinApplication</FullClassName>
-    <VendorId>2aCAD Graitec Group</VendorId>
-    <VendorDescription>2aCAD Global Graitec, http://www.2acad.es</VendorDescription>
-    <Visibility>AlwaysVisible</Visibility>
-    <VisibilityMode>AlwaysVisible</VisibilityMode>
-  </AddIn>-->
   <AddIn Type="Application">
     <Name>ULMAStudio</Name>
     <Assembly>.\ULMAStudio\ULMAStudio.dll</Assembly>

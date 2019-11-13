@@ -73,12 +73,6 @@ Class ULMAStudioApplication
             Dim fRes As Forms.DialogResult = frmID.ShowDialog(New WindowWrapper(Process.GetCurrentProcess.MainWindowHandle))
 
             If fRes = Forms.DialogResult.Cancel Then
-                uf.resultado = New UCClientWebService.Models.ResponseID
-                uf.resultado.id = ""
-                uf.resultado.message = "AddIn ULMA Studio not activated..."
-                uf.resultado.valid = False
-                ULMALGFree.clsBase.idform = ""
-                MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
                 cLcsv.PonLog_ULMA("CHECK CODE",,,,,,,, uf.resultado.id, "Form Code Canceled: " & uf.resultado.message)
                 Call cLcsv.CompruebaConexionFTPUlma(SubirBorrar:=True)
                 Return Result.Cancelled

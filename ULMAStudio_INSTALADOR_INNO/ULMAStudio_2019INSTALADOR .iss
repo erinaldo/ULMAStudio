@@ -2,9 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define YEAR "2019"
-#define MyAppName "ULMA Studio"
+#define MyAppName "ULMA Studio for Revit® 2019"
 #define MyAppFolder "ULMAStudio"
-#define MyAppVersion ".0.0.16"
+#define MyAppVersion "2019.0.0.17"
 #define MyAppPublisher "ULMA CONSTRUCTION © 2aCAD Graitec Group (José Alberto Torres Jaraute)"
 #define MyAppURL "https://www.ulmaconstruction.com"
 #define MyWeb "ULMA CONSTRUCTION"
@@ -15,31 +15,29 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{3EA32971-2F1B-47DA-BA6D-4C16D71C8805}
+AppId={{5688D370-F5F8-424F-A5B1-E15F419D742F}
 AppName={#MyAppName}
-AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName="{#APPDATA}\Autodesk\Revit\Addins\{#YEAR}\{#MyAppFolder}"
 DisableDirPage=yes
-DefaultGroupName=ULMA CONSTRUCTION\{#MyAppName} {#YEAR}
+DefaultGroupName=ULMA CONSTRUCTION\{#MyAppName}\
 DisableProgramGroupPage=yes
 OutputDir="{srcexe}\..\SALIDA"
-OutputBaseFilename={#MyAppName}_v{#YEAR}{#MyAppVersion}
+OutputBaseFilename={#MyAppName}_v{#MyAppVersion}
 SetupIconFile="{srcexe}\..\..\IMAGENES\ULMA.ico "
 Compression=lzma
 SolidCompression=yes
 UninstallDisplayIcon={uninstallexe}
-VersionInfoVersion={#YEAR}{#MyAppVersion}
-VersionInfoCompany=ULMA CONSTRUCTION
+VersionInfoCompany={#MyWeb}
 VersionInfoDescription=Utilidades REVIT {#YEAR} para Ulma Construction
 VersionInfoCopyright=ULMA CONSTRUCTION © 2aCAD Global Group (José Alberto Torres Jaraute)
 VersionInfoProductName={#MyAppName}
-VersionInfoProductVersion={#YEAR}{#MyAppVersion}
 ArchitecturesAllowed=x64
+
 
 ;[Languages]
 ;Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
@@ -49,11 +47,21 @@ WizardImageFile="{srcexe}\..\..\IMAGENES\InstallerCompleting.bmp"
 AllowCancelDuringInstall=False
 ShowLanguageDialog=no
 UninstallLogMode=new
+;UseSetupLdr=yes
+WizardImageStretch=False
+AppMutex=REVIT
+AppCopyright={#MyAppPublisher}
+UsePreviousGroup=False
+AppVersion={#MyAppVersion}
+VersionInfoProductVersion={#MyAppVersion}
+VersionInfoVersion={#MyAppVersion}
+VersionInfoTextVersion={#MyAppName}
+VersionInfoProductTextVersion={#MyAppName}
 
 [Files]
 ; *** APP principal y fichero configuracion
-Source: "{#INSTALL}\*.*"; DestDir: "{app}\..\"; Flags: ignoreversion createallsubdirs recursesubdirs
-Source: "{#INSTALL}\..\ULMAUpdaterAddin2018.ini"; DestDir: "{app}"; DestName: "ULMAUpdaterAddin.ini"; Flags: ignoreversion createallsubdirs recursesubdirs
+Source: "{#INSTALL}\*.*"; DestDir: "{app}\..\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#INSTALL}\..\ULMAUpdaterAddin2019.ini"; DestDir: "{app}"; DestName: "ULMAUpdaterAddin.ini"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyWeb}}"; Filename: "{#MyAppURL}"
