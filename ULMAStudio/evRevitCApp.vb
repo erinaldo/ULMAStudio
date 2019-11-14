@@ -93,21 +93,22 @@ Partial Public Class evRevit
                 End If
             End If
         Next
-        ' Añadir al Log las familias insertadas.
-        For Each oIdins As ElementId In oFInsertadas
-            Dim oFins As Family = CType(e.GetDocument.GetElement(oIdins), Family)
-            If ULMALGFree.clsBase._registraLoadInsert = True Then   ' AndAlso oFins.Symbol.FamilyName.Contains("#") Then
-                If oFins.Document IsNot Nothing AndAlso
-                    oFins.Document.IsFamilyDocument AndAlso
-                    oFins.Document.PathName <> "" _
-                    AndAlso IO.File.Exists(oFins.Document.PathName) Then
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", oFins.Document.PathName, oFins.Name)
-                Else
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", "", oFins.Name)
-                End If
-            End If
-        Next
+        ' Añadir al Log las familias insertadas. (Lo quitamos, ya lo registra UCBrowser)
+        'For Each oIdins As ElementId In oFInsertadas
+        '    Dim oFins As Family = CType(e.GetDocument.GetElement(oIdins), Family)
+        '    If ULMALGFree.clsBase._registraLoadInsert = True Then   ' AndAlso oFins.Symbol.FamilyName.Contains("#") Then
+        '        If oFins.Document IsNot Nothing AndAlso
+        '            oFins.Document.IsFamilyDocument AndAlso
+        '            oFins.Document.PathName <> "" _
+        '            AndAlso IO.File.Exists(oFins.Document.PathName) Then
+        '            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", oFins.Document.PathName, oFins.Name)
+        '        Else
+        '            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", "", oFins.Name)
+        '        End If
+        '    End If
+        'Next
         ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
+        ULMALGFree.clsBase._registraLoadInsert = True
     End Sub
 
     Private Shared Sub evAppC_DocumentClosed(sender As Object, e As DocumentClosedEventArgs) Handles evAppC.DocumentClosed
