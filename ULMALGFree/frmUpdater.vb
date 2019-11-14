@@ -24,9 +24,12 @@ Public Class frmUpdater
         'uf.frmUFam = Me
         'PbImagen.Image = Image.FromFile(IO.Path.Combine(ULMALGFree.clsBase._imgFolder, "render_ORMA.jpg"))
         SuperGroups = New List(Of ULMALGFree.SuperGroup)
-        uf._imgBase = IO.Path.GetFullPath(uf._imgBase)
-        If IO.File.Exists(uf._imgBase) = False Then
-            uf._imgBase = IO.Path.ChangeExtension(uf._imgBase, "png")
+        uf._imgBasePath = IO.Path.GetFullPath(uf._imgBasePath)
+        If IO.File.Exists(uf._imgBasePath) = False Then
+            uf._imgBasePath = IO.Path.ChangeExtension(uf._imgBasePath, "png")
+        End If
+        If IO.File.Exists(uf._imgBasePath) = True Then
+            uf._imgBase = Image.FromFile(uf._imgBasePath)
         End If
         btnRellena_Click(Nothing, Nothing)
         ' Ver cuantas actualizaciones tiene el supergrupo
@@ -50,7 +53,7 @@ Public Class frmUpdater
         SuperGroups.Clear()
         fpGroups.Controls.Clear()
         fpSuperGroups.Controls.Clear()
-        PbImagen.Image = Image.FromFile(uf._imgBase)
+        PbImagen.Image = Image.FromFile(uf._imgBasePath)
         PbImagen.SizeMode = PictureBoxSizeMode.AutoSize
 
         'PbImagen.Image.

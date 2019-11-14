@@ -30,6 +30,7 @@ Public Class Group
     Public colorDarkGray As Color
     Public lightBlue As Color
     Public darkBlue As Color
+    Public cLcsv As ULMALGFree.clsBase
 
     Public Property Action As queAction
         Get
@@ -54,6 +55,7 @@ Public Class Group
     End Property
 
     Public Sub New(gC As String, gD As String, gS As String, gI As Image)
+        If cLcsv Is Nothing Then cLcsv = New ULMALGFree.clsBase(System.Reflection.Assembly.GetExecutingAssembly)
         Me.gCode = gC.Trim
         Me.gDescription = gD.Trim
         Me.gShortName = gS.Trim
@@ -198,7 +200,7 @@ Public Class Group
         'uf.frmUFam.PbImagen.Size = New Size(857, 689)
         'uf.frmUFam.PbImagen.MaximumSize = New Size(857, 689)
         'uf.frmUFam.PbImagen.SizeMode = PictureBoxSizeMode.Zoom
-        uf.frmUFam.PbImagen.Image = Nothing : uf.frmUFam.PbImagen.Refresh()
+        uf.frmUFam.PbImagen.Image = uf._imgBase : uf.frmUFam.PbImagen.Refresh()
         uf.frmUFam.PbImagen.Image = gImage
         'gButton.ContextMenuStrip.Show()
         uf.UltimoGrupo = Me
@@ -364,6 +366,7 @@ Public Class Group
             uf.frmUFam.LblAction.Visible = False
             gButton2.Image = Grupo_PonImageAction()
             uf._recargarBrowser = True
+            uf.yo.PonLog_ULMA("REMOVE_GROUP", UPDATE_GROUP:=gCode, NOTES:="Name=" & gButton.Text)
         End If
     End Sub
 
@@ -427,7 +430,7 @@ Public Class Group
         Next
         ' Log de la Familia borrada.
         If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
-        uf.yo.PonLog_ULMA(ULMALGFree.ACTION.REMOVE_FAMILIES,,,,, gCode)
+        'uf.yo.PonLog_ULMA(ULMALGFree.ACTION.REMOVE_FAMILIES,,,,, gCode)
         '
         LBorrarTemp = Nothing
         LBorrarEnd = Nothing
@@ -465,7 +468,7 @@ Public Class Group
                     uf.frmUFam.ProgressBar1.Value = 0
                     ' Log de la Familia descargada.
                     If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
-                    uf.yo.PonLog_ULMA(ULMALGFree.ACTION.DOWNLOAD_FAMILIES,,,,, gCode, d.Local_File)
+                    uf.yo.PonLog_ULMA(ULMALGFree.ACTION.DOWNLOAD_GROUP, UPDATE_GROUP:=gCode, UPDATE_FILES:=d.Local_File)
                     '
                     Exit For
                 End If
@@ -503,7 +506,7 @@ Public Class Group
                     uf.frmUFam.ProgressBar1.Value = 0
                     ' Log de la Familia descargada.
                     If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
-                    uf.yo.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_FAMILIES,,,,, gCode, d.Local_File)
+                    'uf.yo.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_FAMILIES,,,,, gCode, d.Local_File)
                     '
                     Exit For
                 End If

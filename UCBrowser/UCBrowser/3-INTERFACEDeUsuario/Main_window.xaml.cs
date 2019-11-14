@@ -31,7 +31,11 @@ using UCBrowser;
 
         public void AlCerrarEstaVentana(object sender, CancelEventArgs e)
         {
-            this.Visibility = System.Windows.Visibility.Hidden;
+            if (Main.cLcsv != null)
+            {
+                Main.cLcsv.PonLog_ULMA("BROWSER_CLOSE", EApp: ULMALGFree.queApp.UCBROWSER);
+            }
+        this.Visibility = System.Windows.Visibility.Hidden;
             e.Cancel = true;
         }
 

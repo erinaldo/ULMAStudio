@@ -34,7 +34,10 @@ Class ULMAStudioApplication
 
         'TODO: Add your code here
         evRevit.evAppUIC = app
+        ULMALGFree.clsBase.evAppUIC = app
         evRevit.evAppC = app.ControlledApplication
+        ULMALGFree.clsBase.evAppC = app.ControlledApplication
+        '
         AddHandler app.Idling, AddressOf evRevit.evAppCUI_Idling_LlenaObjectos
         'AddHandler app.Idling, AddressOf evRevit.evAppCUI_Idling
         'AddHandler Autodesk.Windows.ComponentManager.PreviewExecute, AddressOf evRevit.evCompM_PreviewExecute
@@ -73,7 +76,7 @@ Class ULMAStudioApplication
             Dim fRes As Forms.DialogResult = frmID.ShowDialog(New WindowWrapper(Process.GetCurrentProcess.MainWindowHandle))
 
             If fRes = Forms.DialogResult.Cancel Then
-                cLcsv.PonLog_ULMA("CHECK CODE",,,,,,,, uf.resultado.id, "Form Code Canceled: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code Canceled: " & uf.resultado.message)
                 Call cLcsv.CompruebaConexionFTPUlma(SubirBorrar:=True)
                 Return Result.Cancelled
                 Exit Function

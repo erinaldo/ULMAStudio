@@ -1,4 +1,8 @@
 ﻿Module modVar
+    ' ***** CLASES ******************
+    'Public cIni As clsINI
+    'Public cLcsv As ULMALGFree.clsBase
+    '
     Public Function INICargar() As String()
         If cIni Is Nothing Then cIni = New clsINI
         Dim mensaje(1) As String

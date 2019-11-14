@@ -9,12 +9,12 @@ Module Module1
     Private queAccion As String = action.CHECK.ToString
     '
     Public cIni As clsINI
-    Public cLg As ULMALGFree.clsBase
+    Public cLcsv As ULMALGFree.clsBase
     Public releerFTP As Boolean = False
 
     Sub Main()
         'Threading.Thread.Sleep(3000)
-        If cLg Is Nothing Then cLg = New ULMALGFree.clsBase(System.Reflection.Assembly.GetExecutingAssembly)
+        If cLcsv Is Nothing Then cLcsv = New ULMALGFree.clsBase(System.Reflection.Assembly.GetExecutingAssembly)
         If cIni Is Nothing Then cIni = New clsINI()
         '
         'Console.CursorVisible = False

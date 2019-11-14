@@ -20,11 +20,13 @@ namespace UCBrowser
         private ProcesadorDeComandosRevit procesadorDeComandosRevit;
         private ExternalEvent lanzarProcesadorDeComandosRevit;
         public static ULMALGFree.clsINI cIni = new ULMALGFree.clsINI();
+        public static ULMALGFree.clsBase cLcsv = new ULMALGFree.clsBase(typeof(UCBrowser).Assembly);
 
         public Result OnStartup(UIControlledApplication app)
         { 
             aplicacion = this;
             ventanaUCBrowser = null;
+            if (cLcsv == null) { cLcsv = new ULMALGFree.clsBase(typeof(UCBrowser).Assembly); }
             //RibbonPanel panelBrowser = null;
             //try
             //{
@@ -75,6 +77,11 @@ namespace UCBrowser
 
         public void MostrarVentanaUCBrowser(UIApplication app)
         {
+            if (cLcsv == null) { cLcsv = new ULMALGFree.clsBase(typeof(UCBrowser).Assembly); }
+            if (cLcsv != null)
+            {
+                Main.cLcsv.PonLog_ULMA("BROWSER_OPEN", EApp: ULMALGFree.queApp.UCREVIT);
+            }
             if (ventanaUCBrowser == null || (ventanaUCBrowser != null && ULMALGFree.clsBase._recargarBrowser))
             {
                 procesadorDeComandosRevit = new ProcesadorDeComandosRevit();
@@ -86,9 +93,9 @@ namespace UCBrowser
                 ULMALGFree.clsBase._recargarBrowser = false;
             }
             else
-            {               
+            {
                 ventanaUCBrowser.Visibility = System.Windows.Visibility.Visible;
-                ventanaUCBrowser.Focus();               
+                ventanaUCBrowser.Focus();  
             }
         }
 
@@ -181,8 +188,14 @@ namespace UCBrowser
                     using (Transaction trans = new Transaction(documentoActivo, "Load family from UCBrowser"))
                     {
                         trans.Start();
+                        ULMALGFree.clsBase._registraLoadInsert = false;
                         documentoActivo.LoadFamily(pathArchivoFamiliaDesencriptado, new OpcionesDeSobreescrituraDeFamiliasAnidadasYaExistentesEnElDocumento(), out familia);
                         trans.Commit();
+                        if (Main.cLcsv != null)
+                        {
+                            Main.cLcsv.PonLog_ULMA("BROWSER_LOAD_FAMILY", pathArchivoFamiliaDesencriptado, NOTES:familia.Name, EApp:ULMALGFree.queApp.UCBROWSER);
+                        }
+                        ULMALGFree.clsBase._registraLoadInsert = true;
                     }
                 }
                 else
@@ -239,7 +252,13 @@ namespace UCBrowser
                     ElementId idPrimerSimboloEnLaFamilia = familia.GetFamilySymbolIds().First();
                     FamilySymbol simbolo = (FamilySymbol)familia.Document.GetElement(idPrimerSimboloEnLaFamilia);
                     UIDocument interfaceConElDocumento = new UIDocument(documentoActivo);
+                    ULMALGFree.clsBase._registraLoadInsert = false;
                     interfaceConElDocumento.PostRequestForElementTypePlacement(simbolo);
+                    if (Main.cLcsv != null)
+                    {
+                        Main.cLcsv.PonLog_ULMA("BROWSER_INSERT_FAMILY",FAMILY:simbolo.Name, EApp: ULMALGFree.queApp.UCBROWSER);
+                    }
+                    ULMALGFree.clsBase._registraLoadInsert = true;
                 }
             }
             else

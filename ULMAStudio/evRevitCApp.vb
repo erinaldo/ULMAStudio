@@ -96,7 +96,7 @@ Partial Public Class evRevit
         ' Añadir al Log las familias insertadas.
         For Each oIdins As ElementId In oFInsertadas
             Dim oFins As Family = CType(e.GetDocument.GetElement(oIdins), Family)
-            If ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO Then   ' AndAlso oFins.Symbol.FamilyName.Contains("#") Then
+            If ULMALGFree.clsBase._registraLoadInsert = True Then   ' AndAlso oFins.Symbol.FamilyName.Contains("#") Then
                 If oFins.Document IsNot Nothing AndAlso
                     oFins.Document.IsFamilyDocument AndAlso
                     oFins.Document.PathName <> "" _
@@ -152,12 +152,12 @@ Partial Public Class evRevit
         'System.Windows.MessageBox.Show("ControlledApplication.DocumentCreating")
         If e.Template <> "" AndAlso IO.Path.GetFileName(e.Template) <> "" Then
             If e.DocumentType = DocumentType.Template Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.NEW_FAMILY_TEMPLATE, "Template = " & IO.Path.GetFileName(e.Template),, arrM, arrL, arrL(0))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.NEW_FAMILY_TEMPLATE, e.Template,, arrM, arrL, NOTES:="Template = " & IO.Path.GetFileName(e.Template))
             ElseIf evRevit.newQue <> "" Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.NEW_PROJECT_TEMPLATE, "Template = " & IO.Path.GetFileName(e.Template),, arrM, arrL, arrL(0))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.NEW_PROJECT_TEMPLATE, e.Template,, arrM, arrL, NOTES:="Template = " & IO.Path.GetFileName(e.Template))
                 evRevit.newQue = ""
             ElseIf evRevit.newQue = "" Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.NEW_PROJECT_TEMPLATE, "Template = " & IO.Path.GetFileName(e.Template),, arrM, arrL, arrL(0))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.NEW_PROJECT_TEMPLATE, e.Template,, arrM, arrL, NOTES:="Template = " & IO.Path.GetFileName(e.Template))
             End If
         End If
     End Sub
@@ -188,15 +188,15 @@ Partial Public Class evRevit
         If e.Status = RevitAPIEventStatus.Succeeded Then    ' AndAlso (frmT Is Nothing AndAlso frmC Is Nothing) Then ' e.Document.IsFamilyDocument = False Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
             If e.Document.PathName.ToUpper.EndsWith("RFA") Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FAMILY, e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL)
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FAMILY, e.Document.PathName, , arrM, arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("RVT") Then
                 ' Rellenar la configuración por defecto, cada vez que abrimos un fichero.
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT, e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL)
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT, e.Document.PathName, , arrM, arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("RFT") Then
-                If cLcsv IsNot Nothing AndAlso registraLog = True Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FAMILY_TEMPLATE, e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL)
+                If cLcsv IsNot Nothing AndAlso registraLog = True Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FAMILY_TEMPLATE, e.Document.PathName, , arrM, arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("RTE") Then
                 If ULMALGFree.clsBase._ultimaAccion <> ULMALGFree.ACTION.UCR_CODIFY.ToString AndAlso ULMALGFree.clsBase._ultimaAccion <> ULMALGFree.ACTION.UCR_TRANSLATE.ToString Then
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT_TEMPLATE, e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL)
+                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT_TEMPLATE, e.Document.PathName, , arrM, arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
                 End If
             ElseIf e.Document.PathName.ToUpper.EndsWith("IFC") Then
                 If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_IFC", e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL)
@@ -224,7 +224,7 @@ Partial Public Class evRevit
         'If evRevit.evSave = False Then Exit Sub
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVE, e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL, arrL(0))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVE, e.Document.PathName, , arrM, arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
         End If
     End Sub
 
@@ -238,9 +238,9 @@ Partial Public Class evRevit
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
             If SaveAsLibrary = False Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS, e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL, arrL(0))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS, e.Document.PathName, , arrM, arrL, IO.Path.GetFileName(e.Document.PathName))
             ElseIf SaveAsLibrary = True Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS_LIBRARY_FAMILY, e.Document.PathName, IO.Path.GetFileName(e.Document.PathName), arrM, arrL, arrL(0))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS_LIBRARY_FAMILY, e.Document.PathName, , arrM, arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             End If
         End If
     End Sub
@@ -270,33 +270,43 @@ Partial Public Class evRevit
             End If
         End If
     End Sub
+
+    Private Shared Sub evAppC_FamilyLoadingIntoDocument(sender As Object, e As FamilyLoadingIntoDocumentEventArgs) Handles evAppC.FamilyLoadingIntoDocument
+        'System.Windows.MessageBox.Show("ControlledApplication.FamilyLoadingIntoDocument")
+        'If ULMALGFree.clsBase._registraLoadInsert = True Then
+
+        'End If
+    End Sub
+
     Private Shared Sub evAppC_FamilyLoadedIntoDocument(sender As Object, e As FamilyLoadedIntoDocumentEventArgs) Handles evAppC.FamilyLoadedIntoDocument
         'System.Windows.MessageBox.Show("ControlledApplication.FamilyLoadedIntoDocument")
-        If e.Status = RevitAPIEventStatus.Succeeded Then
+        ' ALBERTO. Para que no registre 2 veces lo que viene del Browser
+        If e.Status = RevitAPIEventStatus.Succeeded AndAlso ULMALGFree.clsBase._registraLoadInsert = True Then
             Dim strPath As String = e.FamilyPath
             If strPath = "" AndAlso e.Document IsNot Nothing AndAlso e.Document.PathName <> "" Then
                 strPath = e.Document.PathName
             End If
             If strPath <> "" Then   ' AndAlso IO.File.Exists(e.FamilyPath) Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, strPath, e.FamilyName, arrM, arrL, arrL(0))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, strPath, , arrM, arrL, NOTES:=e.FamilyName)
             Else
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, "", e.FamilyName, arrM, arrL, arrL(0))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, "", , arrM, arrL, NOTES:=e.FamilyName)
             End If
-            'ULMALGFree.clsLogsCSV._ultimaApp = ULMALGFree.queApp.UCREVIT
         End If
+        ULMALGFree.clsBase._registraLoadInsert = True
+        ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.UCREVIT
     End Sub
     Private Shared Sub evAppC_DocumentPrinted(sender As Object, e As DocumentPrintedEventArgs) Handles evAppC.DocumentPrinted
         'System.Windows.MessageBox.Show("ControlledApplication.DocumentPrinted")
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.PRINT_DOCUMENT, IO.Path.GetFileName(e.Document.PathName),, arrM, arrL, arrL(0))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.PRINT_DOCUMENT, IO.Path.GetFileName(e.Document.PathName),, arrM, arrL)
         End If
     End Sub
     Private Shared Sub evAppC_DocumentSynchronizedWithCentral(sender As Object, e As DocumentSynchronizedWithCentralEventArgs) Handles evAppC.DocumentSynchronizedWithCentral
         'System.Windows.MessageBox.Show("ControlledApplication.DocumentSynchronizedWithCentral")
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SYNCHRONIZE_DOCUMENT, e.Document.PathName,, arrM, arrL, arrL(0))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SYNCHRONIZE_DOCUMENT, e.Document.PathName,, arrM, arrL)
         End If
     End Sub
     '
@@ -329,13 +339,13 @@ Partial Public Class evRevit
         'System.Windows.MessageBox.Show("ControlledApplication.LinkedResourceOpened")
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FILELINK, e.LinkedResourcePathName, IO.Path.GetFileName(e.LinkedResourcePathName), arrM, arrL, arrL(0))   ' & " in Document : " & IO.Path.GetFileName(e.Document.PathName))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FILELINK, e.LinkedResourcePathName, , arrM, arrL, NOTES:=IO.Path.GetFileName(e.LinkedResourcePathName))   ' & " in Document : " & IO.Path.GetFileName(e.Document.PathName))
         End If
     End Sub
     Private Shared Sub evAppC_ViewPrinted(sender As Object, e As ViewPrintedEventArgs) Handles evAppC.ViewPrinted
         'System.Windows.MessageBox.Show("ControlledApplication.ViewPrinted")
         If e.Status = RevitAPIEventStatus.Succeeded Then
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.PRINT_VIEW, "View : " & e.View.Name,, arrM, arrL, arrL(0)) '& " in Document : " & IO.Path.GetFileName(e.Document.PathName))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.PRINT_VIEW, "View : " & e.View.Name,, arrM, arrL) '& " in Document : " & IO.Path.GetFileName(e.Document.PathName))
         End If
     End Sub
 #End Region
@@ -357,11 +367,6 @@ Partial Public Class evRevit
     Private Shared Sub evAppC_ElementTypeDuplicating(sender As Object, e As ElementTypeDuplicatingEventArgs) Handles evAppC.ElementTypeDuplicating
         'System.Windows.MessageBox.Show("ControlledApplication.ElementTypeDuplicating")
     End Sub
-
-    Private Shared Sub evAppC_FamilyLoadingIntoDocument(sender As Object, e As FamilyLoadingIntoDocumentEventArgs) Handles evAppC.FamilyLoadingIntoDocument
-        'System.Windows.MessageBox.Show("ControlledApplication.FamilyLoadingIntoDocument")
-    End Sub
-
 
     Private Shared Sub evAppC_FileExporting(sender As Object, e As FileExportingEventArgs) Handles evAppC.FileExporting
         'System.Windows.MessageBox.Show("ControlledApplication.FileExporting")

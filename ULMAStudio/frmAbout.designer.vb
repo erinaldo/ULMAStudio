@@ -28,6 +28,8 @@ Partial Class frmAbout
         Me.Pbox_New = New System.Windows.Forms.PictureBox()
         Me.PBox_Web = New System.Windows.Forms.PictureBox()
         Me.Pbox_Latest = New System.Windows.Forms.PictureBox()
+        Me.LblVersion = New System.Windows.Forms.Label()
+        Me.Cancel_Button = New System.Windows.Forms.Button()
         CType(Me.Pbox_New, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PBox_Web, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Pbox_Latest, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -40,12 +42,12 @@ Partial Class frmAbout
         Me.LblEmail.BackColor = System.Drawing.Color.Transparent
         Me.LblEmail.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LblEmail.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.LblEmail.Location = New System.Drawing.Point(176, 356)
+        Me.LblEmail.Location = New System.Drawing.Point(444, 356)
         Me.LblEmail.Name = "LblEmail"
-        Me.LblEmail.Size = New System.Drawing.Size(534, 27)
+        Me.LblEmail.Size = New System.Drawing.Size(266, 27)
         Me.LblEmail.TabIndex = 3
-        Me.LblEmail.Text = "ULMA Studio - v.2019.0.0.10  ·  bim@ulmaconstruction.com"
-        Me.LblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LblEmail.Text = " ·    bim@ulmaconstruction.com"
+        Me.LblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'BtnUpdateAddIn
         '
@@ -100,6 +102,36 @@ Partial Class frmAbout
         Me.Pbox_Latest.TabIndex = 9
         Me.Pbox_Latest.TabStop = False
         '
+        'LblVersion
+        '
+        Me.LblVersion.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblVersion.BackColor = System.Drawing.Color.Transparent
+        Me.LblVersion.Cursor = System.Windows.Forms.Cursors.Default
+        Me.LblVersion.Font = New System.Drawing.Font("Calibri", 10.0!)
+        Me.LblVersion.Location = New System.Drawing.Point(176, 356)
+        Me.LblVersion.Name = "LblVersion"
+        Me.LblVersion.Size = New System.Drawing.Size(262, 27)
+        Me.LblVersion.TabIndex = 10
+        Me.LblVersion.Text = "ULMA Studio - v.2019.0.0.XX"
+        Me.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Cancel_Button
+        '
+        Me.Cancel_Button.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Cancel_Button.BackColor = System.Drawing.Color.Transparent
+        Me.Cancel_Button.BackgroundImage = Global.ULMAStudio.My.Resources.Resources.Cross
+        Me.Cancel_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel_Button.FlatAppearance.BorderSize = 0
+        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Cancel_Button.Location = New System.Drawing.Point(711, 129)
+        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.Cancel_Button.Name = "Cancel_Button"
+        Me.Cancel_Button.Size = New System.Drawing.Size(57, 28)
+        Me.Cancel_Button.TabIndex = 11
+        Me.Cancel_Button.UseVisualStyleBackColor = False
+        '
         'frmAbout
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -109,6 +141,8 @@ Partial Class frmAbout
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(885, 516)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Cancel_Button)
+        Me.Controls.Add(Me.LblVersion)
         Me.Controls.Add(Me.Pbox_Latest)
         Me.Controls.Add(Me.PBox_Web)
         Me.Controls.Add(Me.Pbox_New)
@@ -136,4 +170,6 @@ Partial Class frmAbout
     Friend WithEvents Pbox_New As Windows.Forms.PictureBox
     Friend WithEvents PBox_Web As Windows.Forms.PictureBox
     Friend WithEvents Pbox_Latest As Windows.Forms.PictureBox
+    Friend WithEvents LblVersion As Windows.Forms.Label
+    Friend WithEvents Cancel_Button As Windows.Forms.Button
 End Class

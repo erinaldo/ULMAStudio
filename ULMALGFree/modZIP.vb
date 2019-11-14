@@ -181,7 +181,7 @@ Public Module modZIP
             End Using
             If quePb IsNot Nothing Then quePb.Value = 0 : quePb.Refresh()
             If queTb IsNot Nothing Then queTb.Text = "" : queTb.Refresh()
-            Catch ex As Exception
+        Catch ex As Exception
             Throw New System.Exception("Error DescomprimeZIP_UnoAUno")
         End Try
     End Sub

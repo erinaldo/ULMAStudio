@@ -41,6 +41,7 @@ Public Class btnUpdateFamilies
         'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UCREVIT_ABOUT,,, arrM123, arrL123, ultimaTraduccion)
         ''
         ''
+        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("DOWNLOAD_OPEN")
         If uf.frmUFam.ShowDialog(New WindowWrapper(Process.GetCurrentProcess.MainWindowHandle)) = System.Windows.Forms.DialogResult.Cancel Then
             'resultado = Result.Cancelled
             'Else

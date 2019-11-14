@@ -472,6 +472,9 @@
   <ItemGroup>
     <None Include="Resources\toupdate2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cross.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="AfterClean">
     <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2020\UCREVITFree.addin" />

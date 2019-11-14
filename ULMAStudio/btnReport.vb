@@ -71,7 +71,7 @@ Public Class btnReport
         End If
         '
         ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
-        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("REPORT", evRevit.evDoc.PathName)
+        'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("REPORT", evRevit.evDoc.PathName)
         ' Show frmGeneratingReport
         If fWait IsNot Nothing Then
             fWait.Close()
@@ -99,9 +99,10 @@ Public Class btnReport
         For Each oFi As FamilyInstance In lFi
             'fWait.pb1_Pon()
             If oFi.Invisible Then Continue For
-            If oFi.IsHidden(evRevit.evAppUI.ActiveUIDocument.ActiveView) Then Continue For
+            ' ALBERTO. Quieren que si salgan los ocultos en la vist actual.
+            'If oFi.IsHidden(evRevit.evAppUI.ActiveUIDocument.ActiveView) Then Continue For
             ' Si tiene Supercomponente, continuar. Solo añadimos el FamilyInstance Supercomponente.
-            If oFi.SuperComponent IsNot Nothing Then Continue For
+            If FamilyInstance_EsDeULMA(oDoc, oFi) AndAlso oFi.SuperComponent IsNot Nothing Then Continue For
             If lFinal.Contains(oFi) = False Then lFinal.Add(oFi)
             System.Windows.Forms.Application.DoEvents()
         Next
@@ -111,9 +112,6 @@ Public Class btnReport
         Dim nombre As String = IIf(onlyactiveview = True, oDoc.ActiveView.Name, IO.Path.GetFileName(oDoc.PathName)).ToString
         RellenaDatosInforme(nombre, lFinal)
         '
-        lFinal = Nothing
-        oDoc = Nothing
-        lFi = Nothing
         enejecucion = False
 
         If dFilas Is Nothing OrElse dFilas.Count = 0 Then
@@ -124,7 +122,19 @@ Public Class btnReport
             resultado = Result.Cancelled : GoTo FINAL
             Exit Function
         End If
+        ' Poner Log
+        Dim notas As String = ""
+        If onlyactiveview = True Then
+            notas = "Active View-->" & nombre
+        Else
+            notas = "All Project"
+        End If
+        notas &= " (Rows = " & dFilas.Count & " / FamilyInstances = " & lFinal.Count & ")"
+        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("REPORT", FILENAME:=oDoc.PathName, NOTES:=notas)
         '
+        lFinal = Nothing
+        oDoc = Nothing
+        lFi = Nothing
         If fWait IsNot Nothing Then
             fWait.Close()
             fWait = Nothing

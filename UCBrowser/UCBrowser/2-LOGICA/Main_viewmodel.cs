@@ -166,24 +166,11 @@ namespace UCBrowser
                 NotifyPropertyChanged("grupoSeleccionado");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
-
-                // ALBERTO. Que solo muestre las familias .rfa que tengan imagen asociada.
-               // if (opciones == null) { opciones = Opciones.getOpcionesAlmacenadas(mostrarAvisoEnCasoDeError: false); }
-               // if (familiasimg == null) { familiasimg = new List<Familia>(); };
-               // familiasimg.Clear();
-               // for (int x = 0; x < _familias.Count - 1; x++)
-               // {
-               //     //if (System.IO.Path.Combine(pathDeLaCarpetaPersonalDeImagenesThumbnail, _familias[x].nombreArchivo))
-               //         if (File.Exists(System.IO.Path.Combine(opciones.pathDeLaCarpetaBaseDeArchivosDeFamilia, _familias[x].nombreArchivo)))
-               //         {
-               //             familiasimg.Add(_familias[x]);
-               //     }
-               // }
-               //_familias.Clear();
-               //_familias = familiasimg;
-               // NotifyPropertyChanged("familias");
-                // *****************************************************************
             }
         }
 
@@ -288,6 +275,10 @@ namespace UCBrowser
         }
         internal void Accion_BuscarFamilias()
         {
+            if (Main.cLcsv != null && patronABuscar != null)
+            {
+                Main.cLcsv.PonLog_ULMA("BROWSER_SEARCH", NOTES:patronABuscar, EApp: ULMALGFree.queApp.UCBROWSER);
+            }
             List<Familia> familiasEncontradas = biblioteca.getFamiliasCuyoNombreContenga(patronABuscar);
             ResultadosBusqueda_window ventana = new ResultadosBusqueda_window();
             ventana.DataContext = new ResultadosBusqueda_viewmodel(familiasEncontradas, procesadorDeComandosRevit, lanzarProcesadorDeComandosRevit);
@@ -305,6 +296,10 @@ namespace UCBrowser
                 NotifyPropertyChanged("filtroAll");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
             }
         }
@@ -318,6 +313,10 @@ namespace UCBrowser
                 NotifyPropertyChanged("filtroSET");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
             }
         }
@@ -331,6 +330,10 @@ namespace UCBrowser
                 NotifyPropertyChanged("filtroAnn");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
             }
         }
@@ -344,6 +347,10 @@ namespace UCBrowser
                 NotifyPropertyChanged("filtroDyn");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
             }
         }
@@ -357,6 +364,10 @@ namespace UCBrowser
                 NotifyPropertyChanged("filtroUnit");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
             }
         }
@@ -370,6 +381,10 @@ namespace UCBrowser
                 NotifyPropertyChanged("filtroANN_");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
             }
         }
@@ -383,6 +398,10 @@ namespace UCBrowser
                 NotifyPropertyChanged("filtroDET_");
 
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
+                if (Main.cLcsv != null && grupoSeleccionado != null)
+                {
+                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                }
                 NotifyPropertyChanged("familias");
             }
         }

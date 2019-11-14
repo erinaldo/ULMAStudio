@@ -6,6 +6,7 @@ Imports System.Collections
 Public Class clsBase
     Public Shared cr As crip2aCAD.clsCR
     Public Shared frmUFam As frmUpdater
+    'Public Shared cLcsv As clsBase = New ULMALGFree.clsBase(System.Reflection.Assembly.GetExecutingAssembly)
     ' 15 Campos para el csv.
     Private campos() As String = {
         "ACTION", "FILE", "FAMILY", "MARKET", "LANGUAGE", "YEAR", "MONTH", "DAY", "TIME", "COMPUTER_DOMAIN", "COMPUTER_NAME",
@@ -14,6 +15,9 @@ Public Class clsBase
     'UPDATE_GROUP    'escribir el nombre del grupo a descargar/actualizar/eliminar
     'UPDATE_FILES    'escribir el nombre del .zip que se va a descargar/actualizar
     '
+    ' OBJETOS QUE GENERAN EVENTOS
+    Public Shared evAppUIC As Autodesk.Revit.UI.UIControlledApplication
+    Public Shared evAppC As Autodesk.Revit.ApplicationServices.ControlledApplication
     Public Shared yo As clsBase = Nothing
     ' Clases
     Public Shared cIni As clsINI = Nothing
@@ -44,7 +48,8 @@ Public Class clsBase
     Public Shared ReadOnly _xmlFull As String = IO.Path.Combine(_LgFullFolder, "offlineBDIdata", "120_publicStructure.xml")
     Public Shared ReadOnly _imgFolder As String = IO.Path.Combine(_LgFullFolder, "images\")
     Public Shared ReadOnly _ULMAStudioReport As String = IO.Path.Combine(_LgFullFolder, "ULMAStudioReport.txt")
-    Public Shared _imgBase As String = IO.Path.Combine(_imgFolder, "render_MEGAFORM.jpg")
+    Public Shared _imgBasePath As String = IO.Path.Combine(_imgFolder, "render_X.png")
+    Public Shared _imgBase As System.Drawing.Image
     '
     Public Const _folderGUID As String = "00FABC7172E648958CD6577C1E124CCC"
     Public Shared ReadOnly _appLogCSVFolder As String = IO.Path.Combine(_folderTemp, _folderGUID)
@@ -63,8 +68,9 @@ Public Class clsBase
     Private Shared _path_families_custom As String = ""
     Private Shared _path_families_custom_images As String = ""
 
-    'Recarga Browser
+    'Recarga Browser y cosas del Browser
     Public Shared _recargarBrowser As Boolean = False
+    Public Shared _registraLoadInsert As Boolean = True
     '
     ' Variables personales de cada Assembly
     Public _asmFull As String = ""  'System.Reflection.Assembly.GetExecutingAssembly.Location
@@ -86,7 +92,8 @@ Public Class clsBase
     Public Shared _ActualizarAddIns As Boolean = False
     Public Shared _ActualizarFamilies As Boolean = False
     Public Shared _ActualizarXMLs As Boolean = False
-    Public Shared _ULMAStudioVersion As String = "ULMAStudio v2018.0.0.16"
+    Public Shared _ULMAStudioVersion As String = "ULMAStudio 2018.0.0.16"
+    Public Shared _UCBrowserVersion As String = "UCBrowser 2018.0.0.8"
     '
     Friend Shared cFtp As clsFTP = Nothing
     ' ***** Servidor Primario FTP1 (Con valores por defecto) Se vuelven a rellenar desde el .ini
@@ -207,20 +214,11 @@ Public Class clsBase
         End Get
     End Property
 
-    Public Shared Property AppRevitVersionYear As String
+    Public Shared ReadOnly Property AppRevitVersionYear As String
         Get
-            If Process.GetProcessesByName("REVIT").Count > 0 Then   ' AndAlso _appRevitVersionYear = "" Then
-                _appRevitVersionYear = Process_DameVersion("REVIT", PROCESSVERSION.YEARSOLO)
-            End If
+            _appRevitVersionYear = ULMALGFree.clsBase.App_DameVersion(PROCESSVERSION.VERSION_YEAR)
             Return _appRevitVersionYear
         End Get
-        Set(value As String)
-            If _appRevitVersionYear <> "" Then Exit Property
-            If value.ToUpper.StartsWith("R") AndAlso value.Length >= 5 Then
-                value = value.Substring(1, 4)
-            End If
-            _appRevitVersionYear = value
-        End Set
     End Property
 
     Public Shared ReadOnly Property AppRevitVersionRYear As String
@@ -265,8 +263,8 @@ Public Class clsBase
         If cIni Is Nothing Then cIni = New clsINI()
         '
         If Process.GetProcessesByName("REVIT").Count > 0 Then   ' AndAlso _appRevitVersion = "" Then
-            _appRevitVersion = Process_DameVersion("REVIT", PROCESSVERSION.TEXTO_VERSION)
-            _appRevitVersionYear = Process_DameVersion("REVIT", PROCESSVERSION.YEARSOLO)
+            _appRevitVersion = App_DameVersion(PROCESSVERSION.VERSION_TEXTO)
+            _appRevitVersionYear = App_DameVersion(PROCESSVERSION.VERSION_YEAR)
         End If
         '
         _asmFull = assembly.Location
@@ -316,9 +314,11 @@ Public Class clsBase
                 PonLog_ULMA(ACTION.CHECK_FTP_ERROR, NOTES:=cadenaerror)
             End Try
             'Call INI_UpdatesLee()
+            Dim partes() As String = _asmVersion.Split("."c)
+            partes(0) = AppRevitVersionYear
             If _asmName.Contains("ULMAStudio") Then
-                Dim partes() As String = _asmVersion.Split("."c)
-                partes(0) = AppRevitVersionYear
+                _ULMAStudioVersion = _asmName & " " & Join(partes, "."c)
+            ElseIf _asmName.Contains("UCBrowser") Then
                 _ULMAStudioVersion = _asmName & " " & Join(partes, "."c)
             End If
         End If
@@ -343,26 +343,14 @@ Public Class clsBase
         Return folder & "Revit.exe"
     End Function
     Public Shared Function FTP1_dirAddins() As String
-        If Process.GetProcessesByName("REVIT").Count > 0 Then   ' AndAlso _appRevitVersionYear = "" Then
-            _appRevitVersionYear = Process_DameVersion("REVIT", PROCESSVERSION.YEARSOLO)
-        End If
-        If _appRevitVersionYear = "" Then AppRevitVersionYear = "2019"
         Return FTP1_dirData & AppRevitVersionRYear & _FTP1_dirAddins
     End Function
 
     Public Shared Function FTP1_dirFamilies() As String
-        If Process.GetProcessesByName("REVIT").Count > 0 Then   ' AndAlso _appRevitVersionYear = "" Then
-            _appRevitVersionYear = Process_DameVersion("REVIT", PROCESSVERSION.YEARSOLO)
-        End If
-        If _appRevitVersionYear = "" Then AppRevitVersionYear = "2019"
         Return FTP1_dirData & AppRevitVersionRYear & _FTP1_dirFamilies
     End Function
 
     Public Shared Function FTP1_dirXml() As String
-        If Process.GetProcessesByName("REVIT").Count > 0 Then   ' AndAlso _appRevitVersionYear = "" Then
-            _appRevitVersionYear = Process_DameVersion("REVIT", PROCESSVERSION.YEARSOLO)
-        End If
-        If _appRevitVersionYear = "" Then AppRevitVersionYear = "2019"
         Return FTP1_dirData & AppRevitVersionRYear & _FTP1_dirXml
     End Function
 
@@ -484,13 +472,15 @@ Public Class clsBase
                           Optional UPDATE_FILES As String = "",
                           Optional TYPE As String = tipo,
                           Optional KEYCODE As String = "",
-                          Optional NOTES As String = "")
+                          Optional NOTES As String = "",
+                          Optional EApp As ULMALGFree.queApp = ULMALGFree.queApp.UCREVIT)
         '
         If yo Is Nothing Then yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
         Dim _Market As String = ""
         Dim _Language As String = ""
         If MARKET IsNot Nothing AndAlso MARKET.Count > 0 Then _Market = Join(MARKET, "|")
         If LANGUAGE IsNot Nothing AndAlso LANGUAGE.Count > 0 Then _Language = Join(LANGUAGE, "|")
+        If NOTES Is Nothing Then NOTES = ""
         If NOTES.Contains(vbCrLf) Then NOTES = NOTES.Replace(vbCrLf, ". ")
         If NOTES.Contains(";") Then NOTES = NOTES.Replace(";", "|")
         If NOTES.Contains("_") Then NOTES = NOTES.Replace("_", " ")
@@ -510,10 +500,13 @@ Public Class clsBase
         '"COMPUTER_DOMAIN", "COMPUTER_NAME", "INTERNAL_IP", "EXTERNAL_IP", 
         '"USER_DOMAIN", "USER_NAME", "REVIT_VERSION", "UCREVIT_VERSION","UPDATE_GROUP", "UPDATE_FILES", "TYPE", "KEYCODE", "NOTES"}
         Dim ahora As String = Date.Now.ToString(formatofecha)
+        ' Registrar acciones de UCBrowser o el resto ULMAStudio
         Dim valores As String() = {
             ACTION.ToUpper, FILENAME, FAMILY, _Market, _Language, Date.Now.Year, Date.Now.Month, Date.Now.Day, Date.Now.ToString("HH:mm").Split(" "c)(0),
             _appComputerDomain, _appComputer, "IP: " & _appIPPrivate, "IP: " & _appIPPublic,
-            _appUserDomain, _appUser, AppRevitVersion, _ULMAStudioVersion, "=" & comillas & ahora & comillas,
+            _appUserDomain, _appUser, AppRevitVersion,
+            IIf(EApp = queApp.UCBROWSER, _UCBrowserVersion, _ULMAStudioVersion),
+            "=" & comillas & ahora & comillas,
             UPDATE_GROUP, UPDATE_FILES, TYPE.ToUpper, KEYCODE, NOTES
         }
         '
@@ -555,9 +548,10 @@ Public Class clsBase
                           Optional UPDATE_FILES As String = "",
                           Optional TYPE As String = tipo,
                           Optional KEYCODE As String = "",
-                          Optional NOTES As String = "")
+                          Optional NOTES As String = "",
+                          Optional EApp As ULMALGFree.queApp = ULMALGFree.queApp.UCREVIT)
         '
-        PonLog_ULMA(ACTION.ToString, FILENAME, FAMILY, MARKET, LANGUAGE, UPDATE_GROUP, UPDATE_FILES, TYPE, KEYCODE, NOTES)
+        PonLog_ULMA(ACTION.ToString, FILENAME, FAMILY, MARKET, LANGUAGE, UPDATE_GROUP, UPDATE_FILES, TYPE, KEYCODE, NOTES, EApp)
     End Sub
 
 #Region "FUNCIONES FECHA"
@@ -609,7 +603,37 @@ Public Class clsBase
         Return resultado
     End Function
 
-    Public Shared Function Process_DameVersion(Optional queProcess As String = "REVIT", Optional queDato As PROCESSVERSION = PROCESSVERSION.TEXTO_VERSION) As String
+    Public Shared Function App_DameVersion(Optional queDato As PROCESSVERSION = PROCESSVERSION.VERSION_TEXTO) As String
+        Dim resultado As String = ""
+        Select Case queDato
+            Case PROCESSVERSION.VERSION_SUBVERSION
+                If evAppC IsNot Nothing Then
+                    resultado = evAppC.SubVersionNumber
+                Else
+                    resultado = Process_DameVersion(, PROCESSVERSION.VERSION_SUBVERSION)
+                End If
+            Case PROCESSVERSION.VERSION_TEXTO
+                If evAppC IsNot Nothing Then
+                    resultado = "Revit " & evAppC.SubVersionNumber & " (" & evAppC.VersionBuild & ")"
+                Else
+                    resultado = Process_DameVersion(, PROCESSVERSION.VERSION_TEXTO)
+                End If
+            Case PROCESSVERSION.VERSION_YEAR
+                If evAppC IsNot Nothing Then
+                    resultado = evAppC.VersionNumber
+                Else
+                    resultado = Process_DameVersion(, PROCESSVERSION.VERSION_YEAR)
+                End If
+            Case PROCESSVERSION.VERSION_BUILD
+                If evAppC IsNot Nothing Then
+                    resultado = evAppC.VersionBuild
+                Else
+                    resultado = Process_DameVersion(, PROCESSVERSION.VERSION_BUILD)
+                End If
+        End Select
+        Return resultado
+    End Function
+    Public Shared Function Process_DameVersion(Optional queProcess As String = "REVIT", Optional queDato As PROCESSVERSION = PROCESSVERSION.VERSION_TEXTO) As String
         Dim resultado As String = ""
         Dim proc As Process = Nothing
         Dim procS As Process() = Process.GetProcessesByName(queProcess)
@@ -622,19 +646,21 @@ Public Class clsBase
             Dim fileversion As String = proc.MainModule.FileVersionInfo.FileVersion
             Dim partes() As String = fileversion.Split("."c)
             Select Case queDato
-                Case PROCESSVERSION.VERSION
-                    resultado = productversion
+                Case PROCESSVERSION.VERSION_SUBVERSION
+                    'resultado = productversion
                     resultado = "20" & partes(0) & "." & partes(1) & "." & partes(2)
-                Case PROCESSVERSION.TEXTO_VERSION
-                    resultado = proc.ProcessName & " (" & productversion & ")"
-                    resultado = proc.ProcessName & " (" & "20" & partes(0) & "." & partes(1) & "." & partes(2) & ")"
-                Case PROCESSVERSION.YEARSOLO
+                Case PROCESSVERSION.VERSION_TEXTO
+                    'resultado = proc.ProcessName & " (" & productversion & ")"
+                    resultado = proc.ProcessName & " 20" & partes(0) & "." & partes(1) & "." & partes(2) & " (" & productversion & ")"
+                Case PROCESSVERSION.VERSION_YEAR
                     If productversion <> "" AndAlso productversion.Length >= 4 Then
-                        resultado = productversion.Substring(0, 4)
+                        'resultado = productversion.Substring(0, 4)
                         resultado = "20" & partes(0)
                     Else
                         resultado = "2019"
                     End If
+                Case PROCESSVERSION.VERSION_BUILD
+                    resultado = productversion
             End Select
         End If
         Return resultado
@@ -654,9 +680,10 @@ Public Class clsBase
     End Function
 
     Public Enum PROCESSVERSION
-        VERSION
-        TEXTO_VERSION
-        YEARSOLO
+        VERSION_SUBVERSION  ' 2019.2
+        VERSION_TEXTO       ' Revit 2019.2 (20190225_1515(x64))
+        VERSION_YEAR        ' 2019
+        VERSION_BUILD       ' 20190225_1515(x64)
     End Enum
     '
     Public Function QuitaYear() As String
@@ -823,7 +850,7 @@ Public Enum ACTION
     UCR_ABOUT
     UCR_BROWSER
     '
-    DOWNLOAD_FAMILIES
+    DOWNLOAD_GROUP
     UPDATE_FAMILIES
     REMOVE_FAMILIES
     UPDATE_ADDIN

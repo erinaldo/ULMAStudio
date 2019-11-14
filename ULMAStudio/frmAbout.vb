@@ -21,7 +21,7 @@ Public Class frmAbout
         Dim partes() As String = version.Split("."c)
         partes(0) = uf.AppRevitVersionYear
         Me.Text = "About v" & Join(partes, "."c)    'RevitVersion & " - v." & My.Application.Info.Version.ToString       
-        Me.LblEmail.Text = "ULMA Studio - v." & My.Application.Info.Version.ToString & "  ·  bim@ulmaconstruction.com"
+        Me.LblVersion.Text = "ULMA Studio - v." & My.Application.Info.Version.ToString
         ''
         Me.oT = New Timers.Timer
         Me.abre = True
@@ -44,7 +44,7 @@ Public Class frmAbout
         End If
     End Sub
 
-    Private Sub frmAbout_MouseClick(sender As Object, e As MouseEventArgs) Handles Me.MouseClick, Pbox_Latest.MouseClick
+    Private Sub frmAbout_MouseClick(sender As Object, e As MouseEventArgs) Handles Cancel_Button.MouseClick ', Me.MouseClick, Pbox_Latest.MouseClick
         'Dim img As Object = UCRevitFree.My.Resources.ResourceManager.GetObject("mnuReport")
         abre = False
         Me.oT.Start()
@@ -59,20 +59,13 @@ Public Class frmAbout
         Else
             Dim msg As String = "Do you really want to update the addin? (Revit will be closed and reopened)"
 
-            If MsgBox(msg, MsgBoxStyle.Critical Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
+            If MsgBox(msg, MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
                 Try
                     If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_ADDIN,,,,,, uf.cUp("addins").First.ToString.Split("="c)(1))
                 Catch ex As Exception
                 End Try
                 ULMALGFree.clsBase.Bat_CreaEjecuta(cerrarRevit:=True)
             End If
-            'If TaskDialog.Show("DOWNLOAD ADDIN", msg, TaskDialogCommonButtons.Yes Or TaskDialogCommonButtons.No) = TaskDialogResult.Yes Then
-            '    Try
-            '        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_ADDIN,,,,,, uf.cUp("addins").First.ToString.Split("="c)(1))
-            '    Catch ex As Exception
-            '    End Try
-            '    ULMALGFree.clsBase.Bat_CreaEjecuta(cerrarRevit:=True)
-            'End If
         End If
     End Sub
 
@@ -106,5 +99,9 @@ Public Class frmAbout
     Private Sub PBox_Web_Click(sender As Object, e As EventArgs) Handles PBox_Web.Click
         Dim webAddress As String = "http://www.ulmaconstruction.com"
         Process.Start(webAddress)
+    End Sub
+
+    Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
+
     End Sub
 End Class

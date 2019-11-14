@@ -73,7 +73,7 @@ Partial Public Class clsBase
             ' Entramos la primera vez. Y hemos aceptado el Code. Hay idform
             ' Escribimos por primera vez key.dat
             resultado.id = ""
-            resultado.message = validacion.Invalid_code & "|" & validacion.Invalid_code.ToString.Replace("_", "")
+            resultado.message = "Invalid code"  ' validacion.Invalid_code & "|" & validacion.Invalid_code.ToString.Replace("_", "")
         ElseIf IO.File.Exists(keyfile) = False AndAlso resultado.valid = True Then
             ' Entramos la primera vez. Y hemos aceptado el Code. Hay idform
             ' Escribimos por primera vez key.dat
@@ -93,7 +93,7 @@ Partial Public Class clsBase
                 IO.File.Delete(keyfile)
                 resultado.id = ""
                 resultado.valid = False
-                resultado.message = validacion.File_incorrect_data & "|" & validacion.File_incorrect_data.ToString.Replace("_", " ")
+                resultado.message = "Invalid key data in file"  ' validacion.File_incorrect_data & "|" & validacion.File_incorrect_data.ToString.Replace("_", " ")
             ElseIf lineas.Count = 5 Then
                 Dim id As String = lineas(2).Replace(vbLf, "")    ' crip2aCAD.clsCR.Texto_Desencriptar(lineas(2))
                 Dim pc As String = lineas(4).Replace(vbLf, "")    ' crip2aCAD.clsCR.Texto_Desencriptar(lineas(4))
@@ -102,15 +102,15 @@ Partial Public Class clsBase
                 ' Fichero existe. ID no es el correcto
                 If resultado.valid = False Then
                     resultado.id = ""
-                    resultado.message = validacion.Invalid_code & "|" & validacion.Invalid_code.ToString.Replace("_", "")
+                    resultado.message = "Invalid code"  ' validacion.Invalid_code & "|" & validacion.Invalid_code.ToString.Replace("_", "")
                 ElseIf resultado.valid = True Then
                     ' Fichero existe, ID correcto. PC no es el correcto
                     If pc <> _appComputer Then
                         resultado.id = ""
                         resultado.valid = False
-                        resultado.message = validacion.PC_name_incorrect & "|" & validacion.PC_name_incorrect.ToString.Replace("_", "")
+                        resultado.message = "Invalid pc registration"   ' validacion.PC_name_incorrect & "|" & validacion.PC_name_incorrect.ToString.Replace("_", "")
                     Else
-                        resultado.message = validacion.Code_and_PC_correct & "|" & validacion.Code_and_PC_correct.ToString.Replace("_", "")
+                        resultado.message = "Correct pc and code validation"   ' validacion.Code_and_PC_correct & "|" & validacion.Code_and_PC_correct.ToString.Replace("_", "")
                     End If
                 End If
             End If
@@ -139,13 +139,13 @@ Partial Public Class clsBase
                 If My.Computer.Network.Ping("www.google.com", 1000) Then 'Asignamos la pagina a consultar ejemplo www.google.com y el tiempo de espera máximo
                     EstadoRed_String = ""
                 Else
-                    EstadoRed_String = "1 - Not internet available"
+                    EstadoRed_String = "Not internet available"
                 End If
             Else
-                EstadoRed_String = "0 - Not network available"
+                EstadoRed_String = "Not network available"
             End If
         Catch ex As Exception
-            EstadoRed_String = "0 - Not network available"
+            EstadoRed_String = "Not network available"
         End Try
     End Function
     '

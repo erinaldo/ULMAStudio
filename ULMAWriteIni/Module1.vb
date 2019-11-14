@@ -14,11 +14,11 @@
         '
         'MsgBox(_appINIFolder)
         texto &= ";© Jose Alberto Torres (2aCAD Graitec Group)" & vbCrLf
-        texto &= ";Ultimas actualizaciones realizadas." & vbCrLf
+        texto &= ";Last updates." & vbCrLf
         texto &= "[LAST]" & vbCrLf
         texto &= "ULMAStudio = ULMAStudio_#YEAR#.zip" & vbCrLf
-        texto &= ";Actualizaciones disponibles." & vbCrLf
         texto &= "XML = XML_PUBLIC_20191028.zip" & vbCrLf
+        texto &= ";Updates availables." & vbCrLf
         texto &= "[UPDATES]"
         _appDLL = IO.Path.Combine(_appINIFolder, "ULMAStudio\ULMAStudio.dll")
         'MsgBox(_appDLL)

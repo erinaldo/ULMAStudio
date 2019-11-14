@@ -126,7 +126,7 @@ Public Class SuperGroup
         PonFondoBlancoSuperGroups()
         'SgButton.BackColor = Color.LightGray
         If uf.frmUFam.fpGroups.Visible = False Then uf.frmUFam.fpGroups.Visible = True
-        uf.frmUFam.PbImagen.Image = Nothing
+        uf.frmUFam.PbImagen.Image = uf._imgBase : uf.frmUFam.PbImagen.Refresh()
         'For Each oC As Control In SgButton.Parent.Controls
         '    oC.BackColor = SgButton.BackColor
         'Next
