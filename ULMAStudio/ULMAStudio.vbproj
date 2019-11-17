@@ -132,12 +132,6 @@
     <Import Include="System.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmHayUpdates.Designer.vb">
-      <DependentUpon>frmHayUpdates.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmHayUpdates.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmReportOptions.Designer.vb">
       <DependentUpon>frmReportOptions.vb</DependentUpon>
     </Compile>
@@ -205,9 +199,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGeneratingReport.resx">
       <DependentUpon>frmGeneratingReport.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmHayUpdates.resx">
-      <DependentUpon>frmHayUpdates.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportOptions.resx">
       <DependentUpon>frmReportOptions.vb</DependentUpon>
@@ -481,7 +472,7 @@
     <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2020\UCREVITFree.dll" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>SET FINAL=G:\ULMA\INSTALL\
+    <PostBuildEvent>SET FINAL=C:\ULMA\INSTALL\
 
 xcopy "$(ProjectDir)$(TargetName).addin" "%25FINAL%25" /Y
 xcopy "$(ProjectDir)$(TargetName).ini" "%25FINAL%25$(TargetName)\" /Y
@@ -514,17 +505,19 @@ rem xcopy "$(SolutionDir)ULMAUpdater\bin\*.*" "%25FINAL%25$(TargetName)\" /E /Y
 rem "ULMAUpdaterAddIn"
 xcopy "$(SolutionDir)ULMAUpdaterAddIn\bin\*.*" "%25FINAL%25$(TargetName)\" /Y
 
+if exist "%25FINAL%25$(TargetName)\key.dat" del "%25FINAL%25$(TargetName)\key.dat"
+
 REM COPIAR TODO EN LAS CARPETAS DE ADDINS 2018 Y 2019
 xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2018\" /E /Y
-xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2019\" /E /Y
+REM xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2019\" /E /Y
 
 rem CREAR Y COPIAR LOS FICHEROS INI DE CADA VERSIÓN
 call "$(SolutionDir)ULMAWriteIni\bin\ULMAWriteIni.exe" %25FINAL%25
 xcopy "%25FINAL%25..\ULMAUpdaterAddin2018.ini" "$(AppData)\Autodesk\REVIT\Addins\2018\$(TargetName)\ULMAUpdaterAddin.ini" /Y
-xcopy "%25FINAL%25..\ULMAUpdaterAddin2019.ini" "$(AppData)\Autodesk\REVIT\Addins\2019\$(TargetName)\ULMAUpdaterAddin.ini" /Y</PostBuildEvent>
+REM xcopy "%25FINAL%25..\ULMAUpdaterAddin2019.ini" "$(AppData)\Autodesk\REVIT\Addins\2019\$(TargetName)\ULMAUpdaterAddin.ini" /Y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>SET FINAL=G:\ULMA\INSTALL\
+    <PreBuildEvent>SET FINAL=C:\ULMA\INSTALL\
 
 IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName).addin" del /Q "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName).addin"
 IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)" rmdir /S /Q "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)"
@@ -536,6 +529,7 @@ mkdir "%25FINAL%25"
 mkdir "%25FINAL%25$(ProjectName)"
 mkdir "%25FINAL%25$(ProjectName)\families"
 mkdir "%25FINAL%25$(ProjectName)\families_images"
-mkdir "%25FINAL%25$(ProjectName)\offlineBDIdata"</PreBuildEvent>
+mkdir "%25FINAL%25$(ProjectName)\offlineBDIdata"
+mkdir "%25FINAL%25$(ProjectName)\updates"</PreBuildEvent>
   </PropertyGroup>
 </Project>

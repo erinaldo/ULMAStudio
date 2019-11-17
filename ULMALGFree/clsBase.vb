@@ -71,6 +71,8 @@ Public Class clsBase
     'Recarga Browser y cosas del Browser
     Public Shared _recargarBrowser As Boolean = False
     Public Shared _registraLoadInsert As Boolean = True
+    'cambios en Grupos para enviar llamada de cierre al Browser
+    Public Shared cambiosEnGrupos As Boolean = False
     '
     ' Variables personales de cada Assembly
     Public _asmFull As String = ""  'System.Reflection.Assembly.GetExecutingAssembly.Location
@@ -86,9 +88,14 @@ Public Class clsBase
     Public Shared ReadOnly _appIPPublic As String = UtilesIP.IPPublica_Dame       ' Internet
     Public Shared ReadOnly _appUserDomain As String = Environment.UserDomainName
     Public Shared ReadOnly _appUser As String = Environment.UserName
-    Private Shared _appRevitVersion As String = ""
-    Private Shared _appRevitVersionYear As String = ""
-    Private Shared _appRevitVersionRYear As String = ""
+    'Public Shared _appSubVersionNumber As String = "2018.3"
+    'Public Shared _appVersionBuild As String = "20190510_1515(X64)"
+    'Public Shared _appVersionName As String = "Autodesk Revit 2018"
+    'Public Shared _appVersionNumber As String = "2018"
+    'Public Shared _appVersionNumberR As String = "R2018"
+    'Public Shared _appVersionLogText As String = "Revit 2018.3 (20190510_1515(X64))"
+    Public Shared oVersions As clsVersions = Nothing        ' Clase con Dictorionary de todas las clsVersion
+    Public Shared oVersion As clsVersion = Nothing          ' Clase con todos los datos de la versión actual de Revit
     Public Shared _ActualizarAddIns As Boolean = False
     Public Shared _ActualizarFamilies As Boolean = False
     Public Shared _ActualizarXMLs As Boolean = False
@@ -208,24 +215,6 @@ Public Class clsBase
         End Set
     End Property
 
-    Public Shared ReadOnly Property AppRevitVersion As String
-        Get
-            Return _appRevitVersion
-        End Get
-    End Property
-
-    Public Shared ReadOnly Property AppRevitVersionYear As String
-        Get
-            _appRevitVersionYear = ULMALGFree.clsBase.App_DameVersion(PROCESSVERSION.VERSION_YEAR)
-            Return _appRevitVersionYear
-        End Get
-    End Property
-
-    Public Shared ReadOnly Property AppRevitVersionRYear As String
-        Get
-            Return "R" & AppRevitVersionYear
-        End Get
-    End Property
     Public Shared Property DEFAULT_PROGRAM_MARKET As String
         Get
             If _DEFAULT_PROGRAM_MARKET.Trim = "" OrElse IsNumeric(_DEFAULT_PROGRAM_MARKET.Trim) = False Then _DEFAULT_PROGRAM_MARKET = "120"
@@ -262,11 +251,6 @@ Public Class clsBase
         '
         If cIni Is Nothing Then cIni = New clsINI()
         '
-        If Process.GetProcessesByName("REVIT").Count > 0 Then   ' AndAlso _appRevitVersion = "" Then
-            _appRevitVersion = App_DameVersion(PROCESSVERSION.VERSION_TEXTO)
-            _appRevitVersionYear = App_DameVersion(PROCESSVERSION.VERSION_YEAR)
-        End If
-        '
         _asmFull = assembly.Location
         Dim oAinf As New Microsoft.VisualBasic.ApplicationServices.AssemblyInfo(assembly)
         '_appVersion = oAinf.AssemblyName & "_v" & oAinf.Version.ToString
@@ -274,6 +258,7 @@ Public Class clsBase
         _asmVersion = oAinf.Version.ToString
         _asmVersionSinYear = QuitaYear()
         _asmNameVersion = _asmName & " " & _asmVersion
+        Version_Put()
         '
         ' ESTA CONFIGURACIÓN GENERAL SÓLO SE CARGA UNA VEZ. Al instanciar Assembly UCRevitFree
         If _asmName.Contains("ULMAStudio") OrElse _asmName.Contains("ULMAUpdaterAddIn") Then
@@ -315,7 +300,7 @@ Public Class clsBase
             End Try
             'Call INI_UpdatesLee()
             Dim partes() As String = _asmVersion.Split("."c)
-            partes(0) = AppRevitVersionYear
+            partes(0) = oVersion.RevitVersionNumber
             If _asmName.Contains("ULMAStudio") Then
                 _ULMAStudioVersion = _asmName & " " & Join(partes, "."c)
             ElseIf _asmName.Contains("UCBrowser") Then
@@ -324,6 +309,11 @@ Public Class clsBase
         End If
     End Sub
     '
+    Public Shared Sub Version_Put()
+        If oVersions Is Nothing Then oVersions = New clsVersions(evAppC, Process.GetCurrentProcess)
+        oVersion = clsVersions.Version_Dame(evAppC.CurrentUserAddinsLocation)
+    End Sub
+
     Public Shared Sub RenombraExeBak()
         For Each fi As String In IO.Directory.GetFiles(_LgFullFolder, "*.exe.bak", IO.SearchOption.AllDirectories)
             Dim fiExe As String = fi.Replace(".exe.bak", ".exe")
@@ -335,23 +325,27 @@ Public Class clsBase
         If IO.File.Exists(_BatUpdateFull) Then IO.File.Delete(_BatUpdateFull)
     End Sub
     Public Shared Function RevitFull() As String
+        Version_Put()
         'Public Shared ReadOnly _Revit2018Full As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Autodesk\Revit\2018\REVIT-05:040A\", "InstallationLocation", "C:\Program Files\Autodesk\Revit 2018\").ToString & "Revit.exe"
         'Public Shared ReadOnly _Revit2019Full As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Autodesk\Revit\2019\REVIT-05:040A\", "InstallationLocation", "C:\Program Files\Autodesk\Revit 2019\").ToString & "Revit.exe"
         'Public Shared ReadOnly _Revit2020Full As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Autodesk\Revit\2020\REVIT-05:040A\", "InstallationLocation", "C:\Program Files\Autodesk\Revit 2020\").ToString & "Revit.exe"
-        Dim version As String = AppRevitVersionYear
+        Dim version As String = oVersion.RevitVersionNumber
         Dim folder As String = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\SOFTWARE\Autodesk\Revit\" & version & "\REVIT-05:040A\", "InstallationLocation", "C:\Program Files\Autodesk\Revit " & version & "\").ToString
         Return folder & "Revit.exe"
     End Function
     Public Shared Function FTP1_dirAddins() As String
-        Return FTP1_dirData & AppRevitVersionRYear & _FTP1_dirAddins
+        Version_Put()
+        Return FTP1_dirData & oVersion.RevitVersionNumberR & _FTP1_dirAddins
     End Function
 
     Public Shared Function FTP1_dirFamilies() As String
-        Return FTP1_dirData & AppRevitVersionRYear & _FTP1_dirFamilies
+        Version_Put()
+        Return FTP1_dirData & oVersion.RevitVersionNumberR & _FTP1_dirFamilies
     End Function
 
     Public Shared Function FTP1_dirXml() As String
-        Return FTP1_dirData & AppRevitVersionRYear & _FTP1_dirXml
+        Version_Put()
+        Return FTP1_dirData & oVersion.RevitVersionNumberR & _FTP1_dirXml
     End Function
 
     'Public Shared Function INI_BaseLee() As String
@@ -504,7 +498,7 @@ Public Class clsBase
         Dim valores As String() = {
             ACTION.ToUpper, FILENAME, FAMILY, _Market, _Language, Date.Now.Year, Date.Now.Month, Date.Now.Day, Date.Now.ToString("HH:mm").Split(" "c)(0),
             _appComputerDomain, _appComputer, "IP: " & _appIPPrivate, "IP: " & _appIPPublic,
-            _appUserDomain, _appUser, AppRevitVersion,
+            _appUserDomain, _appUser, oVersion.RevitVersionLogText,
             IIf(EApp = queApp.UCBROWSER, _UCBrowserVersion, _ULMAStudioVersion),
             "=" & comillas & ahora & comillas,
             UPDATE_GROUP, UPDATE_FILES, TYPE.ToUpper, KEYCODE, NOTES

@@ -93,6 +93,7 @@
     <Compile Include="1-DATOS\ModelosDeDatos\LineaDeProducto.cs" />
     <Compile Include="1-DATOS\ModelosDeDatos\relacionFamiliaGrupo.cs" />
     <Compile Include="1-DATOS\Opciones.cs" />
+    <Compile Include="2-LOGICA\WindowManager.cs" />
     <Compile Include="3-INTERFACEDeUsuario\MostrarImagen.xaml.cs">
       <DependentUpon>MostrarImagen.xaml</DependentUpon>
     </Compile>

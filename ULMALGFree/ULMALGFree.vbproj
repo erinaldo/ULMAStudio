@@ -72,11 +72,11 @@
       <HintPath>..\DLLS_2ACAD\crip2aCAD.dll</HintPath>
     </Reference>
     <Reference Include="RevitAPI">
-      <HintPath>G:\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <HintPath>..\DLLS_2ACAD\REVIT2018\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>G:\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <HintPath>..\DLLS_2ACAD\REVIT2018\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -103,6 +103,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsVersions.vb" />
     <Compile Include="ComparadorSuperGrupos.vb" />
     <Compile Include="clsArticulos.vb" />
     <Compile Include="clsBaseID.vb" />
@@ -244,6 +245,10 @@
     <None Include="Resources\ActivationCode1.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UCBrowser\UCBrowser\UCBrowser.csproj">
+      <Project>{e3ebbac6-5aae-4186-85d5-45d0b63faa11}</Project>
+      <Name>UCBrowser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UCClientWebService\UCClientWebService\UCClientWebService.csproj">
       <Project>{4a5890f5-7110-4d12-a35c-786aad125647}</Project>
       <Name>UCClientWebService</Name>

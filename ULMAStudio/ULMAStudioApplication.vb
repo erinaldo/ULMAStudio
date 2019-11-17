@@ -37,6 +37,7 @@ Class ULMAStudioApplication
         ULMALGFree.clsBase.evAppUIC = app
         evRevit.evAppC = app.ControlledApplication
         ULMALGFree.clsBase.evAppC = app.ControlledApplication
+        uf.Version_Put()
         '
         AddHandler app.Idling, AddressOf evRevit.evAppCUI_Idling_LlenaObjectos
         'AddHandler app.Idling, AddressOf evRevit.evAppCUI_Idling

@@ -30,6 +30,7 @@ Partial Class frmAbout
         Me.Pbox_Latest = New System.Windows.Forms.PictureBox()
         Me.LblVersion = New System.Windows.Forms.Label()
         Me.Cancel_Button = New System.Windows.Forms.Button()
+        Me.pbActualiza = New System.Windows.Forms.ProgressBar()
         CType(Me.Pbox_New, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PBox_Web, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Pbox_Latest, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -44,7 +45,7 @@ Partial Class frmAbout
         Me.LblEmail.Font = New System.Drawing.Font("Calibri", 10.0!)
         Me.LblEmail.Location = New System.Drawing.Point(444, 356)
         Me.LblEmail.Name = "LblEmail"
-        Me.LblEmail.Size = New System.Drawing.Size(266, 27)
+        Me.LblEmail.Size = New System.Drawing.Size(267, 27)
         Me.LblEmail.TabIndex = 3
         Me.LblEmail.Text = " ·    bim@ulmaconstruction.com"
         Me.LblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -57,7 +58,7 @@ Partial Class frmAbout
         Me.BtnUpdateAddIn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnUpdateAddIn.FlatAppearance.BorderSize = 0
         Me.BtnUpdateAddIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnUpdateAddIn.Location = New System.Drawing.Point(414, 236)
+        Me.BtnUpdateAddIn.Location = New System.Drawing.Point(413, 236)
         Me.BtnUpdateAddIn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.BtnUpdateAddIn.Name = "BtnUpdateAddIn"
         Me.BtnUpdateAddIn.Size = New System.Drawing.Size(57, 53)
@@ -68,7 +69,7 @@ Partial Class frmAbout
         '
         Me.Pbox_New.BackColor = System.Drawing.Color.Transparent
         Me.Pbox_New.Image = CType(resources.GetObject("Pbox_New.Image"), System.Drawing.Image)
-        Me.Pbox_New.Location = New System.Drawing.Point(342, 289)
+        Me.Pbox_New.Location = New System.Drawing.Point(341, 289)
         Me.Pbox_New.Margin = New System.Windows.Forms.Padding(4)
         Me.Pbox_New.Name = "Pbox_New"
         Me.Pbox_New.Size = New System.Drawing.Size(200, 28)
@@ -84,7 +85,7 @@ Partial Class frmAbout
         Me.PBox_Web.Location = New System.Drawing.Point(176, 325)
         Me.PBox_Web.Margin = New System.Windows.Forms.Padding(4)
         Me.PBox_Web.Name = "PBox_Web"
-        Me.PBox_Web.Size = New System.Drawing.Size(534, 25)
+        Me.PBox_Web.Size = New System.Drawing.Size(533, 25)
         Me.PBox_Web.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PBox_Web.TabIndex = 8
         Me.PBox_Web.TabStop = False
@@ -92,9 +93,8 @@ Partial Class frmAbout
         'Pbox_Latest
         '
         Me.Pbox_Latest.BackColor = System.Drawing.Color.Transparent
-        Me.Pbox_Latest.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Pbox_Latest.Image = CType(resources.GetObject("Pbox_Latest.Image"), System.Drawing.Image)
-        Me.Pbox_Latest.Location = New System.Drawing.Point(306, 246)
+        Me.Pbox_Latest.Location = New System.Drawing.Point(307, 246)
         Me.Pbox_Latest.Margin = New System.Windows.Forms.Padding(4)
         Me.Pbox_Latest.Name = "Pbox_Latest"
         Me.Pbox_Latest.Size = New System.Drawing.Size(272, 28)
@@ -111,7 +111,7 @@ Partial Class frmAbout
         Me.LblVersion.Font = New System.Drawing.Font("Calibri", 10.0!)
         Me.LblVersion.Location = New System.Drawing.Point(176, 356)
         Me.LblVersion.Name = "LblVersion"
-        Me.LblVersion.Size = New System.Drawing.Size(262, 27)
+        Me.LblVersion.Size = New System.Drawing.Size(261, 27)
         Me.LblVersion.TabIndex = 10
         Me.LblVersion.Text = "ULMA Studio - v.2019.0.0.XX"
         Me.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -125,12 +125,20 @@ Partial Class frmAbout
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.FlatAppearance.BorderSize = 0
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Cancel_Button.Location = New System.Drawing.Point(711, 129)
+        Me.Cancel_Button.Location = New System.Drawing.Point(689, 129)
         Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(57, 28)
         Me.Cancel_Button.TabIndex = 11
         Me.Cancel_Button.UseVisualStyleBackColor = False
+        '
+        'pbActualiza
+        '
+        Me.pbActualiza.Location = New System.Drawing.Point(307, 295)
+        Me.pbActualiza.Name = "pbActualiza"
+        Me.pbActualiza.Size = New System.Drawing.Size(272, 23)
+        Me.pbActualiza.TabIndex = 12
+        Me.pbActualiza.Visible = False
         '
         'frmAbout
         '
@@ -141,6 +149,7 @@ Partial Class frmAbout
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(885, 516)
         Me.ControlBox = False
+        Me.Controls.Add(Me.pbActualiza)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.LblVersion)
         Me.Controls.Add(Me.Pbox_Latest)
@@ -172,4 +181,5 @@ Partial Class frmAbout
     Friend WithEvents Pbox_Latest As Windows.Forms.PictureBox
     Friend WithEvents LblVersion As Windows.Forms.Label
     Friend WithEvents Cancel_Button As Windows.Forms.Button
+    Friend WithEvents pbActualiza As Windows.Forms.ProgressBar
 End Class

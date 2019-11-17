@@ -28,7 +28,7 @@ Public Class frmCompruebaID
         Else
             uf.resultado = uf.ID_Comprueba_OnLine
             If uf.resultado.valid = True Then
-                MsgBox("Application successfully activated", MsgBoxStyle.Information, "Registration")
+                MsgBox("Ulma Studio successfully activated.", MsgBoxStyle.Information, "Registration")
                 cLcsv.PonLog_ULMA("CHECK CODE", ,,,,,,, uf.resultado.id, "Form Code OK: " & uf.resultado.message)
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()
@@ -46,7 +46,7 @@ Public Class frmCompruebaID
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
         uf.resultado = New UCClientWebService.Models.ResponseID
         uf.resultado.id = ""
-        uf.resultado.message = "AddIn ULMA Studio not activated."
+        uf.resultado.message = "ULMA Studio not activated."
         uf.resultado.valid = False
         ULMALGFree.clsBase.idform = ""
         MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
@@ -55,19 +55,19 @@ Public Class frmCompruebaID
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of UCRevit Open" '& My.Application.Info.Version.ToString
+        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of Ulma Studio" '& My.Application.Info.Version.ToString
         ' Navigate to a URL.
         System.Diagnostics.Process.Start(target)
     End Sub
 
     Private Sub LblEmail_Click(sender As Object, e As EventArgs)
-        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of UCRevit Open" '& My.Application.Info.Version.ToString
+        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of Ulma Studio" '& My.Application.Info.Version.ToString
         ' Navigate to a URL.
         System.Diagnostics.Process.Start(target)
     End Sub
 
     Private Sub LblEmail_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblEmail.LinkClicked
-        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of UCRevit Open" '& My.Application.Info.Version.ToString
+        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of Ulma Studio" '& My.Application.Info.Version.ToString
         ' Navigate to a URL.
         System.Diagnostics.Process.Start(target)
     End Sub

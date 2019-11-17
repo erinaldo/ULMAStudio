@@ -18,8 +18,9 @@ using UCBrowser;
            InitializeComponent();
 
            Closing += AlCerrarEstaVentana;
-            //mWindows = this;
-        }
+        //mWindows = this;
+        WindowManager.ClosingWindows += AlCerrarEstaVentana;
+    }
 
         public void actualizar()
         {
@@ -38,9 +39,16 @@ using UCBrowser;
         this.Visibility = System.Windows.Visibility.Hidden;
             e.Cancel = true;
         }
+        public void AlCerrarEstaVentana(object sender, System.EventArgs e)
+        {
+            this.Visibility = System.Windows.Visibility.Hidden;
+            if (Main.cLcsv != null)
+            {
+                Main.cLcsv.PonLog_ULMA("BROWSER_CLOSE", EApp: ULMALGFree.queApp.UCBROWSER);
+            }
+    }
 
-
-        private void ScrollConLaRuedaDelRaton(object sender, System.Windows.Input.MouseWheelEventArgs e)
+    private void ScrollConLaRuedaDelRaton(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             ScrollViewer scroll = (ScrollViewer)sender;
             scroll.ScrollToVerticalOffset(scroll.VerticalOffset - e.Delta);

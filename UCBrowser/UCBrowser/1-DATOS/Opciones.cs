@@ -57,7 +57,7 @@ namespace UCBrowser
             op.limiteDeTamainoElementoGrupo = "125";
             op.usarNombresCortosEnLosGrupos = true;
             op.usarNombresDeArchivoEnLasFamilias = true;
-            op.AlmacenarOpciones();
+            //op.AlmacenarOpciones();
             return op;
         }
         //public static Opciones getOpcionesPorDefectoDeJuan()

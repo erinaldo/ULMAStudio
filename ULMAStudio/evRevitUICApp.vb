@@ -54,15 +54,6 @@ Partial Public Class evRevit
             'System.Windows.Forms.Application.DoEvents()
             ' Quedarse aquí hast aque termine todo. Para que no salga de Revit.
         End While
-        'If actualizar = True Then
-        '    actualizar = False
-        '    Dim cUp As Dictionary(Of String, List(Of String)) = ULMALGFree.clsBase.FTP_DameActualizacionesTodas(todas:=False)
-        '    If cUp("addins").Count > 0 OrElse cUp("families").Count > 0 OrElse cUp("xmls").Count > 0 Then
-        '        frmU = New frmHayUpdates
-        '        frmU.Interactivo = True
-        'ULMALGFree.clsBase.Bat_CreaEjecuta(cerrarRevit:=False)
-        '    End If
-        'End If
     End Sub
     Private Shared Sub evAppCUI_DialogBoxShowing(sender As Object, e As DialogBoxShowingEventArgs) Handles evAppUIC.DialogBoxShowing
         'System.Windows.MessageBox.Show("UIControlledApplication.DialogBoxShowing-->Iniciado")
@@ -108,39 +99,7 @@ Partial Public Class evRevit
                 ULMAStudioApplication.Botones_ActualizaEstadoActualizaciones(True)
             End If
         End If
-        '' Quitamos esto. No queremos que ofrezca actualizaciones al inicio. Ni que abra el formulario.
-        'If (ultimacomprobacion = 0) Then ' OrElse DateTime.Now.Ticks >= New Date(ultimacomprobacion).AddSeconds(checkupdatesinseconds).Ticks) Then
-        '    ULMALGFree.clsBase.cUp = ULMALGFree.clsBase.FTP_DameActualizacionesTodas(todas:=False)
-        '    If uf.cUp("addins").Count > 0 OrElse ULMALGFree.clsBase.cUp("families").Count > 0 OrElse ULMALGFree.clsBase.cUp("xmls").Count > 0 Then
-        '        frmU = New frmHayUpdates
-        '        'Dim mensaje As String = "There are updates to download ¿Close REVIT and update?" & vbCrLf & vbCrLf
-        '        If uf.cUp("families").Count > 0 Then
-        '            frmU.LblFamilies.Text = String.Join(vbCrLf, uf.cUp("families").ToArray) : frmU.LblFamilies.Refresh()
-        '            uf._ActualizarFamilies = True
-        '        End If
-        '        If uf.cUp("addins").Count > 0 Then
-        '            frmU.LblAddin.Text = String.Join(vbCrLf, uf.cUp("addins").ToArray) : frmU.LblAddin.Refresh()
-        '            uf._ActualizarAddIns = True
-        '        End If
-        '        If uf.cUp("xmls").Count > 0 Then
-        '            frmU.LblAddin.Text &= vbCrLf & "XML: " & String.Join(vbCrLf, uf.cUp("xmls").ToArray) : frmU.LblAddin.Refresh()
-        '            uf._ActualizarXMLs = True
-        '        End If
-        '        ' Enviar los datos al formulario, antes de abrirlo.
-        '        frmU.ActualizarFormulario(uf._ActualizarFamilies, (uf._ActualizarAddIns Or uf._ActualizarXMLs))
-        '        '
-        '        ultimacomprobacion = DateTime.Now.Ticks
-        '        If frmU.ShowDialog(New WindowWrapper(Process.GetCurrentProcess.MainWindowHandle)) = System.Windows.Forms.DialogResult.Yes Then
-        '            actualizar = False
-        '            'frmU.Interactivo = False
-        '            'ULMALGFree.clsBase.Bat_CreaEjecuta(cerrarRevit:=True)
-        '        Else
-        '            actualizar = True
-        '        End If
-        '        UCRevitFreeApplication.Botones_ActualizaEstadoActualizaciones()
-        '    End If
-        'End If
-
+        '
         '************* Salir en determinadas condiciones. *********
         ' No quedan ficheros abiertos. Borrar tmplog y salir
         If evRevit.evAppUI.ActiveUIDocument Is Nothing Then Exit Sub

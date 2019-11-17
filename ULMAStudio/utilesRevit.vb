@@ -3542,7 +3542,7 @@ OTROID:
                                                Optional Supercomponente As Boolean = False,
                                                 Optional vistaActual As Boolean = False,
                                                 Optional soloulma As Boolean = True) As List(Of FamilyInstance)
-        '' Supercomponente = False. Solo devolverá los que no estén metidos dende de otra familia.
+        '' Supercomponente = False. Solo devolverá los que no estén metidos dentro de otra familia.
         '' ***** FilterelementCollector de todos los FamilySymbol del documento
         Dim collector As FilteredElementCollector = Nothing
         If vistaActual = False Then
@@ -3550,19 +3550,21 @@ OTROID:
         Else
             collector = New FilteredElementCollector(queDoc, queDoc.ActiveView.Id)
         End If
-
-        collector = collector.OfClass(GetType(Autodesk.Revit.DB.FamilyInstance)).OfCategory(categoria)
-        ''
+        collector = collector.OfClass(GetType(Autodesk.Revit.DB.FamilyInstance))
         '' ***** LINQ para crear IEnumerable de los FamilyInstance y coger el ID
         '' fabricante = ULMA, Supercomponente = False
         Dim query As System.Collections.Generic.IEnumerable(Of Autodesk.Revit.DB.FamilyInstance)
         ''
         If soloulma Then
+            ' Si soloulma=True, sólo categoria de Modelos Genéricos
+            'collector = collector.OfClass(GetType(Autodesk.Revit.DB.FamilyInstance)).OfCategory(categoria)
+            collector = collector.OfCategory(categoria)
             query = From element In collector
                     Where
                     ParametroFamilySymbolLeeBuiltInParameter(queDoc, CType(element, Autodesk.Revit.DB.FamilyInstance).Symbol, BuiltInParameter.ALL_MODEL_MANUFACTURER).ToUpper.Contains(fabricanteContiene) AndAlso CType(element, Autodesk.Revit.DB.FamilyInstance).SuperComponent Is Nothing = Not Supercomponente
                     Select CType(element, Autodesk.Revit.DB.FamilyInstance)
         Else
+            ' Si soloulma=False, no aplicamos filtro de categoría (Todos las categorías de familias)
             query = From element In collector
                     Where CType(element, Autodesk.Revit.DB.FamilyInstance).SuperComponent Is Nothing = Not Supercomponente
                     Select CType(element, Autodesk.Revit.DB.FamilyInstance)
@@ -3578,20 +3580,36 @@ OTROID:
     Public Function FamilyInstance_DameULMA_ID(queDoc As Autodesk.Revit.DB.Document,
                                                Optional categoria As Autodesk.Revit.DB.BuiltInCategory = typeFamily,
                                                Optional fabricanteContiene As String = fabricante,
-                                               Optional Supercomponente As Boolean = False) As List(Of ElementId)
-        ''
+                                               Optional Supercomponente As Boolean = False,
+                                                Optional vistaActual As Boolean = False,
+                                                Optional soloulma As Boolean = True) As List(Of ElementId)
+
+        '' Supercomponente = False. Solo devolverá los que no estén metidos dentro de otra familia.
         '' ***** FilterelementCollector de todos los FamilySymbol del documento
-        Dim collector As New FilteredElementCollector(queDoc)
-        collector = collector.OfClass(GetType(Autodesk.Revit.DB.FamilyInstance)).OfCategory(categoria)
-        ''
+        Dim collector As FilteredElementCollector = Nothing
+        If vistaActual = False Then
+            collector = New FilteredElementCollector(queDoc)
+        Else
+            collector = New FilteredElementCollector(queDoc, queDoc.ActiveView.Id)
+        End If
+        collector = collector.OfClass(GetType(Autodesk.Revit.DB.FamilyInstance))
         '' ***** LINQ para crear IEnumerable de los FamilyInstance y coger el ID
         '' fabricante = ULMA, Supercomponente = False
         Dim query As System.Collections.Generic.IEnumerable(Of Autodesk.Revit.DB.ElementId)
         ''
-        query = From element In collector
-                Where
-                ParametroFamilySymbolLeeBuiltInParameter(queDoc, CType(element, Autodesk.Revit.DB.FamilyInstance).Symbol, BuiltInParameter.ALL_MODEL_MANUFACTURER).ToUpper.Contains(fabricanteContiene) AndAlso CType(element, Autodesk.Revit.DB.FamilyInstance).SuperComponent Is Nothing = Not Supercomponente
-                Select CType(element, Autodesk.Revit.DB.FamilyInstance).Id
+        If soloulma Then
+            ' Si soloulma=True, sólo categoria de Modelos Genéricos
+            collector = collector.OfCategory(categoria)
+            query = From element In collector
+                    Where
+                    ParametroFamilySymbolLeeBuiltInParameter(queDoc, CType(element, Autodesk.Revit.DB.FamilyInstance).Symbol, BuiltInParameter.ALL_MODEL_MANUFACTURER).ToUpper.Contains(fabricanteContiene) AndAlso CType(element, Autodesk.Revit.DB.FamilyInstance).SuperComponent Is Nothing = Not Supercomponente
+                    Select CType(element, Autodesk.Revit.DB.FamilyInstance).Id
+        Else
+            ' Si soloulma=False, no aplicamos filtro de categoría (Todos las categorías de familias)
+            query = From element In collector
+                    Where CType(element, Autodesk.Revit.DB.FamilyInstance).SuperComponent Is Nothing = Not Supercomponente
+                    Select CType(element, Autodesk.Revit.DB.FamilyInstance).Id
+        End If
         ''
         If query.Count = 0 Then
             Return Nothing

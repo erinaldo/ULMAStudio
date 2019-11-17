@@ -40,10 +40,10 @@ Partial Class frmUpdater
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.fpSuperGroups.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.fpSuperGroups.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.fpSuperGroups.Location = New System.Drawing.Point(27, 47)
-        Me.fpSuperGroups.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.fpSuperGroups.Location = New System.Drawing.Point(20, 38)
+        Me.fpSuperGroups.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.fpSuperGroups.Name = "fpSuperGroups"
-        Me.fpSuperGroups.Size = New System.Drawing.Size(53, 689)
+        Me.fpSuperGroups.Size = New System.Drawing.Size(40, 560)
         Me.fpSuperGroups.TabIndex = 0
         '
         'fpGroups
@@ -54,10 +54,10 @@ Partial Class frmUpdater
         Me.fpGroups.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.fpGroups.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.fpGroups.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.fpGroups.Location = New System.Drawing.Point(83, 47)
+        Me.fpGroups.Location = New System.Drawing.Point(62, 38)
         Me.fpGroups.Margin = New System.Windows.Forms.Padding(0)
         Me.fpGroups.Name = "fpGroups"
-        Me.fpGroups.Size = New System.Drawing.Size(175, 689)
+        Me.fpGroups.Size = New System.Drawing.Size(132, 560)
         Me.fpGroups.TabIndex = 4
         Me.fpGroups.Visible = False
         Me.fpGroups.WrapContents = False
@@ -66,10 +66,10 @@ Partial Class frmUpdater
         '
         Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.ProgressBar1.Location = New System.Drawing.Point(691, 748)
-        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ProgressBar1.Location = New System.Drawing.Point(518, 608)
+        Me.ProgressBar1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(427, 27)
+        Me.ProgressBar1.Size = New System.Drawing.Size(320, 22)
         Me.ProgressBar1.TabIndex = 7
         Me.ProgressBar1.Visible = False
         '
@@ -78,9 +78,10 @@ Partial Class frmUpdater
         Me.LblAction.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LblAction.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblAction.Location = New System.Drawing.Point(23, 748)
+        Me.LblAction.Location = New System.Drawing.Point(17, 608)
+        Me.LblAction.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblAction.Name = "LblAction"
-        Me.LblAction.Size = New System.Drawing.Size(645, 27)
+        Me.LblAction.Size = New System.Drawing.Size(484, 22)
         Me.LblAction.TabIndex = 8
         Me.LblAction.Text = "Action:"
         Me.LblAction.Visible = False
@@ -92,10 +93,10 @@ Partial Class frmUpdater
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PbImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PbImagen.Location = New System.Drawing.Point(261, 47)
+        Me.PbImagen.Location = New System.Drawing.Point(196, 38)
         Me.PbImagen.Margin = New System.Windows.Forms.Padding(0)
         Me.PbImagen.Name = "PbImagen"
-        Me.PbImagen.Size = New System.Drawing.Size(400, 400)
+        Me.PbImagen.Size = New System.Drawing.Size(644, 561)
         Me.PbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PbImagen.TabIndex = 3
         Me.PbImagen.TabStop = False
@@ -104,20 +105,19 @@ Partial Class frmUpdater
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Calibri Light", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(21, 11)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(16, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(587, 19)
+        Me.Label1.Size = New System.Drawing.Size(472, 15)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "Use the menu below to download the systems you want to have available in the Brow" &
     "ser:"
         '
         'frmUpdater
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1145, 782)
+        Me.ClientSize = New System.Drawing.Size(859, 635)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.LblAction)
         Me.Controls.Add(Me.ProgressBar1)
@@ -126,7 +126,7 @@ Partial Class frmUpdater
         Me.Controls.Add(Me.fpSuperGroups)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmUpdater"

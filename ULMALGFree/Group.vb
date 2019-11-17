@@ -366,6 +366,7 @@ Public Class Group
             uf.frmUFam.LblAction.Visible = False
             gButton2.Image = Grupo_PonImageAction()
             uf._recargarBrowser = True
+            uf.cambiosEnGrupos = True
             uf.yo.PonLog_ULMA("REMOVE_GROUP", UPDATE_GROUP:=gCode, NOTES:="Name=" & gButton.Text)
         End If
     End Sub
@@ -420,10 +421,10 @@ Public Class Group
         Next
         '
         For Each fiBorra In LBorrarEnd
-            Dim fiImg As String = IO.Path.Combine(uf.path_families_base_images, IO.Path.GetFileNameWithoutExtension(fiBorra) & ".png")
+            'Dim fiImg As String = IO.Path.Combine(uf.path_families_base_images, IO.Path.GetFileNameWithoutExtension(fiBorra) & ".png")
             Try
                 If IO.File.Exists(fiBorra) Then IO.File.Delete(fiBorra)
-                If IO.File.Exists(fiImg) Then IO.File.Delete(fiImg)
+                'If IO.File.Exists(fiImg) Then IO.File.Delete(fiImg)
             Catch ex As Exception
 
             End Try
@@ -478,6 +479,7 @@ Public Class Group
             uf.frmUFam.LblAction.Visible = False
             uf.frmUFam.Update()
             uf._recargarBrowser = True
+            uf.cambiosEnGrupos = True
         End If
     End Sub
 
@@ -516,6 +518,7 @@ Public Class Group
             uf.frmUFam.LblAction.Visible = False
             uf.frmUFam.Update()
             uf._recargarBrowser = True
+            uf.cambiosEnGrupos = True
         End If
     End Sub
 End Class

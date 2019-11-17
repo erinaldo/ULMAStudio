@@ -10,6 +10,10 @@ Public Class frmUpdater
 
     Private Sub frmUpdater_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         uf.frmUFam = Nothing
+        If (uf.cambiosEnGrupos) Then
+            MsgBox("Browser will be closed to apply changes.", MsgBoxStyle.Information, "Information")
+            UCBrowser.WindowManager.CloseWindows()
+        End If
     End Sub
 
     Public Sub FrmUpdater_Load(sender As Object, e As EventArgs) Handles MyBase.Load

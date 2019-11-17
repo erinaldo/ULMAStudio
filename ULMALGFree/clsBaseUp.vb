@@ -29,17 +29,15 @@ Partial Public Class clsBase
     Public Shared ReadOnly _ULMAUpdaterAddIn As String = IO.Path.Combine(_LgFullFolder, _ExeUpdaterName)
     Public Shared _ULMAUpdaterAddInActivo As Boolean = False
 
-    Public Shared Sub Bat_CreaEjecuta(cerrarRevit As Boolean)
-        Dim argumentos As String = ""
-        If cerrarRevit Then
-            'ULMALGFree.clsBase.Process_Run(_BatUpdateFull, "KILLUPDATE REVIT True", visible:=False)
-            argumentos = " KILLUPDATE REVIT True"
-        Else
-            'ULMALGFree.clsBase.Process_Run(_BatUpdateFull, "UPDATE REVIT True", visible:=False)
-            argumentos = " UPDATE REVIT True"
-        End If
-        'IO.File.WriteAllText(_BatUpdateFull, comillas & _ULMAUpdaterAddIn & comillas & " %1 %2 %3")
-        IO.File.WriteAllText(_BatUpdateFull, "call " & comillas & _ULMAUpdaterAddIn & comillas & IIf(argumentos.StartsWith(" ") = True, argumentos, " " & argumentos))
+    Public Shared Sub Bat_CreaEjecuta()
+        Version_Put()
+        Dim FullPathZip As String = IO.Path.Combine(_updatesFolder, cUp("addins").First)
+        Dim argumentos As String = " "
+        argumentos &= " " & comillas & FullPathZip & comillas
+        argumentos &= " " & comillas & _IniUpdaterFull & comillas
+        argumentos &= " " & comillas & oVersion.RevitFullPath & comillas
+        argumentos &= " False"
+        IO.File.WriteAllText(_BatUpdateFull, "call " & comillas & _ULMAUpdaterAddIn & comillas & argumentos)
         '
         If IO.File.Exists(_BatUpdateFull) = False OrElse argumentos = "" Then Exit Sub
         '
@@ -47,20 +45,12 @@ Partial Public Class clsBase
         'pInf.Arguments = argumentos
         pInf.WindowStyle = ProcessWindowStyle.Hidden
 
-
         Using p = Process.Start(pInf)
             'While p.HasExited = False
             '    System.Windows.Forms.Application.DoEvents()
             'End While
             'p.WaitForExit(15000)
         End Using
-        '
-        'Dim pRevit As Process() = System.Diagnostics.Process.GetProcessesByName(nProcess)
-        'While pRevit IsNot Nothing AndAlso pRevit.Count > 0
-        '    System.Windows.Forms.Application.DoEvents()
-        '    pRevit = System.Diagnostics.Process.GetProcessesByName(nProcess)
-        'End While
-        'System.Threading.Thread.Sleep(2000)
     End Sub
 
     Public Shared Sub Bat_Borra()

@@ -17,11 +17,12 @@ Public Class frmAbout
     Private Sub frmAbout_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Para quitar el aviso de subprocesos al llamar al timer
         CheckForIllegalCrossThreadCalls = False
+        uf.Version_Put()
         Dim version As String = My.Application.Info.Version.ToString
         Dim partes() As String = version.Split("."c)
-        partes(0) = uf.AppRevitVersionYear
+        partes(0) = uf.oVersion.RevitVersionNumber
         Me.Text = "About v" & Join(partes, "."c)    'RevitVersion & " - v." & My.Application.Info.Version.ToString       
-        Me.LblVersion.Text = "ULMA Studio - v." & My.Application.Info.Version.ToString
+        Me.LblVersion.Text = "ULMA Studio - v." & Join(partes, "."c)
         ''
         Me.oT = New Timers.Timer
         Me.abre = True
@@ -44,11 +45,11 @@ Public Class frmAbout
         End If
     End Sub
 
-    Private Sub frmAbout_MouseClick(sender As Object, e As MouseEventArgs) Handles Cancel_Button.MouseClick ', Me.MouseClick, Pbox_Latest.MouseClick
-        'Dim img As Object = UCRevitFree.My.Resources.ResourceManager.GetObject("mnuReport")
-        abre = False
-        Me.oT.Start()
-    End Sub
+    'Private Sub frmAbout_MouseClick(sender As Object, e As MouseEventArgs) Handles Cancel_Button.MouseClick ', Me.MouseClick, Pbox_Latest.MouseClick
+    '    'Dim img As Object = UCRevitFree.My.Resources.ResourceManager.GetObject("mnuReport")
+    '    abre = False
+    '    Me.oT.Start()
+    'End Sub
     ''
     Private Sub BtnUpdateAddIn_Click(sender As Object, e As EventArgs) Handles BtnUpdateAddIn.Click
         'Dim img As Object = UCRevitFree.My.Resources.ResourceManager.GetObject("mnuReport")
@@ -60,11 +61,28 @@ Public Class frmAbout
             Dim msg As String = "Do you really want to update the addin? (Revit will be closed and reopened)"
 
             If MsgBox(msg, MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
+                Pbox_New.Visible = False
+                pbActualiza.Visible = True : pbActualiza.Value = 0
                 Try
                     If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_ADDIN,,,,,, uf.cUp("addins").First.ToString.Split("="c)(1))
                 Catch ex As Exception
                 End Try
-                ULMALGFree.clsBase.Bat_CreaEjecuta(cerrarRevit:=True)
+                ' Crear el directorio destino, si no existe. Para que lo podamos descargar ahí.
+                If IO.Directory.Exists(uf._updatesFolder) = False Then
+                    Try
+                        IO.Directory.CreateDirectory(uf._updatesFolder)
+                    Catch ex As Exception
+                        MsgBox("Error creating updates folder", MsgBoxStyle.Critical, "ATTENTION")
+                        abre = False
+                        Me.oT.Start()
+                    End Try
+                End If
+                Dim FullPathZip As String = IO.Path.Combine(uf._updatesFolder, uf.cUp("addins").First)
+                If IO.File.Exists(FullPathZip) = False Then
+                    ' Descargar el fichero si no está en la carpeta Updates
+                    ULMALGFree.clsBase.DescargaFicheroFTPUCRevitFree(ULMALGFree.FOLDERWEB.Addins, uf._updatesFolder, IO.Path.GetFileName(FullPathZip), Me.pbActualiza)
+                End If
+                ULMALGFree.clsBase.Bat_CreaEjecuta()
             End If
         End If
     End Sub
@@ -102,6 +120,7 @@ Public Class frmAbout
     End Sub
 
     Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
-
+        abre = False
+        Me.oT.Start()
     End Sub
 End Class

@@ -32,8 +32,6 @@ Module modVar
     Public arrPaneles() As String = New String() {nombrePanelTools, nombrePanelAbout}
     '
     ' ***** FORMULARIOS ************
-    'Public frmI As frmInforme = Nothing
-    Public frmU As frmHayUpdates = Nothing
     Public frmA As frmAbout = Nothing
     Public fWait As frmGeneratingReport = Nothing
     '
@@ -395,8 +393,7 @@ Module modVar
     End Sub
     Public Function FormulariosDesarrolloAbiertos() As Boolean
         '' ***** FORMULARIOS
-        If frmU IsNot Nothing OrElse
-            frmA IsNot Nothing OrElse
+        If frmA IsNot Nothing OrElse
             fWait IsNot Nothing Then
             Return True
         Else
