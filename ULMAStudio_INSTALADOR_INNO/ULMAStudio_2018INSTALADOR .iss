@@ -9,7 +9,7 @@
 #define MyAppURL "https://www.ulmaconstruction.com"
 #define MyWeb "ULMA CONSTRUCTION"
 #define APPDATA "{%APPDATA}"
-#define INSTALL "G:\ULMA\INSTALL"
+#define INSTALL "C:\ULMA\INSTALL"
 
 ;ULMA Studio for Revit® 2018
 
@@ -35,7 +35,7 @@ Compression=lzma
 SolidCompression=yes
 UninstallDisplayIcon={uninstallexe}
 VersionInfoCompany={#MyWeb}
-VersionInfoDescription=Utilidades REVIT {#YEAR} para Ulma Construction
+VersionInfoDescription=ULMAStudio for REVIT {#YEAR}
 VersionInfoCopyright=ULMA CONSTRUCTION © 2aCAD Global Group (José Alberto Torres Jaraute)
 VersionInfoProductName={#MyAppName}
 ArchitecturesAllowed=x64
@@ -44,8 +44,8 @@ ArchitecturesAllowed=x64
 ;[Languages]
 ;Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 UsePreviousAppDir=False
-WizardSmallImageFile="{srcexe}\..\..\IMAGENES\InstallerSmallImage.bmp"
-WizardImageFile="{srcexe}\..\..\IMAGENES\InstallerCompleting.bmp"
+WizardSmallImageFile="{srcexe}\..\..\IMAGENES\ULMA-Studio_55x55.bmp"
+WizardImageFile="{srcexe}\..\..\IMAGENES\ULMA-Studio_157x314.bmp"
 AllowCancelDuringInstall=False
 ShowLanguageDialog=no
 UninstallLogMode=new

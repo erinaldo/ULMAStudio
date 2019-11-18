@@ -9,7 +9,7 @@
 #define MyAppURL "https://www.ulmaconstruction.com"
 #define MyWeb "ULMA CONSTRUCTION"
 #define APPDATA "{%APPDATA}"
-#define INSTALL "G:\ULMA\INSTALL"
+#define INSTALL "C:\ULMA\INSTALL"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -42,8 +42,8 @@ ArchitecturesAllowed=x64
 ;[Languages]
 ;Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 UsePreviousAppDir=False
-WizardSmallImageFile="{srcexe}\..\..\IMAGENES\InstallerSmallImage.bmp"
-WizardImageFile="{srcexe}\..\..\IMAGENES\InstallerCompleting.bmp"
+WizardSmallImageFile="{srcexe}\..\..\IMAGENES\ULMA-Studio_55x55.bmp"
+WizardImageFile="{srcexe}\..\..\IMAGENES\ULMA-Studio_157x314.bmp"
 AllowCancelDuringInstall=False
 ShowLanguageDialog=no
 UninstallLogMode=new
