@@ -138,7 +138,7 @@ Public Class btnReport
             notas = "All Project"
         End If
         notas &= " (Rows = " & dFilas.Count & " / FamilyInstances = " & lFinal.Count & ")"
-        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("REPORT", FILENAME:=oDoc.PathName, NOTES:=notas)
+        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("REPORT", FILENAME:=oDoc.PathName, NOTES:=IO.Path.GetFileName(oDoc.PathName) & " " & notas)
         '
         lFinal = Nothing
         oDoc = Nothing

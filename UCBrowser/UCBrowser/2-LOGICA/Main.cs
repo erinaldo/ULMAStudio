@@ -193,7 +193,8 @@ namespace UCBrowser
                         trans.Commit();
                         if (Main.cLcsv != null)
                         {
-                            Main.cLcsv.PonLog_ULMA("BROWSER_LOAD_FAMILY", pathArchivoFamiliaDesencriptado, NOTES:familia.Name, EApp:ULMALGFree.queApp.UCBROWSER);
+                            //Main.cLcsv.PonLog_ULMA("BROWSER_LOAD_FAMILY", pathArchivoFamiliaDesencriptado, NOTES:familia.Name, EApp:ULMALGFree.queApp.UCBROWSER);
+                            Main.cLcsv.PonLog_ULMA("BROWSER_LOAD_FAMILY", FAMILY: System.IO.Path.GetFileName(pathArchivoFamiliaDesencriptado), NOTES:familia.Name, EApp:ULMALGFree.queApp.UCBROWSER);
                         }
                         ULMALGFree.clsBase._registraLoadInsert = true;
                     }

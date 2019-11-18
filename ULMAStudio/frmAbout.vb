@@ -63,10 +63,10 @@ Public Class frmAbout
             If MsgBox(msg, MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
                 Pbox_New.Visible = False
                 pbActualiza.Visible = True : pbActualiza.Value = 0
-                Try
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_ADDIN, UPDATE_FILES:=uf.cUp("addins").First.ToString.Split("="c)(1))
-                Catch ex As Exception
-                End Try
+                'Try
+                '    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_ADDIN, NOTES:=uf.cUp("addins").First.ToString.Split("="c)(1))
+                'Catch ex As Exception
+                'End Try
                 ' Crear el directorio destino, si no existe. Para que lo podamos descargar ahí.
                 If IO.Directory.Exists(uf._updatesFolder) = False Then
                     Try
@@ -81,6 +81,12 @@ Public Class frmAbout
                 If IO.File.Exists(FullPathZip) = False Then
                     ' Descargar el fichero si no está en la carpeta Updates
                     ULMALGFree.clsBase.DescargaFicheroFTPUCRevitFree(ULMALGFree.FOLDERWEB.Addins, uf._updatesFolder, IO.Path.GetFileName(FullPathZip), Me.pbActualiza)
+                End If
+                If IO.File.Exists(FullPathZip) Then
+                    Try
+                        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_ADDIN, NOTES:=IO.Path.GetFileName(FullPathZip))
+                    Catch ex As Exception
+                    End Try
                 End If
                 ULMALGFree.clsBase.Bat_CreaEjecuta()
             End If

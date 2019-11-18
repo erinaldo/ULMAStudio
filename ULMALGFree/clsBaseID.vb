@@ -142,10 +142,10 @@ Partial Public Class clsBase
                     EstadoRed_String = "No internet access available"
                 End If
             Else
-                EstadoRed_String = "No network available"
+                EstadoRed_String = "No network connection available"
             End If
         Catch ex As Exception
-            EstadoRed_String = "No network available"
+            EstadoRed_String = "No network connection available"
         End Try
     End Function
     '

@@ -28,7 +28,7 @@ Public Class frmCompruebaID
         Else
             uf.resultado = uf.ID_Comprueba_OnLine
             If uf.resultado.valid = True Then
-                MsgBox("Ulma Studio successfully activated.", MsgBoxStyle.Information, "Registration")
+                MsgBox("ULMA Studio successfully activated.", MsgBoxStyle.Information, "Registration")
                 cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code OK: " & uf.resultado.message)
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()
@@ -67,7 +67,7 @@ Public Class frmCompruebaID
     End Sub
 
     Private Sub LblEmail_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lblEmail.LinkClicked
-        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of Ulma Studio" '& My.Application.Info.Version.ToString
+        Dim target As String = "mailto:" & lblEmail.Text & "?subject=I request information about activation code of ULMA Studio" '& My.Application.Info.Version.ToString
         ' Navigate to a URL.
         System.Diagnostics.Process.Start(target)
     End Sub
