@@ -3547,9 +3547,10 @@ OTROID:
         Dim collector As FilteredElementCollector = Nothing
         If vistaActual = False Then
             collector = New FilteredElementCollector(queDoc)
-        Else
+        ElseIf vistaActual = True Then
             collector = New FilteredElementCollector(queDoc, queDoc.ActiveView.Id)
         End If
+        ' Solo FamilyInstance
         collector = collector.OfClass(GetType(Autodesk.Revit.DB.FamilyInstance))
         '' ***** LINQ para crear IEnumerable de los FamilyInstance y coger el ID
         '' fabricante = ULMA, Supercomponente = False

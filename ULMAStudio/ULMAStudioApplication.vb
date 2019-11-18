@@ -87,11 +87,11 @@ Class ULMAStudioApplication
             uf.resultado = uf.ID_Comprueba_OnLine
             If uf.resultado.valid = True Then
                 ' Es correcto, continuamos sin avisos, cargando el AddIn.
-                cLcsv.PonLog_ULMA("CHECK CODE",,,,,,,, uf.resultado.id, "Check Code OK: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Check Code OK: " & uf.resultado.message)
             Else
                 MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
                 'TaskDialog.Show("ATTENTION", msgCancel, TaskDialogCommonButtons.Close)
-                cLcsv.PonLog_ULMA("CHECK CODE",,,,,,,, uf.resultado.id, "Check Code error: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Check Code error: " & uf.resultado.message)
                 Return Result.Cancelled
                 Exit Function
             End If
@@ -106,7 +106,7 @@ Class ULMAStudioApplication
         'TaskDialog.Show("DATOS", ULMALGFree.clsBase.Articulos().Count.ToString)
         'Dim t As New System.Threading.Thread(AddressOf ULMALGFree.clsBase.CONSULTAS_TODO) : t.Start()
         'If log Then PonLog_BASICO(ULMALGFree.clsLogsCSV._appFicherologBASE, "Start REVIT")
-        'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_REVIT,,, arrM, arrL, arrL(0))
+        'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_REVIT,,, arrM, arrL)
         '
         'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("XMLs VERSION", dateXML)
         ' 4.- ***** Creamos el interface (Ribbon, Paneles y botones)

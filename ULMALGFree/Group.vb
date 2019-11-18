@@ -421,6 +421,7 @@ Public Class Group
         Next
         '
         For Each fiBorra In LBorrarEnd
+            ' Quitamos el que borre las imágenes PNG de las familias borradas (Para que puedan salir en informes)
             'Dim fiImg As String = IO.Path.Combine(uf.path_families_base_images, IO.Path.GetFileNameWithoutExtension(fiBorra) & ".png")
             Try
                 If IO.File.Exists(fiBorra) Then IO.File.Delete(fiBorra)

@@ -33,6 +33,13 @@ Public Class btnReport
         enejecucion = True
         Dim resultado As Result = Result.Succeeded
         '
+        If evRevit.evAppUI.ActiveUIDocument.Document.PathName = "" Then
+            'TaskDialog.Show("ATTENTION", "Save the document first and try again")
+            MsgBox("Save the document first and try again", MsgBoxStyle.Critical, "ATTENTION")
+            resultado = Result.Cancelled : GoTo FINAL
+            Exit Function
+        End If
+
         If evRevit.evAppUI.ActiveUIDocument.Document.IsFamilyDocument Then
             'TaskDialog.Show("ATTENTION", "Utility only for project document")
             MsgBox("Utility only for project document", MsgBoxStyle.Critical, "ATTENTION")
@@ -40,12 +47,6 @@ Public Class btnReport
             Exit Function
         End If
 
-        If evRevit.evAppUI.ActiveUIDocument.Document.PathName = "" Then
-            'TaskDialog.Show("ATTENTION", "Save the document first and try again")
-            MsgBox("Save the document first and try again", MsgBoxStyle.Critical, "ATTENTION")
-            resultado = Result.Cancelled : GoTo FINAL
-            Exit Function
-        End If
         ''
         '' Solo para .rvt
         If IO.Path.GetExtension(evRevit.evAppUI.ActiveUIDocument.Document.PathName).ToLower.Contains("rvt") = False Then
@@ -84,6 +85,7 @@ Public Class btnReport
         fWait.Update()
         'fWait.Show()
         '
+        ' Todas las familias del documento o de la vista, solo ulma o todas.
         Dim lFi As List(Of FamilyInstance) = Nothing
         lFi = utilesRevit.FamilyInstance_DameULMA_FAMILYINSTANCE(oDoc,,,, vistaActual:=onlyactiveview, soloulma:=onlyulma)
         If (lFi Is Nothing OrElse lFi.Count = 0) Then   ' And frmO.RbUlma.Checked = True Then
@@ -98,9 +100,15 @@ Public Class btnReport
 
         For Each oFi As FamilyInstance In lFi
             'fWait.pb1_Pon()
+            ' Filtramos los que están configurados como invisibles en todo el proyecto
             If oFi.Invisible Then Continue For
-            ' ALBERTO. Quieren que si salgan los ocultos en la vist actual.
-            'If oFi.IsHidden(evRevit.evAppUI.ActiveUIDocument.ActiveView) Then Continue For
+            '
+            ' Filtrar las invisibles en la vista actual, si onlyactiveview = True
+            If onlyactiveview Then
+                ' ALBERTO. Quieren que si salgan los ocultos en la vista actual.
+                If oFi.IsHidden(evRevit.evAppUI.ActiveUIDocument.ActiveView) Then Continue For
+            End If
+
             ' Si tiene Supercomponente, continuar. Solo añadimos el FamilyInstance Supercomponente.
             If FamilyInstance_EsDeULMA(oDoc, oFi) AndAlso oFi.SuperComponent IsNot Nothing Then Continue For
             If lFinal.Contains(oFi) = False Then lFinal.Add(oFi)

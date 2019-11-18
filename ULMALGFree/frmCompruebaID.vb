@@ -23,18 +23,18 @@ Public Class frmCompruebaID
             uf.resultado.message = networkinternet
             uf.resultado.valid = False
             MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
-            cLcsv.PonLog_ULMA("CHECK CODE",,,,,,,, uf.resultado.id, "Form Code Error: " & uf.resultado.message)
+            cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code Error: " & uf.resultado.message)
             Me.TxtActivacionCode.Text = ""
         Else
             uf.resultado = uf.ID_Comprueba_OnLine
             If uf.resultado.valid = True Then
                 MsgBox("Ulma Studio successfully activated.", MsgBoxStyle.Information, "Registration")
-                cLcsv.PonLog_ULMA("CHECK CODE", ,,,,,,, uf.resultado.id, "Form Code OK: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code OK: " & uf.resultado.message)
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()
             Else
                 MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
-                cLcsv.PonLog_ULMA("CHECK CODE",,,,,,,, uf.resultado.id, "Form Code Error: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code Error: " & uf.resultado.message)
                 Me.TxtActivacionCode.Text = ""
                 uf.resultado.id = ""
                 uf.resultado.message = ""

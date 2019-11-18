@@ -361,7 +361,7 @@ Partial Public Class clsBase
         If correcto = True Then
             ' Log del XML
             If yo Is Nothing Then yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
-            yo.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_XML,,,,,, d.Local_File)
+            yo.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_XML, UPDATE_FILES:=d.Local_File)
             '
             cIni.IniWrite(_IniUpdaterFull, "LAST", d.ClaveIni, d.Local_File)
             cIni.IniDeleteKey(_IniUpdaterFull, "UPDATES", d.ClaveIni)

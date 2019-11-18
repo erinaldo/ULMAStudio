@@ -204,12 +204,14 @@ Module modVar
         arrM(0) = DEFAULT_PROGRAM_MARKET
         ULMALGFree.clsBase.DEFAULT_PROGRAM_MARKET = DEFAULT_PROGRAM_MARKET
         mensaje(1) &= "DEFAULT_PROGRAM_MARKET = " & DEFAULT_PROGRAM_MARKET & vbCrLf
+        ULMALGFree.clsBase.arrM = arrM
         '
         ' DEFAULT_PROGRAM_LANGUAGE
         DEFAULT_PROGRAM_LANGUAGE = cIni.IniGet(_fileIni, "OPTIONS", "DEFAULT_PROGRAM_LANGUAGE")
         arrL(0) = DEFAULT_PROGRAM_LANGUAGE
         ULMALGFree.clsBase.DEFAULT_PROGRAM_LANGUAGE = DEFAULT_PROGRAM_LANGUAGE
         mensaje(1) &= "DEFAULT_PROGRAM_LANGUAGE = " & DEFAULT_PROGRAM_LANGUAGE & vbCrLf
+        ULMALGFree.clsBase.arrL = arrL
         '
         ' contact
         contact = cIni.IniGet(_fileIni, "OPTIONS", "contact")

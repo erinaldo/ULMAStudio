@@ -27,6 +27,8 @@ Public Class clsBase
     Public Const _IniName As String = "ULMAStudio.ini"
     Public Const _AddInName As String = "ULMAStudio"
     ' Variable compartidas por todas las aplicaciones
+    Public Shared arrM As String() = Array.Empty(Of String)
+    Public Shared arrL As String() = Array.Empty(Of String)
     Public Shared colIdiomas As SortedList         '' Coleccion de idiomas para codigos/descripciones (key=idioma, Value=Pais)
     Public Shared arrIdiomas As ArrayList          '' Array de idiomas
     Public Shared colMercadosDes As SortedList        '' Coleccion de Mercados (key=descripcion, value=codigo,descripcion,idioma,pais)
