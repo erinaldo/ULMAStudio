@@ -4,7 +4,7 @@
 #define YEAR "2019"
 #define MyAppName "ULMA Studio for Revit® 2019"
 #define MyAppFolder "ULMAStudio"
-#define MyAppVersion "2019.0.0.18"
+#define MyAppVersion "2019.0.0.20"
 #define MyAppPublisher "ULMA CONSTRUCTION © 2aCAD Graitec Group (José Alberto Torres Jaraute)"
 #define MyAppURL "https://www.ulmaconstruction.com"
 #define MyWeb "ULMA CONSTRUCTION"

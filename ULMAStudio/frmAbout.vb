@@ -58,7 +58,7 @@ Public Class frmAbout
             abre = False
             Me.oT.Start()
         Else
-            Dim msg As String = "Do you really want to update the addin? (Revit will be closed and reopened)"
+            Dim msg As String = "Do you want to update ULMA Studio? Revit will be closed and relaunched"
 
             If MsgBox(msg, MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
                 Pbox_New.Visible = False
