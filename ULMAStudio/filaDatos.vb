@@ -7,8 +7,11 @@ Public Class filaDatos
     Public Property Weight As Double
     Public Property Quantity As Integer
     Public Property esulma As Boolean = False
+    Public Property categoria As String = ""
 
-    Public Sub New(pathImage As String, oName As String, oCode As String, oWeight As Double, oQuantity As Integer, Optional ulma As Boolean = True)
+    Public Sub New(pathImage As String, oName As String, oCode As String, oWeight As Double, oQuantity As Integer,
+                   ulma As Boolean,
+                   oCategoria As String)
         Me.ImagePath = pathImage
         If IO.File.Exists(pathImage) Then
             Me.ImageByte = GetBytes(System.Drawing.Image.FromFile(pathImage))
@@ -21,6 +24,7 @@ Public Class filaDatos
         Me.Weight = oWeight
         Me.Quantity = oQuantity
         Me.esulma = ulma
+        Me.categoria = oCategoria
     End Sub
 
     Public Function GetBytes(imageIn As System.Drawing.Image) As Byte()

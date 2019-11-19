@@ -99,18 +99,15 @@ Public Class btnReport
         Dim lFinal As New List(Of FamilyInstance)
 
         For Each oFi As FamilyInstance In lFi
-            'fWait.pb1_Pon()
-            ' Filtramos los que están configurados como invisibles en todo el proyecto
+            ' FILTROS A APLICAR. Según Vista/Proyecto o ULMA/Todos
+            ' ** Filtro Supercomponente. Solo añadimos el FamilyInstance Supercomponente (No las sub-familias que contenga)
+            If oFi.SuperComponent IsNot Nothing Then Continue For
+            ' ** Filtramos los que están configurados como invisibles en todo el proyecto
             If oFi.Invisible Then Continue For
-            '
-            ' Filtrar las invisibles en la vista actual, si onlyactiveview = True
-            If onlyactiveview Then
-                ' ALBERTO. Quieren que si salgan los ocultos en la vista actual.
-                If oFi.IsHidden(evRevit.evAppUI.ActiveUIDocument.ActiveView) Then Continue For
-            End If
-
-            ' Si tiene Supercomponente, continuar. Solo añadimos el FamilyInstance Supercomponente.
-            If FamilyInstance_EsDeULMA(oDoc, oFi) AndAlso oFi.SuperComponent IsNot Nothing Then Continue For
+            ' ** Filtrar las invisibles en la vista actual, si onlyactiveview
+            If onlyactiveview AndAlso oFi.IsHidden(evRevit.evAppUI.ActiveUIDocument.ActiveView) Then Continue For
+            ' ** Filtro onlyulma
+            If onlyulma AndAlso FamilyInstance_EsDeULMA(oDoc, oFi) = False Then Continue For
             If lFinal.Contains(oFi) = False Then lFinal.Add(oFi)
             System.Windows.Forms.Application.DoEvents()
         Next
@@ -175,13 +172,7 @@ FINAL:
         Next
         '
         Dim resultado As New List(Of filaDatos)
-        'Dim carpeta As String = IO.File.ReadAllText(_appOptions)
         For Each oFi As FamilyInstance In lFi
-            '
-            'fWait.pb1_Pon()
-            If oFi.Invisible Then Continue For
-            If oFi.IsHidden(evRevit.evAppUI.ActiveUIDocument.ActiveView) Then Continue For
-            '
             ' ¿Es una familia de ULMA?
             Dim esulma As Boolean = FamilyInstance_EsDeULMA(evRevit.evDoc, oFi)
             '
@@ -269,15 +260,12 @@ FINAL:
                         wTemp = wTemp.Split(" "c)(0)
                         weight = CDbl(wTemp)
                     End If
-
                 End If
             End If
-            'Dim quantity As Integer = 1
             '
-            'If nameinforme <> "" Then name = nameinforme
-            Dim clave As String = IIf(nameinforme = "", name, nameinforme).ToString '& code
+            Dim clave As String = oFi.Category.Name & IIf(nameinforme = "", name, nameinforme).ToString '& code
             If dFilas.ContainsKey(clave) = False Then
-                dFilas.Add(clave, New filaDatos(imgPath, IIf(nameinforme = "", "", nameinforme).ToString, code, weight, 1, esulma))
+                dFilas.Add(clave, New filaDatos(imgPath, IIf(nameinforme = "", "", nameinforme).ToString, code, weight, 1, esulma, oFi.Category.Name))
             Else
                 If dFilas(clave).Code = "" AndAlso code <> "" Then dFilas(clave).Code = code
                 dFilas(clave).Quantity += 1
@@ -294,8 +282,8 @@ FINAL:
         Dim datos As String = VistaActual & vbCrLf  ' Primera linea es el nombre de la vista.
         ' Ordenar colección de filaDatos por "Name"
         Dim filas = From x In dFilas.Values
+                    Order By x.categoria, x.Name
                     Select x
-                    Order By x.Name
         ' 1.- Primero los que si son de ULMA
         For Each oFD As filaDatos In filas
             ' Si no es ULMA, continuar

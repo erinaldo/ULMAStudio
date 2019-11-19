@@ -4,7 +4,7 @@
 #define YEAR "2019"
 #define MyAppName "ULMA Studio for Revit® 2019"
 #define MyAppFolder "ULMAStudio"
-#define MyAppVersion "2019.0.0.20"
+#define MyAppVersion "2019.0.0.21"
 #define MyAppPublisher "ULMA CONSTRUCTION © 2aCAD Graitec Group (José Alberto Torres Jaraute)"
 #define MyAppURL "https://www.ulmaconstruction.com"
 #define MyWeb "ULMA CONSTRUCTION"
@@ -58,10 +58,11 @@ VersionInfoVersion={#MyAppVersion}
 VersionInfoTextVersion={#MyAppName}
 VersionInfoProductTextVersion={#MyAppName}
 PrivilegesRequired=lowest
+AlwaysUsePersonalGroup=True
 
 [Files]
 ; *** APP principal y fichero configuracion
-Source: "{#INSTALL}\*.*"; DestDir: "{app}\..\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#INSTALL}\*.*"; DestDir: "{app}\..\"; Flags: ignoreversion recursesubdirs createallsubdirs 
 Source: "{#INSTALL}\..\ULMAUpdaterAddin2019.ini"; DestDir: "{app}"; DestName: "ULMAUpdaterAddin.ini"; Flags: ignoreversion
 
 [Icons]
@@ -74,6 +75,8 @@ Name: "{group}\{#MyAppName}"; Filename: "{app}"; WorkingDir: "{app}"
 Type: files; Name: "{app}\..\{#MyAppName}.addin"
 Type: filesandordirs; Name: "{app}\*.*" 
 Type: dirifempty; Name: "{app}"
+Type: dirifempty; Name: "{group}\{#MyAppName}"
+Type: dirifempty; Name: "{group}"
 
 [ThirdParty]
 UseRelativePaths=True
