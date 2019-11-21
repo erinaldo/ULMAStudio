@@ -262,8 +262,10 @@ FINAL:
                     End If
                 End If
             End If
-            '
-            Dim clave As String = oFi.Category.Name & IIf(nameinforme = "", name, nameinforme).ToString '& code
+            ' Clave para ordenar por solo "Name"
+            Dim clave As String = IIf(nameinforme = "", name, nameinforme).ToString '& code
+            ' Clave para ordenar por "Category" y "Name" (Lo quitamos)
+            'Dim clave As String = oFi.Category.Name & IIf(nameinforme = "", name, nameinforme).ToString '& code
             If dFilas.ContainsKey(clave) = False Then
                 dFilas.Add(clave, New filaDatos(imgPath, IIf(nameinforme = "", "", nameinforme).ToString, code, weight, 1, esulma, oFi.Category.Name))
             Else
@@ -282,14 +284,16 @@ FINAL:
         Dim datos As String = VistaActual & vbCrLf  ' Primera linea es el nombre de la vista.
         ' Ordenar colección de filaDatos por "Name"
         Dim filas = From x In dFilas.Values
-                    Order By x.categoria, x.Name
+                    Order By x.Name
                     Select x
+        '' Ordenar colección de filaDatos por "Category" y "Name" (Lo quitamos)
+        'Dim filas = From x In dFilas.Values
+        '            Order By x.categoria, x.Name
+        '            Select x
         ' 1.- Primero los que si son de ULMA
         For Each oFD As filaDatos In filas
             ' Si no es ULMA, continuar
-            If oFD.esulma = False Then
-                Continue For
-            End If
+            If oFD.esulma = False Then Continue For
             fWait.pb1_Pon()
             datos &= oFD.ImagePath & ";" & oFD.Name & ";" & oFD.Code & ";" & oFD.Weight & ";" & oFD.Quantity & ";" & oFD.esulma.ToString & vbCrLf
             System.Windows.Forms.Application.DoEvents()
@@ -297,9 +301,7 @@ FINAL:
         ' 2.- Segundo los que no son de ULMA
         For Each oFD As filaDatos In filas
             ' Si es ULMA, continuar
-            If oFD.esulma = True Then
-                Continue For
-            End If
+            If oFD.esulma = True Then Continue For
             fWait.pb1_Pon()
             datos &= oFD.ImagePath & ";" & oFD.Name & ";" & oFD.Code & ";" & oFD.Weight & ";" & oFD.Quantity & ";" & oFD.esulma.ToString & vbCrLf
             System.Windows.Forms.Application.DoEvents()

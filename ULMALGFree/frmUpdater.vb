@@ -13,6 +13,7 @@ Public Class frmUpdater
         If (uf.cambiosEnGrupos) Then
             'MsgBox("Browser will be closed to apply changes.", MsgBoxStyle.Information, "Information")
             UCBrowser.WindowManager.CloseWindows()
+            uf.cambiosEnGrupos = False
         End If
     End Sub
 
@@ -41,7 +42,8 @@ Public Class frmUpdater
             Dim contador As Integer = 0
             For Each oG As ULMALGFree.Group In oSg.groups
                 Dim oAction As ULMALGFree.queAction = oG.Grupo_DameAction()
-                If oAction = ULMALGFree.queAction.toupdate Then
+                '2019/11/20 Xabier Calvo: Mostrar botón rojo solo para actualizacaciones (no incluir productos no descargados)
+                If oAction = ULMALGFree.queAction.notupdated Then
                     contador += 1
                 End If
             Next

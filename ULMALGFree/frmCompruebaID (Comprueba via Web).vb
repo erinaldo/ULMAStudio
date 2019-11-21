@@ -35,7 +35,6 @@ Public Class frmCompruebaID
             Else
                 MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
                 cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code Error: " & uf.resultado.message)
-                uf.resultado = Nothing
                 Me.TxtActivacionCode.Text = ""
                 uf.resultado.id = ""
                 uf.resultado.message = ""

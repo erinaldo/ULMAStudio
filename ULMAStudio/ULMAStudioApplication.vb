@@ -83,8 +83,8 @@ Class ULMAStudioApplication
                 Exit Function
             End If
         ElseIf IO.File.Exists(uf.keyfile) = True Then
-            'Dim res As ULMALGFree.validacion = uf.ID_Comprueba_OffLine
-            uf.resultado = uf.ID_Comprueba_OnLine
+            ' Ya existe el fichero key.dat
+            uf.resultado = uf.ID_Comprueba_OffLine
             If uf.resultado.valid = True Then
                 ' Es correcto, continuamos sin avisos, cargando el AddIn.
                 cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Check Code OK: " & uf.resultado.message)
@@ -96,9 +96,6 @@ Class ULMAStudioApplication
                 Exit Function
             End If
         End If
-
-
-
         '************************************************************************
         ' ***** Rellenar datos XML en un hilo aparte.
         XML_Lee()
@@ -334,18 +331,19 @@ Class ULMAStudioApplication
         btnAboutBoton.LargeImage = queImg
 
         ' BTNDOWNLOADBOTON (Si hay actualizaciones de las familias)
-        If uf.cUp("families").Count = 0 Then
+        If uf.cUp("botonesRojos").Count = 0 Then
             queImg = DameImagenRecurso(My.Resources.uf32.GetHbitmap()) '' NewBitmapImage("bomUnion.png")
-            'btnDownloadBoton.Image = queImg
-            'btnDownloadBoton.LargeImage = queImg
         Else
-            Dim nombre As String = "uf32_" & uf.cUp("families").Count '& ".png"
-            'Dim img As Object = My.Resources.ResourceManager.GetObject(nombre & ".png")
+            Dim nombre As String = "uf32_" & uf.cUp("botonesRojos").Count '& ".png"
             queImg = MyResource.Resources.Imagen_DameIncrustada(nombre & ".png")
-            'queImg = DameImagenRecurso(My.Resources.uf32_0.GetHbitmap())
-            'RibbonButton_ChangeImage(btnDownloadBoton, IO.Path.Combine(uf._imgFolder, nombre & ".png"))
         End If
-        'RibbonButton_ChangeImage(btnDownloadBoton, CType(queImg, System.Windows.Media.Imaging.BitmapImage))
+        If uf.cUp("descargados").Count = 0 Then
+            btnBrowserBoton.Enabled = False
+            btnReportBoton.Enabled = False
+        Else
+            btnBrowserBoton.Enabled = True
+            btnReportBoton.Enabled = True
+        End If
         btnDownloadBoton.Image = queImg
         btnDownloadBoton.LargeImage = queImg
         '

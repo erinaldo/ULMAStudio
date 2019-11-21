@@ -53,9 +53,9 @@ Public Class SuperGroup
         If uf.lupdate Is Nothing Then
             uf.lupdate = New ImageList()
             uf.lupdate.ImageSize = New Size(24, 24)
-            uf.lupdate.Images.Add("Updated", Image.FromFile(IO.Path.Combine(uf._imgFolder, "Updated2.png"))) : uf.lupdate.Images(0).Tag = "Updated"    ' 0 Esta correcto
-            uf.lupdate.Images.Add("Download", Image.FromFile(IO.Path.Combine(uf._imgFolder, "Download2.png"))) : uf.lupdate.Images(1).Tag = "Download"   ' 1 Hay que descargarlo. No estaba
-            uf.lupdate.Images.Add("DownloadUpdate", Image.FromFile(IO.Path.Combine(uf._imgFolder, "DownloadUpdate2.png"))) : uf.lupdate.Images(2).Tag = "DownloadUpdate" ' 2 Hay que descargarlo y actualizarlo. Ya estaba
+            uf.lupdate.Images.Add("Updated", Image.FromFile(IO.Path.Combine(uf._imgFolder, "Updated3.png"))) : uf.lupdate.Images(0).Tag = "Updated"    ' 0 Esta correcto
+            uf.lupdate.Images.Add("Download", Image.FromFile(IO.Path.Combine(uf._imgFolder, "Download3.png"))) : uf.lupdate.Images(1).Tag = "Download"   ' 1 Hay que descargarlo. No estaba
+            uf.lupdate.Images.Add("DownloadUpdate", Image.FromFile(IO.Path.Combine(uf._imgFolder, "DownloadUpdate3.png"))) : uf.lupdate.Images(2).Tag = "DownloadUpdate" ' 2 Hay que descargarlo y actualizarlo. Ya estaba
         End If
         ' **********************************************
         'menu = New ContextMenuStrip()

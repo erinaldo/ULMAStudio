@@ -2,14 +2,14 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define YEAR "2019"
+#define INSTALL "C:\ULMA\INSTALL"
 #define MyAppName "ULMA Studio for Revit® 2019"
 #define MyAppFolder "ULMAStudio"
-#define MyAppVersion "2019.0.0.21"
+#define MyAppVersion GetFileVersion("C:\ULMA\INSTALL\ULMAStudio\ULMAStudio.dll")
 #define MyAppPublisher "ULMA CONSTRUCTION © 2aCAD Graitec Group (José Alberto Torres Jaraute)"
 #define MyAppURL "https://www.ulmaconstruction.com"
 #define MyWeb "ULMA CONSTRUCTION"
 #define APPDATA "{%APPDATA}"
-#define INSTALL "C:\ULMA\INSTALL"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.

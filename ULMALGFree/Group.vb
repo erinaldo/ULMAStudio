@@ -355,20 +355,25 @@ Public Class Group
             ULMALGFree.clsBase.cIni.IniWrite(ULMALGFree.clsBase._IniUpdaterFull, "UPDATES", Me.gCode, valor)
             ' Borrarlo de LAST
             ULMALGFree.clsBase.cIni.IniDeleteKey(ULMALGFree.clsBase._IniUpdaterFull, "LAST", Me.gCode)
+            '2019/11/20 Xabier Calvo: Al mostrar solo boton rojo por actualizaciones (no descarga de producto), eliminar un porducto no significa tener una nueva actualizacion
+            'Quitamos actualización si eliminamos producto a actualizar
+            Dim oAction As ULMALGFree.queAction = Me.Grupo_DameAction()
             uf.INIUpdates_LeeTODO()
             Me.Action = queAction.toupdate
             ' Actualizar número en SuperGrupo
-            uf.UltimoSuperGrupo.nActualizaciones += 1
+            If oAction = ULMALGFree.queAction.toupdate Then
+                uf.UltimoSuperGrupo.nActualizaciones -= 1
+            End If
             'uf.UltimoSuperGrupo.SgButton.PerformClick()
             Dim task As New System.Threading.Thread(AddressOf BorraFamiliasGroup_UnGrupo) : task.Start()
-            'MsgBox("Product removed successfully", MsgBoxStyle.Information, "Product Remove")
-            uf.frmUFam.ProgressBar1.Visible = False
-            uf.frmUFam.LblAction.Visible = False
-            gButton2.Image = Grupo_PonImageAction()
-            uf._recargarBrowser = True
-            uf.cambiosEnGrupos = True
-            uf.yo.PonLog_ULMA("REMOVE_GROUP", UPDATE_GROUP:=gCode, NOTES:="Name=" & gButton.Text)
-        End If
+                'MsgBox("Product removed successfully", MsgBoxStyle.Information, "Product Remove")
+                uf.frmUFam.ProgressBar1.Visible = False
+                uf.frmUFam.LblAction.Visible = False
+                gButton2.Image = Grupo_PonImageAction()
+                uf._recargarBrowser = True
+                uf.cambiosEnGrupos = True
+                uf.yo.PonLog_ULMA("REMOVE_GROUP", UPDATE_GROUP:=gCode, NOTES:="Name=" & gButton.Text)
+            End If
     End Sub
 
     'Private Sub gButton_MouseClick(sender As Object, e As MouseEventArgs) Handles gButton.MouseClick

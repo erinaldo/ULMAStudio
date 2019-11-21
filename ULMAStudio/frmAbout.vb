@@ -19,10 +19,14 @@ Public Class frmAbout
         CheckForIllegalCrossThreadCalls = False
         uf.Version_Put()
         Dim version As String = My.Application.Info.Version.ToString
-        Dim partes() As String = version.Split("."c)
-        partes(0) = uf.oVersion.RevitVersionNumber
-        Me.Text = "About v" & Join(partes, "."c)    'RevitVersion & " - v." & My.Application.Info.Version.ToString       
-        Me.LblVersion.Text = "ULMA Studio - v." & Join(partes, "."c)
+        ' *****Quitamos esto, que el año de la versión sea el real. No makeado
+        'Dim partes() As String = version.Split("."c)
+        'partes(0) = uf.oVersion.RevitVersionNumber
+        'Me.Text = "About v" & Join(partes, "."c)       
+        'Me.LblVersion.Text = "ULMA Studio - v." & Join(partes, "."c)
+        ' ********************************************************************
+        Me.Text = "About v" & version
+        Me.LblVersion.Text = "ULMA Studio - v." & version
         ''
         Me.oT = New Timers.Timer
         Me.abre = True

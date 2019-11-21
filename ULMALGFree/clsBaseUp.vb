@@ -14,6 +14,8 @@ Partial Public Class clsBase
     Public Shared CLast As Dictionary(Of String, String)
     Public Const nProcess As String = "REVIT"
     Public Shared cUp As Dictionary(Of String, List(Of String))
+    Public Shared cBotRojos As Integer = 0
+    Public Shared prodDescargados As Integer = 0
     '
     Public Shared lNumeros As ImageList = Nothing
     Public Shared lupdate As ImageList = Nothing
@@ -171,6 +173,7 @@ Partial Public Class clsBase
         If CLast Is Nothing OrElse CLast.Count = 0 Then INIUpdates_LeeLAST()
         ' addins
         Dim lista() As String = cFtp.FTP_ListaDir(ULMALGFree.clsBase.FTP1_dirAddins, fullpath:=False)
+        Dim lista2(), lista3() As String
         If lista.Count > 0 Then
             lista = ArrayFullWeb_DameSoloNombreExtension(lista)
             lDir.AddRange(lista)
@@ -180,14 +183,26 @@ Partial Public Class clsBase
         lDir = New List(Of String)
         '
         ' families
+        '2019/11/20 Xabier Calvo: solo Updates
         lista = cFtp.FTP_ListaDir(ULMALGFree.clsBase.FTP1_dirFamilies)
         If lista.Count > 0 Then
             lista = ArrayFullWeb_DameSoloNombreExtension(lista)
             lDir.AddRange(lista)
+            INIUpdates_EscribeUPDATES(lDir, borrarupdate:=False)
+            resultado.Add("families", lDir)
+            lDir = New List(Of String)
+            lista2 = ArrayFullWeb_DameSoloNombreExtension(lista, 1)
+            lDir.AddRange(lista2)
+            INIUpdates_EscribeUPDATES(lDir, borrarupdate:=False)
+            resultado.Add("botonesRojos", lDir)
+            lDir = New List(Of String)
+            lista3 = ArrayFullWeb_DameSoloNombreExtension(lista, 2)
+            lDir.AddRange(lista3)
+            INIUpdates_EscribeUPDATES(lDir, borrarupdate:=False)
+            resultado.Add("descargados", lDir)
+            lDir = New List(Of String)
         End If
-        INIUpdates_EscribeUPDATES(lDir, borrarupdate:=False)
-        resultado.Add("families", lDir)
-        lDir = New List(Of String)
+
         '
         ' xml
         lista = cFtp.FTP_ListaDir(ULMALGFree.clsBase.FTP1_dirXml)
@@ -201,7 +216,7 @@ Partial Public Class clsBase
         Return resultado
     End Function
     '
-    Public Shared Function ArrayFullWeb_DameSoloNombreExtension(arr1 As String()) As String()
+    Public Shared Function ArrayFullWeb_DameSoloNombreExtension(arr1 As String(), Optional soloUpdate As Integer = 0) As String()
         Dim resultado As New List(Of String)
         For Each x As String In arr1
             Dim partes() As String = Nothing
@@ -214,7 +229,16 @@ Partial Public Class clsBase
             End If
             Dim solonombre As String = ""
             solonombre = partes(UBound(partes))
-            If solonombre.ToUpper.StartsWith("ERROR") = False AndAlso FicheroFTP_YaEstaDescargado(solonombre) = False Then
+            '2019/11/20 Xabie Calvo: En el caso de familias solo mostrar globos para Updates (no para descargas no realizadas)
+            Dim control As Boolean
+            If soloUpdate = 1 Then
+                control = Not FicheroFTP_EsSoloUpdate(solonombre)
+            ElseIf soloUpdate = 2 Then
+                control = Not FicheroFTP_EstaDescargado(solonombre)
+            Else
+                control = FicheroFTP_YaEstaDescargado(solonombre)
+            End If
+            If solonombre.ToUpper.StartsWith("ERROR") = False AndAlso control = False Then
                 resultado.Add(solonombre)
             End If
         Next
@@ -249,6 +273,58 @@ Partial Public Class clsBase
             resultado = False
         End If
 
+        Return resultado
+    End Function
+
+    Public Shared Function FicheroFTP_EsSoloUpdate(fiName As String) As Boolean
+        If cIni Is Nothing Then cIni = New clsINI
+        Dim resultado As Boolean = False
+        If IO.File.Exists(ULMALGFree.clsBase._IniUpdaterFull) = False Then
+            Return resultado
+            Exit Function
+        End If
+        '
+        '' Leer LAST
+        Call INIUpdates_LeeLAST()
+        'If CLast Is Nothing OrElse CLast.Count = 0 Then
+        '    Return resultado
+        '    Exit Function
+        'End If
+        '
+        Dim partes() As String = fiName.Split("_")
+        Dim key As String = partes(0)
+        '
+        If CLast.ContainsKey(key) Then
+            If CLast(key) <> fiName Then
+                resultado = True
+            End If
+        Else
+            resultado = False
+        End If
+
+        Return resultado
+    End Function
+
+    Public Shared Function FicheroFTP_EstaDescargado(fiName As String) As Boolean
+        If cIni Is Nothing Then cIni = New clsINI
+        Dim resultado As Boolean = True
+        If IO.File.Exists(ULMALGFree.clsBase._IniUpdaterFull) = False Then
+            Return resultado
+            Exit Function
+        End If
+        '
+        '' Leer LAST
+        Call INIUpdates_LeeLAST()
+        Dim CLastSoloProducto As Dictionary(Of String, String) = New Dictionary(Of String, String)
+        For Each entrada As KeyValuePair(Of String, String) In CLast
+            If Not entrada.Key.Contains("ULMAStudio") And Not entrada.Key.Contains("XML") Then
+                CLastSoloProducto.Add(entrada.Key, entrada.Value)
+            End If
+        Next
+        If CLastSoloProducto Is Nothing OrElse CLastSoloProducto.Count = 0 Then
+            resultado = False
+        End If
+        '        
         Return resultado
     End Function
 
@@ -312,18 +388,21 @@ Partial Public Class clsBase
         End If
         '
         If correcto = True Then
+            Dim oAction As ULMALGFree.queAction = oGroup.Grupo_DameAction()
             cIni.IniWrite(_IniUpdaterFull, "LAST", d.ClaveIni, d.Local_File)
             cIni.IniDeleteKey(_IniUpdaterFull, "UPDATES", d.ClaveIni)
             oGroup.gButton2.Image = oGroup.Grupo_PonImageAction()
-            UltimoSuperGrupo.nActualizaciones -= 1
+            If oAction = ULMALGFree.queAction.notupdated Then
+                UltimoSuperGrupo.nActualizaciones -= 1
+            End If
             '
             ' Borrar el fichero .zip 
             Try
-                IO.File.Delete(d.Local_FileFull)
-            Catch ex As Exception
+                    IO.File.Delete(d.Local_FileFull)
+                Catch ex As Exception
 
-            End Try
-        End If
+                End Try
+            End If
     End Sub
     '
     Public Shared Sub FTP_DescargarYDescomprimirXML(d As Datos)
