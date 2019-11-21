@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("UCBrowser")]
-[assembly: AssemblyCopyright("Copyright Ulma Construction ©  2018-2019")]
+[assembly: AssemblyCopyright("Copyright © ULMA ConstructionU 2018-2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

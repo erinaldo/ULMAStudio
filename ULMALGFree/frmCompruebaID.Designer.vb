@@ -34,10 +34,10 @@ Partial Class frmCompruebaID
         '
         Me.OK_Button.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.OK_Button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.OK_Button.Location = New System.Drawing.Point(509, 187)
-        Me.OK_Button.Margin = New System.Windows.Forms.Padding(5)
+        Me.OK_Button.Location = New System.Drawing.Point(679, 230)
+        Me.OK_Button.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(72, 23)
+        Me.OK_Button.Size = New System.Drawing.Size(96, 28)
         Me.OK_Button.TabIndex = 0
         Me.OK_Button.Text = "Activate"
         '
@@ -50,10 +50,10 @@ Partial Class frmCompruebaID
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.FlatAppearance.BorderSize = 0
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Cancel_Button.Location = New System.Drawing.Point(719, -1)
-        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(5)
+        Me.Cancel_Button.Location = New System.Drawing.Point(959, -1)
+        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(43, 23)
+        Me.Cancel_Button.Size = New System.Drawing.Size(57, 28)
         Me.Cancel_Button.TabIndex = 1
         Me.Cancel_Button.UseVisualStyleBackColor = False
         '
@@ -63,10 +63,10 @@ Partial Class frmCompruebaID
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Label1.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(146, 253)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Location = New System.Drawing.Point(195, 311)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(319, 13)
+        Me.Label1.Size = New System.Drawing.Size(382, 17)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "If you have any issues entering the activation code, please contact:"
         '
@@ -75,10 +75,10 @@ Partial Class frmCompruebaID
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Calibri", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(169, 191)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(225, 235)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(152, 15)
+        Me.Label2.Size = New System.Drawing.Size(182, 19)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Enter your activation code:"
         '
@@ -86,10 +86,10 @@ Partial Class frmCompruebaID
         '
         Me.TxtActivacionCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TxtActivacionCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtActivacionCode.Location = New System.Drawing.Point(329, 188)
-        Me.TxtActivacionCode.Margin = New System.Windows.Forms.Padding(4)
+        Me.TxtActivacionCode.Location = New System.Drawing.Point(439, 231)
+        Me.TxtActivacionCode.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.TxtActivacionCode.Name = "TxtActivacionCode"
-        Me.TxtActivacionCode.Size = New System.Drawing.Size(174, 22)
+        Me.TxtActivacionCode.Size = New System.Drawing.Size(231, 25)
         Me.TxtActivacionCode.TabIndex = 4
         Me.TxtActivacionCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -97,10 +97,10 @@ Partial Class frmCompruebaID
         '
         Me.lblEmail.AutoSize = True
         Me.lblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblEmail.Location = New System.Drawing.Point(463, 252)
-        Me.lblEmail.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblEmail.Location = New System.Drawing.Point(617, 310)
+        Me.lblEmail.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.lblEmail.Name = "lblEmail"
-        Me.lblEmail.Size = New System.Drawing.Size(137, 13)
+        Me.lblEmail.Size = New System.Drawing.Size(181, 17)
         Me.lblEmail.TabIndex = 5
         Me.lblEmail.TabStop = True
         Me.lblEmail.Text = "bim@ulmaconstruction.com"
@@ -108,12 +108,12 @@ Partial Class frmCompruebaID
         'frmCompruebaID
         '
         Me.AcceptButton = Me.OK_Button
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackgroundImage = Global.ULMALGFree.My.Resources.Resources.ActivationCode
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(760, 367)
+        Me.ClientSize = New System.Drawing.Size(1013, 452)
         Me.Controls.Add(Me.lblEmail)
         Me.Controls.Add(Me.OK_Button)
         Me.Controls.Add(Me.Cancel_Button)
@@ -123,11 +123,11 @@ Partial Class frmCompruebaID
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(5)
+        Me.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1235, 700)
+        Me.MaximumSize = New System.Drawing.Size(1647, 862)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(500, 200)
+        Me.MinimumSize = New System.Drawing.Size(667, 246)
         Me.Name = "frmCompruebaID"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

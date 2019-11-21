@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("Report")>
-<Assembly: AssemblyCopyright("Copyright © 2019 Jose Alberto Torres Jaraute (2aCAD Graitec Group)")>
+<Assembly: AssemblyCopyright("Copyright © 2aCAD Graitec Group 2019 (Jose Alberto Torres Jaraute)")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

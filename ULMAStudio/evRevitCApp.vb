@@ -130,14 +130,14 @@ Partial Public Class evRevit
                 If e.Document.PathName.ToUpper.EndsWith("RFT") Then
                     If cLcsv IsNot Nothing AndAlso registraLog = True Then cLcsv.PonLog_ULMA("CLOSE_FAMILY_TEMPLATE", FILENAME:=e.Document.PathName, NOTES:=IO.Path.GetFileName(e.Document.PathName))
                 Else
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("CLOSE_FAMILY", e.Document.PathName, IO.Path.GetFileName(e.Document.PathName))
+                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("CLOSE_FAMILY", FILENAME:=e.Document.PathName, FAMILY:=IO.Path.GetFileName(e.Document.PathName))
                 End If
             End If
         Else
             If e.Document.PathName.ToUpper.EndsWith("RTE") Then
                 If cLcsv IsNot Nothing AndAlso registraLog = True Then cLcsv.PonLog_ULMA("CLOSE_PROJECT_TEMPLATE", FILENAME:=e.Document.PathName, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             Else
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("CLOSE_PROJECT", MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("CLOSE_PROJECT", FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
                 'Else
                 '    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("CLOSE_FILE", e.Document.PathName)
             End If
@@ -192,7 +192,7 @@ Partial Public Class evRevit
                 If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FAMILY, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("RVT") Then
                 ' Rellenar la configuración por defecto, cada vez que abrimos un fichero.
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("RFT") Then
                 If cLcsv IsNot Nothing AndAlso registraLog = True Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FAMILY_TEMPLATE, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("RTE") Then
@@ -200,11 +200,11 @@ Partial Public Class evRevit
                     If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT_TEMPLATE, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
                 End If
             ElseIf e.Document.PathName.ToUpper.EndsWith("IFC") Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_IFC", FILENAME:=IO.Path.GetFileName(e.Document.PathName), MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_IFC", FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("ADSK") Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_ADSK", FILENAME:=IO.Path.GetFileName(e.Document.PathName), MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_ADSK", FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("SAT") Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_SAT", FILENAME:=IO.Path.GetFileName(e.Document.PathName), MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_SAT", FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             End If
         End If
         evRevit.SubscribeAll()
@@ -225,7 +225,7 @@ Partial Public Class evRevit
         'If evRevit.evSave = False Then Exit Sub
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVE, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVE, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
         End If
     End Sub
 
@@ -239,9 +239,9 @@ Partial Public Class evRevit
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
             If SaveAsLibrary = False Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf SaveAsLibrary = True Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS_LIBRARY_FAMILY, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.SAVEAS_LIBRARY_FAMILY, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             End If
         End If
     End Sub
@@ -288,7 +288,7 @@ Partial Public Class evRevit
                 strPath = e.Document.PathName
             End If
             If strPath <> "" Then   ' AndAlso IO.File.Exists(e.FamilyPath) Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, strPath, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=e.FamilyName)
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, FILENAME:=strPath, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=e.FamilyName)
             Else
                 If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=e.FamilyName)
             End If
@@ -300,7 +300,7 @@ Partial Public Class evRevit
         'System.Windows.MessageBox.Show("ControlledApplication.DocumentPrinted")
         If e.Status = RevitAPIEventStatus.Succeeded Then
             ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.PRINT_DOCUMENT, FILENAME:=IO.Path.GetFileName(e.Document.PathName), MARKET:=arrM, LANGUAGE:=arrL)
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.PRINT_DOCUMENT, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
         End If
     End Sub
     Private Shared Sub evAppC_DocumentSynchronizedWithCentral(sender As Object, e As DocumentSynchronizedWithCentralEventArgs) Handles evAppC.DocumentSynchronizedWithCentral
@@ -327,13 +327,13 @@ Partial Public Class evRevit
     Private Shared Sub evAppC_FileExported(sender As Object, e As FileExportedEventArgs) Handles evAppC.FileExported
         'System.Windows.MessageBox.Show("ControlledApplication.FileExported")
         If e.Status = RevitAPIEventStatus.Succeeded Then
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("EXPORT_" & IO.Path.GetExtension(e.Path).ToUpper.Replace(".", ""), FILENAME:=e.Path, MARKET:=arrM, LANGUAGE:=arrL)   ' IO.Path.GetFileName(e.Document.PathName))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("EXPORT_" & IO.Path.GetExtension(e.Path).ToUpper.Replace(".", ""), FILENAME:=e.Path, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Path))   ' IO.Path.GetFileName(e.Document.PathName))
         End If
     End Sub
     Private Shared Sub evAppC_FileImported(sender As Object, e As FileImportedEventArgs) Handles evAppC.FileImported
         'System.Windows.MessageBox.Show("ControlledApplication.FileImported")
         If e.Status = RevitAPIEventStatus.Succeeded Then
-            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("IMPORT_" & IO.Path.GetExtension(e.Path).ToUpper.Replace(".", ""), FILENAME:=e.Path, MARKET:=arrM, LANGUAGE:=arrL)    ' IO.Path.GetFileName(e.Document.PathName))
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("IMPORT_" & IO.Path.GetExtension(e.Path).ToUpper.Replace(".", ""), FILENAME:=e.Path, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Path))    ' IO.Path.GetFileName(e.Document.PathName))
         End If
     End Sub
     Private Shared Sub evAppC_LinkedResourceOpened(sender As Object, e As LinkedResourceOpenedEventArgs) Handles evAppC.LinkedResourceOpened

@@ -5,8 +5,8 @@
     <Assembly>.\ULMAStudio\ULMAStudio.dll</Assembly>
     <ClientId>33e55dac-e8b7-4fb7-80fd-5ce4e6950fb2</ClientId>
     <FullClassName>ULMAStudio.ULMAStudioApplication</FullClassName>
-    <VendorId>2aCAD Global Graitec, 2aCAD Graitec Group - ULMA CONSTRUCCION</VendorId>
-    <VendorDescription>http://www.2acad.es</VendorDescription>
+    <VendorId>Ulma Construction</VendorId>
+    <VendorDescription>Ulma Construction, www.ulmaconstruction.com</VendorDescription>
     <Visibility>NotVisibleInFamily</Visibility>
   </AddIn>
    <AddIn Type="Application">
@@ -14,8 +14,8 @@
     <AddInId>338b5a7f-c72c-4820-8e98-a74e83e8e069</AddInId>
     <Assembly>.\ULMAStudio\UCBrowser\UCBrowser.dll</Assembly>
     <FullClassName>UCBrowser.Main</FullClassName>
-    <VendorId>UlmaConstruction</VendorId>
-    <VendorDescription>Ulma construction, www.ulmaconstruction.com</VendorDescription>
+    <VendorId>Ulma Construction</VendorId>
+    <VendorDescription>Ulma Construction, www.ulmaconstruction.com</VendorDescription>
     <Visibility>NotVisibleWhenNoActiveDocument</Visibility>
     <Visibility>NotVisibleInFamily</Visibility>
   </AddIn>

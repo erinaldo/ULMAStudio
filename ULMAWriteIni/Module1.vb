@@ -1,37 +1,31 @@
 ﻿Module Module1
-    Public years() As String = {"2018", "2019"}
-    Public texto As String = ""
-    Public _appPath As String = System.Reflection.Assembly.GetExecutingAssembly.Location
-    Public _appFolder As String = IO.Path.GetDirectoryName(_appPath)
-    Public _appDLL As String = "G:\ULMA\INSTALL\ULMAStudio\ULMAStudio.dll"
-    Public _appINIPre As String = "ULMAUpdaterAddin"   'G:\ULMA\ULMAUpdaterAddin2018.ini
-    Public _appINIFolder As String = "G:\ULMA"
+    Public _appDLLFull As String = "C:\ULMA\INSTALL\ULMAStudio\ULMAStudio.dll"
+    Public _appININame As String = "ULMAUpdaterAddin.ini"
+    Public _appINIFull As String = IO.Path.Combine(IO.Path.GetDirectoryName(_appDLLFull), _appININame)
     Sub Main()
-        ' Le pasamos como parámetro la carpeta inicial G:\ULMA
+        ' Le pasamos como parámetro la carpeta inicial C:\ULMA
         If Environment.GetCommandLineArgs.Count < 2 Then Exit Sub
-        _appINIFolder = Environment.GetCommandLineArgs(1)
-        If IO.Directory.Exists(_appINIFolder) = False Then Exit Sub
+        If _appDLLFull <> Environment.GetCommandLineArgs(1) Then
+            _appDLLFull = Environment.GetCommandLineArgs(1)
+            _appINIFull = IO.Path.Combine(IO.Path.GetDirectoryName(_appDLLFull), _appININame)
+        End If
+        If IO.File.Exists(_appDLLFull) = False Then Exit Sub
         '
-        'MsgBox(_appINIFolder)
-        texto &= ";© Jose Alberto Torres (2aCAD Graitec Group)" & vbCrLf
-        texto &= ";Last updates." & vbCrLf
-        texto &= "[LAST]" & vbCrLf
-        texto &= "ULMAStudio = ULMAStudio_#YEAR#.zip" & vbCrLf
-        texto &= "XML = XML_PUBLIC_20191028.zip" & vbCrLf
-        texto &= ";Updates availables." & vbCrLf
-        texto &= "[UPDATES]"
-        _appDLL = IO.Path.Combine(_appINIFolder, "ULMAStudio\ULMAStudio.dll")
-        'MsgBox(_appDLL)
-        If IO.File.Exists(_appDLL) = False Then Exit Sub
         WriteIni()
+        'texto &= ";Last updates." & vbCrLf
+        'texto &= "[LAST]" & vbCrLf
+        'texto &= "ULMAStudio = ULMAStudio_0.0.0.23.zip" & vbCrLf
+        'texto &= "XML = XML_PUBLIC_20191028.zip" & vbCrLf
+        'texto &= ";Updates availables." & vbCrLf
+        'texto &= "[UPDATES]"
     End Sub
 
     Public Sub WriteIni()
         Dim assembly As System.Reflection.Assembly
-        assembly = System.Reflection.Assembly.LoadFile(_appDLL)
+        assembly = System.Reflection.Assembly.LoadFile(_appDLLFull)
         '
         If assembly Is Nothing Then
-            MsgBox("Error cargando DLL " & _appDLL)
+            MsgBox("Error cargando DLL " & _appDLLFull)
             Exit Sub
         End If
         'MsgBox(assembly.Location)
@@ -39,13 +33,25 @@
         'Console.WriteLine(oAinf.AssemblyName & "_v" & oAinf.Version.ToString)
         'Console.WriteLine(oAinf.AssemblyName)
         'Console.WriteLine(oAinf.Version.ToString)
-        Dim sufijo As String = oAinf.Version.ToString.Substring(4)
-        For Each year As String In years
-            Dim t As String = texto.Replace("#YEAR#", year & sufijo)
-            Dim fullfi As String = IO.Path.GetFullPath(IO.Path.Combine(_appINIFolder & "..\", _appINIPre & year & ".ini"))
-            'MsgBox(fullfi)
-            IO.File.WriteAllText(fullfi, t, System.Text.Encoding.UTF8)
-        Next
         'Console.ReadLine()
+        '
+        Dim namesolo As String = IO.Path.GetFileNameWithoutExtension(_appDLLFull)
+        Dim lineas() As String = IO.File.ReadAllLines(_appINIFull)
+        Dim cambiado As Boolean = False
+        Dim sufijo As String = oAinf.Version.ToString.Substring(4)
+        For x As Integer = 0 To lineas.Count - 1
+            Dim linea As String = lineas(x)
+            If linea.StartsWith(namesolo) Then
+                lineas(x) = namesolo & "=" & namesolo & "_" & oAinf.Version.ToString & ".zip"
+                cambiado = True
+                Exit For
+            End If
+        Next
+        '
+        If cambiado = True Then
+            Dim textofinal As String = String.Join(vbCrLf, lineas)
+            IO.File.WriteAllText(_appINIFull, textofinal, System.Text.Encoding.UTF8)
+            'MsgBox(textofinal)
+        End If
     End Sub
 End Module

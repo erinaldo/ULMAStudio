@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Creación de fichero LOG y subida a FTP de Ulma")>
 <Assembly: AssemblyCompany("2aCAD Graitec Group")>
 <Assembly: AssemblyProduct("ULMALGFree.")>
-<Assembly: AssemblyCopyright("Copyright ©  2aCAD Graitec Group 2019 (José Alberto Torres Jaraute)")>
+<Assembly: AssemblyCopyright("Copyright © 2aCAD Graitec Group 2019 (José Alberto Torres Jaraute)")>
 <Assembly: AssemblyTrademark("ULMALGFree.")>
 
 <Assembly: ComVisible(False)>

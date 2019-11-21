@@ -6388,9 +6388,9 @@ Public Class LoadedFamilyDropHandler
                 'tx.Commit()
                 'ULMALGFree.clsLogsCSV._ultimaApp =  = ULMALGFree.queApp.UCREVIT
                 If ultSimbolo.Document.PathName <> "" AndAlso IO.File.Exists(ultSimbolo.Document.PathName) Then
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("DRAG&DROP", ultSimbolo.Document.PathName, ultSimbolo.FamilyName)
+                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("DRAG&DROP", FILENAME:=ultSimbolo.Document.PathName, FAMILY:=ultSimbolo.FamilyName)
                 Else
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("DRAG&DROP", "", ultSimbolo.FamilyName)
+                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("DRAG&DROP", FAMILY:=ultSimbolo.FamilyName)
                 End If
             End If
         End If

@@ -185,10 +185,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>rem ***** 2019
-rem xcopy /E /I /Y "$(TargetDir)*.*" "$(AppData)\Autodesk\REVIT\Addins\2019\UCRevitF"
-rem move "$(AppData)\Autodesk\REVIT\Addins\2019\UCRevitF\UCBrowser.addin" "$(AppData)\Autodesk\REVIT\Addins\2019\"
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

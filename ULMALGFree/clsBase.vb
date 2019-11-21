@@ -312,8 +312,11 @@ Public Class clsBase
     End Sub
     '
     Public Shared Sub Version_Put()
-        If oVersions Is Nothing Then oVersions = New clsVersions(evAppC, Process.GetCurrentProcess)
-        oVersion = clsVersions.Version_Dame(evAppC.CurrentUserAddinsLocation)
+        If evAppC IsNot Nothing Then
+            oVersion = clsVersions.Version_Dame(evAppC, Process.GetCurrentProcess)
+        Else
+            oVersion = clsVersions.Version_Dame(Process.GetCurrentProcess)
+        End If
     End Sub
 
     Public Shared Sub RenombraExeBak()

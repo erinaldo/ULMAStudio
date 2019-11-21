@@ -65,7 +65,7 @@ AlwaysUsePersonalGroup=True
 [Files]
 ; *** APP principal y fichero configuracion
 Source: "{#INSTALL}\*.*"; DestDir: "{app}\..\"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "{#INSTALL}\..\ULMAUpdaterAddin2018.ini"; DestDir: "{app}"; DestName: "ULMAUpdaterAddin.ini"; Flags: ignoreversion
+;Source: "{#INSTALL}\..\ULMAUpdaterAddin2018.ini"; DestDir: "{app}"; DestName: "ULMAUpdaterAddin.ini"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyWeb}}"; Filename: "{#MyAppURL}"

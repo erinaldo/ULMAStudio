@@ -507,14 +507,12 @@ xcopy "$(SolutionDir)ULMAUpdaterAddIn\bin\*.*" "%25FINAL%25$(TargetName)\" /Y
 
 if exist "%25FINAL%25$(TargetName)\key.dat" del "%25FINAL%25$(TargetName)\key.dat"
 
+REM ESCRIBIR EL FICHERO ULMAUpdaterAddin.ini
+call "$(SolutionDir)ULMAWriteIni\bin\ULMAWriteIni.exe" "%25FINAL%25ULMAStudio\ULMAStudio.dll"
+
 REM COPIAR TODO EN LAS CARPETAS DE ADDINS 2018 Y 2019
 xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2018\" /E /Y
-REM xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2019\" /E /Y
-
-rem CREAR Y COPIAR LOS FICHEROS INI DE CADA VERSIÓN
-call "$(SolutionDir)ULMAWriteIni\bin\ULMAWriteIni.exe" %25FINAL%25
-xcopy "%25FINAL%25..\ULMAUpdaterAddin2018.ini" "$(AppData)\Autodesk\REVIT\Addins\2018\$(TargetName)\ULMAUpdaterAddin.ini" /Y
-REM xcopy "%25FINAL%25..\ULMAUpdaterAddin2019.ini" "$(AppData)\Autodesk\REVIT\Addins\2019\$(TargetName)\ULMAUpdaterAddin.ini" /Y</PostBuildEvent>
+REM xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2019\" /E /Y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>SET FINAL=C:\ULMA\INSTALL\

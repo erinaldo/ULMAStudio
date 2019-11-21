@@ -65,6 +65,25 @@ Public Class frmAbout
             Dim msg As String = "Do you want to update ULMA Studio? Revit will be closed and relaunched"
 
             If MsgBox(msg, MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
+                ' Comprobar si hay ficheros sin guardar.
+                Dim haysinguardar As Boolean = False
+                For Each oD As Document In evRevit.evApp.Documents
+                    If oD.IsModified = True Then
+                        haysinguardar = True
+                        Exit For
+                    End If
+                Next
+                If haysinguardar = True Then
+                    If MsgBox("There are unsaved documents, do you want to save them?",
+                              MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
+                        For Each oD As Document In evRevit.evApp.Documents
+                            If oD.IsModified = True Then
+                                oD.Save()
+                            End If
+                        Next
+                    End If
+                End If
+                ' *******
                 Pbox_New.Visible = False
                 pbActualiza.Visible = True : pbActualiza.Value = 0
                 'Try

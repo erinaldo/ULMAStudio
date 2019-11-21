@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("ULMAStudio")>
 <Assembly: AssemblyDescription("ULMA Studio (for Revit®)")>
-<Assembly: AssemblyCompany("ULMA CONSTRUCCION")>
+<Assembly: AssemblyCompany("ULMA Construction")>
 <Assembly: AssemblyProduct("ULMAStudio")>
-<Assembly: AssemblyCopyright("Copyright (C) 2019 by Jose Alberto Torres Jaraute (2aCAD Graitec Group)")>
+<Assembly: AssemblyCopyright("Copyright © ULMA Construction")>
 <Assembly: AssemblyTrademark("ULMA Studio (for Revit®)")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("0.0.0.22")>
-<Assembly: AssemblyFileVersion("0.0.0.22")>
+<Assembly: AssemblyVersion("0.0.0.23")>
+<Assembly: AssemblyFileVersion("0.0.0.23")>

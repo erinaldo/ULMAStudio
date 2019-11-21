@@ -1,22 +1,19 @@
 ﻿Public Class clsVersions
     Public Shared colVersions As New Dictionary(Of String, clsVersion)    ' Key=2018, Value=clsVersion
 
-    Public Sub New(oAppC As Autodesk.Revit.ApplicationServices.ControlledApplication, oP As Process)
+    Public Shared Function Version_Dame(oAppC As Autodesk.Revit.ApplicationServices.ControlledApplication, oP As Process) As clsVersion
+        Dim resultado As clsVersion = Nothing
         If colVersions.ContainsKey(oAppC.VersionNumber) = False Then
             colVersions.Add(oAppC.VersionNumber, New clsVersion(oAppC, oP))
         End If
-    End Sub
+        resultado = colVersions(oAppC.VersionNumber)
 
-    Public Shared Function Version_Dame(Folder As String) As clsVersion
-        Dim year As String = Folder
-        Dim partes() As String = Folder.Split("\"c) ' por si viene al final "\2018"
-        year = partes(UBound(partes))
-        partes = year.Split(" ")                    ' Por si viene al final "Revit 2018"
-        year = partes(UBound(partes))
-        '
-        Dim resultado As clsVersion = Nothing
-        If colVersions.ContainsKey(year) Then
-            resultado = colVersions(year)
+        Return resultado
+    End Function
+    Public Shared Function Version_Dame(oP As Process) As clsVersion
+        Dim resultado As clsVersion = New clsVersion(oP)
+        If colVersions.ContainsKey(resultado.RevitVersionNumber) = False Then
+            colVersions.Add(resultado.RevitVersionNumber, resultado)
         End If
         Return resultado
     End Function
@@ -38,6 +35,21 @@ Public Class clsVersion
         RevitVersionNumber = oAppC.VersionNumber
         RevitVersionNumberR = "R" & oAppC.VersionNumber
         RevitVersionLogText = "Revit " & oAppC.SubVersionNumber & " (" & oAppC.VersionBuild & ")"
+        RevitFullPath = oP.MainModule.FileName
+    End Sub
+    Public Sub New(oP As Process)
+        Dim oI As FileVersionInfo = oP.MainModule.FileVersionInfo
+        Dim FMa As Integer = oI.FileMajorPart
+        Dim FMi As Integer = oI.FileMinorPart
+        Dim FBu As Integer = oI.FileBuildPart
+        Dim FPr As Integer = oI.FilePrivatePart
+
+        RevitSubVersionNumber = "20" & oI.FileVersion
+        RevitVersionNumber = "20" & FMa.ToString
+        RevitVersionNumberR = "R" & RevitVersionNumber
+        RevitVersionBuild = oI.ProductVersion
+        RevitVersionName = oI.FileDescription & " " & RevitVersionNumber
+        RevitVersionLogText = "Revit " & RevitSubVersionNumber & " (" & RevitVersionBuild & ")"
         RevitFullPath = oP.MainModule.FileName
     End Sub
 End Class
