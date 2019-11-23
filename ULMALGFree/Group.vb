@@ -345,6 +345,7 @@ Public Class Group
     Private Sub RemoveGroup_Click(sender As Object, e As EventArgs) Handles RemoveGroup.Click
         Dim result As DialogResult = MsgBox("Do you want to remove " + gButton.Text + "?", MsgBoxStyle.OkCancel, "Product Remove Confirmation")
         If result = DialogResult.OK Then
+            Dim oAction As ULMALGFree.queAction = Me.Grupo_DameAction()
             'Borrar antes los que hubiera. Ya habría familias antes en families
             uf.frmUFam.ProgressBar1.Visible = True
             uf.frmUFam.LblAction.Visible = True
@@ -357,23 +358,23 @@ Public Class Group
             ULMALGFree.clsBase.cIni.IniDeleteKey(ULMALGFree.clsBase._IniUpdaterFull, "LAST", Me.gCode)
             '2019/11/20 Xabier Calvo: Al mostrar solo boton rojo por actualizaciones (no descarga de producto), eliminar un porducto no significa tener una nueva actualizacion
             'Quitamos actualización si eliminamos producto a actualizar
-            Dim oAction As ULMALGFree.queAction = Me.Grupo_DameAction()
+
             uf.INIUpdates_LeeTODO()
             Me.Action = queAction.toupdate
             ' Actualizar número en SuperGrupo
-            If oAction = ULMALGFree.queAction.toupdate Then
+            If oAction = ULMALGFree.queAction.notupdated Then
                 uf.UltimoSuperGrupo.nActualizaciones -= 1
             End If
             'uf.UltimoSuperGrupo.SgButton.PerformClick()
             Dim task As New System.Threading.Thread(AddressOf BorraFamiliasGroup_UnGrupo) : task.Start()
-                'MsgBox("Product removed successfully", MsgBoxStyle.Information, "Product Remove")
-                uf.frmUFam.ProgressBar1.Visible = False
-                uf.frmUFam.LblAction.Visible = False
-                gButton2.Image = Grupo_PonImageAction()
-                uf._recargarBrowser = True
-                uf.cambiosEnGrupos = True
-                uf.yo.PonLog_ULMA("REMOVE_GROUP", UPDATE_GROUP:=gCode, NOTES:="Name=" & gButton.Text)
-            End If
+            'MsgBox("Product removed successfully", MsgBoxStyle.Information, "Product Remove")
+            uf.frmUFam.ProgressBar1.Visible = False
+            uf.frmUFam.LblAction.Visible = False
+            gButton2.Image = Grupo_PonImageAction()
+            uf._recargarBrowser = True
+            uf.cambiosEnGrupos = True
+            uf.yo.PonLog_ULMA("REMOVE_GROUP", UPDATE_GROUP:=gCode, NOTES:="Name=" & gButton.Text)
+        End If
     End Sub
 
     'Private Sub gButton_MouseClick(sender As Object, e As MouseEventArgs) Handles gButton.MouseClick
@@ -519,7 +520,8 @@ Public Class Group
                     Exit For
                 End If
             Next
-            Me.Action = queAction.toupdate
+            '2019/11/22 Xabier Calvo: Cuando se actualiza pasa a estado updated
+            Me.Action = queAction.updated
             uf.frmUFam.ProgressBar1.Visible = False
             uf.frmUFam.LblAction.Visible = False
             uf.frmUFam.Update()

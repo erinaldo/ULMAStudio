@@ -472,7 +472,7 @@ Public Class clsBase
                           Optional TYPE As String = tipo,
                           Optional KEYCODE As String = "",
                           Optional NOTES As String = "",
-                          Optional EApp As ULMALGFree.queApp = ULMALGFree.queApp.UCREVIT)
+                          Optional EApp As ULMALGFree.queApp = ULMALGFree.queApp.ULMASTUDIO)
         '
         If yo Is Nothing Then yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
         Dim _Market As String = ""
@@ -548,7 +548,7 @@ Public Class clsBase
                           Optional TYPE As String = tipo,
                           Optional KEYCODE As String = "",
                           Optional NOTES As String = "",
-                          Optional EApp As ULMALGFree.queApp = ULMALGFree.queApp.UCREVIT)
+                          Optional EApp As ULMALGFree.queApp = ULMALGFree.queApp.ULMASTUDIO)
         '
         PonLog_ULMA(ACTION.ToString, FILENAME, FAMILY, MARKET, LANGUAGE, UPDATE_GROUP, UPDATE_FILES, TYPE, KEYCODE, NOTES, EApp)
     End Sub
@@ -790,11 +790,8 @@ End Class
 '
 #Region "ENUMERACIONES"
 Public Enum queApp
-    UCREVIT
     ULMASTUDIO
     UCBROWSER
-    REPCON
-    GRAFSYSTEM
     ULMASTUDIOREPORT
     ULMAUPDATERADDIN
 End Enum
@@ -821,12 +818,7 @@ Public Enum ACTION
     CLOSE_PROJECT_TEMPLATE
     CLOSE_FAMILY
     CLOSE_FAMILY_TEMPLATE
-    BROWSER_LOAD_FAMILY
-    GRAFSYSTEM_LOAD_FAMILY
-    UCBROWSER_CHANGE_FAMILY_FOLDER
     LOAD_FAMILY
-    BROWSER_INSERT_FAMILY
-    GRAFSYSTEM_INSERT_FAMILY
     INSERT_FAMILY
     SAVE
     SAVEAS
@@ -834,21 +826,15 @@ Public Enum ACTION
     PRINT_DOCUMENT
     PRINT_VIEW
     SYNCHRONIZE_DOCUMENT
-    UCR_OPTIONS
-    UCR_CODIFY
-    UCR_EXPLODE_FAMILY
-    UCR_EXPLODE_DIRECTSHAPE
-    UCR_OVERKILL
-    UCR_EXPORT_BOM
-    UCR_COMPLETE_BOMs
-    UCR_REPCON_COMPLETE_BOMs
-    UCR_ROTATE
-    UCR_ROTATE_POINTS
-    UCR_TRANSLATE
-    UCR_HELP
-    UCR_ABOUT
-    UCR_BROWSER
-    '
+    ' UCBROWSER
+    BROWSER_OPEN
+    BROWSER_LOAD_FAMILY
+    BROWSER_INSERT_FAMILY
+    BROWSER_CHANGE_FAMILY_FOLDER
+    BROWSER_NAVIGATE
+    BROWSER_SEARCH
+    BROWSER_CLOSE
+    ' DOWNLOAD Y UPDATE
     DOWNLOAD_GROUP
     UPDATE_FAMILIES
     REMOVE_FAMILIES

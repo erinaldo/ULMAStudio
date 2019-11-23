@@ -168,7 +168,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }
@@ -277,7 +277,7 @@ namespace UCBrowser
         {
             if (Main.cLcsv != null && patronABuscar != null)
             {
-                Main.cLcsv.PonLog_ULMA("BROWSER_SEARCH", NOTES:patronABuscar, EApp: ULMALGFree.queApp.UCBROWSER);
+                Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_SEARCH, NOTES:patronABuscar, EApp: ULMALGFree.queApp.UCBROWSER);
             }
             List<Familia> familiasEncontradas = biblioteca.getFamiliasCuyoNombreContenga(patronABuscar);
             ResultadosBusqueda_window ventana = new ResultadosBusqueda_window();
@@ -298,7 +298,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }
@@ -315,7 +315,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }
@@ -332,7 +332,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }
@@ -349,7 +349,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }
@@ -366,7 +366,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }
@@ -383,7 +383,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }
@@ -400,7 +400,7 @@ namespace UCBrowser
                 _familias = biblioteca.getFamiliasDelGrupo(grupoSeleccionado, filtroSeleccionado);
                 if (Main.cLcsv != null && grupoSeleccionado != null)
                 {
-                    Main.cLcsv.PonLog_ULMA("BROWSER_NAVIGATE", NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
+                    Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_NAVIGATE, NOTES: grupoSeleccionado, EApp: ULMALGFree.queApp.UCBROWSER);
                 }
                 NotifyPropertyChanged("familias");
             }

@@ -43,9 +43,10 @@ Partial Class frmAbout
         Me.LblEmail.BackColor = System.Drawing.Color.Transparent
         Me.LblEmail.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LblEmail.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.LblEmail.Location = New System.Drawing.Point(444, 356)
+        Me.LblEmail.Location = New System.Drawing.Point(333, 289)
+        Me.LblEmail.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblEmail.Name = "LblEmail"
-        Me.LblEmail.Size = New System.Drawing.Size(267, 27)
+        Me.LblEmail.Size = New System.Drawing.Size(200, 22)
         Me.LblEmail.TabIndex = 3
         Me.LblEmail.Text = " ·    bim@ulmaconstruction.com"
         Me.LblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -58,10 +59,10 @@ Partial Class frmAbout
         Me.BtnUpdateAddIn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnUpdateAddIn.FlatAppearance.BorderSize = 0
         Me.BtnUpdateAddIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnUpdateAddIn.Location = New System.Drawing.Point(413, 236)
-        Me.BtnUpdateAddIn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.BtnUpdateAddIn.Location = New System.Drawing.Point(310, 192)
+        Me.BtnUpdateAddIn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.BtnUpdateAddIn.Name = "BtnUpdateAddIn"
-        Me.BtnUpdateAddIn.Size = New System.Drawing.Size(57, 53)
+        Me.BtnUpdateAddIn.Size = New System.Drawing.Size(43, 43)
         Me.BtnUpdateAddIn.TabIndex = 6
         Me.BtnUpdateAddIn.UseVisualStyleBackColor = False
         '
@@ -69,10 +70,9 @@ Partial Class frmAbout
         '
         Me.Pbox_New.BackColor = System.Drawing.Color.Transparent
         Me.Pbox_New.Image = CType(resources.GetObject("Pbox_New.Image"), System.Drawing.Image)
-        Me.Pbox_New.Location = New System.Drawing.Point(341, 289)
-        Me.Pbox_New.Margin = New System.Windows.Forms.Padding(4)
+        Me.Pbox_New.Location = New System.Drawing.Point(256, 235)
         Me.Pbox_New.Name = "Pbox_New"
-        Me.Pbox_New.Size = New System.Drawing.Size(200, 28)
+        Me.Pbox_New.Size = New System.Drawing.Size(150, 23)
         Me.Pbox_New.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.Pbox_New.TabIndex = 7
         Me.Pbox_New.TabStop = False
@@ -82,10 +82,9 @@ Partial Class frmAbout
         Me.PBox_Web.BackColor = System.Drawing.Color.Transparent
         Me.PBox_Web.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PBox_Web.Image = CType(resources.GetObject("PBox_Web.Image"), System.Drawing.Image)
-        Me.PBox_Web.Location = New System.Drawing.Point(176, 325)
-        Me.PBox_Web.Margin = New System.Windows.Forms.Padding(4)
+        Me.PBox_Web.Location = New System.Drawing.Point(132, 264)
         Me.PBox_Web.Name = "PBox_Web"
-        Me.PBox_Web.Size = New System.Drawing.Size(533, 25)
+        Me.PBox_Web.Size = New System.Drawing.Size(400, 20)
         Me.PBox_Web.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PBox_Web.TabIndex = 8
         Me.PBox_Web.TabStop = False
@@ -94,10 +93,9 @@ Partial Class frmAbout
         '
         Me.Pbox_Latest.BackColor = System.Drawing.Color.Transparent
         Me.Pbox_Latest.Image = CType(resources.GetObject("Pbox_Latest.Image"), System.Drawing.Image)
-        Me.Pbox_Latest.Location = New System.Drawing.Point(307, 246)
-        Me.Pbox_Latest.Margin = New System.Windows.Forms.Padding(4)
+        Me.Pbox_Latest.Location = New System.Drawing.Point(230, 200)
         Me.Pbox_Latest.Name = "Pbox_Latest"
-        Me.Pbox_Latest.Size = New System.Drawing.Size(272, 28)
+        Me.Pbox_Latest.Size = New System.Drawing.Size(204, 23)
         Me.Pbox_Latest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.Pbox_Latest.TabIndex = 9
         Me.Pbox_Latest.TabStop = False
@@ -109,9 +107,10 @@ Partial Class frmAbout
         Me.LblVersion.BackColor = System.Drawing.Color.Transparent
         Me.LblVersion.Cursor = System.Windows.Forms.Cursors.Default
         Me.LblVersion.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.LblVersion.Location = New System.Drawing.Point(176, 356)
+        Me.LblVersion.Location = New System.Drawing.Point(132, 289)
+        Me.LblVersion.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblVersion.Name = "LblVersion"
-        Me.LblVersion.Size = New System.Drawing.Size(261, 27)
+        Me.LblVersion.Size = New System.Drawing.Size(196, 22)
         Me.LblVersion.TabIndex = 10
         Me.LblVersion.Text = "ULMA Studio - v.2019.0.0.XX"
         Me.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -125,29 +124,30 @@ Partial Class frmAbout
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.FlatAppearance.BorderSize = 0
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Cancel_Button.Location = New System.Drawing.Point(689, 129)
-        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(7, 6, 7, 6)
+        Me.Cancel_Button.Location = New System.Drawing.Point(517, 105)
+        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(57, 28)
+        Me.Cancel_Button.Size = New System.Drawing.Size(43, 23)
         Me.Cancel_Button.TabIndex = 11
         Me.Cancel_Button.UseVisualStyleBackColor = False
         '
         'pbActualiza
         '
-        Me.pbActualiza.Location = New System.Drawing.Point(307, 295)
+        Me.pbActualiza.Location = New System.Drawing.Point(230, 240)
+        Me.pbActualiza.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.pbActualiza.Name = "pbActualiza"
-        Me.pbActualiza.Size = New System.Drawing.Size(272, 23)
+        Me.pbActualiza.Size = New System.Drawing.Size(204, 19)
         Me.pbActualiza.TabIndex = 12
         Me.pbActualiza.Visible = False
         '
         'frmAbout
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(120.0!, 120.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.BackgroundImage = Global.ULMAStudio.My.Resources.Resources.About_ai_bim_Mesa_de_trabajo_1_copia_9
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClientSize = New System.Drawing.Size(885, 516)
+        Me.ClientSize = New System.Drawing.Size(664, 419)
         Me.ControlBox = False
         Me.Controls.Add(Me.pbActualiza)
         Me.Controls.Add(Me.Cancel_Button)
@@ -160,9 +160,10 @@ Partial Class frmAbout
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(664, 419)
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(664, 419)
         Me.Name = "frmAbout"
         Me.Opacity = 0.25R
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide

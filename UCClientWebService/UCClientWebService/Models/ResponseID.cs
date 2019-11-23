@@ -11,5 +11,6 @@ namespace UCClientWebService.Models
         public string id { get; set; }
         public bool valid { get; set; }
         public string message { get; set; }
+        public int RemainingDays { get; set; }
     }
 }

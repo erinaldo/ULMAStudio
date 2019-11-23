@@ -86,8 +86,14 @@ Class ULMAStudioApplication
             ' Ya existe el fichero key.dat
             uf.resultado = uf.ID_Comprueba_OffLine
             If uf.resultado.valid = True Then
-                ' Es correcto, continuamos sin avisos, cargando el AddIn.
-                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Check Code OK: " & uf.resultado.message)
+                If uf.resultado.message.Contains("Offline") Then
+                    ' Es correcto temporalmente, ya que no tenía conexión y no podemos comprobar el ID
+                    ' (Le damos hasta un maximo de 90 días sin conexión, informamos de los días sin conexión y activamos)
+                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="OK temporal: " & uf.resultado.message)
+                Else
+                    ' Es correcto, continuamos sin avisos, cargando el AddIn.
+                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Check Code OK: " & uf.resultado.message)
+                End If
             Else
                 MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
                 'TaskDialog.Show("ATTENTION", msgCancel, TaskDialogCommonButtons.Close)

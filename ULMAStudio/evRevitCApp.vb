@@ -93,20 +93,22 @@ Partial Public Class evRevit
                 End If
             End If
         Next
-        ' Añadir al Log las familias insertadas. (Lo quitamos, ya lo registra UCBrowser)
-        'For Each oIdins As ElementId In oFInsertadas
-        '    Dim oFins As Family = CType(e.GetDocument.GetElement(oIdins), Family)
-        '    If ULMALGFree.clsBase._registraLoadInsert = True Then   ' AndAlso oFins.Symbol.FamilyName.Contains("#") Then
-        '        If oFins.Document IsNot Nothing AndAlso
-        '            oFins.Document.IsFamilyDocument AndAlso
-        '            oFins.Document.PathName <> "" _
-        '            AndAlso IO.File.Exists(oFins.Document.PathName) Then
-        '            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", oFins.Document.PathName, oFins.Name)
-        '        Else
-        '            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", "", oFins.Name)
-        '        End If
-        '    End If
-        'Next
+        ' Añadir al Log las familias insertadas.
+        ' Al insertar con UCBrowser, la primera figurará como BROWSER_INSERT_FAMILY, pero el resto como INSERT_FAMILY
+        For Each oIdins As ElementId In oFInsertadas
+            Dim oFins As Family = CType(e.GetDocument.GetElement(oIdins), Family)
+            ' _registraLoadInsert es false, en la primera inserción desde UCBrowser.
+            If ULMALGFree.clsBase._registraLoadInsert = True Then   ' AndAlso oFins.Symbol.FamilyName.Contains("#") Then
+                If oFins.Document IsNot Nothing AndAlso
+                    oFins.Document.IsFamilyDocument AndAlso
+                    oFins.Document.PathName <> "" _
+                    AndAlso IO.File.Exists(oFins.Document.PathName) Then
+                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", FILENAME:=oFins.Document.PathName, FAMILY:=oFins.Name)
+                Else
+                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("INSERT_FAMILY", FAMILY:=oFins.Name)
+                End If
+            End If
+        Next
         ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
         ULMALGFree.clsBase._registraLoadInsert = True
     End Sub
@@ -196,9 +198,7 @@ Partial Public Class evRevit
             ElseIf e.Document.PathName.ToUpper.EndsWith("RFT") Then
                 If cLcsv IsNot Nothing AndAlso registraLog = True Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_FAMILY_TEMPLATE, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("RTE") Then
-                If ULMALGFree.clsBase._ultimaAccion <> ULMALGFree.ACTION.UCR_CODIFY.ToString AndAlso ULMALGFree.clsBase._ultimaAccion <> ULMALGFree.ACTION.UCR_TRANSLATE.ToString Then
-                    If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT_TEMPLATE, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
-                End If
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.OPEN_PROJECT_TEMPLATE, FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("IFC") Then
                 If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("OPEN_IFC", FILENAME:=e.Document.PathName, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=IO.Path.GetFileName(e.Document.PathName))
             ElseIf e.Document.PathName.ToUpper.EndsWith("ADSK") Then
@@ -288,13 +288,13 @@ Partial Public Class evRevit
                 strPath = e.Document.PathName
             End If
             If strPath <> "" Then   ' AndAlso IO.File.Exists(e.FamilyPath) Then
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, FILENAME:=strPath, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=e.FamilyName)
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, FILENAME:=strPath, FAMILY:=e.FamilyName, MARKET:=arrM, LANGUAGE:=arrL)
             Else
-                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, MARKET:=arrM, LANGUAGE:=arrL, NOTES:=e.FamilyName)
+                If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.LOAD_FAMILY, FAMILY:=e.FamilyName, MARKET:=arrM, LANGUAGE:=arrL)
             End If
         End If
         ULMALGFree.clsBase._registraLoadInsert = True
-        ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.UCREVIT
+        ULMALGFree.clsBase._ultimaApp = ULMALGFree.queApp.ULMASTUDIO
     End Sub
     Private Shared Sub evAppC_DocumentPrinted(sender As Object, e As DocumentPrintedEventArgs) Handles evAppC.DocumentPrinted
         'System.Windows.MessageBox.Show("ControlledApplication.DocumentPrinted")

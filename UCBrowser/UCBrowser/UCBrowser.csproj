@@ -139,9 +139,6 @@
     </None>
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\SegMDL2.ttf" />
-    <None Include="UCBrowser - manual de usuario.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\e713.png" />

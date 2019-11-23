@@ -62,9 +62,9 @@ Public Class frmAbout
             abre = False
             Me.oT.Start()
         Else
-            Dim msg As String = "Do you want to update ULMA Studio? Revit will be closed and relaunched"
+            Dim msg As String = "Do you want to update ULMA Studio? Revit will be closed and relaunched."
 
-            If MsgBox(msg, MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
+            If MsgBox(msg, MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update ULMA Studio") = MsgBoxResult.Yes Then
                 ' Comprobar si hay ficheros sin guardar.
                 Dim haysinguardar As Boolean = False
                 For Each oD As Document In evRevit.evApp.Documents
@@ -75,10 +75,28 @@ Public Class frmAbout
                 Next
                 If haysinguardar = True Then
                     If MsgBox("There are unsaved documents, do you want to save them?",
-                              MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update AddIn") = MsgBoxResult.Yes Then
+                              MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update ULMA Studio") = MsgBoxResult.Yes Then
                         For Each oD As Document In evRevit.evApp.Documents
                             If oD.IsModified = True Then
-                                oD.Save()
+                                Try
+                                    oD.Save()
+                                Catch ex As Exception
+                                    Dim SaveFileDialog1 As SaveFileDialog = New SaveFileDialog()
+                                    Dim pathFile As String
+                                    If oD.IsFamilyDocument Then
+                                        SaveFileDialog1.Filter = "RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|All Files (*.*)|*.*"
+                                    Else
+                                        SaveFileDialog1.Filter = "RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|All Files (*.*)|*.*"
+                                    End If
+                                    If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+                                        pathFile = SaveFileDialog1.FileName
+                                        oD.SaveAs(pathFile)
+                                        Continue For
+                                    Else
+                                        MsgBox("It is not possible to update ULMA Studio. Please save documents before updating.", MsgBoxStyle.Exclamation, "ULMA Studio Update Aborted")
+                                        Exit Sub
+                                    End If
+                                End Try
                             End If
                         Next
                     End If

@@ -12,9 +12,9 @@ Partial Public Class clsBase
     ' Comprobar datos del fichero cuando ya existe key.dat
     Public Shared Function ID_Comprueba_OffLine() As UCClientWebService.Models.ResponseID
         Dim resultado As New ResponseID With {.id = "", .valid = False, .message = ""}
+        Dim networkinternet As String = EstadoRed_String()
         '
-        ' ** Nueva lógica. Solo llamamos a la comprobación Web, si no existe el fichero.
-        ' Si ya existe key.dat. Comprobar sintaxis, id <> "" y pc. No comprobación Web, para no aumentar el nº de instalaciones.
+        ' ** Nueva lógica. Siempre comprobar el ID (La primera vez para crear key y si existe también)
         cr = New crip("aiiao2K19")
         If IO.File.Exists(keyfile) = True Then
             ' Fichero si existe
@@ -25,19 +25,38 @@ Partial Public Class clsBase
             End Try
             Dim lineas As String() = texto.Split(vbCrLf)
             '
-            ' Fichero existe. No tiene las 5 lineas que debe tener.
-            If lineas.Count <> 5 Then
+            ' Fichero existe. No tiene las 6 lineas que debe tener. (La ultima fila es la última comprobación online en Ticks)
+            If lineas.Count <> 6 Then
                 IO.File.Delete(keyfile)
                 resultado.id = ""
                 resultado.valid = False
                 resultado.message = "Invalid key data in file."  ' validacion.File_incorrect_data & "|" & validacion.File_incorrect_data.ToString.Replace("_", " ")
-            ElseIf lineas.Count = 5 Then
+            ElseIf lineas.Count = 6 Then
                 Dim id As String = lineas(2).Replace(vbLf, "")    ' crip2aCAD.clsCR.Texto_Desencriptar(lineas(2))
                 Dim pc As String = lineas(4).Replace(vbLf, "")    ' crip2aCAD.clsCR.Texto_Desencriptar(lineas(4))
+                Dim tTicks As String = lineas(5).Replace(vbLf, "")    ' crip2aCAD.clsCR.Texto_Desencriptar(lineas(4))
+                Dim nTicks As Long = 0
                 resultado.id = id
+                '
+                Dim oDate As Date = Nothing
+                If Long.TryParse(tTicks, nTicks) = True Then
+                    oDate = New Date(nTicks)
+                Else
+                    ' tTicks no escorrecto (No es un número)
+                    IO.File.Delete(keyfile)
+                    resultado.valid = False
+                    resultado.message = "Invalid key data in file."
+                    Return resultado
+                    Exit Function
+                End If
                 '
                 If id = "" Then
                     ' ID no escorrecto
+                    IO.File.Delete(keyfile)
+                    resultado.valid = False
+                    resultado.message = "Registration ID is not valid (" & "''" & ")"
+                ElseIf IsNumeric(tTicks) = False Then
+                    ' tTicks no escorrecto (No es un número)
                     IO.File.Delete(keyfile)
                     resultado.valid = False
                     resultado.message = "Registration ID is not valid (" & "''" & ")"
@@ -82,30 +101,30 @@ Partial Public Class clsBase
         Try
             If My.Computer.Network.IsAvailable() Then
                 If My.Computer.Network.Ping("www.google.com", 1000) Then 'Asignamos la pagina a consultar ejemplo www.google.com y el tiempo de espera máximo
-                    EstadoRed_Boolean = True
+                    Return True
                 Else
-                    EstadoRed_Boolean = False
+                    Return False
                 End If
             Else
-                EstadoRed_Boolean = False
+                Return False
             End If
         Catch ex As Exception
-            EstadoRed_Boolean = False
+            Return False
         End Try
     End Function
     Public Shared Function EstadoRed_String() As String
         Try
             If My.Computer.Network.IsAvailable() Then
                 If My.Computer.Network.Ping("www.google.com", 1000) Then 'Asignamos la pagina a consultar ejemplo www.google.com y el tiempo de espera máximo
-                    EstadoRed_String = ""
+                    Return ""
                 Else
-                    EstadoRed_String = "No internet access available"
+                    Return "Offline. No internet access available"
                 End If
             Else
-                EstadoRed_String = "No network connection available"
+                Return "Offline. No network connection available"
             End If
         Catch ex As Exception
-            EstadoRed_String = "No network connection available"
+            Return "Offline. No network connection available"
         End Try
     End Function
     '
@@ -116,7 +135,8 @@ Partial Public Class clsBase
         lineas &= "O9Ip06Ty" & vbCrLf
         lineas &= idform & vbCrLf
         lineas &= "7YYuIIop" & vbCrLf
-        lineas &= _appComputer
+        lineas &= _appComputer & vbCrLf
+        lineas &= Date.Now.Ticks & vbCrLf
         '
         IO.File.WriteAllText(keyfile, crip.Texto_Encripta(lineas))
     End Sub

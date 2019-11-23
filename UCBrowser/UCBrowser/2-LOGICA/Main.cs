@@ -80,7 +80,7 @@ namespace UCBrowser
             if (cLcsv == null) { cLcsv = new ULMALGFree.clsBase(typeof(UCBrowser).Assembly); }
             if (cLcsv != null)
             {
-                Main.cLcsv.PonLog_ULMA("BROWSER_OPEN", EApp: ULMALGFree.queApp.UCREVIT);
+                Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_OPEN, EApp: ULMALGFree.queApp.ULMASTUDIO);
             }
             if (ventanaUCBrowser == null || (ventanaUCBrowser != null && ULMALGFree.clsBase._recargarBrowser))
             {
@@ -193,8 +193,7 @@ namespace UCBrowser
                         trans.Commit();
                         if (Main.cLcsv != null)
                         {
-                            //Main.cLcsv.PonLog_ULMA("BROWSER_LOAD_FAMILY", pathArchivoFamiliaDesencriptado, NOTES:familia.Name, EApp:ULMALGFree.queApp.UCBROWSER);
-                            Main.cLcsv.PonLog_ULMA("BROWSER_LOAD_FAMILY", FAMILY: System.IO.Path.GetFileName(pathArchivoFamiliaDesencriptado), NOTES:familia.Name, EApp:ULMALGFree.queApp.UCBROWSER);
+                            Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_LOAD_FAMILY, FILENAME:pathArchivoFamiliaDesencriptado, FAMILY:familia.Name, EApp:ULMALGFree.queApp.UCBROWSER);
                         }
                         ULMALGFree.clsBase._registraLoadInsert = true;
                     }
@@ -257,7 +256,7 @@ namespace UCBrowser
                     interfaceConElDocumento.PostRequestForElementTypePlacement(simbolo);
                     if (Main.cLcsv != null)
                     {
-                        Main.cLcsv.PonLog_ULMA("BROWSER_INSERT_FAMILY",FAMILY:simbolo.Name, EApp: ULMALGFree.queApp.UCBROWSER);
+                        Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_INSERT_FAMILY,FAMILY:simbolo.Name, EApp: ULMALGFree.queApp.UCBROWSER);
                     }
                     ULMALGFree.clsBase._registraLoadInsert = true;
                 }
