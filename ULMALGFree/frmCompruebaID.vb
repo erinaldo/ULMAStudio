@@ -14,43 +14,42 @@ Public Class frmCompruebaID
     End Sub
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
-        ULMALGFree.clsBase.idform = Me.TxtActivacionCode.Text
         'Dim res  ULMALGFree.validacion = uf.ID_Comprueba_OffLine
-        uf.resultado = New UCClientWebService.Models.ResponseID
+        uf.RespID = New UCClientWebService.Models.ResponseID
+        uf.RespID.id = Me.TxtActivacionCode.Text
         Dim networkinternet As String = uf.EstadoRed_String
         If networkinternet <> "" Then
-            uf.resultado.id = Me.TxtActivacionCode.Text
-            uf.resultado.message = networkinternet
-            uf.resultado.valid = False
-            MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
-            cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code Error: " & uf.resultado.message)
+            uf.RespID.message = networkinternet
+            uf.RespID.valid = False
+            MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
+            cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Form Code Error: " & uf.RespID.message)
             Me.TxtActivacionCode.Text = ""
         Else
-            uf.resultado = uf.ID_Comprueba_OnLine
-            If uf.resultado.valid = True Then
+            Dim srvId As New UCClientWebService.Services.AddInService
+            Dim rId As New UCClientWebService.Models.RequestID With {.id = uf.RespID.id}
+            uf.RespID = srvId.IsValidAsync("https://www.ulmaconstruction.com/@@bim_form_api", rId)
+
+            If uf.RespID.valid = True Then
                 MsgBox("ULMA Studio successfully activated.", MsgBoxStyle.Information, "Registration")
-                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code OK: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Form Code OK: " & uf.RespID.message)
+                uf.keyfile_escribe(uf.RespID.id)
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()
             Else
-                MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
-                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code Error: " & uf.resultado.message)
-                uf.resultado = Nothing
+                MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Form Code Error: " & uf.RespID.message)
+                'uf.RespID = Nothing
                 Me.TxtActivacionCode.Text = ""
-                'uf.resultado.id = ""
-                'uf.resultado.message = ""
-                'uf.resultado.valid = False
             End If
         End If
     End Sub
 
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
-        uf.resultado = New UCClientWebService.Models.ResponseID
-        uf.resultado.id = ""
-        uf.resultado.message = "ULMA Studio not activated."
-        uf.resultado.valid = False
-        ULMALGFree.clsBase.idform = ""
-        MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
+        If uf.RespID Is Nothing Then uf.RespID = New UCClientWebService.Models.ResponseID
+        uf.RespID.id = ""
+        uf.RespID.message = "ULMA Studio not activated."
+        uf.RespID.valid = False
+        MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Close()
     End Sub

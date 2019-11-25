@@ -71,33 +71,37 @@ Class ULMAStudioApplication
         '
         ' ***** COMPROBAR SI ESTÁ AUTORIZADO Y SI TIENE QUE MOSTRAR FORMULARIO ID
         Dim msgCancel As String = "The UCRevit AddIn could not be validated. It will not load."
+        ' Si NO existe el fichero key.dat. ** Siempre llamamos al Formulario
+        ' Si existe el fichero key.dat. Comprobar conexión/internet, estructura y datos del fichero.
+
         If IO.File.Exists(uf.keyfile) = False Then
-            ' No existe el fichero key.dat
+            ' No key.dat. Formulario
             Dim frmID As New ULMALGFree.frmCompruebaID
             Dim fRes As Forms.DialogResult = frmID.ShowDialog(New WindowWrapper(Process.GetCurrentProcess.MainWindowHandle))
 
             If fRes = Forms.DialogResult.Cancel Then
-                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Form Code Canceled: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Form Code Canceled: " & uf.RespID.message)
                 Call cLcsv.CompruebaConexionFTPUlma(SubirBorrar:=True)
                 Return Result.Cancelled
                 Exit Function
             End If
         ElseIf IO.File.Exists(uf.keyfile) = True Then
-            ' Ya existe el fichero key.dat
-            uf.resultado = uf.ID_Comprueba_OffLine
-            If uf.resultado.valid = True Then
-                If uf.resultado.message.Contains("Offline") Then
+            ' Si key.dat. Comprobaciones
+            uf.ID_Comprueba_OnLine()
+
+            If uf.RespID.valid = True Then
+                If uf.RespID.message.Contains("Offline") OrElse uf.RespID.messagelog.Contains("Offline") Then
                     ' Es correcto temporalmente, ya que no tenía conexión y no podemos comprobar el ID
                     ' (Le damos hasta un maximo de 90 días sin conexión, informamos de los días sin conexión y activamos)
-                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="OK temporal: " & uf.resultado.message)
+                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="OK temporal: " & uf.RespID.messagelog)
                 Else
                     ' Es correcto, continuamos sin avisos, cargando el AddIn.
-                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Check Code OK: " & uf.resultado.message)
+                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code OK: " & uf.RespID.messagelog)
                 End If
             Else
-                MsgBox(uf.resultado.message, MsgBoxStyle.Critical, "Registration")
+                MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
                 'TaskDialog.Show("ATTENTION", msgCancel, TaskDialogCommonButtons.Close)
-                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.resultado.id, NOTES:="Check Code error: " & uf.resultado.message)
+                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code error: " & uf.RespID.messagelog)
                 Return Result.Cancelled
                 Exit Function
             End If

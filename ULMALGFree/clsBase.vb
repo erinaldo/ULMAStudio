@@ -486,11 +486,11 @@ Public Class clsBase
         If NOTES <> "" AndAlso IsDate(NOTES) Then
             NOTES = "=" & comillas & CDate(NOTES).ToString(formatofecha) & comillas
         End If
-        If KEYCODE = "" AndAlso idform <> "" Then
-            KEYCODE = idform
+        If KEYCODE = "" AndAlso RespID.id <> "" Then
+            KEYCODE = RespID.id
         End If
-        If KEYCODE = "" AndAlso resultado.id <> "" Then
-            KEYCODE = resultado.id
+        If KEYCODE = "" AndAlso RespID.id <> "" Then
+            KEYCODE = RespID.id
         End If
         ULMALGFree.clsBase._ultimaAccion = ACTION
         '
