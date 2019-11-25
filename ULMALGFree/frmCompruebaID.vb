@@ -28,6 +28,7 @@ Public Class frmCompruebaID
             Dim srvId As New UCClientWebService.Services.AddInService
             Dim rId As New UCClientWebService.Models.RequestID With {.id = uf.RespID.id}
             uf.RespID = srvId.IsValidAsync("https://www.ulmaconstruction.com/@@bim_form_api", rId)
+            uf.RespID.messagelog = uf.RespID.message
 
             If uf.RespID.valid = True Then
                 MsgBox("ULMA Studio successfully activated.", MsgBoxStyle.Information, "Registration")

@@ -30,8 +30,8 @@ Partial Public Class clsBase
             ' No tiene las 6 lineas que debe tener. (La ultima fila es la última comprobación online en Ticks)
             RespID.id = ""
             RespID.valid = False
-            RespID.message = "Invalid key data in file."
-            RespID.messagelog = RespID.message
+            RespID.message = "Registration ID is not valid"
+            RespID.messagelog = "Invalid key data in file (lineas)"
         ElseIf lineas.Count = 6 Then
             Dim id As String = lineas(2).Replace(vbLf, "")
             Dim pc As String = lineas(4).Replace(vbLf, "")
@@ -49,8 +49,8 @@ Partial Public Class clsBase
                 ' tTicks no escorrecto (No es un número)
                 'IO.File.Delete(keyfile)
                 RespID.valid = False
-                RespID.message = "Invalid key data in file."
-                RespID.messagelog = RespID.message
+                RespID.message = "Registration ID is not valid"
+                RespID.messagelog = "Invalid key data in file (date)"
                 Exit Sub
             End If
             ' Comprobar ID y PC
@@ -58,25 +58,27 @@ Partial Public Class clsBase
                 ' ID no escorrecto
                 'IO.File.Delete(keyfile)
                 RespID.valid = False
-                RespID.message = "Registration ID is not valid (" & "''" & ")"
-                RespID.messagelog = RespID.message
+                RespID.message = "Registration ID is not valid"
+                RespID.messagelog = "Invalid key data in file (id)"
             ElseIf pc <> _appComputer Then
                 'PC no es el correcto
                 'IO.File.Delete(keyfile)
                 RespID.valid = False
-                RespID.message = "Invalid pc validation."
-                RespID.messagelog = "Invalid pc validation (" & pc & ")"
+                RespID.message = "Registration ID is not valid"
+                RespID.messagelog = "Invalid pc validation (pc)"
             ElseIf nDays < 0 OrElse nDays > 90 Then
                 'Han pasado los 90 días sin conexión
                 'IO.File.Delete(keyfile)
                 RespID.valid = False
                 RespID.message = "ULMA Studio can not be launched without network connection"
-                RespID.messagelog = RespID.message
+                RespID.messagelog = "Network connection off (" & nDays & ")"
             ElseIf id <> "" AndAlso pc = _appComputer Then
+                rId.id = id
                 If networkinternet = "" Then
                     ' SI hay conexión / internet
                     ' Comprobar ID via Web y recoger resultado
                     RespID = srvId.IsValidAsync("https://www.ulmaconstruction.com/@@bim_form_api", rId)
+                    RespID.messagelog = RespID.message
                 Else
                     ' NO hay conexión / internet
                     ' Validación temporal (máximo 90 días)
@@ -134,7 +136,7 @@ Partial Public Class clsBase
         lineas &= queID & vbCrLf
         lineas &= newGuid.Substring(20, 8) & vbCrLf
         lineas &= _appComputer & vbCrLf
-        lineas &= Date.Now.Ticks & vbCrLf
+        lineas &= Date.Now.Ticks
         '
         IO.File.WriteAllText(keyfile, crip.Texto_Encripta(lineas))
     End Sub

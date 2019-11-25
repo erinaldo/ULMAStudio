@@ -19,6 +19,7 @@ namespace UCClientWebService.Services
                 {
                     id = request.id,
                     message = response.Message,
+                    messagelog = response.Message, 
                     valid = false
                 };
             }

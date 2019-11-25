@@ -99,8 +99,10 @@ Class ULMAStudioApplication
                     cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code OK: " & uf.RespID.messagelog)
                 End If
             Else
-                MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
-                'TaskDialog.Show("ATTENTION", msgCancel, TaskDialogCommonButtons.Close)
+                'Using New ULMALGFree.MsgboxCentrado_Screen(System.Windows.Forms.Screen.PrimaryScreen)
+                '    MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
+                'End Using
+                TaskDialog.Show("Registration", uf.RespID.message, TaskDialogCommonButtons.Close)
                 cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code error: " & uf.RespID.messagelog)
                 Return Result.Cancelled
                 Exit Function
