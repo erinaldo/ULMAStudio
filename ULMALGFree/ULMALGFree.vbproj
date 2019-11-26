@@ -90,6 +90,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="UIAutomationClient" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -103,6 +104,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsAPI.vb" />
     <Compile Include="clsVersions.vb" />
     <Compile Include="ComparadorSuperGrupos.vb" />
     <Compile Include="clsArticulos.vb" />
@@ -119,6 +121,12 @@
       <DependentUpon>frmCompruebaID.vb</DependentUpon>
     </Compile>
     <Compile Include="frmCompruebaID.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMsgBox.Designer.vb">
+      <DependentUpon>frmMsgBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMsgBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUpdater.Designer.vb">
@@ -155,6 +163,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmCompruebaID.resx">
       <DependentUpon>frmCompruebaID.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMsgBox.resx">
+      <DependentUpon>frmMsgBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUpdater.resx">
       <DependentUpon>frmUpdater.vb</DependentUpon>

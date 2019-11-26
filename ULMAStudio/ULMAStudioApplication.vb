@@ -102,7 +102,13 @@ Class ULMAStudioApplication
                 'Using New ULMALGFree.MsgboxCentrado_Screen(System.Windows.Forms.Screen.PrimaryScreen)
                 '    MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
                 'End Using
-                TaskDialog.Show("Registration", uf.RespID.message, TaskDialogCommonButtons.Close)
+                ' TaskDialog para Revit (Si no, no se centra con msgbox)
+                Dim td As New TaskDialog("Registration")
+                td.CommonButtons = TaskDialogCommonButtons.Close
+                td.MainInstruction = uf.RespID.message
+                td.MainIcon = TaskDialogIcon.TaskDialogIconError
+                Call td.Show()
+                ' ***************************
                 cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code error: " & uf.RespID.messagelog)
                 Return Result.Cancelled
                 Exit Function
