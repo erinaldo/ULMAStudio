@@ -173,7 +173,7 @@ Partial Public Class clsBase
         If CLast Is Nothing OrElse CLast.Count = 0 Then INIUpdates_LeeLAST()
         ' addins
         Dim lista() As String = cFtp.FTP_ListaDir(ULMALGFree.clsBase.FTP1_dirAddins, fullpath:=False)
-        Dim lista2(), lista3() As String
+        Dim lista0(), lista2(), lista3() As String
         If lista.Count > 0 Then
             lista = ArrayFullWeb_DameSoloNombreExtension(lista)
             lDir.AddRange(lista)
@@ -186,8 +186,8 @@ Partial Public Class clsBase
         '2019/11/20 Xabier Calvo: solo Updates
         lista = cFtp.FTP_ListaDir(ULMALGFree.clsBase.FTP1_dirFamilies)
         If lista.Count > 0 Then
-            lista = ArrayFullWeb_DameSoloNombreExtension(lista)
-            lDir.AddRange(lista)
+            lista0 = ArrayFullWeb_DameSoloNombreExtension(lista)
+            lDir.AddRange(lista0)
             INIUpdates_EscribeUPDATES(lDir, borrarupdate:=False)
             resultado.Add("families", lDir)
             lDir = New List(Of String)
@@ -351,9 +351,10 @@ Partial Public Class clsBase
     End Sub
 
     Public Shared Sub FTP_DescargarYDescomprimir(ByRef oGroup As Group,
-                                           d As Datos,
-                                          ByRef LblAccion As System.Windows.Forms.Label,
-                                          ByRef Pb1 As System.Windows.Forms.ProgressBar)
+                                            d As Datos,
+                                            ByRef LblAccion As System.Windows.Forms.Label,
+                                            ByRef Pb1 As System.Windows.Forms.ProgressBar,
+                                            ByVal etiquetaAccion As String)
         '
         Dim correcto As Boolean = False
         ' Crear el directorio destino, si no existe. Para que lo podamos descargar ahí.
@@ -370,7 +371,7 @@ Partial Public Class clsBase
 
         If IO.File.Exists(d.Local_FileFull) = False Then
             ' Descargar el fichero si no está en la carpeta Updates
-            LblAccion.Text = "Downloading... " & d.Local_File.Split("_"c)(1) : LblAccion.Refresh()
+            LblAccion.Text = etiquetaAccion & d.Local_File.Split("_"c)(1) : LblAccion.Refresh()
             ULMALGFree.clsBase.DescargaFicheroFTPUCRevitFree(d.Tipo, IO.Path.GetDirectoryName(d.Local_FileFull), d.Local_File, Pb1)
         End If
 
@@ -398,11 +399,11 @@ Partial Public Class clsBase
             '
             ' Borrar el fichero .zip 
             Try
-                    IO.File.Delete(d.Local_FileFull)
-                Catch ex As Exception
+                IO.File.Delete(d.Local_FileFull)
+            Catch ex As Exception
 
-                End Try
-            End If
+            End Try
+        End If
     End Sub
     '
     Public Shared Sub FTP_DescargarYDescomprimirXML(d As Datos)

@@ -471,7 +471,7 @@ Public Class Group
                 If d.Local_File.Contains(gCode) AndAlso d.Local_File.Contains(gShortName) Then
                     uf.frmUFam.ProgressBar1.Visible = True
                     uf.frmUFam.LblAction.Visible = True
-                    uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1)
+                    uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1, "Downloading...")
                     uf.frmUFam.LblAction.Text = "Action:"
                     uf.frmUFam.ProgressBar1.Value = 0
                     ' Log de la Familia descargada.
@@ -510,7 +510,7 @@ Public Class Group
                 If d.Local_File.Contains(gCode) AndAlso d.Local_File.Contains(gShortName) Then
                     uf.frmUFam.ProgressBar1.Visible = True
                     uf.frmUFam.LblAction.Visible = True
-                    uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1)
+                    uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1, "Updating...")
                     uf.frmUFam.LblAction.Text = "Action:"
                     uf.frmUFam.ProgressBar1.Value = 0
                     ' Log de la Familia descargada.

@@ -215,9 +215,9 @@ Class ULMAStudioApplication
         btnBrowserBoton.Image = queImg
         btnBrowserBoton.LargeImage = queImg
         ' Add a tooltip
-        btnBrowserBoton.ToolTip = "Family Browser ULMA"    ' & Environment.NewLine & "ULMA"
+        btnBrowserBoton.ToolTip = "Family Browser"
         'btnBrowserBoton.ItemText = "Browser"   ' & Environment.NewLine & "ULMA"
-        btnBrowserBoton.LongDescription = "Family Browser ULMA"
+        btnBrowserBoton.LongDescription = ""
         btnBrowserBoton.Enabled = True
         btnBrowserBoton.Visible = True
     End Sub
@@ -233,10 +233,10 @@ Class ULMAStudioApplication
         btnReportBoton.Image = queImg
         btnReportBoton.LargeImage = queImg
         ' Add a tooltip
-        btnReportBoton.ToolTip = "Report ULMA"
+        btnReportBoton.ToolTip = "GET Report"
         'btnReportBoton.ItemText = "Opciones" & Environment.NewLine & "PrefaBIM"
         'btnReportBoton.ToolTipImage = NewBitmapImage("GENPLANOToolTip.png")
-        btnReportBoton.LongDescription = "Report ULMA in PDF"
+        btnReportBoton.LongDescription = ""
         'btnReportBoton.ClassName = _introLabName + ".btnWeb2aCAD"
         'btnReportBoton.AvailabilityClassName = _introLabName
         btnReportBoton.Enabled = True    '' Hasta que pasemos por Options
@@ -260,7 +260,7 @@ Class ULMAStudioApplication
         btnDownloadBoton.ToolTip = "Download Families"
         'btnDownloadBoton.ItemText = "Opciones" & Environment.NewLine & "PrefaBIM"
         'btnDownloadBoton.ToolTipImage = NewBitmapImage("GENPLANOToolTip.png")
-        btnDownloadBoton.LongDescription = "If exist downloads of ULMA Families, Download Families"
+        btnDownloadBoton.LongDescription = ""
         'btnDownloadBoton.ClassName = _introLabName + ".btnWeb2aCAD"
         'btnDownloadBoton.AvailabilityClassName = _introLabName
         btnDownloadBoton.Enabled = True    '' Hasta que pasemos por Options
@@ -282,8 +282,8 @@ Class ULMAStudioApplication
         btnAboutBoton.Image = queImg
         btnAboutBoton.LargeImage = queImg
         ' Add a tooltip
-        btnAboutBoton.ToolTip = "About" + sufijo
-        btnAboutBoton.LongDescription = "About" + sufijo & " of " & _introLabName & " and Update AddIn"
+        btnAboutBoton.ToolTip = "About" '+ sufijo
+        'btnAboutBoton.LongDescription = "About" + sufijo & " of " & _introLabName & " and Update AddIn"
         btnAboutBoton.Enabled = True    '' Hasta que pasemos por Options
         btnAboutBoton.Visible = True
     End Sub

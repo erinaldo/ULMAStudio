@@ -76,30 +76,46 @@ Public Class frmAbout
                 If haysinguardar = True Then
                     For Each oD As Document In evRevit.evApp.Documents
                         If oD.IsModified = True Then
-                            If oD.PathName <> "" Then
-                                If MsgBox("Save " & oD.Title, MsgBoxStyle.Question Or MsgBoxStyle.YesNoCancel) = vbYes Then
-
-                                End If
-                                ' Si ya tenía un Path. Guardar
-                                oD.Save()
-                                Else
-                                    ' Si no tenía Path. Guardar Como
-                                    Dim SaveFileDialog1 As SaveFileDialog = New SaveFileDialog()
-                                Dim pathFile As String
-                                If oD.IsFamilyDocument Then
-                                    SaveFileDialog1.Filter = "RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|All Files (*.*)|*.*"
-                                Else
-                                    SaveFileDialog1.Filter = "RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|All Files (*.*)|*.*"
-                                End If
-                                If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-                                    pathFile = SaveFileDialog1.FileName
-                                    oD.SaveAs(pathFile, New SaveAsOptions With {.OverwriteExistingFile = True})
+                            ' Hace zoom e indirectamente activa la vista
+                            Zomm_Elements_View(oD, True)
+                            ' Ocultar este formulario
+                            Me.Hide()
+                            ' Crear y mostrar el formulario
+                            Dim oDlg As SaveFileDialog = New SaveFileDialog()
+                            Dim pathFile As String = oD.PathName
+                            oDlg.RestoreDirectory = True
+                            oDlg.OverwritePrompt = True
+                            If pathFile <> "" Then
+                                oDlg.Title = "Save " & IO.Path.GetFileName(pathFile)
+                            Else
+                                oDlg.Title = "SaveAs new document"
+                            End If
+                            '
+                            If oD.IsFamilyDocument Then
+                                oDlg.Filter = "Family Files (*.rfa*)|*.rfa|Template Files (*.rft*)|*.rft|All Files (*.*)|*.*"
+                            Else
+                                oDlg.Filter = "Project Files (*.rvt*)|*.rvt|Template Files (*.rte*)|*.rte|All Files (*.*)|*.*"
+                            End If
+                            If pathFile <> "" AndAlso IO.File.Exists(pathFile) Then
+                                oDlg.InitialDirectory = IO.Path.GetDirectoryName(pathFile)
+                                oDlg.FileName = IO.Path.GetFileName(pathFile)   'pathFile    ' IO.Path.GetFileName(pathFile)
+                            End If
+                            '
+                            ' Resultado
+                            Select Case oDlg.ShowDialog()
+                                Case DialogResult.OK
+                                    If pathFile = oDlg.FileName Then
+                                        oD.Save()
+                                    Else
+                                        oD.SaveAs(oDlg.FileName, New SaveAsOptions With {.OverwriteExistingFile = True})
+                                    End If
+                                Case DialogResult.Cancel
                                     Continue For
-                                Else
+                                Case Else
                                     MsgBox("It is not possible to update ULMA Studio. Please save documents before updating.", MsgBoxStyle.Exclamation, "ULMA Studio Update Aborted")
                                     Exit Sub
-                                End If
-                            End If
+                            End Select
+
                         End If
                     Next
                 End If

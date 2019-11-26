@@ -39,7 +39,7 @@ Partial Public Class clsBase
             RespID.id = ""
             RespID.valid = False
             RespID.message = "Registration ID is not valid"
-            RespID.messagelog = "FAKE: Invalid key data in file (lineas)"
+            RespID.messagelog = "FAKE. Invalid key data in file (lineas)"
             trampeado = True
         ElseIf lineas.Count = 7 Then
             id = lineas(2).Replace(vbLf, "")
@@ -60,7 +60,7 @@ Partial Public Class clsBase
                 ' tTicks no escorrecto (No es un número)
                 RespID.valid = False
                 RespID.message = "Registration ID is not valid"
-                RespID.messagelog = "FAKE: Invalid key data in file (Last connection for validation)"
+                RespID.messagelog = "FAKE. Invalid key data in file (Last connection for validation)"
                 trampeado = True
                 GoTo FINAL
                 Exit Sub
@@ -70,7 +70,7 @@ Partial Public Class clsBase
                 ' nTicksAddin no escorrecto (No es un número)
                 RespID.valid = False
                 RespID.message = "Registration ID is not valid"
-                RespID.messagelog = "FAKE: Invalid key data in file (Last execution Addin)"
+                RespID.messagelog = "FAKE. Invalid key data in file (Last execution Addin)"
                 trampeado = True
                 GoTo FINAL
                 Exit Sub
@@ -81,14 +81,14 @@ Partial Public Class clsBase
                 'IO.File.Delete(keyfile)
                 RespID.valid = False
                 RespID.message = "Registration ID is not valid"
-                RespID.messagelog = "FAKE: Invalid key data in file (id)"
+                RespID.messagelog = "FAKE. Invalid key data in file (id)"
                 trampeado = True
             ElseIf pc <> _appComputer Then
                 'PC no es el correcto
                 'IO.File.Delete(keyfile)
                 RespID.valid = False
                 RespID.message = "Registration ID is not valid"
-                RespID.messagelog = "FAKE: Invalid pc validation (pc)"
+                RespID.messagelog = "FAKE. Invalid pc validation (pc)"
                 trampeado = True
             ElseIf nDays < 0 OrElse nDays > 90 Then
                 'Han pasado los 90 días sin conexión
@@ -100,7 +100,7 @@ Partial Public Class clsBase
                 'Han cambiado lo fecha del equipo
                 RespID.valid = False
                 RespID.message = "Registration ID is not valid"
-                RespID.messagelog = "FAKE: Invalid date Last Addin (" & Date.Now.ToString(formatofecha) & ")"
+                RespID.messagelog = "FAKE. Invalid date Last Addin (" & Date.Now.ToString(formatofecha) & ")"
                 trampeado = True
             ElseIf id <> "" AndAlso pc = _appComputer Then
                 rId.id = id

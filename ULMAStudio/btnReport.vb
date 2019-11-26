@@ -33,12 +33,12 @@ Public Class btnReport
         enejecucion = True
         Dim resultado As Result = Result.Succeeded
         '
-        If evRevit.evAppUI.ActiveUIDocument.Document.PathName = "" Then
-            'TaskDialog.Show("ATTENTION", "Save the document first and try again")
-            MsgBox("Save the document first and try again", MsgBoxStyle.Critical, "ATTENTION")
-            resultado = Result.Cancelled : GoTo FINAL
-            Exit Function
-        End If
+        'If evRevit.evAppUI.ActiveUIDocument.Document.PathName = "" Then
+        '    'TaskDialog.Show("ATTENTION", "Save the document first and try again")
+        '    MsgBox("Save the document first and try again", MsgBoxStyle.Critical, "ATTENTION")
+        '    resultado = Result.Cancelled : GoTo FINAL
+        '    Exit Function
+        'End If
 
         If evRevit.evAppUI.ActiveUIDocument.Document.IsFamilyDocument Then
             'TaskDialog.Show("ATTENTION", "Utility only for project document")
@@ -46,15 +46,14 @@ Public Class btnReport
             resultado = Result.Cancelled : GoTo FINAL
             Exit Function
         End If
-
-        ''
-        '' Solo para .rvt
-        If IO.Path.GetExtension(evRevit.evAppUI.ActiveUIDocument.Document.PathName).ToLower.Contains("rvt") = False Then
-            'TaskDialog.Show("ATTENTION", "Utility only for .rvt files")
-            MsgBox("Utility only for .rvt files", MsgBoxStyle.Critical, "ATTENTION")
-            resultado = Result.Cancelled : GoTo FINAL
-            Exit Function
-        End If
+        '
+        ' Solo para .rvt
+        'If IO.Path.GetExtension(evRevit.evAppUI.ActiveUIDocument.Document.PathName).ToLower.Contains("rvt") = False Then
+        '    'TaskDialog.Show("ATTENTION", "Utility only for .rvt files")
+        '    MsgBox("Utility only for .rvt files", MsgBoxStyle.Critical, "ATTENTION")
+        '    resultado = Result.Cancelled : GoTo FINAL
+        '    Exit Function
+        'End If
 
         'If oDoc.IsModified = True Then
         '    TaskDialog.Show("ATTENTION", "First save the document and try again")

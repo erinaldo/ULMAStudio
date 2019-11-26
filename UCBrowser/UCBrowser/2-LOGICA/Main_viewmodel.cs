@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 
 
 namespace UCBrowser
@@ -86,7 +87,9 @@ namespace UCBrowser
                     biblioteca.UsarNombresNormalesEnLasFamilias();
                 }
 
-                _lineasDeProducto = biblioteca.getLineasDeProducto();
+                //_lineasDeProducto = biblioteca.getLineasDeProducto();
+                _lineasDeProducto = biblioteca.getLineasDeProductoFiltrado();
+
                 NotifyPropertyChanged("lineasDeProducto");
 
                 //if (BibliotecaDeFamilias.familiasimg == null) { BibliotecaDeFamilias.familiasimg = new List<Familia>(); };
@@ -146,12 +149,41 @@ namespace UCBrowser
                 _lineaDeProductoSeleccionada = value;
                 NotifyPropertyChanged("lineaDeProductoSeleccionada");
 
-                _grupos = biblioteca.getGruposDeLaLinea(lineaDeProductoSeleccionada);
+                //_grupos = biblioteca.getGruposDeLaLinea(lineaDeProductoSeleccionada);
+                _grupos = biblioteca.getGruposDeLaLineaYaDescargadas(lineaDeProductoSeleccionada);
                 NotifyPropertyChanged("grupos");
 
                 _familias = new List<Familia>();
                 NotifyPropertyChanged("familias");
             }
+        }
+        private List<LineaDeProducto> FiltrarLineasDeProductoSoloDescargadas()
+        {
+            List<String> lineasUsadas = new List<String>();
+            List<String> lineasUsadasDistinct = new List<String>();
+            List<LineaDeProducto> resultado = new List<LineaDeProducto>();
+            ULMALGFree.clsBase.INIUpdates_LeeLAST();
+            foreach (GrupoDeFamilias grupo in this.grupos)
+            {
+                if (ULMALGFree.clsBase.CLast.ContainsKey(grupo.id))
+                {
+                    lineasUsadas.Add(grupo.lineaALaQuePertenece);
+                }
+            }
+            lineasUsadasDistinct = lineasUsadas.Distinct().ToList();
+            foreach (LineaDeProducto linea in this.lineasDeProducto)
+            {
+                if (lineasUsadasDistinct.Contains(linea.id))
+                {
+                    resultado.Add(linea);
+                }
+            }
+            return resultado;
+        }
+
+        public List<LineaDeProducto> getLineasDeProductoFiltrado()
+        {
+            return FiltrarLineasDeProductoSoloDescargadas();
         }
 
         private List<GrupoDeFamilias> _grupos;
@@ -420,6 +452,24 @@ namespace UCBrowser
             }
         }
 
+        public List<GrupoDeFamilias> getGruposDeLaLineaYaDescargadas(string idLineaDeProducto)
+        {
+            List<GrupoDeFamilias> resultado = new List<GrupoDeFamilias>();
+            List<GrupoDeFamilias> resultadoTemp = new List<GrupoDeFamilias>();
+            foreach (GrupoDeFamilias grupo in grupos.FindAll(x => x.lineaALaQuePertenece.Equals(idLineaDeProducto)))
+            {
+                resultadoTemp.Add(grupo);
+            }
+            String descargados = ULMALGFree.clsBase.INIUpdates_LeeLAST();
+            foreach (GrupoDeFamilias grupo in resultadoTemp)
+            {
+                if (ULMALGFree.clsBase.CLast.ContainsKey(grupo.id))
+                {
+                    resultado.Add(grupo);
+                }
+            }
+            return resultado;
+        }
 
         public void AgregarAFavoritos(Familia familia)
         {

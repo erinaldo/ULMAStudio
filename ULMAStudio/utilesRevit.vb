@@ -3937,6 +3937,27 @@ OTROID:
     '    End If
     'End Function
     ''
+    ' Activar vista de un Document (Seleccionando todo y haciendo zoom sobre seleccion)
+    Public Function Zomm_Elements_View(queDoc As Autodesk.Revit.DB.Document, Optional conZoom As Boolean = True) As List(Of ElementId)
+        ''
+        '' ***** FilterelementCollector de todos los FamilySymbol del documento
+        Dim uDoc As UIDocument = New UIDocument(queDoc)
+        Dim collector As New FilteredElementCollector(queDoc, uDoc.GetOpenUIViews.FirstOrDefault.ViewId)
+        ''
+        '' ***** LINQ para crear IEnumerable de los ID
+        Dim query As System.Collections.Generic.IEnumerable(Of Autodesk.Revit.DB.ElementId)
+        query = From element In collector
+                Select element.Id
+        '
+        ' Hacer un zoom y activar vista
+        uDoc.ShowElements(query.ToList)
+        '
+        If query.Count = 0 Then
+            Return Nothing
+        Else
+            Return query.ToList
+        End If
+    End Function
     Public Function ParametroCompartido_DameGUID(ByRef queDoc As Autodesk.Revit.DB.Document,
                                                      nombre As String) As System.Guid
         ''

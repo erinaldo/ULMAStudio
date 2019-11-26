@@ -39,6 +39,9 @@ Public Class frmUpdater
         btnRellena_Click(Nothing, Nothing)
         ' Ver cuantas actualizaciones tiene el supergrupo
         For Each oSg As ULMALGFree.SuperGroup In SuperGroups
+            Dim comparador As ComparadorGrupos = New ComparadorGrupos()
+            oSg.groups.Sort(comparador)
+
             Dim contador As Integer = 0
             For Each oG As ULMALGFree.Group In oSg.groups
                 Dim oAction As ULMALGFree.queAction = oG.Grupo_DameAction()
