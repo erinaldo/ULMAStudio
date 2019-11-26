@@ -144,7 +144,7 @@ Public Class btnReport
             fWait.Close()
             fWait = Nothing
         End If
-        If IO.File.Exists(_reportExe) Then
+        If IO.File.Exists(_reportExe) AndAlso IO.File.Exists(ULMALGFree.clsBase._ULMAStudioReport) Then
             Dim pInf As New ProcessStartInfo(_reportExe)
             pInf.UseShellExecute = False
             Using oProc = Process.Start(pInf)
@@ -155,7 +155,7 @@ Public Class btnReport
             End Using
             pInf = Nothing
         Else
-            MsgBox("ReportGenerator not found", MsgBoxStyle.ApplicationModal Or MsgBoxStyle.Critical, "ATTENTION")
+            MsgBox("ReportGenerator not found or error", MsgBoxStyle.ApplicationModal Or MsgBoxStyle.Critical, "ATTENTION")
         End If
         '
 FINAL:
@@ -173,111 +173,115 @@ FINAL:
         '
         Dim resultado As New List(Of filaDatos)
         For Each oFi As FamilyInstance In lFi
-            ' ¿Es una familia de ULMA?
-            Dim esulma As Boolean = FamilyInstance_EsDeULMA(evRevit.evDoc, oFi)
-            '
-            ' ImagePath temporal
-            Dim imgPath As String = ""
-            Dim name As String = oFi.Name
-            imgPath = IO.Path.Combine(path_families_base_images, name & ".png")
-            If IO.File.Exists(imgPath) = False Then imgPath = ""
-            '
-            ' NAME
-            If name = "" Then
-                name = oFi.Symbol.Name
+            Try
+                ' ¿Es una familia de ULMA?
+                Dim esulma As Boolean = FamilyInstance_EsDeULMA(evRevit.evDoc, oFi)
+                '
+                ' ImagePath temporal
+                Dim imgPath As String = ""
+                Dim name As String = oFi.Name
                 imgPath = IO.Path.Combine(path_families_base_images, name & ".png")
                 If IO.File.Exists(imgPath) = False Then imgPath = ""
-            End If
-            If name = "" Then
-                name = oFi.Symbol.FamilyName
-                If imgPath = "" Then
+                '
+                ' NAME
+                If name = "" Then
+                    name = oFi.Symbol.Name
                     imgPath = IO.Path.Combine(path_families_base_images, name & ".png")
                     If IO.File.Exists(imgPath) = False Then imgPath = ""
                 End If
-            End If
-            '
-            ' IMAGE Path (Por si aun no lo hemos cogido)
-            If imgPath = "" OrElse IO.File.Exists(imgPath) = False Then
-                If esulma Then
-                    imgPath = IO.Path.Combine(_dirApp & "\images", "LogoU.png")
-                Else
-                    imgPath = IO.Path.Combine(_dirApp & "\images", "Revit.png")
-                End If
-            End If
-            ' NAMEINFORME
-            Dim nameinforme As String = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi, "ITEM_DESCRIPTION")
-            If nameinforme = "" Then
-                nameinforme = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol, "ITEM_DESCRIPTION")
-            End If
-            If nameinforme = "" Then
-                nameinforme = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol.Family, "ITEM_DESCRIPTION")
-            End If
-            If nameinforme = "" And esulma = False Then
-                nameinforme = oFi.Name
-            End If
-            '
-            ' CODE
-            Dim code As String = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi, "ITEM_CODE")
-            If code = "" Then
-                code = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol, "ITEM_CODE")
-            End If
-            If code = "" Then
-                code = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol.Family, "ITEM_CODE")
-            End If
-            If code <> "" And nameinforme = "" Then
-                If uf.colArticulos.ContainsKey(code) Then
-                    '2019/10/24 Xabier Calvo: Si no hay description se coge la descripcion en ingles desde el XML
-                    nameinforme = CType(uf.colArticulos(code), ULMALGFree.clsArticulos).colDescritions("en").ToString
-                End If
-            End If
-            ' No incluir los que code = ""
-            If includewithoutcode = False AndAlso code = "" Then
-                Continue For
-            End If
-            ' WEIGHT
-            Dim weightTemp As Object = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi, "ITEM_WEIGHT")  'name.Length
-            If weightTemp Is Nothing Then
-                weightTemp = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi.Symbol, "ITEM_WEIGHT")
-            End If
-            If weightTemp Is Nothing Then
-                weightTemp = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi, "WEIGHT")
-            End If
-            If weightTemp Is Nothing Then
-                weightTemp = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi.Symbol, "WEIGHT")
-            End If
-            If weightTemp IsNot Nothing Then
-                weightTemp = uf.CheckDecimal_Value(weightTemp.ToString)
-            End If
-            Dim weight As Double = 0
-            If weightTemp IsNot Nothing Then
-                weight = Convert.ToDouble(IIf(IsNumeric(weightTemp), weightTemp.ToString.Split(" "c)(0), 0))
-            End If
-            If weight = 0 AndAlso code <> "" Then
-                If uf.colArticulos.ContainsKey(code) Then
-                    Dim wTemp As String = CType(uf.colArticulos(code), ULMALGFree.clsArticulos).weight
-                    wTemp = uf.CheckDecimal_Value(wTemp.ToString)
-                    If wTemp <> "" AndAlso IsNumeric(wTemp) Then
-                        wTemp = wTemp.Split(" "c)(0)
-                        weight = CDbl(wTemp)
+                If name = "" Then
+                    name = oFi.Symbol.FamilyName
+                    If imgPath = "" Then
+                        imgPath = IO.Path.Combine(path_families_base_images, name & ".png")
+                        If IO.File.Exists(imgPath) = False Then imgPath = ""
                     End If
                 End If
-            End If
-            ' Clave para ordenar por solo "Name"
-            Dim clave As String = IIf(nameinforme = "", name, nameinforme).ToString '& code
-            ' Clave para ordenar por "Category" y "Name" (Lo quitamos)
-            'Dim clave As String = oFi.Category.Name & IIf(nameinforme = "", name, nameinforme).ToString '& code
-            If dFilas.ContainsKey(clave) = False Then
-                dFilas.Add(clave, New filaDatos(imgPath, IIf(nameinforme = "", "", nameinforme).ToString, code, weight, 1, esulma, oFi.Category.Name))
-            Else
-                If dFilas(clave).Code = "" AndAlso code <> "" Then dFilas(clave).Code = code
-                dFilas(clave).Quantity += 1
-                ' Cambiamos para que sólo ponga el peso unitario (No los sume)
-                'dFilas(clave).Weight += weight
-                If dFilas(clave).Weight = 0 And weight > 0 Then
-                    dFilas(clave).Weight = weight
+                '
+                ' IMAGE Path (Por si aun no lo hemos cogido)
+                If imgPath = "" OrElse IO.File.Exists(imgPath) = False Then
+                    If esulma Then
+                        imgPath = IO.Path.Combine(_dirApp & "\images", "LogoU.png")
+                    Else
+                        imgPath = IO.Path.Combine(_dirApp & "\images", "Revit.png")
+                    End If
                 End If
-            End If
-            System.Windows.Forms.Application.DoEvents()
+                ' NAMEINFORME
+                Dim nameinforme As String = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi, "ITEM_DESCRIPTION")
+                If nameinforme = "" Then
+                    nameinforme = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol, "ITEM_DESCRIPTION")
+                End If
+                If nameinforme = "" Then
+                    nameinforme = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol.Family, "ITEM_DESCRIPTION")
+                End If
+                If nameinforme = "" And esulma = False Then
+                    nameinforme = oFi.Name
+                End If
+                '
+                ' CODE
+                Dim code As String = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi, "ITEM_CODE")
+                If code = "" Then
+                    code = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol, "ITEM_CODE")
+                End If
+                If code = "" Then
+                    code = utilesRevit.ParametroElementLeeString(evRevit.evDocUI.Document, oFi.Symbol.Family, "ITEM_CODE")
+                End If
+                If code <> "" And nameinforme = "" Then
+                    If uf.colArticulos.ContainsKey(code) Then
+                        '2019/10/24 Xabier Calvo: Si no hay description se coge la descripcion en ingles desde el XML
+                        nameinforme = CType(uf.colArticulos(code), ULMALGFree.clsArticulos).colDescritions("en").ToString
+                    End If
+                End If
+                ' No incluir los que code = ""
+                If includewithoutcode = False AndAlso code = "" Then
+                    Continue For
+                End If
+                ' WEIGHT
+                Dim weightTemp As Object = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi, "ITEM_WEIGHT")  'name.Length
+                If weightTemp Is Nothing Then
+                    weightTemp = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi.Symbol, "ITEM_WEIGHT")
+                End If
+                If weightTemp Is Nothing Then
+                    weightTemp = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi, "WEIGHT")
+                End If
+                If weightTemp Is Nothing Then
+                    weightTemp = utilesRevit.ParametroElementLeeObjeto(evRevit.evDocUI.Document, oFi.Symbol, "WEIGHT")
+                End If
+                If weightTemp IsNot Nothing Then
+                    weightTemp = uf.CheckDecimal_Value(weightTemp.ToString)
+                End If
+                Dim weight As Double = 0
+                If weightTemp IsNot Nothing Then
+                    weight = Convert.ToDouble(IIf(IsNumeric(weightTemp), weightTemp.ToString.Split(" "c)(0), 0))
+                End If
+                If weight = 0 AndAlso code <> "" Then
+                    If uf.colArticulos.ContainsKey(code) Then
+                        Dim wTemp As String = CType(uf.colArticulos(code), ULMALGFree.clsArticulos).weight
+                        wTemp = uf.CheckDecimal_Value(wTemp.ToString)
+                        If wTemp <> "" AndAlso IsNumeric(wTemp) Then
+                            wTemp = wTemp.Split(" "c)(0)
+                            weight = CDbl(wTemp)
+                        End If
+                    End If
+                End If
+                ' Clave para ordenar por solo "Name"
+                Dim clave As String = IIf(nameinforme = "", name, nameinforme).ToString '& code
+                ' Clave para ordenar por "Category" y "Name" (Lo quitamos)
+                'Dim clave As String = oFi.Category.Name & IIf(nameinforme = "", name, nameinforme).ToString '& code
+                If dFilas.ContainsKey(clave) = False Then
+                    dFilas.Add(clave, New filaDatos(imgPath, IIf(nameinforme = "", "", nameinforme).ToString, code, weight, 1, esulma, oFi.Category.Name))
+                Else
+                    If dFilas(clave).Code = "" AndAlso code <> "" Then dFilas(clave).Code = code
+                    dFilas(clave).Quantity += 1
+                    ' Cambiamos para que sólo ponga el peso unitario (No los sume)
+                    'dFilas(clave).Weight += weight
+                    If dFilas(clave).Weight = 0 And weight > 0 Then
+                        dFilas(clave).Weight = weight
+                    End If
+                End If
+                System.Windows.Forms.Application.DoEvents()
+            Catch ex As Exception
+                Continue For
+            End Try
         Next
         '
         ' Rellenar UCRevitFreeReport.txt
@@ -306,8 +310,18 @@ FINAL:
             datos &= oFD.ImagePath & ";" & oFD.Name & ";" & oFD.Code & ";" & oFD.Weight & ";" & oFD.Quantity & ";" & oFD.esulma.ToString & vbCrLf
             System.Windows.Forms.Application.DoEvents()
         Next
-        datos = datos.Substring(0, datos.Length - 2)
-        IO.File.WriteAllText(ULMALGFree.clsBase._ULMAStudioReport, datos, System.Text.Encoding.UTF8)
+        Try
+            If IO.File.Exists(ULMALGFree.clsBase._ULMAStudioReport) Then
+                IO.File.Delete(ULMALGFree.clsBase._ULMAStudioReport)
+            End If
+
+            If datos <> "" AndAlso filas.Count > 0 Then
+                datos = datos.Substring(0, datos.Length - 2)
+                IO.File.WriteAllText(ULMALGFree.clsBase._ULMAStudioReport, datos, System.Text.Encoding.UTF8)
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class
 'End Namespace

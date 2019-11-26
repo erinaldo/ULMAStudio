@@ -76,6 +76,7 @@ Public Class frmAbout
                 If haysinguardar = True Then
                     If MsgBox("There are unsaved documents, do you want to save them?",
                               MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update ULMA Studio") = MsgBoxResult.Yes Then
+                        ' Ampliado
                         For Each oD As Document In evRevit.evApp.Documents
                             If oD.IsModified = True Then
                                 Try
