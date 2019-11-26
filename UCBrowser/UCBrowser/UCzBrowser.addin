@@ -2,7 +2,7 @@
 <RevitAddIns>
    <AddIn Type="Application">
     <Name>UCBrowser</Name>
-    <AddInId>338b5a7f-c72c-4820-8e98-a74e83e8e069</AddInId>
+    <AddInId>A1A7D4FE-0AA4-4965-BFED-00A47D2127F2</AddInId>
     <Assembly>.\UCBrowser\UCBrowser.dll</Assembly>
     <FullClassName>UCBrowser.Main</FullClassName>
     <VendorId>UlmaConstruction</VendorId>

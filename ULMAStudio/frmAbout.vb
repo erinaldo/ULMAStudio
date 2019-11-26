@@ -74,33 +74,34 @@ Public Class frmAbout
                     End If
                 Next
                 If haysinguardar = True Then
-                    If MsgBox("There are unsaved documents, do you want to save them?",
-                              MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Update ULMA Studio") = MsgBoxResult.Yes Then
-                        ' Ampliado
-                        For Each oD As Document In evRevit.evApp.Documents
-                            If oD.IsModified = True Then
-                                Try
-                                    oD.Save()
-                                Catch ex As Exception
+                    For Each oD As Document In evRevit.evApp.Documents
+                        If oD.IsModified = True Then
+                            If oD.PathName <> "" Then
+                                If MsgBox("Save " & oD.Title, MsgBoxStyle.Question Or MsgBoxStyle.YesNoCancel) = vbYes Then
+
+                                End If
+                                ' Si ya tenía un Path. Guardar
+                                oD.Save()
+                                Else
+                                    ' Si no tenía Path. Guardar Como
                                     Dim SaveFileDialog1 As SaveFileDialog = New SaveFileDialog()
-                                    Dim pathFile As String
-                                    If oD.IsFamilyDocument Then
-                                        SaveFileDialog1.Filter = "RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|All Files (*.*)|*.*"
-                                    Else
-                                        SaveFileDialog1.Filter = "RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|All Files (*.*)|*.*"
-                                    End If
-                                    If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-                                        pathFile = SaveFileDialog1.FileName
-                                        oD.SaveAs(pathFile)
-                                        Continue For
-                                    Else
-                                        MsgBox("It is not possible to update ULMA Studio. Please save documents before updating.", MsgBoxStyle.Exclamation, "ULMA Studio Update Aborted")
-                                        Exit Sub
-                                    End If
-                                End Try
+                                Dim pathFile As String
+                                If oD.IsFamilyDocument Then
+                                    SaveFileDialog1.Filter = "RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|All Files (*.*)|*.*"
+                                Else
+                                    SaveFileDialog1.Filter = "RVT Files (*.rvt*)|*.rvt|RTE Files (*.rte*)|*.rte|RFA Files (*.rfa*)|*.rfa|RFT Files (*.rft*)|*.rft|All Files (*.*)|*.*"
+                                End If
+                                If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+                                    pathFile = SaveFileDialog1.FileName
+                                    oD.SaveAs(pathFile, New SaveAsOptions With {.OverwriteExistingFile = True})
+                                    Continue For
+                                Else
+                                    MsgBox("It is not possible to update ULMA Studio. Please save documents before updating.", MsgBoxStyle.Exclamation, "ULMA Studio Update Aborted")
+                                    Exit Sub
+                                End If
                             End If
-                        Next
-                    End If
+                        End If
+                    Next
                 End If
                 ' *******
                 Pbox_New.Visible = False
@@ -117,6 +118,7 @@ Public Class frmAbout
                         MsgBox("Error creating updates folder", MsgBoxStyle.Critical, "ATTENTION")
                         abre = False
                         Me.oT.Start()
+                        Exit Sub
                     End Try
                 End If
                 Dim FullPathZip As String = IO.Path.Combine(uf._updatesFolder, uf.cUp("addins").First)

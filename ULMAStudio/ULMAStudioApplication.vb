@@ -98,22 +98,27 @@ Class ULMAStudioApplication
                     ' Es correcto, continuamos sin avisos, cargando el AddIn.
                     cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code OK: " & uf.RespID.messagelog)
                 End If
-            Else
-                'Using New ULMALGFree.MsgboxCentrado_Screen(System.Windows.Forms.Screen.PrimaryScreen)
-                '    MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
-                'End Using
+            ElseIf uf.RespID.valid = False Then
                 ' TaskDialog para Revit (Si no, no se centra con msgbox)
                 Dim td As New TaskDialog("Registration")
                 td.CommonButtons = TaskDialogCommonButtons.Close
-                td.MainInstruction = uf.RespID.message
                 td.MainIcon = TaskDialogIcon.TaskDialogIconError
+                '
+                If IO.File.Exists(uf.keyfile) = True Then
+                    ' No hemos borrado key.dat (Han caducado los 90 días)
+                    td.MainInstruction = "Connection needed to verify registration ID (offline period expired)"    'uf.RespID.message
+                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Error connection: " & uf.RespID.messagelog)
+                Else
+                    ' Hemos borrado key.dat. Porque fichero incorrecto o trampeado.
+                    td.MainInstruction = "Registration ID is not valid"    'uf.RespID.message
+                    cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code error: " & uf.RespID.messagelog)
+                End If
                 Call td.Show()
-                ' ***************************
-                cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Check Code error: " & uf.RespID.messagelog)
+                '
                 Return Result.Cancelled
                 Exit Function
             End If
-        End If
+            End If
         '************************************************************************
         ' ***** Rellenar datos XML en un hilo aparte.
         XML_Lee()

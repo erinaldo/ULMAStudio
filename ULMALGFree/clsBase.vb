@@ -106,10 +106,10 @@ Public Class clsBase
     '
     Friend Shared cFtp As clsFTP = Nothing
     ' ***** Servidor Primario FTP1 (Con valores por defecto) Se vuelven a rellenar desde el .ini
-    Public Const tipo As String = "develop"
+    Public Const tipo As String = "real"    'develop    real    test
     Friend Const FTP1_host As String = "ftp://ttup.ulmaconstruction.com:21"
     Friend Const FTP1_dirData As String = "ftp://ttup.ulmaconstruction.com/" & tipo & "/"
-    Friend Const FTP1_dirLog As String = "ftp://ttup.ulmaconstruction.com/logs/Internal/"
+    Friend Const FTP1_dirLog As String = "ftp://ttup.ulmaconstruction.com/logs/external/"
     Friend Const FTP1_admin As String = "ftp_revitpub_admin"
     Friend Const FTP1_adminpass As String = "PReA685P"
     Friend Const FTP1_user As String = "ftp_revitpub_user"
@@ -236,17 +236,9 @@ Public Class clsBase
             _DEFAULT_PROGRAM_LANGUAGE = value.Trim
         End Set
     End Property
-    'Public Sub New()
-    '    ' Activar DLL de encriptar/desencriptar
-    '    cr = New crip2aCAD.clsCR("aiiao2k19")
-    '    ' *************************************
-    'End Sub
 
     ' Crear instancia siempre con New(System.Reflection.Assembly.GetExecutingAssembly)
     Public Sub New(assembly As System.Reflection.Assembly)
-        ' Activar DLL de encriptar/desencriptar
-        cr = New crip2aCAD.clsCR("aiiao2K19")
-        ' *************************************
         'System.Windows.Forms.Application.EnableVisualStyles()
         ' ***** Datos del ensamblaje que utilizara esta DLL
         If assembly Is Nothing Then Exit Sub
@@ -264,6 +256,9 @@ Public Class clsBase
         '
         ' ESTA CONFIGURACIÓN GENERAL SÓLO SE CARGA UNA VEZ. Al instanciar Assembly UCRevitFree
         If _asmName.Contains("ULMAStudio") OrElse _asmName.Contains("ULMAUpdaterAddIn") Then
+            ' Activar DLL de encriptar/desencriptar
+            cr = New crip2aCAD.clsCR("aiiao2K19")
+            ' *************************************
             Logs_BaseYCSV_PonNombres()
             ' ***** Verificar si existe directorio LOGS base, lo creamos si no existe.
             If IO.Directory.Exists(_appLogBaseFolder) = False Then
@@ -497,16 +492,17 @@ Public Class clsBase
         'Private campos() As String = {
         '"ACTION", "FILENAME", "FAMILY", "MARKET", "LANGUAGE", "DATE.YEAR", "DATE.MONTH", "DATE.DAY", "TIME", 
         '"COMPUTER_DOMAIN", "COMPUTER_NAME", "INTERNAL_IP", "EXTERNAL_IP", 
-        '"USER_DOMAIN", "USER_NAME", "REVIT_VERSION", "UCREVIT_VERSION","UPDATE_GROUP", "UPDATE_FILES", "TYPE", "KEYCODE", "NOTES"}
+        '"USER_DOMAIN", "USER_NAME", "REVIT_VERSION", "UCREVIT_VERSION","UPDATE_GROUP", "UPDATE_FILES", "TYPE" (quitado ""), "KEYCODE", "NOTES"}
         Dim ahora As String = Date.Now.ToString(formatofecha)
         ' Registrar acciones de UCBrowser o el resto ULMAStudio
+        ' Quitamos TYPE.ToUpper, ponemos "" en su lugar (entre UPDATE_FILES y KEYCODE)
         Dim valores As String() = {
             ACTION.ToUpper, FILENAME, FAMILY, _Market, _Language, Date.Now.Year, Date.Now.Month, Date.Now.Day, Date.Now.ToString("HH:mm").Split(" "c)(0),
             _appComputerDomain, _appComputer, "IP: " & _appIPPrivate, "IP: " & _appIPPublic,
             _appUserDomain, _appUser, oVersion.RevitVersionLogText,
             IIf(EApp = queApp.UCBROWSER, _UCBrowserVersion, _ULMAStudioVersion),
             "=" & comillas & ahora & comillas,
-            UPDATE_GROUP, UPDATE_FILES, TYPE.ToUpper, KEYCODE, NOTES
+            UPDATE_GROUP, UPDATE_FILES, "", KEYCODE, NOTES
         }
         '
         ' ***** Comprobar antes que exista el directorio y el fichero
