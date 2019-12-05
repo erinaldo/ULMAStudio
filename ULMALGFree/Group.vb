@@ -170,6 +170,8 @@ Public Class Group
             img = uf.lupdate.Images.Item(2) '"DownloadUpdate"
             Me.Action = queAction.notupdated  '"DownloadUpdate"
             gTT2.SetToolTip(gButton2, "Download Update")
+        ElseIf nAction = -1 Then
+            img = gButton2.Image
         End If
         Return img
     End Function
@@ -187,6 +189,8 @@ Public Class Group
         ElseIf nAction = 2 Then
             ' Hay que descargarlo. Si esta en families, pero tiene actualizacion.
             resultado = queAction.notupdated    ' "notupdated"
+        Else 'en caso de "error" no cambiar nada.
+            resultado = Me.Action
         End If
         Return resultado
     End Function
@@ -373,7 +377,8 @@ Public Class Group
             gButton2.Image = Grupo_PonImageAction()
             uf._recargarBrowser = True
             uf.cambiosEnGrupos = True
-            uf.yo.PonLog_ULMA("REMOVE_GROUP", UPDATE_GROUP:=gCode, NOTES:="Name=" & gButton.Text)
+            'uf.reCalculoPanelBrowserReport = True
+            uf.yo.PonLog_ULMA("REMOVE_GROUP", GROUP:=gCode, NOTES:="Name=" & gButton.Text)
         End If
     End Sub
 
@@ -436,6 +441,8 @@ Public Class Group
 
             End Try
         Next
+        ' Hay que volver a leer los XML nuevos
+        uf.LlenaDatosMercados()
         ' Log de la Familia borrada.
         If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
         'uf.yo.PonLog_ULMA(ULMALGFree.ACTION.REMOVE_FAMILIES,,,,, gCode)
@@ -458,75 +465,95 @@ Public Class Group
     Private Sub DownloadGroupFromPictureBox()
         Dim result As DialogResult = MsgBox("Do you want to download " + gButton.Text + "?", MsgBoxStyle.OkCancel, "Product Download Confirmation")
         If result = DialogResult.OK Then
-            uf.INIUpdates_LeeTODO()
-            ' Si hay actualizaciones de los XML, descargar antes.
-            If uf.cUp("xmls").Count > 0 Then
-                Dim fiXmlFtp As String = uf.cIni.IniGet(uf._IniUpdaterFull, "UPDATES", "XML")
-                Dim d As New ULMALGFree.Datos("XML", fiXmlFtp)
-                uf.FTP_DescargarYDescomprimirXML(d)
-            End If
-            '
-            'No hace falta borrar. Nunca han estado estas familias
-            For Each d As ULMALGFree.Datos In uf.LUp
-                If d.Local_File.Contains(gCode) AndAlso d.Local_File.Contains(gShortName) Then
-                    uf.frmUFam.ProgressBar1.Visible = True
-                    uf.frmUFam.LblAction.Visible = True
-                    uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1, "Downloading...")
-                    uf.frmUFam.LblAction.Text = "Action:"
-                    uf.frmUFam.ProgressBar1.Value = 0
-                    ' Log de la Familia descargada.
-                    If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
-                    uf.yo.PonLog_ULMA(ULMALGFree.ACTION.DOWNLOAD_GROUP, UPDATE_GROUP:=gCode, UPDATE_FILES:=d.Local_File)
+            Dim pruebaCon As String
+            pruebaCon = uf.EstadoRed_String
+            If pruebaCon = "" Then
+                'uf.reCalculoPanelBrowserReport = True
+                uf.INIUpdates_LeeTODO()
+                ' Si hay actualizaciones de los XML, descargar antes.
+                If uf.cUp("xmls").Count > 0 Then
+                    Dim fiXmlFtp As String = uf.cIni.IniGet(uf._IniUpdaterFull, "UPDATES", "XML")
+                    Dim d As New ULMALGFree.Datos("XML", fiXmlFtp)
+                    uf.FTP_DescargarYDescomprimirXML(d)
                     '
-                    Exit For
                 End If
-            Next
-            Me.Action = queAction.updated
-            uf.frmUFam.ProgressBar1.Visible = False
-            uf.frmUFam.LblAction.Visible = False
-            uf.frmUFam.Update()
-            uf._recargarBrowser = True
-            uf.cambiosEnGrupos = True
+                '
+                'No hace falta borrar. Nunca han estado estas familias
+                For Each d As ULMALGFree.Datos In uf.LUp
+                    If d.Local_File.Contains(gCode) AndAlso d.Local_File.Contains(gShortName) Then
+                        uf.frmUFam.ProgressBar1.Visible = True
+                        uf.frmUFam.LblAction.Visible = True
+                        uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1, "Downloading...")
+                        uf.frmUFam.LblAction.Text = "Action:"
+                        uf.frmUFam.ProgressBar1.Value = 0
+                        ' Log de la Familia descargada.
+                        If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
+                        uf.yo.PonLog_ULMA(ULMALGFree.ACTION.DOWNLOAD_GROUP, GROUP:=gCode, UPDATE_FILES:=d.Local_File)
+                        '
+                        Exit For
+                    End If
+                Next
+                Me.Action = queAction.updated
+                uf.frmUFam.ProgressBar1.Visible = False
+                uf.frmUFam.LblAction.Visible = False
+                uf.frmUFam.Update()
+                uf._recargarBrowser = True
+                uf.cambiosEnGrupos = True
+                ' Hay que volver a leer los XML nuevos
+                uf.LlenaDatosMercados()
+            Else
+                Autodesk.Revit.UI.TaskDialog.Show("No network Connection", "Please check your network connection")
+            End If
         End If
     End Sub
 
     Private Sub UpdateGroupFromPictureBox()
         Dim result As DialogResult = MsgBox("Do you want to update " + gButton.Text + "?", MsgBoxStyle.OkCancel, "Product Update Confirmation")
         If result = DialogResult.OK Then
-            ' Si hay actualizaciones de los XML, descargar antes.
-            If uf._ActualizarXMLs = True Then 'nuf.cUp("XML").Count > 0
-                Dim fiXmlFtp As String = uf.cIni.IniGet(uf._IniUpdaterFull, "UPDATES", "XML")
-                Dim d As New ULMALGFree.Datos("XML", fiXmlFtp)
-                uf.FTP_DescargarYDescomprimirXML(d)
+            Dim pruebaCon As String
+            pruebaCon = uf.EstadoRed_String
+            If pruebaCon = "" Then
+                ' Si hay actualizaciones de los XML, descargar antes.
+                If uf._ActualizarXMLs = True Then 'nuf.cUp("XML").Count > 0
+                    Dim fiXmlFtp As String = uf.cIni.IniGet(uf._IniUpdaterFull, "UPDATES", "XML")
+                    Dim d As New ULMALGFree.Datos("XML", fiXmlFtp)
+                    uf.FTP_DescargarYDescomprimirXML(d)
+                    '
+                    ' Hay que volver a leer los XML nuevos
+                    uf.LlenaDatosMercados()
+                    '
+                    ' Borrar los .RFA que no se esten utilizando en otros grupos.
+                    BorraFamiliasGroup_UnGrupo()
+                End If
                 '
+                For Each d As ULMALGFree.Datos In uf.LUp
+                    If d.Local_File.Contains(gCode) AndAlso d.Local_File.Contains(gShortName) Then
+                        uf.frmUFam.ProgressBar1.Visible = True
+                        uf.frmUFam.LblAction.Visible = True
+                        uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1, "Updating...")
+                        uf.frmUFam.LblAction.Text = "Action:"
+                        uf.frmUFam.ProgressBar1.Value = 0
+                        ' Log de la Familia descargada.
+                        If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
+                        'uf.yo.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_FAMILIES,,,,, gCode, d.Local_File)
+                        uf.yo.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_FAMILIES, GROUP:=gCode, UPDATE_FILES:=d.Local_File)
+                        '
+                        Exit For
+                    End If
+                Next
+                '2019/11/22 Xabier Calvo: Cuando se actualiza pasa a estado updated
+                Me.Action = queAction.updated
+                uf.frmUFam.ProgressBar1.Visible = False
+                uf.frmUFam.LblAction.Visible = False
+                uf.frmUFam.Update()
+                uf._recargarBrowser = True
+                uf.cambiosEnGrupos = True
+                'uf.reCalculoPanelBrowserReport = True
                 ' Hay que volver a leer los XML nuevos
                 uf.LlenaDatosMercados()
-                '
-                ' Borrar los .RFA que no se esten utilizando en otros grupos.
-                BorraFamiliasGroup_UnGrupo()
+            Else
+                Autodesk.Revit.UI.TaskDialog.Show("No network Connection", "Please check your network connection")
             End If
-            '
-            For Each d As ULMALGFree.Datos In uf.LUp
-                If d.Local_File.Contains(gCode) AndAlso d.Local_File.Contains(gShortName) Then
-                    uf.frmUFam.ProgressBar1.Visible = True
-                    uf.frmUFam.LblAction.Visible = True
-                    uf.FTP_DescargarYDescomprimir(Me, d, uf.frmUFam.LblAction, uf.frmUFam.ProgressBar1, "Updating...")
-                    uf.frmUFam.LblAction.Text = "Action:"
-                    uf.frmUFam.ProgressBar1.Value = 0
-                    ' Log de la Familia descargada.
-                    If uf.yo Is Nothing Then uf.yo = New clsBase(Reflection.Assembly.GetExecutingAssembly)
-                    'uf.yo.PonLog_ULMA(ULMALGFree.ACTION.UPDATE_FAMILIES,,,,, gCode, d.Local_File)
-                    '
-                    Exit For
-                End If
-            Next
-            '2019/11/22 Xabier Calvo: Cuando se actualiza pasa a estado updated
-            Me.Action = queAction.updated
-            uf.frmUFam.ProgressBar1.Visible = False
-            uf.frmUFam.LblAction.Visible = False
-            uf.frmUFam.Update()
-            uf._recargarBrowser = True
-            uf.cambiosEnGrupos = True
         End If
     End Sub
 End Class

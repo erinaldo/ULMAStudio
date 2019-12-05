@@ -343,11 +343,6 @@ ELEMENTS</description>
             <visualizationOrder>70</visualizationOrder>
           </article>
           <article>
-            <articleCode>2125289</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>100</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2125148</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>110</visualizationOrder>
@@ -414,49 +409,6 @@ ELEMENTS</description>
             <articleCode>1856100</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>25</visualizationOrder>
-          </article>
-        </elements>
-      </subgroup>
-      <subgroup>
-        <subgroupCode>Z1046</subgroupCode>
-        <description language="local">CONSUMIBLES</description>
-        <description language="es">CONSUMIBLES</description>
-        <description language="en">CONSUMABLES</description>
-        <description language="fr">
-        </description>
-        <description language="es-ES">CONSUMIBLES</description>
-        <description language="es-PE">CONSUMIBLES</description>
-        <description language="es-CL">CONSUMIBLES</description>
-        <description language="es-MX">CONSUMIBLES</description>
-        <description language="en-US">CONSUMABLES</description>
-        <description language="de-DE">
-        </description>
-        <description language="fr-FR">CONSOMMABLES</description>
-        <description language="it-IT">
-        </description>
-        <description language="pl-PL">TOWARY HANDLOWE</description>
-        <description language="pt-PT">
-        </description>
-        <description language="cz-CZ">SPOTŘEBNÍ MATERIÁL</description>
-        <description language="sk-SK">
-        </description>
-        <description language="ro-RO">CONSUMABLES</description>
-        <visualizationOrder>60</visualizationOrder>
-        <elements>
-          <article>
-            <articleCode>9372796</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>10</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372791</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>20</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372783</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>30</visualizationOrder>
           </article>
         </elements>
       </subgroup>
@@ -576,16 +528,6 @@ ELEMENTS</description>
             <visualizationOrder>87</visualizationOrder>
           </article>
           <article>
-            <articleCode>1870035</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>90</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1870040</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>100</visualizationOrder>
-          </article>
-          <article>
             <articleCode>1870155</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>110</visualizationOrder>
@@ -664,68 +606,6 @@ ELEMENTS</description>
             <articleCode>9000001</articleCode>
             <supplyMethod>V</supplyMethod>
             <visualizationOrder>330</visualizationOrder>
-          </article>
-        </elements>
-      </subgroup>
-      <subgroup>
-        <subgroupCode>0375</subgroupCode>
-        <description language="local">REMATE TABLERO 27mm</description>
-        <description language="es">REMATE TABLERO 27mm</description>
-        <description language="en">FILLER BOARD 27mm</description>
-        <description language="fr">
-        </description>
-        <description language="es-ES">REMATE TABLERO 27mm</description>
-        <description language="es-PE">REMATE TABLERO 27mm</description>
-        <description language="es-CL">REMATE TABLERO 27mm</description>
-        <description language="es-MX">REMATE TABLERO 27mm</description>
-        <description language="en-US">
-        </description>
-        <description language="de-DE">
-        </description>
-        <description language="fr-FR">COMPLEMENT CP 27mm</description>
-        <description language="it-IT">
-        </description>
-        <description language="pl-PL">
-        </description>
-        <description language="pt-PT">
-        </description>
-        <description language="cz-CZ">
-        </description>
-        <description language="sk-SK">
-        </description>
-        <description language="ro-RO">
-        </description>
-        <visualizationOrder>15</visualizationOrder>
-        <elements>
-          <article>
-            <articleCode>1870705</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>10</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1870710</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>20</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1870745</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>40</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1870750</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>50</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1870760</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>60</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1870765</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>70</visualizationOrder>
           </article>
         </elements>
       </subgroup>
@@ -1166,6 +1046,11 @@ ELEMENTS</description>
             <articleCode>2211172</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>240</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>2211225</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>245</visualizationOrder>
           </article>
           <article>
             <articleCode>2170526</articleCode>
@@ -1842,6 +1727,11 @@ ITEMS</description>
             <visualizationOrder>183</visualizationOrder>
           </article>
           <article>
+            <articleCode>2211225</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>185</visualizationOrder>
+          </article>
+          <article>
             <articleCode>2067035</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>200</visualizationOrder>
@@ -1885,9 +1775,9 @@ ITEMS</description>
         <visualizationOrder>80</visualizationOrder>
         <elements>
           <article>
-            <articleCode>1870G00</articleCode>
+            <articleCode>1870112</articleCode>
             <supplyMethod>V</supplyMethod>
-            <visualizationOrder>15</visualizationOrder>
+            <visualizationOrder>10</visualizationOrder>
           </article>
           <article>
             <articleCode>1940166</articleCode>
@@ -2530,84 +2420,14 @@ ELEMENTS</description>
             <visualizationOrder>50</visualizationOrder>
           </article>
           <article>
-            <articleCode>1908950</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>55</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1908910</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>60</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1908935</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>195</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1906570</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>237</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1908965</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>240</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1908940</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>272</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1938050</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>274</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1938060</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>276</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1908990</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>278</visualizationOrder>
-          </article>
-          <article>
             <articleCode>1908934</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>280</visualizationOrder>
           </article>
           <article>
-            <articleCode>1908983</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>282</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1938100</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>284</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1990570</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>290</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2125148</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>295</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>2125288</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>305</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>2125289</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>310</visualizationOrder>
           </article>
           <article>
             <articleCode>2125290</articleCode>
@@ -2648,26 +2468,6 @@ ELEMENTS</description>
             <articleCode>0200600</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>350</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>0331010</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>385</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1991360</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>395</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>0252070</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>397</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>0250000</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>398</visualizationOrder>
           </article>
           <article>
             <articleCode>1908920</articleCode>
@@ -2789,11 +2589,6 @@ ELEMENTS</description>
             <visualizationOrder>70</visualizationOrder>
           </article>
           <article>
-            <articleCode>2125289</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>100</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2125148</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>110</visualizationOrder>
@@ -2865,11 +2660,6 @@ ELEMENTS</description>
             <articleCode>0230024</articleCode>
             <supplyMethod>V</supplyMethod>
             <visualizationOrder>80</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>2125289</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>90</visualizationOrder>
           </article>
           <article>
             <articleCode>2125290</articleCode>
@@ -3056,74 +2846,9 @@ ELEMENTS</description>
         <visualizationOrder>100</visualizationOrder>
         <elements>
           <article>
-            <articleCode>9372796</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>10</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372791</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>20</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372783</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>30</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372799</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>40</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372792</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>50</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372784</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>60</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372798</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>70</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372793</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>80</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372785</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>90</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372797</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>100</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372794</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>110</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372786</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>120</visualizationOrder>
-          </article>
-          <article>
             <articleCode>0230004</articleCode>
             <supplyMethod>V</supplyMethod>
             <visualizationOrder>130</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372795</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>140</visualizationOrder>
           </article>
           <article>
             <articleCode>9371975</articleCode>
@@ -3260,11 +2985,6 @@ ELEMENTS</description>
             <visualizationOrder>50</visualizationOrder>
           </article>
           <article>
-            <articleCode>1904601</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>60</visualizationOrder>
-          </article>
-          <article>
             <articleCode>1904000</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>70</visualizationOrder>
@@ -3333,11 +3053,6 @@ ELEMENTS</description>
             <articleCode>1904225</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>200</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1904221</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>210</visualizationOrder>
           </article>
           <article>
             <articleCode>1904606</articleCode>
@@ -3933,11 +3648,6 @@ ELEMENTS</description>
             <visualizationOrder>110</visualizationOrder>
           </article>
           <article>
-            <articleCode>2125289</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>120</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2125290</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>130</visualizationOrder>
@@ -4269,9 +3979,34 @@ ELEMENTS</description>
         <visualizationOrder>30</visualizationOrder>
         <elements>
           <article>
+            <articleCode>1940198</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>15</visualizationOrder>
+          </article>
+          <article>
             <articleCode>1940166</articleCode>
             <supplyMethod>V</supplyMethod>
             <visualizationOrder>20</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>7251131</articleCode>
+            <supplyMethod>A</supplyMethod>
+            <visualizationOrder>30</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>7251132</articleCode>
+            <supplyMethod>A</supplyMethod>
+            <visualizationOrder>40</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>1940155</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>55</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>1940151</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>60</visualizationOrder>
           </article>
         </elements>
       </subgroup>
@@ -4486,11 +4221,6 @@ ELEMENTS</description>
             <visualizationOrder>250</visualizationOrder>
           </article>
           <article>
-            <articleCode>2220170</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>252</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2220075</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>260</visualizationOrder>
@@ -4524,11 +4254,6 @@ ELEMENTS</description>
             <articleCode>2220090</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>370</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>1940128</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>390</visualizationOrder>
           </article>
           <article>
             <articleCode>2170355</articleCode>
@@ -4699,11 +4424,6 @@ ELEMENTS</description>
             <visualizationOrder>250</visualizationOrder>
           </article>
           <article>
-            <articleCode>2220170</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>252</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2220075</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>260</visualizationOrder>
@@ -4739,11 +4459,6 @@ ELEMENTS</description>
             <visualizationOrder>370</visualizationOrder>
           </article>
           <article>
-            <articleCode>1940128</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>390</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2170355</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>395</visualizationOrder>
@@ -4775,9 +4490,34 @@ ELEMENTS</description>
         <visualizationOrder>65</visualizationOrder>
         <elements>
           <article>
+            <articleCode>1940198</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>10</visualizationOrder>
+          </article>
+          <article>
             <articleCode>1940166</articleCode>
             <supplyMethod>V</supplyMethod>
             <visualizationOrder>20</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>7251131</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>30</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>7251132</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>40</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>1940155</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>50</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>1940151</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>60</visualizationOrder>
           </article>
         </elements>
       </subgroup>
@@ -4946,11 +4686,6 @@ ELEMENTS</description>
             <articleCode>2220055</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>50</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>2220170</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>52</visualizationOrder>
           </article>
           <article>
             <articleCode>2220075</articleCode>
@@ -5194,6 +4929,11 @@ ELEMENTS</description>
             <visualizationOrder>240</visualizationOrder>
           </article>
           <article>
+            <articleCode>2211225</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>245</visualizationOrder>
+          </article>
+          <article>
             <articleCode>2170526</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>248</visualizationOrder>
@@ -5364,6 +5104,11 @@ ELEMENTS</description>
             <articleCode>2211172</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>210</visualizationOrder>
+          </article>
+          <article>
+            <articleCode>2211225</articleCode>
+            <supplyMethod>V</supplyMethod>
+            <visualizationOrder>215</visualizationOrder>
           </article>
         </elements>
       </subgroup>
@@ -6148,11 +5893,6 @@ ELEMENTS</description>
             <visualizationOrder>100</visualizationOrder>
           </article>
           <article>
-            <articleCode>2125289</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>110</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2125290</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>120</visualizationOrder>
@@ -6315,44 +6055,9 @@ ELEMENTS</description>
         <visualizationOrder>95</visualizationOrder>
         <elements>
           <article>
-            <articleCode>9372796</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>10</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372791</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>20</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372783</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>30</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372797</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>40</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372794</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>50</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372786</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>60</visualizationOrder>
-          </article>
-          <article>
             <articleCode>0230004</articleCode>
             <supplyMethod>V</supplyMethod>
             <visualizationOrder>70</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372795</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>80</visualizationOrder>
           </article>
           <article>
             <articleCode>9371975</articleCode>
@@ -7139,11 +6844,6 @@ ELEMENTS</description>
             <visualizationOrder>100</visualizationOrder>
           </article>
           <article>
-            <articleCode>2125289</articleCode>
-            <supplyMethod>A</supplyMethod>
-            <visualizationOrder>110</visualizationOrder>
-          </article>
-          <article>
             <articleCode>2125290</articleCode>
             <supplyMethod>A</supplyMethod>
             <visualizationOrder>120</visualizationOrder>
@@ -7311,44 +7011,9 @@ ELEMENTS</description>
         <visualizationOrder>100</visualizationOrder>
         <elements>
           <article>
-            <articleCode>9372796</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>10</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372791</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>20</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372783</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>30</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372797</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>40</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372794</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>50</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372786</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>60</visualizationOrder>
-          </article>
-          <article>
             <articleCode>0230004</articleCode>
             <supplyMethod>V</supplyMethod>
             <visualizationOrder>70</visualizationOrder>
-          </article>
-          <article>
-            <articleCode>9372795</articleCode>
-            <supplyMethod>V</supplyMethod>
-            <visualizationOrder>80</visualizationOrder>
           </article>
           <article>
             <articleCode>9371975</articleCode>

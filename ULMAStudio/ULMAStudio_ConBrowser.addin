@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>ULMAStudio</Name>
+    <Assembly>.\ULMAStudio\ULMAStudio.dll</Assembly>
+    <ClientId>33e55dac-e8b7-4fb7-80fd-5ce4e6950fb2</ClientId>
+    <FullClassName>ULMAStudio.ULMAStudioApplication</FullClassName>
+    <VendorId>Ulma Construction</VendorId>
+    <VendorDescription>Ulma Construction, www.ulmaconstruction.com</VendorDescription>
+    <Visibility>NotVisibleInFamily</Visibility>
+  </AddIn>
+   <AddIn Type="Application">
+    <Name>UCBrowser</Name>
+    <AddInId>A1A7D4FE-0AA4-4965-BFED-00A47D2127F2</AddInId>
+    <Assembly>.\ULMAStudio\UCBrowser\UCBrowser.dll</Assembly>
+    <FullClassName>UCBrowser.Main</FullClassName>
+    <VendorId>Ulma Construction</VendorId>
+    <VendorDescription>Ulma Construction, www.ulmaconstruction.com</VendorDescription>
+    <Visibility>NotVisibleWhenNoActiveDocument</Visibility>
+    <Visibility>NotVisibleInFamily</Visibility>
+  </AddIn>
+</RevitAddIns>

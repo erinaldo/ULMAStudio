@@ -11,8 +11,8 @@ Public Class clsBase
     Private campos() As String = {
         "ACTION", "FILE", "FAMILY", "MARKET", "LANGUAGE", "YEAR", "MONTH", "DAY", "TIME", "COMPUTER_DOMAIN", "COMPUTER_NAME",
         "INTERNAL_IP", "EXTERNAL_IP", "USER_DOMAIN", "USER_NAME", "REVIT_VERSION", "UCREVIT_VERSION", "SYSTEM_DATE",
-        "UPDATE_GROUP", "UPDATE_FILES", "TYPE", "KEYCODE", "NOTES"}
-    'UPDATE_GROUP    'escribir el nombre del grupo a descargar/actualizar/eliminar
+        "GROUP", "UPDATE_FILES", "TYPE", "KEYCODE", "NOTES"}
+    'GROUP    'escribir el nombre del grupo a descargar/actualizar/eliminar
     'UPDATE_FILES    'escribir el nombre del .zip que se va a descargar/actualizar
     '
     ' OBJETOS QUE GENERAN EVENTOS
@@ -49,6 +49,7 @@ Public Class clsBase
     Public Shared ReadOnly _folderTemp As String = IO.Path.GetTempPath
     Public Shared ReadOnly _xmlFull As String = IO.Path.Combine(_LgFullFolder, "offlineBDIdata", "120_publicStructure.xml")
     Public Shared ReadOnly _imgFolder As String = IO.Path.Combine(_LgFullFolder, "images\")
+    Public Shared ReadOnly _pdfFolder As String = IO.Path.Combine(_LgFullFolder, "userGuide\")
     Public Shared ReadOnly _ULMAStudioReport As String = IO.Path.Combine(_LgFullFolder, "ULMAStudioReport.txt")
     Public Shared _imgBasePath As String = IO.Path.Combine(_imgFolder, "render_X.png")
     Public Shared _imgBase As System.Drawing.Image
@@ -61,6 +62,8 @@ Public Class clsBase
     Public Shared _ultimaApp As queApp = queApp.ULMASTUDIO
     Public Shared _ultimaAccion As String = action.LOAD_FAMILY.ToString
     Public Shared ReadOnly _IniFull As String = IO.Path.Combine(_LgFullFolder, _IniName)
+    '
+    Public Shared idRegistrado As String = ""
     ' Properties
     Private Shared _DEFAULT_PROGRAM_MARKET As String = "120"
     Private Shared _DEFAULT_PROGRAM_LANGUAGE As String = "en"
@@ -75,6 +78,7 @@ Public Class clsBase
     Public Shared _registraLoadInsert As Boolean = True
     'cambios en Grupos para enviar llamada de cierre al Browser
     Public Shared cambiosEnGrupos As Boolean = False
+    Public Shared reCalculoPanelBrowserReport As Boolean = True
     '
     ' Variables personales de cada Assembly
     Public _asmFull As String = ""  'System.Reflection.Assembly.GetExecutingAssembly.Location
@@ -101,7 +105,7 @@ Public Class clsBase
     Public Shared _ActualizarAddIns As Boolean = False
     Public Shared _ActualizarFamilies As Boolean = False
     Public Shared _ActualizarXMLs As Boolean = False
-    Public Shared _ULMAStudioVersion As String = "ULMAStudio 2018.0.0.16"
+    Public Shared _ULMAStudioVersion As String = "ULMAStudio 2018.0.0.28"
     Public Shared _UCBrowserVersion As String = "UCBrowser 2018.0.0.8"
     '
     Friend Shared cFtp As clsFTP = Nothing
@@ -299,9 +303,9 @@ Public Class clsBase
             Dim partes() As String = _asmVersion.Split("."c)
             partes(0) = oVersion.RevitVersionNumber
             If _asmName.Contains("ULMAStudio") Then
-                _ULMAStudioVersion = _asmName & " " & Join(partes, "."c)
+                _ULMAStudioVersion = _asmName & " " & _asmVersion 'Join(partes, "."c)
             ElseIf _asmName.Contains("UCBrowser") Then
-                _ULMAStudioVersion = _asmName & " " & Join(partes, "."c)
+                _UCBrowserVersion = _asmName & " " & _asmVersion 'Join(partes, "."c)
             End If
         End If
     End Sub
@@ -424,11 +428,11 @@ Public Class clsBase
         End If
         If creanuevo = True Then
             Try
-                IO.File.AppendAllText(_appLogCSVFichero, Join(campos, ";"c), System.Text.Encoding.UTF8)
+                IO.File.AppendAllText(_appLogCSVFichero, Join(campos, ";"c) & vbCrLf, System.Text.Encoding.UTF8)
             Catch ex As Exception
                 Process_Close("excel")
                 Try
-                    IO.File.AppendAllText(_appLogCSVFichero, Join(campos, ";"c), System.Text.Encoding.UTF8)
+                    IO.File.AppendAllText(_appLogCSVFichero, Join(campos, ";"c) & vbCrLf, System.Text.Encoding.UTF8)
                 Catch ex1 As Exception
                 End Try
             End Try
@@ -462,7 +466,7 @@ Public Class clsBase
                           Optional FAMILY As String = "",
                           Optional MARKET As String() = Nothing,
                           Optional LANGUAGE As String() = Nothing,
-                          Optional UPDATE_GROUP As String = "",
+                          Optional GROUP As String = "",
                           Optional UPDATE_FILES As String = "",
                           Optional TYPE As String = tipo,
                           Optional KEYCODE As String = "",
@@ -481,18 +485,23 @@ Public Class clsBase
         If NOTES <> "" AndAlso IsDate(NOTES) Then
             NOTES = "=" & comillas & CDate(NOTES).ToString(formatofecha) & comillas
         End If
-        If KEYCODE = "" AndAlso RespID.id <> "" Then
-            KEYCODE = RespID.id
-        End If
-        If KEYCODE = "" AndAlso RespID.id <> "" Then
-            KEYCODE = RespID.id
+        '2019/11/29 Xabier Calvo: Si no hay Internet coger KEYCODE del key.dat (si existe) sino vacio
+        If RespID Is Nothing Then
+            KEYCODE = getIdRegistrado()
+        Else
+            If KEYCODE = "" AndAlso RespID.id <> "" Then
+                KEYCODE = RespID.id
+            End If
+            'If KEYCODE = "" AndAlso RespID.id <> "" Then
+            '    KEYCODE = RespID.id
+            'End If
         End If
         ULMALGFree.clsBase._ultimaAccion = ACTION
         '
         'Private campos() As String = {
         '"ACTION", "FILENAME", "FAMILY", "MARKET", "LANGUAGE", "DATE.YEAR", "DATE.MONTH", "DATE.DAY", "TIME", 
         '"COMPUTER_DOMAIN", "COMPUTER_NAME", "INTERNAL_IP", "EXTERNAL_IP", 
-        '"USER_DOMAIN", "USER_NAME", "REVIT_VERSION", "UCREVIT_VERSION","UPDATE_GROUP", "UPDATE_FILES", "TYPE" (quitado ""), "KEYCODE", "NOTES"}
+        '"USER_DOMAIN", "USER_NAME", "REVIT_VERSION", "UCREVIT_VERSION","GROUP", "UPDATE_FILES", "TYPE" (quitado ""), "KEYCODE", "NOTES"}
         Dim ahora As String = Date.Now.ToString(formatofecha)
         ' Registrar acciones de UCBrowser o el resto ULMAStudio
         ' Quitamos TYPE.ToUpper, ponemos "" en su lugar (entre UPDATE_FILES y KEYCODE)
@@ -502,7 +511,7 @@ Public Class clsBase
             _appUserDomain, _appUser, oVersion.RevitVersionLogText,
             IIf(EApp = queApp.UCBROWSER, _UCBrowserVersion, _ULMAStudioVersion),
             "=" & comillas & ahora & comillas,
-            UPDATE_GROUP, UPDATE_FILES, "", KEYCODE, NOTES
+            GROUP, UPDATE_FILES, "", KEYCODE, NOTES
         }
         '
         ' ***** Comprobar antes que exista el directorio y el fichero
@@ -522,11 +531,11 @@ Public Class clsBase
         End If
         ' ******************************************************
         Try
-            IO.File.AppendAllText(_appLogCSVFichero, vbCrLf & Join(valores, ";"c), System.Text.Encoding.UTF8)
+            IO.File.AppendAllText(_appLogCSVFichero, Join(valores, ";"c) & vbCrLf, System.Text.Encoding.UTF8)
         Catch ex As Exception
             Process_Close("excel")
             Try
-                IO.File.AppendAllText(_appLogCSVFichero, vbCrLf & Join(valores, ";"c), System.Text.Encoding.UTF8)
+                IO.File.AppendAllText(_appLogCSVFichero, Join(valores, ";"c) & vbCrLf, System.Text.Encoding.UTF8)
             Catch ex1 As Exception
             End Try
         End Try
@@ -539,14 +548,14 @@ Public Class clsBase
                           Optional FAMILY As String = "",
                           Optional MARKET As String() = Nothing,
                           Optional LANGUAGE As String() = Nothing,
-                          Optional UPDATE_GROUP As String = "",
+                          Optional GROUP As String = "",
                           Optional UPDATE_FILES As String = "",
                           Optional TYPE As String = tipo,
                           Optional KEYCODE As String = "",
                           Optional NOTES As String = "",
                           Optional EApp As ULMALGFree.queApp = ULMALGFree.queApp.ULMASTUDIO)
         '
-        PonLog_ULMA(ACTION.ToString, FILENAME, FAMILY, MARKET, LANGUAGE, UPDATE_GROUP, UPDATE_FILES, TYPE, KEYCODE, NOTES, EApp)
+        PonLog_ULMA(ACTION.ToString, FILENAME, FAMILY, MARKET, LANGUAGE, GROUP, UPDATE_FILES, TYPE, KEYCODE, NOTES, EApp)
     End Sub
 
 #Region "FUNCIONES FECHA"

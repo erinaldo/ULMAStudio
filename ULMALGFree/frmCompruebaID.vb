@@ -37,7 +37,7 @@ Public Class frmCompruebaID
                 Me.DialogResult = System.Windows.Forms.DialogResult.OK
                 Me.Close()
             Else
-                MsgBox(uf.RespID.message, MsgBoxStyle.Critical, "Registration")
+                MsgBox("Registration ID is not valid.", MsgBoxStyle.Critical, "Registration")
                 cLcsv.PonLog_ULMA("CHECK CODE", KEYCODE:=uf.RespID.id, NOTES:="Form Code Error: " & uf.RespID.message)
                 'uf.RespID = Nothing
                 Me.TxtActivacionCode.Text = ""

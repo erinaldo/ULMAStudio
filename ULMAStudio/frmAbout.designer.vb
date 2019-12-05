@@ -31,9 +31,13 @@ Partial Class frmAbout
         Me.LblVersion = New System.Windows.Forms.Label()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.pbActualiza = New System.Windows.Forms.ProgressBar()
+        Me.lbl_Terms = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.pbox_NoNetwork = New System.Windows.Forms.PictureBox()
         CType(Me.Pbox_New, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PBox_Web, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Pbox_Latest, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbox_NoNetwork, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LblEmail
@@ -42,13 +46,13 @@ Partial Class frmAbout
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LblEmail.BackColor = System.Drawing.Color.Transparent
         Me.LblEmail.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LblEmail.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.LblEmail.Location = New System.Drawing.Point(333, 289)
+        Me.LblEmail.Font = New System.Drawing.Font("Calibri", 8.0!)
+        Me.LblEmail.Location = New System.Drawing.Point(252, 295)
         Me.LblEmail.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblEmail.Name = "LblEmail"
-        Me.LblEmail.Size = New System.Drawing.Size(200, 22)
+        Me.LblEmail.Size = New System.Drawing.Size(217, 22)
         Me.LblEmail.TabIndex = 3
-        Me.LblEmail.Text = " ·    bim@ulmaconstruction.com"
+        Me.LblEmail.Text = " ·  bim@ulmaconstruction.com  · "
         Me.LblEmail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'BtnUpdateAddIn
@@ -60,7 +64,7 @@ Partial Class frmAbout
         Me.BtnUpdateAddIn.FlatAppearance.BorderSize = 0
         Me.BtnUpdateAddIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnUpdateAddIn.Location = New System.Drawing.Point(310, 192)
-        Me.BtnUpdateAddIn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BtnUpdateAddIn.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnUpdateAddIn.Name = "BtnUpdateAddIn"
         Me.BtnUpdateAddIn.Size = New System.Drawing.Size(43, 43)
         Me.BtnUpdateAddIn.TabIndex = 6
@@ -106,11 +110,11 @@ Partial Class frmAbout
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LblVersion.BackColor = System.Drawing.Color.Transparent
         Me.LblVersion.Cursor = System.Windows.Forms.Cursors.Default
-        Me.LblVersion.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.LblVersion.Location = New System.Drawing.Point(132, 289)
+        Me.LblVersion.Font = New System.Drawing.Font("Calibri", 8.0!)
+        Me.LblVersion.Location = New System.Drawing.Point(81, 295)
         Me.LblVersion.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblVersion.Name = "LblVersion"
-        Me.LblVersion.Size = New System.Drawing.Size(196, 22)
+        Me.LblVersion.Size = New System.Drawing.Size(172, 22)
         Me.LblVersion.TabIndex = 10
         Me.LblVersion.Text = "ULMA Studio - v.2019.0.0.XX"
         Me.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -134,11 +138,46 @@ Partial Class frmAbout
         'pbActualiza
         '
         Me.pbActualiza.Location = New System.Drawing.Point(230, 240)
-        Me.pbActualiza.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pbActualiza.Margin = New System.Windows.Forms.Padding(2)
         Me.pbActualiza.Name = "pbActualiza"
         Me.pbActualiza.Size = New System.Drawing.Size(204, 19)
         Me.pbActualiza.TabIndex = 12
         Me.pbActualiza.Visible = False
+        '
+        'lbl_Terms
+        '
+        Me.lbl_Terms.AutoSize = True
+        Me.lbl_Terms.BackColor = System.Drawing.Color.White
+        Me.lbl_Terms.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.lbl_Terms.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_Terms.Location = New System.Drawing.Point(407, 300)
+        Me.lbl_Terms.Name = "lbl_Terms"
+        Me.lbl_Terms.Size = New System.Drawing.Size(75, 13)
+        Me.lbl_Terms.TabIndex = 13
+        Me.lbl_Terms.Text = "Terms of Use   ·"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(483, 300)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.TabIndex = 14
+        Me.Label1.Text = "User guide"
+        '
+        'pbox_NoNetwork
+        '
+        Me.pbox_NoNetwork.BackColor = System.Drawing.Color.Transparent
+        Me.pbox_NoNetwork.Image = Global.ULMAStudio.My.Resources.Resources.NoNetwork
+        Me.pbox_NoNetwork.Location = New System.Drawing.Point(217, 197)
+        Me.pbox_NoNetwork.Name = "pbox_NoNetwork"
+        Me.pbox_NoNetwork.Size = New System.Drawing.Size(231, 39)
+        Me.pbox_NoNetwork.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.pbox_NoNetwork.TabIndex = 15
+        Me.pbox_NoNetwork.TabStop = False
         '
         'frmAbout
         '
@@ -149,6 +188,9 @@ Partial Class frmAbout
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(664, 419)
         Me.ControlBox = False
+        Me.Controls.Add(Me.pbox_NoNetwork)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lbl_Terms)
         Me.Controls.Add(Me.pbActualiza)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.LblVersion)
@@ -172,7 +214,9 @@ Partial Class frmAbout
         CType(Me.Pbox_New, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PBox_Web, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Pbox_Latest, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbox_NoNetwork, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents LblEmail As Windows.Forms.Label
@@ -183,4 +227,7 @@ Partial Class frmAbout
     Friend WithEvents LblVersion As Windows.Forms.Label
     Friend WithEvents Cancel_Button As Windows.Forms.Button
     Friend WithEvents pbActualiza As Windows.Forms.ProgressBar
+    Friend WithEvents lbl_Terms As Windows.Forms.Label
+    Friend WithEvents Label1 As Windows.Forms.Label
+    Friend WithEvents pbox_NoNetwork As Windows.Forms.PictureBox
 End Class

@@ -33,19 +33,31 @@ Public Class frmAbout
         ''
         Me.oT.Interval = 100
         Me.oT.Start()
-        'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UCR_ABOUT, , , arrM123, arrL123)
-        If ULMALGFree.clsBase._ActualizarAddIns = False Then
+        Dim pruebaCon As String
+        pruebaCon = uf.EstadoRed_String
+        If pruebaCon = "" Then
+            'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UCR_ABOUT, , , arrM123, arrL123)
+            If ULMALGFree.clsBase._ActualizarAddIns = False Then
+                Me.BtnUpdateAddIn.BackgroundImage = Nothing
+                'Me.BtnUpdateAddIn.Enabled = False
+                Me.BtnUpdateAddIn.Visible = False
+                Me.Pbox_New.Visible = False
+                Me.pbox_NoNetwork.Visible = False
+                Me.Pbox_Latest.Visible = True
+
+            Else
+                Me.BtnUpdateAddIn.BackgroundImage = ULMAStudio.My.Resources.Resources.toupdate2
+                Me.BtnUpdateAddIn.Visible = True
+                Me.Pbox_Latest.Visible = False
+                Me.pbox_NoNetwork.Visible = False
+                Me.Pbox_New.Visible = True
+            End If
+        Else
             Me.BtnUpdateAddIn.BackgroundImage = Nothing
-            'Me.BtnUpdateAddIn.Enabled = False
             Me.BtnUpdateAddIn.Visible = False
             Me.Pbox_New.Visible = False
-            Me.Pbox_Latest.Visible = True
-
-        Else
-            Me.BtnUpdateAddIn.BackgroundImage = ULMAStudio.My.Resources.Resources.toupdate2
-            Me.BtnUpdateAddIn.Visible = True
             Me.Pbox_Latest.Visible = False
-            Me.Pbox_New.Visible = True
+            Me.pbox_NoNetwork.Visible = True
         End If
     End Sub
 
@@ -76,19 +88,19 @@ Public Class frmAbout
                 If haysinguardar = True Then
                     For Each oD As Document In evRevit.evApp.Documents
                         If oD.IsModified = True Then
-                            ' Hace zoom e indirectamente activa la vista
-                            Zomm_Elements_View(oD, True)
-                            ' Ocultar este formulario
-                            Me.Hide()
+                            '' Hace zoom e indirectamente activa la vista
+                            'Zomm_Elements_View(oD, True)
+                            '' Ocultar este formulario
+                            'Me.Hide()
                             ' Crear y mostrar el formulario
                             Dim oDlg As SaveFileDialog = New SaveFileDialog()
                             Dim pathFile As String = oD.PathName
                             oDlg.RestoreDirectory = True
                             oDlg.OverwritePrompt = True
                             If pathFile <> "" Then
-                                oDlg.Title = "Save " & IO.Path.GetFileName(pathFile)
+                                oDlg.Title = "Save " '& IO.Path.GetFileName(pathFile)
                             Else
-                                oDlg.Title = "SaveAs new document"
+                                oDlg.Title = "Save As"
                             End If
                             '
                             If oD.IsFamilyDocument Then
@@ -96,9 +108,13 @@ Public Class frmAbout
                             Else
                                 oDlg.Filter = "Project Files (*.rvt*)|*.rvt|Template Files (*.rte*)|*.rte|All Files (*.*)|*.*"
                             End If
+                            Dim initPath As String = oDlg.InitialDirectory
                             If pathFile <> "" AndAlso IO.File.Exists(pathFile) Then
                                 oDlg.InitialDirectory = IO.Path.GetDirectoryName(pathFile)
                                 oDlg.FileName = IO.Path.GetFileName(pathFile)   'pathFile    ' IO.Path.GetFileName(pathFile)
+                            Else
+                                oDlg.InitialDirectory = initPath
+                                oDlg.FileName = oD.Title
                             End If
                             '
                             ' Resultado
@@ -137,6 +153,10 @@ Public Class frmAbout
                         Exit Sub
                     End Try
                 End If
+                '2019/11/28 Xabier Calvo: Descargar XML's antes de actualizar el addin
+                Dim fiXmlFtp As String = uf.cIni.IniGet(uf._IniUpdaterFull, "UPDATES", "XML")
+                Dim d As New ULMALGFree.Datos("XML", fiXmlFtp)
+                uf.FTP_DescargarYDescomprimirXML(d)
                 Dim FullPathZip As String = IO.Path.Combine(uf._updatesFolder, uf.cUp("addins").First)
                 If IO.File.Exists(FullPathZip) = False Then
                     ' Descargar el fichero si no está en la carpeta Updates
@@ -159,7 +179,7 @@ Public Class frmAbout
     '    System.Diagnostics.Process.Start(target)
     'End Sub
     Private Sub LblEmail_Click(sender As Object, e As EventArgs) Handles LblEmail.Click
-        Dim target As String = "mailto:" & contact & "?subject=I request information about --> ULMA Studio" '& My.Application.Info.Version.ToString
+        Dim target As String = "mailto:" & contact & "?subject=I request information about ULMA Studio" '& My.Application.Info.Version.ToString
         ' Navigate to a URL.
         System.Diagnostics.Process.Start(target)
     End Sub
@@ -188,5 +208,14 @@ Public Class frmAbout
     Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
         abre = False
         Me.oT.Start()
+    End Sub
+
+    Private Sub Lbl_Terms_Click(sender As Object, e As EventArgs) Handles lbl_Terms.Click
+        Dim webAddress As String = "https://www.ulmaconstruction.com/en/terms-and-conditions-of-use-ulma-studio"
+        Process.Start(webAddress)
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        Process.Start(ULMALGFree.clsBase._pdfFolder & "ULMAStudio_UserGuide.pdf")
     End Sub
 End Class

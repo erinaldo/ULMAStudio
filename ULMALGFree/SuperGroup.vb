@@ -21,6 +21,10 @@ Public Class SuperGroup
     Public WithEvents UpdateSuperGroup As ToolStripMenuItem
     Public WithEvents RemoveSuperGroup As ToolStripMenuItem
     Private _nActualizaciones As Integer = 0
+    'colores
+    Public lightBlue As Color
+    Public darkBlue As Color
+
 
     Public Property nActualizaciones As Integer
         Get
@@ -65,7 +69,9 @@ Public Class SuperGroup
         Me.sgImage = gImg
         Sgtt = New ToolTip
         '
-        groups = New List(Of [group])
+        lightBlue = Color.FromArgb(229, 244, 251)
+        darkBlue = Color.FromArgb(203, 232, 246)
+        groups = New List(Of [Group])
         CreaPanel()
         'menu_rellena()
     End Sub
@@ -77,6 +83,7 @@ Public Class SuperGroup
         SgPanel.Margin = New Padding(0, 0, 0, 0)
         SgPanel.Padding = New Padding(0, 0, 0, 0)
         'SgPanel.BackColor = Color.White
+
         '
         SgButton = New Button
         SgButton.Name = "Button"
@@ -85,7 +92,10 @@ Public Class SuperGroup
         'SgButton.BackColor = Color.LightGray
         SgButton.FlatStyle = FlatStyle.Flat
         SgButton.FlatAppearance.BorderSize = 0
-        SgButton.ForeColor = System.Drawing.Color.Black
+
+        'SgButton.ForeColor = System.Drawing.Color.Black
+        'SgButton.FlatAppearance.CheckedBackColor = darkBlue
+        'SgButton.FlatAppearance.MouseOverBackColor = lightBlue
         'SgButton.FlatAppearance.BorderColor = System.Drawing.Color.Gray
         'SgButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray
         'tButton.BackgroundImage = New Bitmap(Me.sgImage, 64, 64)
@@ -133,6 +143,12 @@ Public Class SuperGroup
         uf.frmUFam.fpGroups.Visible = True
         Me.PonBotonesGrupos()
         uf.UltimoSuperGrupo = Me
+        '
+        uf.frmUFam.cambiaFondosSuperGrupoABlanco()
+        SgPanel.BackColor = Color.DarkGray
+        SgPanel.ForeColor = Color.DarkMagenta
+        uf.frmUFam.cambiaFondosSuperGrupo(SgPanel)
+        uf.frmUFam.Update()
     End Sub
     '
     Public Sub PonBotonesGrupos()

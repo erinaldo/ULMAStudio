@@ -179,6 +179,27 @@ FINAL:
             Debug.Print(ex.ToString)
         End Try
     End Sub
+
+    Public Shared Function getIdRegistrado() As String
+        Dim id As String = ""
+        If System.IO.File.Exists(keyfile) Then
+            ' ***** 1.- Comprobar estructura y datos del fichero (Siempre existe key.dat)
+            If cr Is Nothing Then cr = New crip("aiiao2K19")
+            ' Fichero si existe
+            Dim texto As String = " "
+            Try
+                texto = crip.Texto_Desencriptar(IO.File.ReadAllText(keyfile))
+            Catch ex As Exception
+            End Try
+            Dim lineas As String() = texto.Split(vbCrLf)
+            If lineas.Count = 7 Then
+                id = lineas(2).Replace(vbLf, "")
+            End If
+        End If
+        clsBase.idRegistrado = id
+        Return id
+    End Function
+
 End Class
 
 Public Enum validacion

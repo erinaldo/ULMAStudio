@@ -25,6 +25,17 @@ Public Class clsGroup
     '    End If
     'End Sub
 
+    Public Sub New()
+        active = True
+        groupCode = ""
+        DefaultDescription = ""
+        DicDescritions = New Dictionary(Of String, String)    '' Key=es, Value=descripción en el idioma de Key.
+        productType = ""
+        shortName = ""
+        LstFilenameOnly = New List(Of String)
+        LstarticleCodes = New List(Of String)
+    End Sub
+
     Public Sub RellenaFilenameOnly()
         If LstFilenameOnly Is Nothing Then LstFilenameOnly = New List(Of String)
         '

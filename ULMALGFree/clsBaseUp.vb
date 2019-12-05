@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Forms
 Imports System.Drawing
+Imports uf = ULMALGFree.clsBase
 
 Partial Public Class clsBase
     Public Shared ReadOnly _updatesFolder As String = IO.Path.Combine(ULMALGFree.clsBase._LgFullFolder, "updates")
@@ -89,7 +90,11 @@ Partial Public Class clsBase
         resultado &= INIUpdates_LeeLAST()
         resultado = INIUpdates_LeeUPDATES()
         '' Actualizar las colecciones de fichero a descargar del FTP
-        ULMALGFree.clsBase.cUp = ULMALGFree.clsBase.FTP_DameActualizacionesTodas()
+        Dim pruebaCon As String
+        pruebaCon = uf.EstadoRed_String
+        If pruebaCon = "" Then
+            ULMALGFree.clsBase.cUp = ULMALGFree.clsBase.FTP_DameActualizacionesTodas()
+        End If
         ' Poner los valores boolean que indican si hay actualizaciones en cada tipo.
         _ActualizarFamilies = False
         _ActualizarAddIns = False

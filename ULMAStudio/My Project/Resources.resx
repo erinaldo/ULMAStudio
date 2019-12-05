@@ -118,119 +118,95 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="_9+" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\9+.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="toupdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ikonoak_Mesa de trabajo 1 copia 5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="render_ENKOFLEX" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_ENKOFLEX.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="render_ORMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_ORMA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuReport32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuReport32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuReport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="render_CC_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_CC-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_EHL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_EHL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="About_ai_bim_Mesa de trabajo 1 copia 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\About_ai_bim_Mesa de trabajo 1 copia 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="render_BRIO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\render_BRIO.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mnuAboutUU32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuAboutUU32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="render_LGW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_LGW.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="uf32_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="render_COMAIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_COMAIN.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuDownload1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuDownload1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuBrowser32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuBrowser32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ikonoak_Mesa de trabajo 1 copia 6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuAbout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuAbout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoULMA32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoULMA32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuAbout32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuAbout32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuAboutUU" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuAboutUU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FondoAbout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMAGENES\FondoAbout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mnuDownloadU" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mnuDownloadU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mnuBrowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuBrowser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="uf32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mnuDownloadGris" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuDownloadGris.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Web" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMAGENES\Web.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="render_MEGALITE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_MEGALITE.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuAboutU32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuAboutU32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="toupdate2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\toupdate2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LatestVersion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMAGENES\LatestVersion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="render_ORMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_ORMA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuBrowser32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuBrowser32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_EV_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_EV_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logoULMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoULMA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="render_CC_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_CC-4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoULMA32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoULMA32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="notupdated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ikonoak_Mesa de trabajo 1 copia 7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="render_LGR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_LGR.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="uf32_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="render_MEGAFORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_MEGAFORM.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoULMA" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoULMA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mnuAboutU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuAboutU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mnuDownload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mnuDownload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,85 +214,112 @@
   <data name="icon_EV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_EV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_EHL_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_EHL_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="render_DORPA" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_DORPA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="render_LGW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\render_LGW.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_AND" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_AND.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_AND_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_AND_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="notupdated" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ikonoak_Mesa de trabajo 1 copia 7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="uf32_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\uf32_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuAboutU" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuAboutU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mnuAboutU32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mnuAboutU32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FondoAbout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMAGENES\FondoAbout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="About_ai_bim_Mesa_de_trabajo_1_copia_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\About_ai_bim_Mesa de trabajo 1 copia 9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DownloadUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DownloadUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LatestVersion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMAGENES\LatestVersion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="render_LGR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_LGR.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NewVersion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\IMAGENES\NewVersion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="toupdate2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\toupdate2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mnuReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuReport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Web" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\IMAGENES\Web.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mnuAboutUU" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuAboutUU.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuDownload1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuDownload1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_EHL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_EHL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuDownloadGris" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuDownloadGris.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="About_ai_bim_Mesa de trabajo 1 copia 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\About_ai_bim_Mesa de trabajo 1 copia 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuReport32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuReport32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="About_ai_bim_Mesa_de_trabajo_1_copia_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\About_ai_bim_Mesa de trabajo 1 copia 9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuAbout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuAbout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_AND_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_AND_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="render_MEGAFORM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_MEGAFORM.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="toupdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ikonoak_Mesa de trabajo 1 copia 5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuAboutUU32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuAboutUU32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_9+" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9+.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="render_COMAIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_COMAIN.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuBrowser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuBrowser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DownloadUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DownloadUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_AND" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_AND.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="render_MEGALITE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_MEGALITE.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="render_ENKOFLEX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_ENKOFLEX.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mnuAbout32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mnuAbout32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_EHL_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_EHL_selected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="render_DORPA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\render_DORPA.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ikonoak_Mesa de trabajo 1 copia 6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uf32_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uf32_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoNetwork" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\IMAGENES\NoNetwork.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -109,10 +109,9 @@ Partial Class frmUpdater
         Me.Label1.Location = New System.Drawing.Point(21, 11)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(472, 15)
+        Me.Label1.Size = New System.Drawing.Size(437, 15)
         Me.Label1.TabIndex = 9
-        Me.Label1.Text = "Use the menu below to download the systems you want to have available in the Brow" &
-    "ser:"
+        Me.Label1.Text = "Use the menu to download the systems you want to have available in the Browser:"
         '
         'frmUpdater
         '
@@ -171,6 +170,29 @@ Partial Class frmUpdater
                     panel.BackColor = colorLightBlue
                 End If
             End If
+        Next
+    End Sub
+
+
+    Public Sub cambiaFondosSGpanel(ByRef panelSel As Panel)
+        For Each obj In fpSuperGroups.Controls
+            Dim panel As Panel
+            panel = TryCast(obj, Panel)
+            If panel.ForeColor <> panelSel.ForeColor Then
+                If panel.BackColor <> System.Drawing.Color.White Then
+
+                    panel.BackColor = System.Drawing.Color.White
+                    panel.ForeColor = System.Drawing.Color.White
+                End If
+            End If
+        Next
+    End Sub
+
+    Public Sub cambiaFondosSGpanelABlanco()
+        For Each obj In fpSuperGroups.Controls
+            Dim panel As Panel
+            panel = TryCast(obj, Panel)
+            panel.ForeColor = System.Drawing.Color.White
         Next
     End Sub
 

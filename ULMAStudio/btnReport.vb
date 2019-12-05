@@ -90,7 +90,12 @@ Public Class btnReport
         If (lFi Is Nothing OrElse lFi.Count = 0) Then   ' And frmO.RbUlma.Checked = True Then
             fWait.Close()
             fWait = Nothing
-            TaskDialog.Show("ATTENTION", "There are no families to generate the report.")
+            If Not oDoc.ActiveView.CanBePrinted Then
+                TaskDialog.Show("ATTENTION", "Please activate a view before generating the report.")
+            Else
+                TaskDialog.Show("ATTENTION", "There are no families to generate the report.")
+            End If
+
             resultado = Result.Cancelled : GoTo FINAL
             Exit Function
         End If
@@ -113,8 +118,29 @@ Public Class btnReport
         '
         fWait.pb1.Maximum = lFinal.Count
         'RellenaDatosInforme(oDoc.ActiveView.Name, lFinal)
-        Dim nombre As String = IIf(onlyactiveview = True, oDoc.ActiveView.Name, IO.Path.GetFileName(oDoc.PathName)).ToString
-        RellenaDatosInforme(nombre, lFinal)
+        Dim nombreVistaAllProject As String
+        If oDoc.PathName = "" Then
+            nombreVistaAllProject = oDoc.Title
+        Else
+            nombreVistaAllProject = IO.Path.GetFileName(oDoc.PathName)
+        End If
+
+        ''
+        Dim units As Units = oDoc.GetUnits()
+        Dim fOptions As FormatOptions = units.GetFormatOptions(UnitType.UT_Mass)
+        Dim unidadPeso As String = ""
+        If (fOptions.DisplayUnits = DisplayUnitType.DUT_KILOGRAMS_MASS) Then
+            unidadPeso = "Kg"
+        ElseIf (fOptions.DisplayUnits = DisplayUnitType.DUT_POUNDS_MASS) Then
+            unidadPeso = "lbm"
+        ElseIf (fOptions.DisplayUnits = DisplayUnitType.DUT_TONNES_MASS) Then
+            unidadPeso = "t"
+        ElseIf (fOptions.DisplayUnits = DisplayUnitType.DUT_USTONNES_MASS) Then
+            unidadPeso = "Tons"
+        End If
+
+        Dim nombre As String = IIf(onlyactiveview = True, oDoc.ActiveView.Name, nombreVistaAllProject).ToString
+        RellenaDatosInforme(nombre, lFinal, unidadPeso)
         '
         enejecucion = False
 
@@ -161,7 +187,7 @@ FINAL:
         Return resultado
     End Function
 
-    Private Sub RellenaDatosInforme(VistaActual As String, lFi As List(Of FamilyInstance))
+    Private Sub RellenaDatosInforme(VistaActual As String, lFi As List(Of FamilyInstance), unidadPeso As String)
         If lFi Is Nothing OrElse lFi.Count = 0 Then
             Exit Sub
         End If
@@ -262,19 +288,21 @@ FINAL:
                         End If
                     End If
                 End If
+                Dim convertedWeight As Double = convertirPeso(weight, unidadPeso)
+
                 ' Clave para ordenar por solo "Name"
                 Dim clave As String = IIf(nameinforme = "", name, nameinforme).ToString '& code
                 ' Clave para ordenar por "Category" y "Name" (Lo quitamos)
                 'Dim clave As String = oFi.Category.Name & IIf(nameinforme = "", name, nameinforme).ToString '& code
                 If dFilas.ContainsKey(clave) = False Then
-                    dFilas.Add(clave, New filaDatos(imgPath, IIf(nameinforme = "", "", nameinforme).ToString, code, weight, 1, esulma, oFi.Category.Name))
+                    dFilas.Add(clave, New filaDatos(imgPath, IIf(nameinforme = "", "", nameinforme).ToString, code, convertedWeight, 1, esulma, oFi.Category.Name))
                 Else
                     If dFilas(clave).Code = "" AndAlso code <> "" Then dFilas(clave).Code = code
                     dFilas(clave).Quantity += 1
                     ' Cambiamos para que sólo ponga el peso unitario (No los sume)
                     'dFilas(clave).Weight += weight
-                    If dFilas(clave).Weight = 0 And weight > 0 Then
-                        dFilas(clave).Weight = weight
+                    If dFilas(clave).Weight = 0 And convertedWeight > 0 Then
+                        dFilas(clave).Weight = convertedWeight
                     End If
                 End If
                 System.Windows.Forms.Application.DoEvents()
@@ -285,7 +313,8 @@ FINAL:
         '
         ' Rellenar UCRevitFreeReport.txt
         Dim datos As String = VistaActual & vbCrLf  ' Primera linea es el nombre de la vista.
-        ' Ordenar colección de filaDatos por "Name"
+        datos &= unidadPeso & vbCrLf 'Segunda linea es la unidad de Peso del proyecto
+        ' Ordenar colección de filaDatos por "Name"        
         Dim filas = From x In dFilas.Values
                     Order By x.Name
                     Select x
@@ -322,5 +351,19 @@ FINAL:
 
         End Try
     End Sub
+
+    Function convertirPeso(ByVal valor As Double, ByVal unidad As String) As Double
+        Dim resultado As Double = valor
+        Select Case unidad
+            Case "lbm"
+                resultado = Math.Round(valor * 2.204623, 3)
+            Case "t"
+                resultado = Math.Round(valor / 1000, 3)
+            Case "Tons"
+                resultado = Math.Round(valor / 1000, 3)
+            Case Else
+        End Select
+        Return resultado
+    End Function
 End Class
 'End Namespace

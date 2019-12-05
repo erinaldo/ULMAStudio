@@ -8,15 +8,18 @@ Public Class fila
     Public Property Name As String
     Public Property Code As String
     Public Property Weight As Double
+    ' Public Property WeightUnit As String
     Public Property Quantity As Integer
     Public Property EsUlma As Boolean
 
     Public Sub New(n As Integer, oImage As Image, oName As String, oCode As String, oWeight As Double, oQuantity As Integer, oEsUlma As Boolean)
+        ', oUnit As String
         Me.number = n
         Me.ImageByte = GetBytes(oImage)
         Me.Name = oName
         Me.Code = oCode
         Me.Weight = oWeight
+        'Me.WeightUnit = oUnit
         Me.Quantity = oQuantity
         Me.EsUlma = oEsUlma
     End Sub

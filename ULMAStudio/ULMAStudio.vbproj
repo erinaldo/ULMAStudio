@@ -18,7 +18,7 @@
     <RootNamespace>ULMAStudio</RootNamespace>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -466,13 +466,19 @@
   <ItemGroup>
     <None Include="Resources\Cross.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="IMAGENES\NoNetwork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ULMAStudioSinBrowser.addin" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Target Name="AfterClean">
     <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2020\UCREVITFree.addin" />
     <Delete Files="$(AppData)\Autodesk\REVIT\Addins\2020\UCREVITFree.dll" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>SET FINAL=C:\ULMA\INSTALL\
+    <PostBuildEvent>SET FINAL=C:\INSTALL\ULMA\
 
 xcopy "$(ProjectDir)$(TargetName).addin" "%25FINAL%25" /Y
 xcopy "$(ProjectDir)$(TargetName).ini" "%25FINAL%25$(TargetName)\" /Y
@@ -480,7 +486,10 @@ xcopy "$(TargetDir)*.dll" "%25FINAL%25$(TargetName)\" /Y
 xcopy "$(SolutionDir)IMAGENES\*.png" "%25FINAL%25$(TargetName)\images\" /Y
 rem xcopy "$(ProjectDir)120_publicStructure.xml" "%25FINAL%25$(TargetName)\offlineBDIdata\" /Y
 
-xcopy "$(ProjectDir)$Fonts\*.otf" "%25FINAL%25$(TargetName)\Fonts\" /Y
+xcopy "$(ProjectDir)Fonts\*.otf" "%25FINAL%25$(TargetName)\Fonts\" /Y
+xcopy "$(SolutionDir)UserGuide\ULMAStudio_UserGuide.pdf" "%25FINAL%25$(TargetName)\UserGuide\" /Y
+
+userGuide
 REM ***** Quitar o poner las familias y sus imagenes
 rem xcopy "$(SolutionDir)families\*.*" "%25FINAL%25$(TargetName)\families\" /S /Y
 rem xcopy "$(SolutionDir)families_images\*.*" "%25FINAL%25$(TargetName)\families_images\" /S /Y
@@ -491,10 +500,11 @@ xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.dll" "%25FINAL%25$(TargetName)\UC
 xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.xml" "%25FINAL%25$(TargetName)\UCBrowser\" /Y
 xcopy "$(SolutionDir)UCBrowser\UCBrowser\bin\*.png "%25FINAL%25$(TargetName)\UCBrowser\" /Y
 xcopy "$(SolutionDir)UCBrowser\UCBrowser\Resources\*.*" "%25FINAL%25$(TargetName)\UCBrowser\Resources\" /S /Y
+xcopy "$(SolutionDir)UCBrowser\UCBrowser\UCBrowser.addin" "%25FINAL%25$(TargetName)\UCBrowser\" /Y
 
 rem "Report / ULMAStudioReport"
 xcopy "$(SolutionDir)ULMAStudioReport\bin\*.*" "%25FINAL%25$(TargetName)\" /Y
-
+xcopy "$(SolutionDir)ULMAStudioReport\*.rdlc" "%25FINAL%25$(TargetName)\" /Y
 rem ULMALGFree
 rem xcopy "$(SolutionDir)ULMALGFree\bin\ULMALGFree*.*" "%25FINAL%25$(TargetName)\" /E /Y
 xcopy "$(SolutionDir)ULMALGFree\Resources\*.png" "%25FINAL%25$(TargetName)\images\" /Y
@@ -505,17 +515,26 @@ rem xcopy "$(SolutionDir)ULMAUpdater\bin\*.*" "%25FINAL%25$(TargetName)\" /E /Y
 rem "ULMAUpdaterAddIn"
 xcopy "$(SolutionDir)ULMAUpdaterAddIn\bin\*.*" "%25FINAL%25$(TargetName)\" /Y
 
-if exist "%25FINAL%25$(TargetName)\key.dat" del "%25FINAL%25$(TargetName)\key.dat"
+rem "User Guide"
+xcopy "$(SolutionDir)userGuide\*.*" "%25FINAL%25$(TargetName)\userGuide\" /S /Y
+
+REM if exist "%25FINAL%25$(TargetName)\key.dat" del "%25FINAL%25$(TargetName)\key.dat"
 
 REM ESCRIBIR EL FICHERO ULMAUpdaterAddin.ini
 call "$(SolutionDir)ULMAWriteIni\bin\ULMAWriteIni.exe" "%25FINAL%25ULMAStudio\ULMAStudio.dll"
+
+rem restablecer key.dat
+IF EXIST "c:\temp\key.dat" move "c:\temp\key.dat" "%25FINAL%25ULMAStudio\key.dat"
 
 REM COPIAR TODO EN LAS CARPETAS DE ADDINS 2018 Y 2019
 xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2018\" /E /Y
 REM xcopy "%25FINAL%25*.*" "$(AppData)\Autodesk\REVIT\Addins\2019\" /E /Y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>SET FINAL=C:\ULMA\INSTALL\
+    <PreBuildEvent>SET FINAL=C:\INSTALL\ULMA\
+
+rem mantener key.dat
+REM IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)\key.dat" move "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)\key.dat" "c:\temp\key.dat"
 
 IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName).addin" del /Q "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName).addin"
 IF EXIST "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)" rmdir /S /Q "$(appdata)\Autodesk\REVIT\Addins\2018\$(ProjectName)"
@@ -528,6 +547,8 @@ mkdir "%25FINAL%25$(ProjectName)"
 mkdir "%25FINAL%25$(ProjectName)\families"
 mkdir "%25FINAL%25$(ProjectName)\families_images"
 mkdir "%25FINAL%25$(ProjectName)\offlineBDIdata"
-mkdir "%25FINAL%25$(ProjectName)\updates"</PreBuildEvent>
+mkdir "%25FINAL%25$(ProjectName)\updates"
+mkdir "%25FINAL%25$(ProjectName)\UserGuide"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>

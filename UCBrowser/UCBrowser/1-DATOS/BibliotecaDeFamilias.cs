@@ -160,6 +160,37 @@ namespace UCBrowser
 
         }
 
+
+        private List<LineaDeProducto> FiltrarLineasDeProductoSoloDescargadas()
+        {
+            List<String> lineasUsadas = new List<String>();
+            List<String> lineasUsadasDistinct = new List<String>();
+            List<LineaDeProducto> resultado = new List<LineaDeProducto>();
+            ULMALGFree.clsBase.INIUpdates_LeeLAST();
+            foreach (GrupoDeFamilias grupo in this.grupos)
+            {
+                if (ULMALGFree.clsBase.CLast.ContainsKey(grupo.id))
+                {
+                    lineasUsadas.Add(grupo.lineaALaQuePertenece);
+                }
+            }
+            lineasUsadasDistinct = lineasUsadas.Distinct().ToList();
+            foreach (LineaDeProducto linea in this.lineasDeProducto)
+            {
+                if (lineasUsadasDistinct.Contains(linea.id))
+                {
+                    resultado.Add(linea);
+                }
+            }
+            return resultado;
+        }
+
+        public List<LineaDeProducto> getLineasDeProductoFiltrado()
+        {
+            return FiltrarLineasDeProductoSoloDescargadas();
+        }
+
+
         private void RellenarRelacionesFamiliaGrupo(int idCompaniaBaan, CONSULTAS bdi)
         {
             List<relacionFamiliaGrupo> listaConPosiblesDuplicados = new List<relacionFamiliaGrupo>();
@@ -366,6 +397,27 @@ namespace UCBrowser
             }
             return resultado;
         }
+
+
+        public List<GrupoDeFamilias> getGruposDeLaLineaYaDescargadas(string idLineaDeProducto)
+        {
+            List<GrupoDeFamilias> resultado = new List<GrupoDeFamilias>();
+            List<GrupoDeFamilias> resultadoTemp = new List<GrupoDeFamilias>();
+            foreach (GrupoDeFamilias grupo in grupos.FindAll(x => x.lineaALaQuePertenece.Equals(idLineaDeProducto)))
+            {
+                resultadoTemp.Add(grupo);
+            }
+            String descargados = ULMALGFree.clsBase.INIUpdates_LeeLAST();
+            foreach (GrupoDeFamilias grupo in resultadoTemp)
+            {
+                if (ULMALGFree.clsBase.CLast.ContainsKey(grupo.id))
+                {
+                    resultado.Add(grupo);
+                }
+            }
+            return resultado;
+        }
+
 
         public enum filtroFamilia
         {

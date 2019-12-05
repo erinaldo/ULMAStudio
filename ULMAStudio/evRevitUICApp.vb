@@ -97,8 +97,13 @@ Partial Public Class evRevit
                 If uf.cUp("xmls").Count > 0 Then uf._ActualizarXMLs = True                '
                 ultimacomprobacion = DateTime.Now.Ticks
                 ULMAStudioApplication.Botones_ActualizaEstadoActualizaciones(True)
+                ULMAStudioApplication.BotonBrowserReport()
             End If
         End If
+        'If uf.reCalculoPanelBrowserReport Then
+        '    ULMAStudioApplication.BotonBrowserReport()
+        '    uf.reCalculoPanelBrowserReport = False
+        'End If
         '
         '************* Salir en determinadas condiciones. *********
         ' No quedan ficheros abiertos. Borrar tmplog y salir

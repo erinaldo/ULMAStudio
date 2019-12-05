@@ -6,6 +6,7 @@ Public Class frmInforme
     Public datos As DataTable
     Public datosNoUlma As DataTable
     Public view As String
+    Public unidadPeso As String
 
     Private Sub FrmInforme_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.filas = New List(Of fila)
@@ -24,6 +25,8 @@ Public Class frmInforme
         ' Crear y asignar los parámetros
         Dim parametros As New List(Of ReportParameter)
         parametros.Add(New ReportParameter("nView", view, True))
+        parametros.Add(New ReportParameter("unPeso", unidadPeso, True))
+        parametros.Add(New ReportParameter())
         '
         ' Asignar DataSource
         ReportViewer1.LocalReport.DataSources.Clear()
@@ -44,7 +47,9 @@ Public Class frmInforme
         End Try
         '
         Me.view = lineas(0)
-        For x As Integer = 1 To lineas.Count - 1
+        Me.unidadPeso = lineas(1)
+
+        For x As Integer = 2 To lineas.Count - 1
             Dim partes() As String = lineas(x).Split(";"c)
             Dim path As String = partes(0)
             Dim img As Image = Image.FromFile(path)

@@ -28,28 +28,37 @@ Public Class btnUpdateFamilies
         'TODO: Add your code here
         'PonLog("btnAbout (About)")
         ''
-        enejecucion = True
-        Dim resultado As Result = Result.Succeeded
-        '
-        'If uf.cUp("families").Count = 0 Then
-        '    TaskDialog.Show("ATTENTION", "Not updates of ULMA families")
-        '    Return Result.Failed
-        '    Exit Function
-        'End If
-        '
-        uf.frmUFam = New ULMALGFree.frmUpdater
-        'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UCREVIT_ABOUT,,, arrM123, arrL123, ultimaTraduccion)
-        ''
-        ''
-        If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("DOWNLOAD_OPEN")
-        If uf.frmUFam.ShowDialog(New WindowWrapper(Process.GetCurrentProcess.MainWindowHandle)) = System.Windows.Forms.DialogResult.Cancel Then
-            'resultado = Result.Cancelled
-            'Else
-            ULMAStudioApplication.Botones_ActualizaEstadoActualizaciones()
+        Dim resultado As Result
+        Dim pruebaCon As String
+        pruebaCon = uf.EstadoRed_String
+        If pruebaCon = "" Then
+            enejecucion = True
             resultado = Result.Succeeded
+            '
+            'If uf.cUp("families").Count = 0 Then
+            '    TaskDialog.Show("ATTENTION", "Not updates of ULMA families")
+            '    Return Result.Failed
+            '    Exit Function
+            'End If
+            '
+            uf.frmUFam = New ULMALGFree.frmUpdater
+            'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA(ULMALGFree.ACTION.UCREVIT_ABOUT,,, arrM123, arrL123, ultimaTraduccion)
+            ''
+            ''
+            If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("DOWNLOAD_OPEN")
+            If uf.frmUFam.ShowDialog(New WindowWrapper(Process.GetCurrentProcess.MainWindowHandle)) = System.Windows.Forms.DialogResult.Cancel Then
+                'resultado = Result.Cancelled
+                'Else
+                ULMAStudioApplication.Botones_ActualizaEstadoActualizaciones()
+                ULMAStudioApplication.BotonBrowserReport()
+                resultado = Result.Succeeded
+            End If
+            enejecucion = False
+            ''
+        Else
+            TaskDialog.Show("No network Connection", "Please check your network connection")
+            resultado = Result.Cancelled
         End If
-        enejecucion = False
-        ''
         Return resultado
     End Function
 End Class

@@ -34,7 +34,7 @@ using UCBrowser;
         {
             if (Main.cLcsv != null)
             {
-                Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_CLOSE, EApp: ULMALGFree.queApp.UCBROWSER);
+                Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_CLOSE, EApp: ULMALGFree.queApp.ULMASTUDIO);
             }
         this.Visibility = System.Windows.Visibility.Hidden;
             e.Cancel = true;
@@ -44,7 +44,7 @@ using UCBrowser;
             this.Visibility = System.Windows.Visibility.Hidden;
             if (Main.cLcsv != null)
             {
-                Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_CLOSE, EApp: ULMALGFree.queApp.UCBROWSER);
+                Main.cLcsv.PonLog_ULMA(ULMALGFree.ACTION.BROWSER_CLOSE, EApp: ULMALGFree.queApp.ULMASTUDIO);
             }
     }
 

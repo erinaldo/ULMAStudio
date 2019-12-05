@@ -15,6 +15,7 @@ Public Class frmUpdater
             UCBrowser.WindowManager.CloseWindows()
             uf.cambiosEnGrupos = False
         End If
+        'Cursor.Position = New System.Drawing.Point(Cursor.Position.X + 1, Cursor.Position.Y)
     End Sub
 
     Public Sub FrmUpdater_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -169,5 +170,13 @@ Public Class frmUpdater
 
     Public Sub cambiaFondosSeleccionado(ByRef panel As Panel)
         cambiaFondosSeleccionadoGpanel(panel)
+    End Sub
+
+    Public Sub cambiaFondosSuperGrupo(ByRef panel As Panel)
+        cambiaFondosSGpanel(panel)
+    End Sub
+
+    Public Sub cambiaFondosSuperGrupoABlanco()
+        cambiaFondosSGpanelABlanco()
     End Sub
 End Class

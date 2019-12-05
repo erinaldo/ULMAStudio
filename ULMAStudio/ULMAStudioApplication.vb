@@ -53,7 +53,24 @@ Class ULMAStudioApplication
         'cIni.IniDeleteSection(ULMALGFree.clsBase._IniFull, "UPDATES")
         ULMALGFree.clsBase.RenombraExeBak()
         'ULMALGFree.clsBase.Process_Close("ULMAUpdaterAddIn")
-        '
+        '      
+
+
+        ''''
+        ''' Cargar Addin Browser antes que nada
+        '''
+        Try
+            If File.Exists(ULMALGFree.clsBase._BrowserFolder + "\UCBrowser.addin") Then
+                evRevit.evAppUIC.LoadAddIn(ULMALGFree.clsBase._BrowserFolder + "\UCBrowser.addin")
+            Else
+                Dim exc As Exception = New Exception()
+                Throw exc
+            End If
+        Catch ex As Exception
+            TaskDialog.Show("ATTENTION", "Error: Addin malfunction. Can not load ULMAStudio. Error Code: B01")
+            Return Result.Cancelled
+        End Try
+
         ' 1.- ***** Cargar datos del fichero .INI
         Dim resultado() As String = modVar.INICargar()
         Dim errores As String = resultado(0)
@@ -131,6 +148,8 @@ Class ULMAStudioApplication
         'If cLcsv IsNot Nothing Then cLcsv.PonLog_ULMA("XMLs VERSION", dateXML)
         ' 4.- ***** Creamos el interface (Ribbon, Paneles y botones)
         ''PonLog("Cargar RibbonTab, RibbonPanels y RibbonButtons")
+
+
         Ribbon_ADD_ULMA(app)
         If loadaddin = False Then
             'utilesRevit.RibbonPanels_ActivarDesactivar(_uiLabName, colDejar, loadaddin)
@@ -233,7 +252,7 @@ Class ULMAStudioApplication
         btnReportBoton.Image = queImg
         btnReportBoton.LargeImage = queImg
         ' Add a tooltip
-        btnReportBoton.ToolTip = "GET Report"
+        btnReportBoton.ToolTip = "Get Report"
         'btnReportBoton.ItemText = "Opciones" & Environment.NewLine & "PrefaBIM"
         'btnReportBoton.ToolTipImage = NewBitmapImage("GENPLANOToolTip.png")
         btnReportBoton.LongDescription = ""
@@ -360,6 +379,13 @@ Class ULMAStudioApplication
             Dim nombre As String = "uf32_" & uf.cUp("botonesRojos").Count '& ".png"
             queImg = MyResource.Resources.Imagen_DameIncrustada(nombre & ".png")
         End If
+        btnDownloadBoton.Image = queImg
+        btnDownloadBoton.LargeImage = queImg
+        '
+        If panelToolsW IsNot Nothing Then panelToolsW.RibbonControl.UpdateLayout()
+    End Sub
+
+    Public Shared Sub BotonBrowserReport()
         If uf.cUp("descargados").Count = 0 Then
             btnBrowserBoton.Enabled = False
             btnReportBoton.Enabled = False
@@ -367,10 +393,9 @@ Class ULMAStudioApplication
             btnBrowserBoton.Enabled = True
             btnReportBoton.Enabled = True
         End If
-        btnDownloadBoton.Image = queImg
-        btnDownloadBoton.LargeImage = queImg
-        '
+
         If panelToolsW IsNot Nothing Then panelToolsW.RibbonControl.UpdateLayout()
+
     End Sub
     '
     'Sub AddPushButtonLISTARIBBONS(ByVal panel As RibbonPanel)

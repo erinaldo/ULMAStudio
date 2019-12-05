@@ -37,33 +37,40 @@ Module modVar
     End Function
     Public Function Grupo_DameActionNumero(gCode As String, gSName As String) As Integer
         Dim resultado As Integer = 0
+        Dim lupUno As ULMALGFree.Datos
         Call uf.INIUpdates_LeeTODO()
         '
         ' No hay actualizaciones. Salir con 0 (updated) Actualizado
         If uf.LUp.Count = 0 Then
-            resultado = 0
-            Return resultado
-            Exit Function
+            If uf.CLast.ContainsKey(gCode) Then
+                lupUno = New ULMALGFree.Datos(gCode, uf.CLast(gCode))
+            Else
+                resultado = 1
+                Return resultado
+                Exit Function
+            End If
+            'End If
+        Else
+            '
+            Dim LUpBusco As IEnumerable(Of ULMALGFree.Datos) = From x In uf.LUp
+                                                               Where x.ClaveIni.ToUpper = gCode.ToUpper OrElse x.ClaveIni.ToUpper = gSName.ToUpper
+                                                               Select x
+            ' No está en actualizaciones
+            If LUpBusco Is Nothing Then
+                resultado = 0
+                Return resultado
+                Exit Function
+            End If
+            If LUpBusco.Count = 0 Then
+                resultado = 0
+                Return resultado
+                Exit Function
+            End If
+            '
+            ' Si estaba en UPDATE
+            lupUno = LUpBusco.First
+            '
         End If
-        '
-        Dim LUpBusco As IEnumerable(Of ULMALGFree.Datos) = From x In uf.LUp
-                                                           Where x.ClaveIni.ToUpper = gCode.ToUpper OrElse x.ClaveIni.ToUpper = gSName.ToUpper
-                                                           Select x
-        ' No está en actualizaciones
-        If LUpBusco Is Nothing Then
-            resultado = 0
-            Return resultado
-            Exit Function
-        End If
-        If LUpBusco.Count = 0 Then
-            resultado = 0
-            Return resultado
-            Exit Function
-        End If
-        '
-        ' Si estaba en UPDATE
-        Dim lUpUno As ULMALGFree.Datos = LUpBusco.First
-        '
         If uf.CLast.ContainsKey(lUpUno.ClaveIni) Then
             If uf.CLast(lUpUno.ClaveIni) = lUpUno.Local_File Then
                 ' Ya se descargó y está actualizado
